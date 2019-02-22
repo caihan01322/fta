@@ -1,0 +1,1357 @@
+# Chinese (Simplified, China) translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-08-20 14:34+0800\n"
+"PO-Revision-Date: 2017-11-26 14:32+0800\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: zh_Hans_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.1\n"
+
+#: contrib/enterprise/constants.py:57
+msgid "Host"
+msgstr "主机"
+
+#: contrib/enterprise/constants.py:58
+msgid "Alarm Type"
+msgstr "告警类型"
+
+#: contrib/enterprise/constants.py:61
+msgid "Business"
+msgstr "业务"
+
+#: contrib/enterprise/constants.py:62
+msgid "Set"
+msgstr "集群"
+
+#: contrib/enterprise/constants.py:63
+#: manager/www/webservice/templates/mail/info.html:188
+msgid "Solution"
+msgstr "套餐"
+
+#: contrib/enterprise/hooks/send.py:43
+msgid "Fault Auto-recovery notification"
+msgstr "故障自愈通知"
+
+#: contrib/enterprise/hooks/send.py:50
+#, python-format
+msgid "Failed to send WeChat notification %s %s"
+msgstr "发送微信通知失败 %s %s"
+
+#: contrib/enterprise/hooks/send.py:60
+#, python-format
+msgid ""
+"[Fault Auto-recovery] %s%s Please ignore this message if you are not a "
+"subscriber."
+msgstr "《故障自愈》%s%s该信息如非本人订阅，请忽略本短信。"
+
+#: contrib/enterprise/hooks/send.py:75
+#, python-format
+msgid "Failed to send SMS notification %s %s"
+msgstr "发送短信通知失败 %s %s"
+
+#: contrib/enterprise/hooks/send.py:79 contrib/enterprise/hooks/send.py:98
+msgid "[Fault Auto-recovery] Email notification"
+msgstr "【故障自愈】邮件通知"
+
+#: contrib/enterprise/hooks/send.py:94
+#, python-format
+msgid "Failed to send email notification %s %s"
+msgstr "发送邮件通知失败 %s %s"
+
+#: contrib/enterprise/hooks/send.py:115
+#, python-format
+msgid "Failed to send telephone notification %s %s"
+msgstr "发送电话通知失败 %s %s"
+
+#: contrib/enterprise/hooks/send.py:119
+msgid "[BlueKing Monitoring System] IM notification"
+msgstr "【蓝鲸监控系统】IM通知"
+
+#: contrib/enterprise/hooks/send_message.py:59
+#, python-format
+msgid ""
+"BlueKing monitoring collection notice,Business %(cc_biz_name)sAt "
+"%(time_desc)sArticle %(collect_count)s appears%(alarm_type)s Alarms"
+msgstr "蓝鲸监控汇总通知,业务%(cc_biz_name)s在%(time_desc)s出现%(collect_count)s条%(alarm_type)s告警"
+
+#: contrib/enterprise/hooks/send_message.py:69
+msgid "[Auto-recovery Notification] {alarm_type} {cc_biz_name} {result_title}"
+msgstr "【自愈通知】{alarm_type} {cc_biz_name} {result_title}"
+
+#: contrib/enterprise/hooks/send_message.py:84
+#, python-format
+msgid "[Auto-recovery Collection Start] [(%(collect_type)s)]"
+msgstr "【自愈汇总开始】【%(collect_type)s】"
+
+#: contrib/enterprise/hooks/send_message.py:85
+#: contrib/enterprise/hooks/send_message.py:95 fta/utils/send_message.py:73
+#: manager/solution/waiting.py:60 tests/fta/utils/i18n.py:14
+#, python-format
+msgid "Business: %(cc_biz_name)s"
+msgstr "业务：%(cc_biz_name)s"
+
+#: contrib/enterprise/hooks/send_message.py:86
+#: contrib/enterprise/hooks/send_message.py:96 fta/utils/send_message.py:297
+#: manager/solution/waiting.py:61 tests/fta/utils/i18n.py:15
+#, python-format
+msgid "Alarm Type: %(alarm_type)s"
+msgstr "告警类型：%(alarm_type)s"
+
+#: contrib/enterprise/hooks/send_message.py:87
+#: contrib/enterprise/hooks/send_message.py:97 fta/utils/send_message.py:75
+#: tests/fta/utils/i18n.py:16
+#, python-format
+msgid "Description: %(description)s"
+msgstr "详细：%(description)s"
+
+#: contrib/enterprise/hooks/send_message.py:88
+#: contrib/enterprise/hooks/send_message.py:98 fta/utils/send_message.py:76
+#: tests/fta/utils/i18n.py:17
+#, python-format
+msgid "Dimension: %(dimension)s"
+msgstr "维度：%(dimension)s"
+
+#: contrib/enterprise/hooks/send_message.py:89
+#, python-format
+msgid "At %(begin_time)s"
+msgstr "在 %(begin_time)s"
+
+#: contrib/enterprise/hooks/send_message.py:90
+msgid "Article 1 appears"
+msgstr "出现第 1 条"
+
+#: contrib/enterprise/hooks/send_message.py:94
+#, python-format
+msgid "[Auto-recovery Collection Complete] [(%(collect_type)s)]"
+msgstr "【自愈汇总完成】【(%(collect_type)s)】"
+
+#: contrib/enterprise/hooks/send_message.py:100
+#, python-format
+msgid "Article %(collect_count)s appears"
+msgstr "出现了 %(collect_count)s 条"
+
+#: contrib/enterprise/hooks/send_message.py:101
+#, python-format
+msgid "Details %(url)s"
+msgstr "详情 %(url)s"
+
+#: contrib/enterprise/hooks/send_message.py:160
+#: contrib/enterprise/solution/ijobs.py:302
+#: contrib/enterprise/solution/ijobs.py:322
+msgid "None"
+msgstr "无"
+
+#: contrib/enterprise/hooks/send_message.py:161 fta/utils/send_message.py:302
+msgid "No processing"
+msgstr "不处理"
+
+#: contrib/enterprise/solution/ijobs.py:49 manager/solution/gcloud.py:83
+#: manager/solution/http.py:31 manager/solution/notice.py:103
+#: manager/solution/notice_only.py:93
+msgid "Pseudo execution"
+msgstr "伪执行"
+
+#: contrib/enterprise/solution/ijobs.py:62
+#, python-format
+msgid "Error in obtaining maintenance information of business [%(biz_id)s]"
+msgstr "获取业务[%(biz_id)s]的运维信息出错"
+
+#: contrib/enterprise/solution/ijobs.py:77
+#, python-format
+msgid "Error in obtaining full business operator: %(error)s"
+msgstr "获取全业务的操作者出错:%(error)s"
+
+#: contrib/enterprise/solution/ijobs.py:89
+#: contrib/enterprise/solution/ijobs.py:245 fta/constants.py:29
+msgid "Failure"
+msgstr "失败"
+
+#: contrib/enterprise/solution/ijobs.py:123
+#, python-format
+msgid "(%s) Failed in obtaining ijobs task data: %s"
+msgstr "(%s)获取ijobs任务信息失败: %s"
+
+#: contrib/enterprise/solution/ijobs.py:151
+msgid "Jobs return error"
+msgstr "jobs返回异常"
+
+#: contrib/enterprise/solution/ijobs.py:207
+#, python-format
+msgid "(%s) Failed in creating job task: %s"
+msgstr "(%s)创建job任务失败: %s"
+
+#: contrib/enterprise/solution/ijobs.py:240 fta/constants.py:27
+msgid "Success"
+msgstr "成功"
+
+#: contrib/enterprise/solution/ijobs.py:269
+#, python-format
+msgid "Disk cleanup %s: %s"
+msgstr "磁盘清理%s：%s"
+
+#: contrib/enterprise/solution/ijobs.py:271
+#, python-format
+msgid "Get the processes %s with Top 10 memory utilization"
+msgstr "获取占用内存最多的Top10进程%s"
+
+#: contrib/enterprise/solution/ijobs.py:273
+#, python-format
+msgid "Get the processes %s with Top 10 CPU utilization"
+msgstr "获取占用CPU最多的Top10进程%s"
+
+#: contrib/enterprise/solution/ijobs.py:277
+msgid "Failed to create job task"
+msgstr "创建job任务失败"
+
+#: contrib/enterprise/solution/ijobs.py:283
+#, python-format
+msgid ""
+"Execute Job %(result_desc)s<a target='_blank' "
+"href='%(link)s'>[%(task_id)s]</a>"
+msgstr "执行Job作业%(result_desc)s<a target='_blank' href='%(link)s'>[%(task_id)s]</a>"
+
+#: contrib/enterprise/solution/ijobs.py:288
+#: contrib/enterprise/solution/ijobs.py:306
+msgid "Failed to obtain ijobs log"
+msgstr "获取ijobs日志失败"
+
+#: contrib/enterprise/solution/ijobs.py:301
+#: contrib/enterprise/solution/ijobs.py:321
+#, python-format
+msgid ""
+"job execution failed, log: \n"
+"%s"
+msgstr ""
+"ijobs执行失败，日志：\n"
+"%s"
+
+#: fta/constants.py:12
+msgid "Skip after success"
+msgstr "成功后跳过"
+
+#: fta/constants.py:13
+msgid "Skip after success, Approve on failure"
+msgstr "成功后跳过,失败时审批"
+
+#: fta/constants.py:14
+msgid "Skip during processing"
+msgstr "处理中跳过"
+
+#: fta/constants.py:15
+msgid "Exception defense needs approval"
+msgstr "异常防御需审批"
+
+#: fta/constants.py:16
+msgid "Collect related events"
+msgstr "汇集相关事件"
+
+#: fta/constants.py:17
+msgid "Process after convergence"
+msgstr "收敛后处理"
+
+#: fta/constants.py:18
+msgid "Trigger notification"
+msgstr "触发通知"
+
+#: fta/constants.py:22
+msgid "Received"
+msgstr "收到"
+
+#: fta/constants.py:23
+msgid "In approval"
+msgstr "审批中"
+
+#: fta/constants.py:24
+msgid "In convergence"
+msgstr "收敛中"
+
+#: fta/constants.py:25
+msgid "Convergence ended"
+msgstr "收敛结束"
+
+#: fta/constants.py:26 fta/utils/error_handler.py:45
+msgid "Processing"
+msgstr "处理中"
+
+#: fta/constants.py:28
+msgid "Almost success"
+msgstr "基本成功"
+
+#: fta/constants.py:30
+msgid "Skipped"
+msgstr "跳过"
+
+#: fta/constants.py:31
+msgid "Please notice to"
+msgstr "请关注"
+
+#: fta/constants.py:32
+msgid "Please refer to"
+msgstr "请参考"
+
+#: fta/constants.py:33
+msgid "Authorized"
+msgstr "授权"
+
+#: fta/constants.py:34
+msgid "Unauthorized"
+msgstr "未授权"
+
+#: fta/constants.py:35
+msgid "Checking"
+msgstr "验收中"
+
+#: fta/constants.py:36
+msgid "Retrying"
+msgstr "重试中"
+
+#: fta/constants.py:37
+msgid "Shield"
+msgstr "被屏蔽"
+
+#: fta/constants.py:54
+msgid "Processing error (unclassified)"
+msgstr "处理出错（未分类）"
+
+#: fta/constants.py:55
+msgid "FTA system error"
+msgstr "自愈系统异常"
+
+#: fta/constants.py:56
+msgid "Timeout"
+msgstr "超时"
+
+#: fta/constants.py:57
+msgid "Job execution error"
+msgstr "作业执行出错"
+
+#: fta/constants.py:58
+msgid "Job creation failed"
+msgstr "作业创建失败"
+
+#: fta/constants.py:59
+msgid "Restart api error"
+msgstr "重启调用出错"
+
+#: fta/constants.py:60
+msgid "GCloud api error"
+msgstr "标准运维调用出错"
+
+#: fta/constants.py:61
+msgid "False alarm"
+msgstr "误告警"
+
+#: fta/constants.py:62
+msgid "User termination process"
+msgstr "用户终止流程"
+
+#: fta/advice/advice_fta.py:149 fta/match_alarm/alarminstance.py:135
+msgid "Save directly without processing"
+msgstr "直接保存无处理"
+
+#: fta/advice/advice_func.py:133
+#, python-format
+msgid "Auto-recovery early warning error, advice: %s"
+msgstr "自愈预警异常, advice:%s"
+
+#: fta/advice/process.py:62
+msgid "One month"
+msgstr "一个月"
+
+#: fta/advice/process.py:64
+msgid "One week"
+msgstr "一周"
+
+#: fta/advice/process.py:66
+msgid "Within one day"
+msgstr "一天内"
+
+#: fta/advice/process.py:68
+#, python-format
+msgid "Within %(interval)s day(s)"
+msgstr "%(interval)s 天内"
+
+#: fta/advice/process.py:113
+#, python-format
+msgid "Failed to run health report: %s"
+msgstr "运行健康度报告失败: %s"
+
+#: fta/advice/send_advice.py:39
+msgid "[Auto-recovery Notification] Health Daily {} {} {} new risk point(s)"
+msgstr "【自愈通知】健康度日报 {} {} {}个新风险点"
+
+#: fta/advice/send_advice.py:40
+msgid "MM Month DD Day"
+msgstr "MM月DD天"
+
+#: fta/collect/process.py:157
+msgid "(Alarm is skipped by flow control)"
+msgstr "(告警被流量控制跳过)"
+
+#: fta/collect/process.py:159
+#, python-format
+msgid "%(range_time)s minute(s)"
+msgstr "%(range_time)s分钟"
+
+#: fta/collect/process.py:161
+#, python-format
+msgid "%(range_count)s article(s)"
+msgstr "%(range_count)s条"
+
+#: fta/collect/process.py:181 manager/define/incidentdef.py:129
+msgid "all"
+msgstr "所有"
+
+#: fta/collect/process.py:311
+msgid "Collection successful (notification start)"
+msgstr "汇总成功（通知开始）"
+
+#: fta/collect/process.py:329
+#, python-format
+msgid "Collection successful (trigger threshold [%(range_count)s] notification)"
+msgstr "汇总成功（触发阈值[%(range_count)s]通知）"
+
+#: fta/collect/process.py:334
+msgid "Collection successful (save directly without processing)"
+msgstr "汇总成功（直接保存无处理）"
+
+#: fta/converge/process.py:95
+msgid "Converged: Skip after timeout in convergent waiting"
+msgstr "跳过不处理: 因告警蜂拥进行流量控制"
+
+#: fta/converge/process.py:127
+#, python-format
+msgid "Converged: %(comment)s"
+msgstr "被收敛：%(comment)s"
+
+#: fta/converge/process.py:131
+#, python-format
+msgid "Convergence to be approved: %(comment)s"
+msgstr "被收敛需审批：%(comment)s"
+
+#: fta/job/server.py:97
+#, python-format
+msgid "Exception error: %(error)s"
+msgstr "异常错误: %(error)s"
+
+#: fta/logging/process.py:139
+msgid "[Fault Auto-recovery] Log exceeds threshold size"
+msgstr "【故障自愈】日志超过阀值大小"
+
+#: fta/logging/process.py:164
+#, python-format
+msgid "%(k)s %(v)s times"
+msgstr "%(k)s %(v)s次"
+
+#: fta/qos/process.py:94
+msgid "Skip without processing: Flow control due to alarm flocking"
+msgstr "跳过不处理: 因告警蜂拥进行流量控制"
+
+#: fta/qos/process.py:105
+msgid "[Fault Auto-recovery] [Flow Control]"
+msgstr "【故障自愈】【流量控制】"
+
+#: fta/qos/process.py:106
+#, python-format
+msgid "Status: [%(status)s]"
+msgstr "状态: [%(status)s]"
+
+#: fta/qos/process.py:107
+#, python-format
+msgid "Total alarms: (%(total_count)s) article(s)"
+msgstr "告警总数: (%(total_count)s)条"
+
+#: fta/qos/process.py:108
+#, python-format
+msgid "Alarm discards: (%(mark_count)s) article(s)"
+msgstr "告警舍弃数: (%(mark_count)s)条"
+
+#: fta/qos/process.py:109
+#, python-format
+msgid "Alarm discard priority: %(blocked_priority)s"
+msgstr "告警舍弃优先级: %(blocked_priority)s"
+
+#: fta/qos/process.py:110
+msgid "----- Details -----"
+msgstr "----- 详情 -----"
+
+#: fta/qos/process.py:114
+#, python-format
+msgid "Business [%(cc_biz_id)s] [%(alarm_type)s] (%(count)s)"
+msgstr "业务[%(cc_biz_id)s][%(alarm_type)s](%(count)s)条"
+
+#: fta/qos/process.py:155
+#, python-format
+msgid ""
+"[Fault Auto-recovery] [Processing Timeout] "
+"[%(cc_biz_id)s][%(alarm_type)s][%(instance_id)s][%(status)s]"
+msgstr "【故障自愈】【处理超时】[%(cc_biz_id)s][%(alarm_type)s][%(instance_id)s][%(status)s]"
+
+#: fta/solution/base.py:96
+msgid "Unknown result"
+msgstr "未知结果"
+
+#: fta/solution/base.py:163
+msgid "Wait for ESB callback"
+msgstr "等待ESB回调"
+
+#: fta/solution/base.py:202
+msgid "Wait for Polling callback"
+msgstr "等待Polling回调"
+
+#: fta/solution/base.py:232
+msgid "Wait for callback"
+msgstr "等待回调"
+
+#: fta/solution/base.py:243
+msgid "Component callback waiting timed out"
+msgstr "等待组件回调超时"
+
+#: fta/solution/process.py:134
+#, python-format
+msgid "Start processing solution [%(solution)s]"
+msgstr "开始处理套餐[%(solution)s]"
+
+#: fta/solution/process.py:216
+#, python-format
+msgid "Execute combination solution[%(title)s]%(status)s"
+msgstr "执行组合套餐[%(title)s]%(status)s"
+
+#: fta/utils/error_handler.py:23
+msgid "Execution error occurred"
+msgstr "执行中出现异常"
+
+#: fta/utils/error_handler.py:43
+msgid "Convergence"
+msgstr "收敛"
+
+#: fta/utils/error_handler.py:47
+msgid "Auto-recovery"
+msgstr "自愈"
+
+#: fta/utils/error_handler.py:54
+#, python-format
+msgid "Timeout in %(status)s"
+msgstr "%(status)s中超时"
+
+#: fta/utils/send_converge.py:27
+msgid "[Fault Auto-recovery] [Convergence Notification]"
+msgstr "【故障自愈】【收敛通知】"
+
+#: fta/utils/send_converge.py:28 fta/utils/send_converge.py:61
+#: fta/utils/send_converge.py:128 fta/utils/send_message.py:237
+#: fta/utils/send_message.py:293
+#, python-format
+msgid "Business: %(biz_name)s"
+msgstr "业务: %(biz_name)s"
+
+#: fta/utils/send_converge.py:31
+#, python-format
+msgid ""
+"%(alarm_count)s %(alarm_desc)s alarms occurred within a certain period of"
+" time"
+msgstr "一定时间内出现了%(alarm_count)s条%(alarm_desc)s告警"
+
+#: fta/utils/send_converge.py:39
+#, python-format
+msgid "[Fault Auto-recovery Notification] Convergence %(biz_name)s"
+msgstr "【自愈通知】 收敛 %(biz_name)s"
+
+#: fta/utils/send_converge.py:50
+#, python-format
+msgid ""
+"Dear FTA user, hello, this is the notice of auto-recovery exception.\n"
+"                %(biz_name)s appeared a batch %(description)s alarm(s), "
+"please confirm that after the approval on WeChat whether to implement "
+"auto-recovery,\n"
+"                If it is not convenient for you to hang up three times, "
+"please contact the next person in charge.\n"
+"                Or contact other responsible person on their own after "
+"confirmation\n"
+"                "
+msgstr ""
+"尊敬的自愈用户，您好，这里是自愈异常通知。%(biz_name)s出现批量%(description)s告警, "
+"请确认后在微信上审批是否执行自愈,若您不便请挂机三次, 来转给下一位负责人，或者按确认后自行联系其他负责人"
+
+#: fta/utils/send_converge.py:60
+msgid "[Fault Auto-recovery] [Convergence Error Defense]"
+msgstr "【故障自愈】【收敛异常防御】"
+
+#: fta/utils/send_converge.py:62
+#, python-format
+msgid "Alarm type: %(description)s"
+msgstr "告警类型: %(description)s"
+
+#: fta/utils/send_converge.py:63
+msgid "Batch alarm occurred, please approve whether to execute solution"
+msgstr "出现批量告警, 请审批是否执行自愈"
+
+#: fta/utils/send_converge.py:82
+msgid "[Fault Auto-recovery] [Convergence Summary]"
+msgstr "【故障自愈】【收敛汇总】"
+
+#: fta/utils/send_converge.py:83
+#, python-format
+msgid "Business: %(biz_map)s"
+msgstr "业务: %(biz_map)s"
+
+#: fta/utils/send_converge.py:84 fta/utils/send_converge.py:129
+#: fta/utils/send_message.py:74
+#, python-format
+msgid "Alarm type: %(alarm_type)s"
+msgstr "告警类型: %(alarm_type)s"
+
+#: fta/utils/send_converge.py:86 fta/utils/send_converge.py:131
+#, python-format
+msgid "%(alarm_count)s alarm(s) appeared"
+msgstr "出现了 %(alarm_count)s 条"
+
+#: fta/utils/send_converge.py:89 fta/utils/send_converge.py:154
+#, python-format
+msgid "Details %(incident_url)s"
+msgstr "详情 %(incident_url)s"
+
+#: fta/utils/send_converge.py:125
+msgid "[Fault Auto-recovery] [Common Alarm Cause Check]"
+msgstr "【故障自愈】【共性告警原因补查】"
+
+#: fta/utils/send_converge.py:127
+msgid "[Fault Auto-recovery] [Convergence Commonality]"
+msgstr "【故障自愈】【收敛共性分析】"
+
+#: fta/utils/send_converge.py:132
+msgid "'----- Common Alarm ----- "
+msgstr "----- 告警共性 -----"
+
+#: fta/utils/send_converge.py:149
+msgid "----- Related Events -----"
+msgstr "----- 相关事件 -----"
+
+#: fta/utils/send_message.py:46
+msgid "[Auto-recovery start]"
+msgstr "【自愈开始】"
+
+#: fta/utils/send_message.py:47
+msgid "[Auto-recovery success]"
+msgstr "【自愈成功】"
+
+#: fta/utils/send_message.py:48
+msgid "[Auto-recovery almost success]"
+msgstr "【自愈基本成功】"
+
+#: fta/utils/send_message.py:49
+msgid "[Auto-recovery skip]"
+msgstr "【自愈跳过】"
+
+#: fta/utils/send_message.py:50
+msgid "[Auto-recovery timeout]"
+msgstr "【自愈超时】"
+
+#: fta/utils/send_message.py:51
+msgid "[Auto-recovery failed]"
+msgstr "【自愈失败】"
+
+#: fta/utils/send_message.py:52
+msgid "[Auto-recovery error occurred]"
+msgstr "【自愈中出现异常】"
+
+#: fta/utils/send_message.py:53
+msgid "[Auto-recovery wait approval]"
+msgstr "【自愈等待审批】"
+
+#: fta/utils/send_message.py:54
+msgid "[Auto-recovery flow control skip]"
+msgstr "【自愈流控跳过】"
+
+#: fta/utils/send_message.py:55
+msgid "Alarm end notification"
+msgstr "【告警结束通知】"
+
+#: fta/utils/send_message.py:72
+#, python-format
+msgid "[Auto-recovery summary %(status)s] [%(collect_type)s]"
+msgstr "【自愈汇总%(status)s】【%(collect_type)s】"
+
+#: fta/utils/send_message.py:77
+#, python-format
+msgid "Time: %(time_desc)s"
+msgstr ""
+
+#: fta/utils/send_message.py:78
+#, python-format
+msgid "%(collect_count)s appears"
+msgstr "出现了 %(collect_count)s 条"
+
+#: fta/utils/send_message.py:79
+#, python-format
+msgid "Detail %(url)s"
+msgstr "详情 %(url)s"
+
+#: fta/utils/send_message.py:139
+msgid "[Fault Auto-recovery] summary notification"
+msgstr "【故障自愈】汇总通知"
+
+#: fta/utils/send_message.py:147
+msgid "FTA summary notification,"
+msgstr "故障自愈汇总通知,"
+
+#: fta/utils/send_message.py:148
+#, python-format
+msgid "Business %(cc_biz_name)s"
+msgstr "业务%(cc_biz_name)s"
+
+#: fta/utils/send_message.py:149
+#, python-format
+msgid "At %(time_desc)s"
+msgstr "在%(time_desc)s"
+
+#: fta/utils/send_message.py:150
+#, python-format
+msgid "Appears %(collect_count)s "
+msgstr "出现%(collect_count)s条"
+
+#: fta/utils/send_message.py:151
+#, python-format
+msgid "%(alarm_type)s alarm(s)"
+msgstr "%(alarm_type)s告警"
+
+#: fta/utils/send_message.py:231
+#, python-format
+msgid "(Strategy ID: %(alarm_attr_id)s)"
+msgstr "(策略ID: %(alarm_attr_id)s)"
+
+#: fta/utils/send_message.py:235
+msgid "[Monitoring Notification] [Summary of notifications] "
+msgstr "【监控通知】【通知的汇总概要】"
+
+#: fta/utils/send_message.py:236
+#, python-format
+msgid "Alarm Type: %(alarm_type_desc)s"
+msgstr "告警类型: %(alarm_type_desc)s"
+
+#: fta/utils/send_message.py:238
+#, python-format
+msgid "Status: %(status_desc)s"
+msgstr "状态: %(status_desc)s"
+
+#: fta/utils/send_message.py:239
+#, python-format
+msgid "At: %(time_desc)s"
+msgstr "时间: %(time_desc)s"
+
+#: fta/utils/send_message.py:240
+#, python-format
+msgid "Appeared %(alarm_count)s, please log in to system to see details"
+msgstr "出现了 %(alarm_count)s 条，详情请登录系统查看"
+
+#: fta/utils/send_message.py:241
+msgid "-------- [Description] --------"
+msgstr "--------【说明】--------"
+
+#: fta/utils/send_message.py:242
+#, python-format
+msgid ""
+"(%(defence_count)s same status notifications with the same business and "
+"same type of alarms were issued before. No more single notifications. "
+"This is summary notification.)"
+msgstr "(此前已发过%(defence_count)s条同业务同类型告警的相同状态通知，不再发单条通知，此为汇总通知)"
+
+#: fta/utils/send_message.py:254
+#, python-format
+msgid ""
+"Monitoring exception notification\n"
+"Business %(cc_biz_id)s %(time_desc)s Appearing batch %(type_desc)s alarm "
+"%(status_desc)s phone notification，%(count)s notification(s) converged)"
+msgstr "监控异常通知。业务%(cc_biz_id)s%(time_desc)s出现批量%(type_desc)s告警%(status_desc)s的电话通知，%(count)s次通知被收敛)"
+
+#: fta/utils/send_message.py:294
+#, python-format
+msgid "Module: %(cc_app_module)s"
+msgstr "模块名: %(cc_app_module)s"
+
+#: fta/utils/send_message.py:294
+msgid "cc_app_module"
+msgstr ""
+
+#: fta/utils/send_message.py:295
+#, python-format
+msgid "Host: %(ip)s"
+msgstr "主机: %(ip)s"
+
+#: fta/utils/send_message.py:298
+#, python-format
+msgid "Alarm Content: %(alarm_raw)s"
+msgstr "告警内容：%(alarm_raw)s"
+
+#: fta/utils/send_message.py:300
+#, python-format
+msgid "Alarm Time: %(source_time)s"
+msgstr "告警时间：%(source_time)s"
+
+#: fta/utils/send_message.py:302
+#, python-format
+msgid "Alarm Solution: %(title)s"
+msgstr "告警套餐：%(title)s"
+
+#: fta/utils/send_message.py:305
+#, python-format
+msgid "Auto-recovery result: %(message)s"
+msgstr "自愈结果：%(message)s"
+
+#: fta/utils/send_message.py:317
+#, python-format
+msgid "[Fault Auto-recovery] %(alarm_type)s %(cc_biz_id)s (%(notify_type)s)"
+msgstr "【故障自愈】 %(alarm_type)s %(cc_biz_id)s (%(notify_type)s)"
+
+#: fta/utils/send_message.py:326
+#, python-format
+msgid ""
+"%(kind)s [%(cc_biz_id)s] business (%(alarm_type)s) alarm, "
+"IP(%(ip)s)%(message)s: %(raw)s"
+msgstr "%(kind)s [%(cc_biz_id)s]业务({alarm_type})告警, IP({ip}){message}: {raw}"
+
+#: fta/utils/send_message.py:351 fta/utils/send_message.py:376
+#, python-format
+msgid ""
+"%(kind)s [%(cc_biz_id)s] business [%(alarm_type)s] alarm, "
+"IP[%(ip)s]%(message)s: %(raw)s"
+msgstr ""
+"%(kind)s [%(cc_biz_id)s]业务[%(alarm_type)s]告警,IP[%(ip)s]%(message)s: "
+"%(raw)s"
+
+#: fta/utils/send_message.py:401
+#, python-format
+msgid ""
+"Fault Auto-recovery %(notify_type)s,%(cc_biz_id)s business %(alarm_type)s"
+" alarm"
+msgstr "故障自愈%(notify_type)s,%(cc_biz_id)s业务%(alarm_type)s告警"
+
+#: fta/utils/simulate.py:18
+msgid "Machine PING timeout alarm"
+msgstr "机器PING超时告警"
+
+#: fta/utils/simulate.py:44
+msgid "Demo convergence"
+msgstr "演示套餐"
+
+#: fta/utils/simulate.py:63
+msgid "Demo solution"
+msgstr "演示套餐"
+
+#: fta/www/apiservice/callback.py:55 fta/www/apiservice/callback.py:63
+#: fta/www/apiservice/callback.py:69
+msgid "Current flow is in execution and cannot be retried"
+msgstr "当前流程正在执行中，不能重试"
+
+#: fta/www/apiservice/callback.py:84
+#, python-format
+msgid "Start to retry from node #%(node_idx)s[%(title)s]"
+msgstr "从节点#%(node_idx)s[%(title)s]开始重试"
+
+#: fta/www/utils/signature.py:50
+msgid "Nonce does not exist"
+msgstr "Nonce不存在"
+
+#: fta/www/utils/signature.py:53
+msgid "Nonce must be less than 32 chars in length"
+msgstr "Nonce长度必须小于32位"
+
+#: fta/www/utils/signature.py:61
+msgid "Timestamp does not exist"
+msgstr "Timestamp不存在"
+
+#: fta/www/utils/signature.py:64
+msgid "Timestamp must be a positive integer"
+msgstr "Timestamp必须是正整数"
+
+#: fta/www/utils/signature.py:73
+#, python-format
+msgid ""
+"Timestamp invalid. Time error must be within %(offset)s second(s). "
+"Current server time: %(now)s"
+msgstr "Timestamp非法, 时间误差必须在%(offset)s秒内，服务器现在时间:%(now)s"
+
+#: fta/www/utils/signature.py:81
+msgid "Signature does not exist"
+msgstr "Signature不存在"
+
+#: fta/www/utils/signature.py:92
+msgid "APP does not exist"
+msgstr "APP不存在"
+
+#: fta/www/utils/signature.py:127
+msgid "Support GET, POST only"
+msgstr "只支持GET, POST"
+
+#: fta/www/utils/signature.py:131
+msgid "Signature error, please confirm app_secret and signature algorithm"
+msgstr "Secret不存在，请在头部添加X-Secret或者在请求参数中添加secret"
+
+#: fta/www/utils/signature.py:142
+msgid "app not exist"
+msgstr "App 不存在"
+
+#: fta/www/utils/signature.py:147
+msgid ""
+"Secret does not exist. Please add X-Secret to header or add secret to "
+"request parameter."
+msgstr "Secret不存在，请在头部添加X-Secret或者在请求参数中添加secret"
+
+#: fta/www/utils/signature.py:150
+msgid "Secret invalid"
+msgstr "Secret不合法"
+
+#: fta/www/utils/signature.py:170
+msgid "API error, please contact admin for resolution"
+msgstr "API异常，请联系管理员解决"
+
+#: fta/www/utils/validate.py:25
+msgid "Invalid JSON format"
+msgstr "不是合法的JSON格式"
+
+#: fta/www/utils/validate.py:27
+msgid "JSON must be dict type"
+msgstr "JSON必须是字典类型"
+
+#: fta/www/utils/validate.py:42
+#, python-format
+msgid "The field [%(field)s] does not exist or is empty"
+msgstr "字段【%(field)s】不存在或者为空"
+
+#: fta/www/utils/validate.py:50
+#, python-format
+msgid "The field [%(field)s] is an invalid IP address"
+msgstr "字段【%(field)s】不是合法IP地址"
+
+#: fta/www/utils/validate.py:73
+#, python-format
+msgid ""
+"The field [%(field)s] is an invalid time format. Time format must be "
+"like: %(time)s"
+msgstr "字段【%(field)s】不是合法的时间格式，时间格式必须如：%(time)s"
+
+#: fta/www/utils/validate.py:94
+#, python-format
+msgid "The field [%(field)s] is in invalid %(format)s format"
+msgstr "字段【%(field)s】不是合法的%(format)s格式"
+
+#: manager/define/incidentdef.py:109
+#, python-format
+msgid ""
+"For (%(alarm_type)s) alarm type, if (%(timedelta)s) (%(count)s) alarms "
+"appear within (%(condition)s) minute(s), (%(incident)s)."
+msgstr "对于(%(alarm_type)s)告警类型,在(%(timedelta)s)分钟内出现(%(count)s)条(%(condition)s)的告警,则(%(incident)s)。"
+
+#: manager/define/incidentdef.py:115
+msgid " and "
+msgstr "且"
+
+#: manager/define/incidentdef.py:134
+msgid "Same"
+msgstr "相同"
+
+#: manager/poll_alarm/email_poller.py:559
+msgid "Mailbox configuration information incomplete"
+msgstr "邮箱配置信息不完整"
+
+#: manager/solution/authorize.py:30
+msgid "Auto authorization"
+msgstr "自动授权"
+
+#: manager/solution/authorize.py:43
+msgid "[Fault Auto-recovery] Auto authorization"
+msgstr "【故障自愈】自动授权"
+
+#: manager/solution/authorize.py:45
+msgid "Alarm type: Hard disk alarm (redundant)"
+msgstr "告警类型: 硬盘告警(有冗余)"
+
+#: manager/solution/authorize.py:46
+#, python-format
+msgid "Result: %(result)s"
+msgstr "结果: %(result)s"
+
+#: manager/solution/check_ping.py:32
+msgid "Server PING reachable"
+msgstr "服务器PING可达"
+
+#: manager/solution/check_ping.py:35
+msgid "Server PING unreachable"
+msgstr "服务器PING不可达"
+
+#: manager/solution/check_ping.py:46
+msgid "Server port accessible"
+msgstr "服务器端口可通"
+
+#: manager/solution/check_ping.py:49
+msgid "Server port inaccessible"
+msgstr "服务器端口不通"
+
+#: manager/solution/clean.py:94
+#, python-format
+msgid "Disk cleanup %(result_desc)s"
+msgstr "磁盘清理%(result_desc)s"
+
+#: manager/solution/convergence.py:27
+msgid "Configuration parameter invalid"
+msgstr "配置参数不合法"
+
+#: manager/solution/convergence.py:49
+#, python-format
+msgid ""
+"Converged: %(count)s same type of alarms with the same IP appear within "
+"%(minites)s minute(s)"
+msgstr "被收敛：%(minites)s分钟内出现%(count)s条同IP的相同类型告警"
+
+#: manager/solution/convergence.py:52
+msgid "Not be converged"
+msgstr "不被收敛"
+
+#: manager/solution/gcloud.py:74
+#, python-format
+msgid "Failed to call game cloud custom flow template: %(error)s"
+msgstr "调用游戏云自定义流程模板失败: %(error)s"
+
+#: manager/solution/gcloud.py:90
+#, python-format
+msgid "FTA(%(now)s)"
+msgstr "故障自愈(%(now)s)"
+
+#: manager/solution/gcloud.py:107
+#, python-format
+msgid "Failed to create Standard OPS task: %(error)s"
+msgstr "创建标准运维任务失败: %(error)s"
+
+#: manager/solution/gcloud.py:115
+msgid "Failed to create Standard OPS task"
+msgstr "创建标准运维任务失败"
+
+#: manager/solution/gcloud.py:140
+#, python-format
+msgid "Failed to execute Standard OPS task: %(error)s"
+msgstr "执行标准运维任务失败: %(error)s"
+
+#: manager/solution/gcloud.py:187
+#, python-format
+msgid "Standard OPS template execution successful [%(link)s]"
+msgstr "标准运维模板执行成功[%(link)s]"
+
+#: manager/solution/gcloud.py:193
+#, python-format
+msgid "Standard OPS template execution failed [%(link)s]: %(message)s"
+msgstr "标准运维模板执行失败[%(link)s]: %(message)s"
+
+#: manager/solution/gcloud.py:200
+#, python-format
+msgid "Standard OPS template execution timeout [%(link)s]: %(message)s"
+msgstr "标准运维模板执行超时[%(link)s]: %(message)s"
+
+#: manager/solution/get_bak_ip.py:39
+msgid "Review comment: 2"
+msgstr "审核意见：2"
+
+#: manager/solution/get_bak_ip.py:46
+msgid "[Fault Auto-recovery] [Obtain standby machine solution]"
+msgstr "【故障自愈】【获取备机套餐】"
+
+#: manager/solution/get_bak_ip.py:47
+#, python-format
+msgid "Machine %(fault_ip)s malfunctioned"
+msgstr "机器 %(fault_ip)s 发生故障"
+
+#: manager/solution/get_bak_ip.py:48
+msgid "Screening conditions:"
+msgstr "筛选的条件为:"
+
+#: manager/solution/get_bak_ip.py:50
+msgid "Matched idle machine:"
+msgstr "匹配的空闲机为:"
+
+#: manager/solution/get_bak_ip.py:145
+msgid "Outer IP Numbers"
+msgstr "外网个数"
+
+#: manager/solution/get_bak_ip.py:145
+msgid "Equality"
+msgstr "相同"
+
+#: manager/solution/get_bak_ip.py:174
+#, python-format
+msgid "%(index)s. %(inner_ip)s(Set:%(set)s, Module:%(module)s)"
+msgstr "%(index)s. %(inner_ip)s(集群:%(set)s, 模块:%(module)s)"
+
+#: manager/solution/get_bak_ip.py:197
+msgid "No idle machines meeting the requirements"
+msgstr "无符合要求的空闲机"
+
+#: manager/solution/get_bak_ip.py:242 manager/solution/notice.py:168
+msgid "Failed to send approval"
+msgstr "发送审批失败"
+
+#: manager/solution/get_bak_ip.py:261 manager/solution/notice.py:183
+msgid "Approval timeout"
+msgstr "审批超时"
+
+#: manager/solution/get_bak_ip.py:300
+#, python-format
+msgid "Standby machine acquisition successful %(ip_bak)s"
+msgstr "成功获取备机%(ip_bak)s"
+
+#: manager/solution/http.py:44
+msgid "Data returned is not in JSON format"
+msgstr "返回的数据不是JSON格式"
+
+#: manager/solution/http.py:51
+#, python-format
+msgid "Request error: %(error)s"
+msgstr "请求出错: %(error)s"
+
+#: manager/solution/http_callback.py:34
+msgid "Callback address error"
+msgstr "回调地址异常"
+
+#: manager/solution/http_callback.py:57
+#, python-format
+msgid "Return code (%(status_code)s)"
+msgstr "返回码(%(status_code)s)"
+
+#: manager/solution/http_callback.py:60
+#, python-format
+msgid "Callback successful: %(content)s"
+msgstr "回调成功: %(content)s"
+
+#: manager/solution/http_callback.py:68
+#, python-format
+msgid "Callback request failed: %(comment)s"
+msgstr "回调请求失败: %(comment)s"
+
+#: manager/solution/ijobs.py:17 manager/solution/sleep.py:17
+#: manager/solution/uwork.py:17 manager/solution/uwork_then_ijobs.py:17
+#, python-format
+msgid "Wait for %(seconds)s second(s)"
+msgstr "等待%(seconds)s秒"
+
+#: manager/solution/notice.py:44 manager/solution/notice_only.py:43
+msgid "Review content: Test approval"
+msgstr "审核意见：测试审批"
+
+#: manager/solution/notice.py:107 manager/solution/notice_only.py:97
+msgid "Notification is empty, notification failed"
+msgstr "通知内容为空，通知失败"
+
+#: manager/solution/notice.py:123
+msgid ""
+"Please log in to o.qcloud.com -- Personal Center -- My Approval to "
+"execute approval operation"
+msgstr "请登陆o.qcloud.com--个人中心--我的审批，执行审批操作"
+
+#: manager/solution/notice.py:147 manager/solution/notice_only.py:125
+msgid "Failed to send telephone notification"
+msgstr "发送电话通知失败"
+
+#: manager/solution/notice.py:174 manager/solution/notice_only.py:130
+msgid "Send notification successful"
+msgstr "发送通知成功"
+
+#: manager/solution/waiting.py:40
+msgid "Error defense, wait for approval"
+msgstr "异常防御，等待审批"
+
+#: manager/solution/waiting.py:59
+msgid "[Fault Auto-recovery] [To Be Approved])"
+msgstr "【故障自愈】【待审批】"
+
+#: manager/solution/waiting.py:66
+msgid "Webpage: Please go to Fault Auto-recovery APP for approval or operation"
+msgstr "网页：请到故障自愈APP审批或操作"
+
+#: manager/solution/waiting.py:81
+msgid "Pass"
+msgstr "通过"
+
+#: manager/solution/waiting.py:83
+msgid "Reject"
+msgstr "驳回"
+
+#: manager/solution/waiting.py:86
+#, python-format
+msgid "[%(verifier)s]%(approved)s approved %(approved_msg)s"
+msgstr "[%(verifier)s]%(approved)s 了审批 %(approved_msg)s"
+
+#: manager/solution/waiting.py:101
+msgid "[System] rejected the approval [timeout]"
+msgstr "[系统]驳回了审批[超时]"
+
+#: manager/solution/bk_component/__init__.py:33
+msgid "Pseudo execution component success"
+msgstr "伪执行组件成功"
+
+#: manager/solution/bk_component/__init__.py:105
+#, python-format
+msgid ""
+"Failed to create BlueKing %(module_name)s component %(task_name)s task: "
+"%(error)s"
+msgstr "创建蓝鲸%(module_name)s组件%(task_name)s任务失败: %(error)s"
+
+#: manager/solution/bk_component/__init__.py:117
+#, python-format
+msgid "BlueKing %(module_name)s component %(task_name)s task execution successful"
+msgstr "执行蓝鲸%(module_name)s组件%(task_name)s任务成功"
+
+#: manager/solution/bk_component/__init__.py:123
+#, python-format
+msgid ""
+"Failed to execute BlueKing %(module_name)s component %(task_name)s task: "
+"%(message)s"
+msgstr "执行蓝鲸%(module_name)s组件%(task_name)s任务失败: %(message)s"
+
+#: manager/utils/query_cc.py:101
+#, python-format
+msgid ""
+"From [%(begin_time)s] from the timeContinuous [%(exception_num)s] from "
+"[%(source_type)s] alarm source pulls alarm anomalies. <br/>. Pull alarm "
+"from this source has been suspended. <br/>. Please visit <a "
+"href=\"%(app_url)s\">[Management alarm source]</a>page checks that your "
+"configuration item is correct! The <br/> exception message is: "
+"%(exception_msg)s"
+msgstr ""
+"从【%(begin_time)s】时间起， "
+"连续【%(exception_num)s】次从【%(source_type)s】告警源拉取告警异常。<br/>已暂停从该告警源拉取告警。<br/>"
+" 请到<a "
+"href=\"%(app_url)s\">【管理告警源】</a>页面检查您的配置项是否正确！<br/>异常信息为：%(exception_msg)s"
+
+#: manager/utils/query_cc.py:107
+#, python-format
+msgid ""
+"[Fault Auto-recovery Notification] pulled alarm error from "
+"[%(source_type)s] alarm source"
+msgstr "【故障自愈通知】从【%(source_type)s】告警源拉取告警异常"
+
+#: manager/utils/translate_constant.py:6
+msgid "【故障自愈】内存使用率TOP10列表"
+msgstr "【Fault Auto-recovery】Memory usage TOP10"
+
+#: manager/utils/translate_constant.py:7
+msgid "【故障自愈】CPU使用率TOP10列表"
+msgstr "【Fault Auto-recovery】CPU usage TOP10"
+
+#: manager/utils/translate_constant.py:8
+msgid "业务"
+msgstr "Business"
+
+#: manager/utils/translate_constant.py:9
+msgid "模块"
+msgstr "Module"
+
+#: manager/utils/translate_constant.py:10
+msgid "主机"
+msgstr "Host"
+
+#: manager/utils/translate_constant.py:11
+msgid "空闲机池"
+msgstr "idle pool"
+
+#: manager/utils/translate_constant.py:12
+msgid "资源池"
+msgstr "resource pool"
+
+#: manager/utils/translate_constant.py:13
+msgid "空闲机"
+msgstr "Idle machine"
+
+#: manager/utils/translate_constant.py:14
+msgid "故障机"
+msgstr "Fault machine"
+
+#: manager/www/apiservice/aws.py:52
+msgid "Not a host-related alarm"
+msgstr "不是主机相关告警"
+
+#: manager/www/apiservice/aws.py:70
+msgid "This message format unsupported"
+msgstr "不支持该消息格式"
+
+#: manager/www/utils/validate.py:16
+#, python-format
+msgid "CC failed to query [%(hostname)s] host information"
+msgstr "CC没有查询到【%(hostname)s】的主机信息"
+
+#: manager/www/utils/validate.py:20
+#, python-format
+msgid ""
+"CC get multi ip for hostname [%(hostname)s], Please ensure that the "
+"hostname is unique"
+msgstr "CC查到主机名称【%(hostname)s】的多个IP，请确认主机名是唯一的"
+
+#: manager/www/utils/validate.py:35 manager/www/utils/validate.py:82
+#, python-format
+msgid "CC failed to query [%(ip)s] developer company information"
+msgstr "CC没有查询到【%(ip)s】的开发商信息"
+
+#: manager/www/utils/validate.py:39
+#, python-format
+msgid ""
+"CC get multi developer company info for ip [%(ip)s], Please ensure that "
+"the ip is unique"
+msgstr "CC查到IP【%(ip)s】的多个开发商信息，请确认IP是唯一的"
+
+#: manager/www/utils/validate.py:55 manager/www/utils/validate.py:93
+#, python-format
+msgid "CC failed to query [%(sn)s] host information"
+msgstr "CC没有查询到【%(sn)s】的主机信息"
+
+#: manager/www/utils/validate.py:59
+#, python-format
+msgid "CC get multi ip for sn [%(sn)s], Please ensure that the sn is unique"
+msgstr "CC查到SN【%(sn)s】的多个IP，请确认SN是唯一的"
+
+#: manager/www/utils/validate.py:71
+#, python-format
+msgid "CC failed to query [%(ip)s] host information"
+msgstr "CC没有查询到【%(ip)s】的主机信息"
+
+#: manager/www/webservice/templates/mail/info.html:7
+msgid "Fault Auto-recovery Notification"
+msgstr "故障自愈通知"
+
+#: manager/www/webservice/templates/mail/info.html:119
+msgid "Fault Auto-recovery scene"
+msgstr "自愈场景"
+
+#: manager/www/webservice/templates/mail/info.html:141
+msgid "Occurrence"
+msgstr "发生"
+
+#: manager/www/webservice/templates/mail/info.html:142
+msgid "Alarm"
+msgstr "告警"
+
+#: manager/www/webservice/templates/mail/info.html:160
+msgid "Fault Auto-recovery result"
+msgstr "自愈结果"
+
+#: manager/www/webservice/templates/mail/info.html:189
+msgid "Description"
+msgstr "详细"
+
+#: manager/www/webservice/templates/mail/info.html:206
+msgid "Fault Auto-recovery process"
+msgstr "自愈过程"
+
+#~ msgid "Fault Auto-recovery(%(now)s)"
+#~ msgstr "故障自愈(%(now)s)"
+
+#~ msgid "Failed to execute Standard OPS task"
+#~ msgstr "执行标准运维任务失败"
+

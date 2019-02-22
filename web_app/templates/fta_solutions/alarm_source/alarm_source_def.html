@@ -1,0 +1,23 @@
+<!-- REST API -->
+<div id="alarmdef_manage" class='mode-normal alarmdef_manage'>
+    <!-- 新增告警源S -->
+    <%include file="alarm_source_head.part"/>
+    <!-- 新增告警源E -->
+
+    <!-- 配置信息S -->
+    <div id="alarm_source_config"></div>
+    <!-- 配置信息E -->
+    <input type="hidden" id="alarm_source_def_source_id" value="${source_id}">
+    <input type="hidden" id="alarm_source_def_source_type" value="${source_type}">
+    <input type="hidden" id="alarm_source_def_page_type" value="${page_type}">
+</div>
+
+    <script src="${STATIC_URL}js/clipboard.min.js?v=${STATIC_VERSION}"></script>
+    <script src="${STATIC_URL}js/slide.js?v=${STATIC_VERSION}"></script>
+    <script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_def.js?v=${STATIC_VERSION}"></script>    
+    <script type="text/javascript">
+
+        $(document).on("click",".cancel-btn",function(){
+            $(".new_slide #close").click();
+        });
+    </script>

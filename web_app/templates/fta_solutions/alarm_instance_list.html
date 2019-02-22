@@ -1,0 +1,194 @@
+<% import json %>
+
+<div class='row top-opts'>
+
+        <div class="pull-left">
+
+            <input type="text" class="bk-form-input daterangepicker_demo" id="selectDate" placeholder="${_(u'选择日期')}..." value="${begin_date} - ${end_date}">
+            <span class="s-data-bar s-item1">
+                <a href="###" onclick="change_alarm_type('*ALL_INC*')"><i></i><em id="incident_count"></em>&nbsp${_(u'次收敛事件')}</a>
+            </span>
+            <span class="s-data-bar s-item2">
+                <a href="###" onclick="change_alarm_type('')"><i></i>${_(u'共')}&nbsp<em id="instance_count">${instance_count}</em>&nbsp${_(u'次自愈')}</a>
+            </span>
+            <%doc>
+            <!-- 预警信息已经在健康诊断页面展示，自愈详情页面不再展示 -->
+            <span class="s-data-bar s-item3" onclick="export_unimportant_alarm()">
+                <i></i><em id="unimportant_count"></em>次预警
+            </span>
+            </%doc>
+
+        </div>
+
+        <div class="pull-right">
+            <a class='bk-button bk-success bk-button-small' onclick="filter_refresh(1)">${_(u'刷新')}</a>
+
+            <a class='bk-button bk-default bk-button-small' onclick="export_ip()"> ${_(u'导出IP')}</a>
+
+            <span class="search-panel">
+                <input type="text" class="form-control" placeholder="${_(u'请输入IP')}" value="${form.data.get('ip', '')}" id="ip-i">
+                <a href="###" class="search-btn" onclick="filter_refresh(1)"></a>
+            </span>
+
+        </div>
+</div>
+
+<div class='row'>
+    <div class='col-xs-12 fta-table access-tab'>
+
+<table id='main-table' class="table fta-detail-tab">
+    <thead class='widget-title'>
+    <tr id="table-head" class="fta-opt-select">
+        <th class="item1 br1">
+        <select class='select2_src' id='alarm-type-filter' onchange="filter_refresh(1)" style="min-width:100%">
+            <option value=''>${_(u'类型')}</option>
+            <optgroup label="${_(u'告警类型')}">
+                % for s, s_title in alarm_type_dict.iteritems():
+                <option value='${s}' ${'selected=true' if s == alarm_type else ''}>${s_title}</option>
+                % endfor
+            </optgroup>
+            <optgroup label="${_(u'事件类型')}">
+                % for s, s_title in inc_type_dict.iteritems():
+                <option value='${s}' ${'selected=true' if s == alarm_type else ''}>${s_title}</option>
+                % endfor
+            </optgroup>
+        </select>
+        </th>
+        <th class="item2 br1" style="width: 130px">
+            <span>${_(u'产生时间')}</span>
+        </th>
+        <th class="item3 br1" style="width: 100px">${_(u'自愈耗时')}</th>
+        <th class="item4 br1" style="width: 100px">
+        <select class='select2_src' id='cc-topo-set-filter' onchange="filter_refresh(1)" style="min-width:100%">
+
+            <option value=''>${_(u'集群')}</option>
+            % for item in cc_toposet:
+            <option value="${item['SetName']}" ${'selected=true' if item['SetName'] == cc_topo_set else ''}>${item['SetName']}</option>
+             % endfor
+        </select>
+        </th>
+        <th class="item5 br1" style="width: 100px">
+        <select class='select2_src' id='cc-app-module-filter' onchange="filter_refresh(1)" style="min-width:100%">
+            <option value=''>${_(u'模块')}</option>
+            % for item in cc_appmodules:
+            <option value="${item['ModuleName']}" ${'selected=true' if item['ModuleName'] == cc_app_module else ''}>${item['ModuleName']}</option>
+             % endfor
+        </select>
+        </th>
+
+
+        <th class="item6 br1" style="width: 120px">IP</th>
+        <th class="item7 br1" style="width: 100px">
+            <select class='select2_src' id='status-filter' onchange="filter_refresh(1)" style="min-width:100%">
+                <option value=''>${_(u'状态')}</option>
+                % for s, s_title in status_dict.iteritems():
+                <option value='${s}' ${'selected=true' if s == form.data.get('status', '') else ''}>${s_title}</option>
+                % endfor
+                <option value=null>* ${_(u'未知状态')} *</option>
+            </select>
+        </th>
+        <th class="item8" style="width: 20%">${_(u'自愈结果')}</th>
+        <th style="width:10px"></th>
+        %if not cc_biz_id:
+        <th>${_(u'业务')}</th>
+        %endif
+    </tr>
+    </thead>
+
+    <tbody id="tbody">
+    % for rec in records:
+        % if rec.__class__.__name__ == 'AlarmInstance':
+        % if not (rec.source_type == "LEAF" and rec.status == "skipped"):
+        <%include file="/fta_solutions/alarm_instance_row.html" args="alarm=rec, incident_id=0"/>
+        % endif
+        % elif rec.__class__.__name__ == 'Incident' and rec.is_visible and len(rec.alarms) > 0:
+            <tr class="inc_back" id='tr-inc-${rec.id}' onclick="javascript:toggle_incident(${rec.id})">
+                <td>
+                    <span class="to_strend"><i id='inc-icon-${rec.id}' class='bk-icon icon-plus-square'></i> </span>
+                    <span style="margin-right:15px">${inc_type_dict.get(rec.incident_type, rec.incident_type) if rec.incident_type else _(u"告警收敛")}</span>
+                    <span class='badge badge'>${len(rec.alarms)}</span>
+                </td>
+
+                <td class='inc_border'>
+                    <%
+                        import datetime
+                        from common.django_utils import strftime_local                        
+                        begin_time = rec.begin_time
+                        delta_day = (datetime.date.today() - begin_time.date()).days
+                        show_day = {
+                            0: _(u'今天'),
+                            1: _(u'昨天'),
+                            2: _(u'前天'),
+                        }
+                    %>
+                    <span>${strftime_local(begin_time, '%m-%d ')}</span>
+                    <span><strong>${strftime_local(begin_time, '%H:%M:%S %z')}</strong></span>
+                </td>
+                <td></td>
+                <td colspan="4" data="${rec.incident_def_id}" class="force-wrap overflowing-td">
+                    <!-- 从缓存中获取收敛规则的描述 -->
+                    ${incident_desc.get(rec.incident_def_id, '') or rec.description}
+                </td>
+                % if not rec.incident_type in ['skip', 'defense', 'relevance', 'trigger']:
+                    <td class="force-wrap" colspan="2"></td>
+                % elif rec.incident_type in ['convergence']:
+                    <td class="force-wrap" colspan="2">${rec.alarms[0].comment if rec.alarms else ''}</td>
+                % else:
+                    <td class="force-wrap" colspan="2">${_(u'影响范围')}： ${_(rec.involved_worlds)}
+		    </td>
+                % endif
+
+                %if not cc_biz_id:
+                    <td>${cc_dict.get(str(rec.cc_biz_id))}</td>
+                %endif
+            </tr>
+
+            % for alarm in rec.alarms:
+            % if not (alarm.source_type == "LEAF" and alarm.status == "skipped"):
+                <%include file="/fta_solutions/alarm_instance_row.html" args="alarm=alarm, incident_id=rec.id"/>
+            % endif
+            % endfor
+
+        % endif
+    % endfor
+    </tbody>
+
+</table>
+<!-- 未接入自愈时，添加快捷接入入口 -->
+% if not is_in_fta:
+    <div class="none-data-note">${_(u'该业务还没有接入自愈，点击')} <a href="javascript:include_open('${cc_biz_id}/alarm_def/add/');">${_(u'快速接入自愈')}</a></div>
+% elif not records:
+    <div class="none-data-note">${_(u'没有数据')}</div>
+% else:
+    <div>
+    <%include file="pagination.part" />
+    </div>
+% endif
+    </div>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="instance-dialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog manage-modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title" id='instance-title'>${_(u'自愈详情IP列表')}<span class="time_selct_show" style="font-size:14px;padding-left:10px;"></span></h4>
+            </div>
+            <div class="modal-body" id='instance-body' style="overflow:auto;min-height:400px;">
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+    export_ip_begin_date = '${begin_date}';
+    export_ip_end_date = '${end_date}';
+</script>
+<script src="${STATIC_URL}js/page/datefunctions.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page/alarm_instance_list.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_instance_list.js"></script>
+

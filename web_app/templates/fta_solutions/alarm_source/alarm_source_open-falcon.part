@@ -1,0 +1,29 @@
+<!-- 接入流程S -->
+<div class="title-content-bar mb20">
+    <div class="pure-title">${_(u'接入流程')}</div>
+    <div class="title-bottom-panel falcon-panel">
+        <div class="falcon-tab">
+            <img src="${STATIC_URL}images/new/falcon.png" alt="">
+            <span>
+                <a href="javascript:;" class="on">HostGroups</a>
+                <a href="javascript:;">Templates</a>
+                <a href="javascript:;">Expressions</a>
+                <a href="javascript:;">Nodatas</a>
+            </span>
+        </div>
+        <div class="falcon-tab-content">
+            <div class="border-container">
+                <h3>${_(u'模板报警配置，对模板中的所有策略生效')}</h3>
+                <div class="inner-content">
+                    <p>uic: test</p>
+                    <p>callback: ${alarm_app.callback_url}?secret=${alarm_app.app_secret}</p>
+                    <input type="checkbox" disabled="disabled">${_(u'回调之前发提醒短信')}
+                    <input type="checkbox" class="ml15" disabled="disabled">${_(u'回调之前发提醒邮件')}
+                    <input type="checkbox" class="ml15" disabled="disabled">${_(u'回调之后发结果短信')}
+                    <input type="checkbox" class="ml15" disabled="disabled">${_(u'回调之后发结果邮件')}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 接入流程E -->

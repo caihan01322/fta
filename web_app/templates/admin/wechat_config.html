@@ -1,0 +1,271 @@
+<html><head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>${HTML_TITLE}</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="${STATIC_URL}bootstrap/css/bootstrap.min.css?v=${STATIC_VERSION}">
+        <link rel="stylesheet" href="${STATIC_URL}css/jquery.gritter.css?v=${STATIC_VERSION}">
+        <link rel="stylesheet" href="${STATIC_URL}select2/css/select2.css?v=${STATIC_VERSION}">
+        <link id="bsdp-css" href="${STATIC_URL}css/datepicker3.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link id="bsdp-css" href="${STATIC_URL}css/bootstrap-sortable.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <!-- Le styles -->
+        <link href="${STATIC_URL}css/bootstrap-switch.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link href="${STATIC_URL}css/bootstrap3.1.1_extend.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link rel="stylesheet" href="${STATIC_URL}css/jquery.mCustomScrollbar.css?v=${STATIC_VERSION}">
+        <link href="${STATIC_URL}css/index.css?v=0.7?v=${STATIC_VERSION}" rel="stylesheet">
+        <link href="${STATIC_URL}js/daterangepicker-2.0.5/daterangepicker-2.0.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link href="${STATIC_URL}bk-icon-2.0/iconfont.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="${STATIC_URL}js/html5.js"></script>
+        <![endif]-->
+        <script type="text/javascript" src="${SITE_URL}jsi18n/i18n/"></script>
+        <script src="${STATIC_URL}js/jquery-1.10.2.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery-migrate-git.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery.json-2.3.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}bootstrap/js/bootstrap.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery.gritter.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery.jpanelmenu.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}select2/js/select2.js?v=${STATIC_VERSION}"></script>
+
+        <script src="${STATIC_URL}js/moment.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/bootstrap-sortable.js?v=${STATIC_VERSION}"></script>
+        <script type="text/javascript" src="${STATIC_URL}js/bootstrap-paginator.min.js?v=${STATIC_VERSION}"></script>
+        <script type="text/javascript" src="${STATIC_URL}js/jquery.jsPlumb-1.5.2-min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/bootstrap3.1.1_extend.js?v=${STATIC_VERSION}"></script>
+
+        <link href="${STATIC_URL}css/bkDialog.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <script src="${STATIC_URL}js/bkDialog.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/analysis.js?v=${STATIC_VERSION}"></script>
+
+        <script type="text/javascript" src="${STATIC_URL}js/bootstrap-switch.min.js?v=${STATIC_VERSION}"></script>
+        <!--[if IE]><script language="javascript" type="text/javascript" src="${STATIC_URL}js/excanvas.min.js"></script><![endif]-->
+        <!-- 这个是全局配置，如果需要在js中使用app_code和site_url,则这个javascript片段一定要保留 -->
+        <script type="text/javascript">
+            var static_url = "${STATIC_URL}";
+        </script>
+
+        <script lanague="javascript" src="${STATIC_URL}js/csrftoken.js?v=${STATIC_VERSION}"> </script>
+        <script src="${STATIC_URL}js/fta.js?v=${STATIC_VERSION}"></script>
+
+        <link href="${STATIC_URL}css/smoothness/jquery-ui-1.10.2.custom.min.css?v=${STATIC_VERSION}" rel="stylesheet" type="text/css">
+        <script src="${STATIC_URL}js/jquery.mCustomScrollbar.concat.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery-ui.custom.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/datepicker.zh-CN.js?v=${STATIC_VERSION}"></script>
+        <link href="${STATIC_URL}css/bk.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <script src="${STATIC_URL}js/daterangepicker-2.0.5/moment.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/daterangepicker-2.0.5/daterangepicker.js?v=${STATIC_VERSION}"></script>
+        <style>
+            /*如果你需要给你的应用固定高度和宽度，请在这里修改*/
+            .force-wrap {word-wrap: break-word;word-break: break-all;}
+            /* HEADER */
+
+            #header {
+                width: 100%;
+                background: #417690;
+                color: #ffc;
+                overflow: hidden;
+            }
+
+            #header a:link, #header a:visited {
+                color: #fff;
+            }
+
+            #header a:hover {
+                text-decoration: underline;
+            }
+
+            #branding {
+                float: left;
+            }
+            #branding h2 {
+                padding: 10px 0;
+                font-size: 18px;
+                margin: 8px 0;
+                font-weight: normal;
+                color: #ffc;
+            }
+
+            #branding h2, #branding h2 a:link, #branding h2 a:visited {
+                color: #f4f379;
+            }
+
+            #branding a:hover {
+                text-decoration: none;
+            }
+
+            #user-tools {
+                float: right;
+                padding: 1.2em 10px;
+                font-size: 11px;
+                text-align: right;
+            }
+        </style>
+    
+  </head>
+
+  <body data-menu-position="closed" class="">
+
+    <div class="open_login_alert">
+        <a href="javascript: close_login_dialog()" class="inner_bg"></a>
+        <div class="open_login_main"></div>
+    </div>
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">       
+            <h2 id="site-name"><a href="${ SITE_URL }admin/">故障自愈后台管理</a></h2>
+        </div>
+        <div id="user-tools">欢迎，<strong>${user.get_short_name() or user.get_username()}</strong>.
+            <a href="${ SITE_URL }">故障自愈应用</a> /
+            <a href="${ SITE_URL }doc/wechat_config/">微信审批配置</a> /
+        </div>
+    </div>
+    <!-- END Header -->
+    <script>
+        function supports_html5_storage() {
+            try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+            } catch (e) {
+            return false;
+            }
+        }
+        //使用web storage来存储用户偏好设置
+        function get_user_pref(pref_key){
+            if(supports_html5_storage()){
+                var key = "6A406BCC1B463F0C08248529AA10D960:FTA:" + pref_key;
+                return localStorage[key]
+            }else{
+                return null
+            }
+        }
+
+        //使用web storage来存储用户偏好设置
+        function set_user_pref(pref_key, pref_value){
+            if(supports_html5_storage()){
+                var key = "6A406BCC1B463F0C08248529AA10D960:FTA:" + pref_key;
+                localStorage[key] = pref_value
+            }
+        }
+
+
+        $(document).ready(function() {
+
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            $.browser.msie8 = $.browser.msie && /msie 8\.0/i.test(userAgent);
+            $.browser.msie7 = $.browser.msie && /msie 7\.0/i.test(userAgent);
+            $.browser.msie6 = !$.browser.msie8 && !$.browser.msie7 && $.browser.msie && /msie 6\.0/i.test(userAgent);
+            if($.browser.msie8 || $.browser.msie7 || $.browser.msie6){
+                $.gritter.add({
+                    title:  '您的浏览器版本稍显陈旧哦',
+                    text:   '尊敬的用户, 为了亲能获得最佳浏览体验, 建议使用Chrome/Firefox/Safari/Opera/IE9以上的浏览器哦~',
+                    sticky: true,
+                });
+            }
+
+        })
+    </script>
+
+    <div id="content" class="content" style="margin-left:0px">     
+        <div class="container-fluid">
+            <div class="new_loading" style="display: none;"><img alt="loadding" src="${STATIC_URL}images/new/loading_2_36x36.gif"></div>       
+    
+            <div class="title-content-bar mb20">
+                <div class="pure-title">微信审批配置</div>
+                <div class="title-bottom-panel">
+                    <div class="info-bar1">
+                    <% from fta_solutions_app.models import Conf %>
+                    % for _conf in configs:
+                        <% conf_name = _conf.get('name') %>
+                        <div class="flex-panel mt25 ${conf_name}_div">
+                            <label class="x-inline">${_conf.get('description')}</label>
+                            <div class="x-inline-right">
+                                <input type="text" id="${conf_name}" data="${Conf.get(conf_name)}" value="${Conf.get(conf_name)}" class="form-control" style="width: 370px;" readonly="readonly">
+                                <span></span>
+                                <i class="bk-icon icon-edit edit_config" conf_name="${conf_name}" aria-hidden="true" style="display: inline;"></i>
+                                <span class="saveBtnList" style="display: none;">
+                                    <a href="javascript:save_conf(this, '${conf_name}')" conf_name="${conf_name}" class="bk-button bk-success resave_config ml5" title="保存">保存</a>
+                                    <a href="javascript:;" conf_name="${conf_name}" class="bk-button bk-default ml5 cancel_config" title="取消">取消</a>
+                                </span>
+                                <span class="noticeWords">请填写${_conf.get('description')}!</span>
+                            </div>
+                        </div>
+                    % endfor
+
+                    </div>
+
+                </div>
+            </div>
+
+    </div>
+    <script src="${STATIC_URL}js/clipboard.min.js?v=${STATIC_VERSION}"></script>
+    <script src="${STATIC_URL}js/slide.js?v=${STATIC_VERSION}"></script>
+    <script type="text/javascript">
+
+        $(document).on("click",".cancel-btn",function(){
+            var conf_name=$(this).attr('conf_name');
+            $("."+conf_name+"_div #close").click();
+        });
+
+        //编辑按钮
+        $(".edit_config").on("click",function(){
+            var conf_name=$(this).attr('conf_name');
+            $(this).hide().next().show();
+            $("#"+conf_name).removeAttr("readonly").focus();
+        });
+
+        //保存、取消按钮
+        $(".resave_config").on("click",function(){
+            var conf_name=$(this).attr('conf_name');
+            if($("#"+conf_name).val() == ""){
+                $("."+conf_name+"_div .noticeWords").stop(true).fadeIn();
+                setTimeout(function(){
+                    $("."+conf_name+"_div .noticeWords").stop(true).fadeOut();
+                },2000)
+                 return ;
+            }
+            $("."+conf_name+"_div .saveBtnList").hide().prev().show();
+            $("#"+conf_name).attr("readonly","readonly");
+        });
+        $(".cancel_config").on("click",function(){
+            var conf_name=$(this).attr('conf_name');
+            $("."+conf_name+"_div .saveBtnList").hide().prev().show();
+
+            var conf_value = $("#"+conf_name).attr("data");
+            $("#"+conf_name).val(conf_value);
+            $("#"+conf_name).attr("readonly","readonly");
+        });
+    </script>
+    <script type="text/javascript">
+        function save_conf(obj, conf_name){
+            var conf_value = $("#"+conf_name).val();
+            if(!conf_value){
+                $("."+conf_name+"_div .noticeWords").stop(true).fadeIn();
+                setTimeout(function(){
+                    $("."+conf_name+"_div .noticeWords").stop(true).fadeOut();
+                },2000)
+                return false;
+            }
+            var url = "${SITE_URL}doc/save_wechat_config/";
+            $.post(url, {
+                'conf_name': conf_name,
+                'conf_value': conf_value,
+            },function(data){
+                if(data.result){
+                    // 更新页面上配置项的值
+                    $("#"+conf_name).attr("data", conf_value)
+                    $(obj).hide();
+                    show_msg(data.message, 2);
+                }else{
+                    show_msg(data.message, 4);
+                }
+            }, 'json')
+
+            $("."+conf_name+"_div .edit_config").show().prev().hide();
+            $("#"+conf_name).attr("readonly","readonly");
+        }
+    </script>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="${STATIC_URL}js/page/base.js?v=${STATIC_VERSION}"></script>
+</body></html>

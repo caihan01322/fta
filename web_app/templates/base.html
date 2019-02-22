@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%block name='head'>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title>${HTML_TITLE}</title>
+        <meta name="description" content=""/>
+        <link rel="shortcut icon" href="${STATIC_URL}images/bk_fta_solutions.png" type="image/x-icon">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="${STATIC_URL}bootstrap/css/bootstrap.min.css?v=${STATIC_VERSION}" />
+        <link rel="stylesheet" href="${STATIC_URL}css/jquery.gritter.css?v=${STATIC_VERSION}" />
+        <link rel="stylesheet" href="${STATIC_URL}select2/css/select2.css?v=${STATIC_VERSION}" />
+        <link id="bsdp-css" href="${STATIC_URL}css/datepicker3.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link id="bsdp-css" href="${STATIC_URL}css/bootstrap-sortable.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <!-- Le styles -->
+        <!-- 根据语言引用不同的版本 -->
+        <style>
+            .guide-tab .item1 {
+            background: url(${STATIC_URL}${_(u'images/new/access-bg1.jpg')}) no-repeat center center;
+            }
+            .guide-tab .item2 {
+            background: url(${STATIC_URL}${_(u'images/new/access-bg2.jpg')})  no-repeat center center;
+            }
+            .guide-tab .item3 {
+            background: url(${STATIC_URL}${_(u'images/new/access-bg3.jpg')})  no-repeat center center;
+            }
+            #header .logo {
+                display: inline-block;
+                width: 125px;
+                height: 34px;
+                background: url(${STATIC_URL}${_(u'images/new/logo.png')}) no-repeat center center;
+                background-size: 100% 100%;
+                vertical-align: middle;
+            }
+            body .ui-tooltip {
+                border-width: 1px;
+                word-break: break-all;
+                font-size: 12px;
+                color: #666;
+            }
+        </style>
+        <link href="${STATIC_URL}css/bootstrap-switch.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link href="${STATIC_URL}css/bootstrap3.1.1_extend.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link rel="stylesheet" href="${STATIC_URL}css/jquery.mCustomScrollbar.css?v=${STATIC_VERSION}">
+        <link href="${STATIC_URL}css/index.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link href="${STATIC_URL}js/daterangepicker-2.0.5/daterangepicker-2.0.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <link href="${STATIC_URL}bk-icon-2.0/iconfont.css?v=${STATIC_VERSION}" rel="stylesheet">
+
+        <!-- 根据语言引用不同的样式文件  -->
+        <link href="${STATIC_URL}${_(u'css/language.css')}?v=${STATIC_VERSION}" rel="stylesheet">
+        
+        <!-- 这个是全局配置，如果需要在js中使用app_code和site_url,则这个javascript片段一定要保留 -->
+        <script type="text/javascript">
+            var app_code = "${APP_CODE}";           // 在蓝鲸系统里面注册的"应用编码"
+            var site_url = "${SITE_URL}";           // app的url前缀,在ajax调用的时候，应该加上该前缀
+            var tip_id = "${cc_biz_id}";
+            var static_url = "${STATIC_URL}";
+            var get_add_id = '';                  //保存当前添加的自愈策略id
+            var get_editor_id = '';               //保存当前编辑的自愈策略id
+            var get_solution_title = '';
+            var comtom_name = '';                 //保存当前添加的套餐名称
+            var comtom_name_id = '';              //保存当前添加的套餐名称
+        </script>
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="${STATIC_URL}js/html5.js"></script>
+        <![endif]-->
+        <!-- js 国际化 -->
+        <script type="text/javascript" src="${SITE_URL}jsi18n/i18n/"></script>
+        <script src="${STATIC_URL}js/jquery-1.10.2.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery-migrate-git.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery.json-2.3.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}bootstrap/js/bootstrap.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery.gritter.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery.jpanelmenu.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}select2/js/select2.js?v=${STATIC_VERSION}"></script>
+
+        <script src="${STATIC_URL}js/moment.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/bootstrap-sortable.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}echarts/echarts-all.js?v=${STATIC_VERSION}"></script>
+        <script type="text/javascript" src="${STATIC_URL}js/bootstrap-paginator.min.js?v=${STATIC_VERSION}"></script>
+        <script type="text/javascript" src="${STATIC_URL}js/jquery.jsPlumb-1.5.2-min.js?v=${STATIC_VERSION}"></script>
+		##信息提示框功能
+		<script src="${STATIC_URL}js/bootstrap3.1.1_extend.js?v=${STATIC_VERSION}"></script>
+		##蓝鲸平台风格的提示框
+
+        <link href="${STATIC_URL}css/bkDialog.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <script src="${STATIC_URL}js/bkDialog.js?v=${STATIC_VERSION}"></script>
+        ## 必须的统计功能
+        <script src="${STATIC_URL}js/analysis.js?v=${STATIC_VERSION}"></script>
+
+        <script type="text/javascript" src="${STATIC_URL}js/bootstrap-switch.min.js?v=${STATIC_VERSION}"></script>
+        <!--[if IE]><script language="javascript" type="text/javascript" src="${STATIC_URL}js/excanvas.min.js"></script><![endif]-->
+
+        <script src="${STATIC_URL}js/${SETTINGS_JS_NAME}?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/fta.js?v=${STATIC_VERSION}"></script>
+
+        <link href="${STATIC_URL}css/smoothness/jquery-ui-1.10.2.custom.min.css?v=${STATIC_VERSION}" rel="stylesheet" type="text/css" />
+        <script src="${STATIC_URL}js/jquery.mCustomScrollbar.concat.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/jquery-ui.custom.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/datepicker.zh-CN.js?v=${STATIC_VERSION}"></script>
+        <link href="${STATIC_URL}css/bk.css?v=${STATIC_VERSION}" rel="stylesheet">
+        <script src="${STATIC_URL}js/daterangepicker-2.0.5/moment.min.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/daterangepicker-2.0.5/daterangepicker.js?v=${STATIC_VERSION}"></script>
+        <script src="${STATIC_URL}js/flv.min.js?v=${STATIC_VERSION}"></script>
+        <style>
+            /*如果你需要给你的应用固定高度和宽度，请在这里修改*/
+            ##body {min-width:940px; width:auto;height:670px;}
+            .force-wrap {word-wrap: break-word;word-break: break-all;}
+        </style>
+    </%block>
+  </head>
+
+  <body>
+
+    <div class="open_login_alert">
+        <a href="javascript: close_login_dialog()" class="inner_bg"></a>
+        <div class="open_login_main"></div>
+    </div>
+    <div id="header">
+        <a href="javascript:include_open('${cc_biz_id}/analysis/');" class="logo"></a>
+        <div id="search">
+            <span style='color:rgba(255, 255, 255, 0.6);font-size:14px;vertical-align: middle;'>
+            </span>
+            <%include file="/fta_solutions/select_cc_biz.part" />
+            <i id="include_loading" class="bk-icon icon-refresh hide" style="font-size:20px;color:silver"></i>
+        </div>
+        <div class="top_right_item">
+            % if IS_FTA_HELPER:
+            <%
+            from fta_solutions_app.models import OutOfScopeArchive
+            suggest_count = OutOfScopeArchive.get_suggest_count(cc_biz_id)
+            %>
+            <a href="javascript:include_open('${cc_biz_id}/fta_helper/','',1);" class="info-alarm">
+                % if suggest_count:
+                <span id="fta_helper_suggest_count"><em>${suggest_count}</em></span>
+                % endif
+            </a>
+            % endif
+            <%
+            from home_application.utils import get_unhealth_num
+            unhealth_num = get_unhealth_num()
+            %>
+            <div class="for_help">
+                <a href="javascript:void(0);" class="help-alarm c-nav-help dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <span> ${_(u'帮助')} <i class="caret"></i></span>
+                    % if unhealth_num:
+                    <span><em>${unhealth_num}</em></span>
+                    % endif
+                </a>
+                <ul class="dropdown-menu">
+                    <li title="${_(u'故障自愈接入演示')}" class="access-video"><a href="javascript: ;" target="_blank">${_(u'30s接入')}</a></li>
+                    <li title="${_(u'视频教程')}" class="access-video-close"><a href="${SITE_URL}doc/fta/vedio/" target="_blank">${_(u'视频教程')}</a></li>
+                    <li title="${_(u'产品文档')}"><a href="http://docs.bk.tencent.com/product_white_paper/fta/"  target="_blank">${_(u'产品文档')}</a></li>
+                    <li title="${_(u'故障自愈接入指引')}" class="guide-access"><a>${_(u'接入指引')}</a></li>
+                    <li title="${_(u'故障自愈之旅')}" class="fta-trip"><a>${_(u'自愈之旅')}</a></li>
+                    <li title="${_(u'问题反馈')}"><a href="https://bk.tencent.com/s-mart/community"  target="_blank">${_(u'问题反馈')}</a></li>
+                    <li title="${_(u'运行状态')}"><a href="${SITE_URL}healthz/?is_view=1" target="_blank" class="status-alarm">${_(u'运行状态')}
+                    % if unhealth_num:
+                        <em>${unhealth_num}</em>
+                    % endif
+                    </a></li>
+                    <!-- <li title="${_(u'版本日志')}"><a href="${STATIC_URL}doc/history.html"  target="_blank">${_(u'版本日志')}</a></li> -->
+                </ul>
+            </div>
+            <div class="user_info">
+                ${SHOW_NAME}
+                <span class="user_img_panel">
+                    <img src="${AVATAR}" alt="">
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="sideNav" class="side-bar side-open">
+        <div class="side-switch">
+            <svg class="icon" width="200px" height="187.55px" viewBox="0 0 1092 1024" version="1.1" xmlns="https://www.w3.org/2000/svg"><path fill="#000000" d="M493.234912 295.322034h433.354665v48.1508H493.234912v-48.1508zM493.229843 487.923966h433.354665v48.1508H493.229843v-48.1508zM493.234912 680.527166h433.354665v48.1508H493.234912v-48.1508zM233.78172 511.901156l145.135435-145.135434v-67.527959L166.253762 511.901156l212.663393 212.663393v-67.526691z"  />
+            </svg>
+        </div>
+        <ul class="simple-nav">
+            <% home_path = cc_biz_id + '/' if cc_biz_id else '' %>
+
+            <li class="pureLink homeLink open">
+                <a href="javascript:include_open('${cc_biz_id}/analysis/','',1);">
+                    <span class="navIconPanel">
+                        <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="6.641 0 200 200" enable-background="new 6.641 0 200 200" xml:space="preserve">
+                            <g>
+                                <path d="M106.645,8.922l-0.907,0.846L8.561,100.361c-1.181,1.101-1.861,2.595-1.917,4.208c-0.054,1.611,0.521,3.147,1.622,4.322   c1.138,1.218,2.749,1.915,4.418,1.915c1.535,0,2.998-0.576,4.118-1.624l89.834-83.744l89.84,84.001   c1.125,1.051,2.59,1.63,4.127,1.63c1.667,0,3.274-0.697,4.41-1.913c1.101-1.175,1.68-2.712,1.626-4.323   c-0.053-1.611-0.732-3.104-1.91-4.205l-97.176-90.86L106.645,8.922L106.645,8.922z"/>
+                                <path d="M174.166,102.137c-3.33,0-6.039,2.707-6.039,6.034v70.838h-35.033v-48.875v-1.328h-1.328H81.514h-1.328v1.328v48.875   H45.153v-70.838c0-3.327-2.71-6.034-6.039-6.034c-3.331,0-6.041,2.707-6.041,6.034v81.579v1.328h1.328h56.533h1.328v-1.328v-48.874   h28.751v48.874v1.328h1.328h56.532h1.328v-1.328v-81.579c0-1.611-0.628-3.127-1.769-4.266   C177.294,102.764,175.778,102.137,174.166,102.137L174.166,102.137z"/>
+                                <path d="M180.205,25.266h-1.328h-37.689c-3.331,0-6.041,2.707-6.041,6.034c0,1.612,0.628,3.128,1.771,4.269   c1.141,1.138,2.658,1.767,4.27,1.767h26.938v23.773c0,3.329,2.71,6.035,6.039,6.035c3.33,0,6.038-2.708,6.038-6.035V26.594v-1.328   H180.205z"/>
+                            </g>
+                        </svg>
+                    </span>
+                    <em>${_(u'首页')}</em>
+                </a>
+            </li>
+            <li id="li-alarm_instance_list" class="pureLink">
+                <a href="javascript:include_open('${cc_biz_id}/alarm_instance_list/','',1);">
+                    <span class="navIconPanel">
+                        <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 -6.225 200 200" enable-background="new 0 -6.225 200 200" xml:space="preserve">
+                        <path d="M74.971,137.297h81.25v12.479h-81.25V137.297z M43.721,137.297h18.749v12.479H43.721V137.297z M74.971,87.38h81.25v12.479  h-81.25V87.38z M43.721,87.38h18.749v12.479H43.721V87.38z M74.971,37.463h81.25v12.479h-81.25V37.463z M43.721,37.463h18.749  v12.479H43.721V37.463z M187.472-6.225H12.471C5.568-6.225,0-0.627,0,6.265v174.709c0,6.892,5.568,12.801,12.471,12.801h175.001  c6.904,0,12.528-5.909,12.528-12.801V6.265C200-0.627,194.376-6.225,187.472-6.225z M187.666,174.89c0,3.446-2.798,6.24-6.25,6.24  h-162.5c-3.452,0-6.25-2.794-6.25-6.24V12.66c0-3.446,2.798-6.24,6.25-6.24h162.5c3.452,0,6.25,2.794,6.25,6.24V174.89z"/>
+                        </svg>
+                    </span>
+                    <em>${_(u'自愈详情')}</em>
+                </a>
+            </li>
+            <li class="subMenu">
+                <a href="#">
+                    <span class="navIconPanel navIconPanel-2 ">
+                        <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 -6.225 200 200" enable-background="new 0 -6.225 200 200" xml:space="preserve">
+                        <path d="M188.313,159.433V105.69h-11.661v53.743c-5.331,1.773-9.222,5.944-10.994,10.946H106.02v11.671h59.638  c2.422,7.002,8.952,11.725,16.632,11.725c9.742,0,17.71-7.926,17.71-17.675C200,168.414,194.977,161.857,188.313,159.433  L188.313,159.433z M182.29,181.963c-3.247,0-5.879-2.635-5.879-5.884c0-3.25,2.632-5.884,5.879-5.884  c3.247,0,5.879,2.635,5.879,5.884C188.169,179.328,185.537,181.963,182.29,181.963z M176.652,27.961v48.386h11.661V27.96  C194.977,25.536,200,19.001,200,11.316c0-9.75-7.932-17.541-17.674-17.541c-7.68,0-14.246,4.879-16.667,11.881H106.02v11.671h59.638  C167.43,22.329,171.322,26.187,176.652,27.961z M182.29,5.431c3.247,0,5.879,2.635,5.879,5.884c0,3.249-2.632,5.884-5.879,5.884  c-3.247,0-5.879-2.635-5.879-5.884C176.411,8.066,179.043,5.431,182.29,5.431z M23.727,159.433V105.69H11.733v53.743  C5.07,161.857,0,168.392,0,176.078c0,9.749,7.909,17.697,17.651,17.697c7.68,0,14.222-4.723,16.644-11.725h54.068v-11.671H34.295  C32.523,165.377,28.725,161.206,23.727,159.433z M17.664,181.963c-3.247,0-5.879-2.635-5.879-5.884c0-3.25,2.632-5.884,5.879-5.884  c3.247,0,5.879,2.635,5.879,5.884C23.543,179.328,20.911,181.963,17.664,181.963z M11.733,27.961v48.386h11.994V27.96  c4.998-1.773,8.795-5.632,10.567-10.633h54.068V5.656H34.295C31.873-1.346,25.343-6.225,17.664-6.225C7.922-6.225,0,1.622,0,11.372  C0,19.058,5.07,25.537,11.733,27.961z M17.664,5.431c3.247,0,5.879,2.635,5.879,5.884c0,3.249-2.632,5.884-5.879,5.884  c-3.247,0-5.879-2.635-5.879-5.884C11.785,8.066,14.417,5.431,17.664,5.431z M106.02,99.688h29.233c3.247,0,5.879-2.585,5.879-5.835  s-2.632-5.835-5.879-5.835H106.02V58.391c0-3.25-2.75-5.884-5.997-5.884c-3.247,0-5.997,2.635-5.997,5.884v29.627H64.699  c-3.247,0-5.879,2.585-5.879,5.835s2.632,5.835,5.879,5.835h29.327v29.315c0,3.249,2.75,5.884,5.997,5.884  c3.247,0,5.997-2.635,5.997-5.884V99.688z"/>
+                        </svg>
+                    </span>
+                    <em>${_(u'接入自愈')}</em>
+                </a>
+                <ul class="subnav-list">
+                    <li id="li-alarm_def_list">
+                        <a href="javascript:include_open('${cc_biz_id}/alarm_def_list/','',1);"><i></i>${_(u'接入自愈')}</a>
+                    </li>
+
+                    <li id="li-solution_list">
+                        <a href="javascript:include_open('${cc_biz_id}/solution_list/','',1);"><i></i>${_(u'套餐管理')}</a>
+                    </li>
+                    <li id="li-alarm_source_list">
+                        <a href="javascript:include_open('${cc_biz_id}/alarm_source/list/','',1);"><i></i>${_(u'管理告警源')}</a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <li class="subMenu">
+                <a href="#">
+                    <span class="navIconPanel navIconPanel-2">
+                        <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 -6.225 200 200" enable-background="new 0 -6.225 200 200" xml:space="preserve">
+                        <path d="M100-6.225c-55.229,0-100,44.772-100,100s44.771,100,100,100c55.228,0,100-44.772,100-100S155.229-6.225,100-6.225z   M100,182.011c-48.731,0-88.236-39.505-88.236-88.236c0-48.731,39.504-88.236,88.236-88.236c48.731,0,88.236,39.504,88.236,88.236  C188.236,142.506,148.731,182.011,100,182.011L100,182.011z M100,76.128c-9.747,0-17.648,7.901-17.648,17.647  c0,9.746,7.901,17.647,17.648,17.647c9.746,0,17.647-7.901,17.647-17.647C117.647,84.029,109.746,76.128,100,76.128z M100,99.657  c-3.249,0-5.882-2.634-5.882-5.882c0-3.249,2.634-5.882,5.882-5.882c3.249,0,5.882,2.634,5.882,5.882  C105.882,97.024,103.249,99.657,100,99.657z M151.2,64.791c4.361,8.815,7.624,18.445,7.624,28.983c0,11.796,11.765,11.249,11.765,0  c0-12.71-3.003-24.848-9.238-34.938C157.336,52.343,147.952,58.227,151.2,64.791z M129.267,42.737  c-8.533-5.102-18.612-7.786-29.267-7.786c-32.488,0-58.824,26.337-58.824,58.824c0,11.796-11.765,11.69-11.765,0  c0-38.985,31.604-70.588,70.589-70.588c12.905,0,25.502,2.673,35.411,9.511C142.286,37.442,136.233,46.903,129.267,42.737z   M83.394,110.801c2.297,2.296,2.297,6.021,0,8.319l-4.159,4.159c-2.297,2.298-6.022,2.298-8.318,0c-2.298-2.297-2.298-6.021,0-8.319  l4.159-4.159C77.373,108.503,81.096,108.503,83.394,110.801z M158.264,35.93c2.298,2.297,2.298,6.022,0,8.319l-33.275,33.275  c-2.298,2.298-6.022,2.298-8.319,0c-2.296-2.296-2.296-6.021,0-8.318l33.277-33.276C152.242,33.633,155.968,33.633,158.264,35.93z"/>
+                        </svg>
+                    </span> <em>${_(u'高级配置')}</em>
+                </a>
+                <ul class="subnav-list">
+                    <li id="li-incident">
+                        <a href="javascript:include_open('${cc_biz_id}/incident/','',1);"><i></i>${_(u'告警收敛')}</a>
+                    </li>
+                    <li id="li-health">
+                        <a href="javascript:include_open('${cc_biz_id}/health/','',1);"><i></i>${_(u'健康诊断')}</a>
+                    </li>
+                    <%include file="base_extra.part" />
+                </ul>
+            </li>
+
+            <li class="subMenu">
+                <a href="#"><span class="navIconPanel">
+                    <svg xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 -6.225 200 200" enable-background="new 0 -6.225 200 200" xml:space="preserve">
+                    <path d="M135.346-6.205L23.563-6.225c-6.507,0-11.929,5.127-11.929,11.634v176.73c0,6.507,5.422,11.635,11.929,11.635H176.73  c6.507,0,11.635-5.128,11.635-11.635V46.459C188.365,46.459,135.346-6.205,135.346-6.205z M176.583,181.993H23.417V5.262h100.147  v53.314h53.019L176.583,181.993L176.583,181.993z M134.168,47.678V5.409l42.563,42.268C176.73,47.678,134.168,47.678,134.168,47.678  z M117.522,149.061l-35.66-58.447l-22.901,37.182H33.726v-11.782H52.38L81.909,68.07l35.326,57.9l15.591-27.041h32.858v11.782  h-26.052L117.522,149.061z"/>
+                    </svg>
+                </span>
+                <em>${_(u'统计报表')}</em></a>
+                <ul class="subnav-list">
+                    <li id="li-data_report_v2">
+                        <a href="javascript:include_open('${cc_biz_id}/data_report_v2/','',1);"><i></i>${_(u'收益数据')}</a>
+                    </li>
+                    <li id="li-operational_audit_detail">
+                        <a href="javascript:include_open('${cc_biz_id}/operational_audit_detail/','',1);"><i></i>${_(u'操作审计')}</a>
+                    </li>
+                </ul>
+            </li>
+            <%include file="base_admin.part" />
+        </ul>
+    </div>
+    <script>
+        function supports_html5_storage() {
+            try {
+            return 'localStorage' in window && window['localStorage'] !== null;
+            } catch (e) {
+            return false;
+            }
+        }
+        //使用web storage来存储用户偏好设置
+        function get_user_pref(pref_key){
+            if(supports_html5_storage()){
+                var key = "${request.user.username}:FTA:" + pref_key;
+                return localStorage[key]
+            }else{
+                return null
+            }
+        }
+
+        //使用web storage来存储用户偏好设置
+        function set_user_pref(pref_key, pref_value){
+            if(supports_html5_storage()){
+                var key = "${request.user.username}:FTA:" + pref_key;
+                localStorage[key] = pref_value
+            }
+        }
+
+
+        $(document).ready(function() {
+            % if include_url:
+                include_open('${include_url}');
+            % else:
+                if (!$("#open-content").html().length){
+                    include_open('${cc_biz_id}/analysis/');
+                }
+            % endif
+        })
+    </script>
+
+    <div id="content" class="content">
+        <div class="go_back_contain" style="display: none;">
+            <a href="javascript:void(0)" onclick="goback()">${_(u'返回上一页')}</a>
+        </div>
+        <div class="container-fluid">
+            <div class="new_loading"><img alt="loadding" src="${STATIC_URL}images/new/loading_2_36x36.gif"></div>
+            <%block name='content'>
+            <div id="open-content"></div>
+            </%block>
+        </div>
+
+    </div>
+
+
+    <div class="row footer-row">
+        <div id="footer">
+            Copyright © 2012-${NOW.year} Tencent BlueKing.<br>
+            All Rights Reserved.
+        </div>
+    </div>
+
+    <div class="access-guide">
+        <div class="back-bg"></div>
+        <div class="guide-content">
+            <div class="guide-close"></div>
+            <div class="guide-tab">
+                <div class="guide-tab-item item1 on">
+                    <div class="inner-contain is-what">
+                        <p>${_(u'故障自愈是行业领先的“故障自动化处理”解决方案，实现故障从“人工处理”到“无人值守”的变革！')}</p>
+                    </div>
+                </div>
+                <div class="guide-tab-item item2">
+                    <div class="inner-contain do-what">
+                        <p>${_(u'故障自愈简易流程图')}</p>
+                        <div class="flow-list">
+                            <span>${_(u'开始')}</span><i class="chain-icon"></i>
+                            <span>${_(u'拉取告警')}</span><i class="chain-icon"></i>
+                            <span>${_(u'匹配告警处理套餐')}</span><i class="chain-icon"></i>
+                            <span>${_(u'执行套餐')}</span><i class="chain-icon"></i>
+                            <span>${_(u'告警处理完成')}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="guide-tab-item item3">
+                    <div class="inner-contain todo">
+                        <p class="text-indent">${_(u'与无人值守只差一个“故障自愈”，马上对接企业内部的监控产品。')}</p>
+                        <a href="javascript:include_open('${cc_biz_id}/alarm_source/list/');" class="guide-btn guide-btn-to">${_(u'管理告警源')}</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="guide-bottom">
+                <div class="guide-dot">
+                    <span class="on"></span><span></span><span></span>
+                </div>
+            </div>
+
+            <a href="javascript:;" class="switch-btn switch-left"></a>
+            <a href="javascript:;" class="switch-btn switch-right"></a>
+
+        </div>
+    </div>
+
+    <div class="trip-panel"></div>
+    <%doc>
+    </%doc>
+    <div class="access-video-modal">
+        <div class="back-bg"></div>
+        <div class="close-video"></div>
+        <video id="accessVideo" class="centeredVideo" controls width="80%">Your browser is too old which doesn't support HTML5 video.</video>
+    </div>
+    <input type="hidden" id="is_show_guide" value="${1 if is_show_guide else 0}">
+
+    <script type="text/javascript" src="${STATIC_URL}js/page/base.js?v=${STATIC_VERSION}"></script>
+    <script>
+        $(".guide-btn-to").on("click",function(){
+            if($(".simple-nav .subMenu").eq(0).hasClass("open")){
+                $(".simple-nav .subMenu").eq(0).find("li").eq(1).find("a").click();
+            }else{
+                $(".simple-nav li.open").removeClass("open").find("ul").slideUp();
+                $(".simple-nav .subMenu").eq(0).click().find("ul").slideDown();
+                $(".simple-nav #li-alarm_def_list a").eq(0).click();
+            }
+        })
+        $(window).resize(function(){
+            var win = $(window).width();
+            if(win<=1366){
+                $('#sideNav').addClass('side-close').removeClass('side-open');
+                $('#content').addClass('content-close').removeClass('side-open');
+            }else{
+                $('#sideNav').addClass('side-open').removeClass('side-close');
+                $('#content').addClass('content-open').removeClass('content-close');
+            }
+            if ($("#sideNav").hasClass("side-close")) {
+                $('.footer-row #footer').hide(100);
+            }
+            else {
+                $('.footer-row #footer').show(100);
+            }
+        })
+
+        var playerInstance = null // 视频播放实例
+    </script>
+    <div id="hidden-area" class="none"></div>
+  </body>
+</html>

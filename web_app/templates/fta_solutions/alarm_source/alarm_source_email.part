@@ -1,0 +1,323 @@
+<%
+    import json
+    from fta_utils import cipher
+    items_config = {}
+    match_type = "regex"
+    if alarm_app.extra:
+        cp = cipher.AESCipher.default_cipher()
+        extra_config = json.loads(alarm_app.extra)
+        if "password" in extra_config:
+            extra_config["password"] = cp.decrypt(extra_config["password"]) if cp else extra_config["password"]
+        for i in extra_config.get("items", []):
+            match_type = i["type"]
+            items_config[i["name"]] = i["value"]
+    else:
+        extra_config = {}
+%>
+
+<!-- 接入流程S -->
+<div class="title-content-bar mb20">
+    <div class="pure-title">
+        ${_(u'接入流程')}
+    </div>
+    <div class="title-bottom-panel clearfix info-bar3">
+        <div class="bk-flows">
+            <div style="width: 100%;">
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">1</span>
+                    <p class="bk-vertical-text fl">${_(u'邮箱配置')}</p>
+                    <div class="flow-content" id="config_mail">
+                        <input name="app_name" value="${alarm_app.app_name}" type="hidden">
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'用户名')}</label>
+                            <div class="x-inline-right">
+                                <input
+                                    name="username"
+                                    type="text"
+                                    id="username"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    value="${extra_config.get('username', '')}"
+                                    placeholder="${_(u'登录邮箱用户名')}"
+                                    data-error="${_(u'请输入邮箱用户名')}"
+                                    required
+                                >
+                                <span></span>
+                                <span class="noticeWords">${_(u'请填写用户名')}!</span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'密码')}</label>
+                            <div class="x-inline-right">
+                                <input
+                                    name="password"
+                                    type="password"
+                                    id="password"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    value="${extra_config.get('password', '')}"
+                                    placeholder="${_(u'登录邮箱密码')}"
+                                    data-error="${_(u'请输入邮箱密码')}"
+                                    required
+                                >
+                                <span></span>
+                                <span class="noticeWords">${_(u'请填写密码')}!</span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'IMAP地址')}</label>
+                            <div class="x-inline-right">
+                                <input
+                                    name="server_host"
+                                    type="text"
+                                    id="server_host"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    value="${extra_config.get('server_host', '')}"
+                                    placeholder="${_(u'类似imap.xxx.com，具体可查看邮箱的帮助文档')}"
+                                    data-error="${_(u'请输入IMAP服务器地址')}"
+                                    required
+                                >
+                                <span></span>
+                                <span class="noticeWords">${_(u'请填写IMAP地址')}!</span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'IMAP端口')}</label>
+                            <div class="x-inline-right">
+                                <input
+                                    name="server_port"
+                                    type="number"
+                                    id="server_port"
+                                    min="1"
+                                    max="65535"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    value="${extra_config.get('server_port', 993)}"
+                                    placeholder="${_(u'IMAP服务器端口')}"
+                                    data-error="${_(u'请输入IMAP服务器端口')}"
+                                    required
+                                    readonly
+                                >
+                                <span></span>
+                                <span class="noticeWords">${_(u'请填写IMAP端口')}!</span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'使用SSL')}</label>
+                            <div class="x-inline-right">
+                                <input type="checkbox" name="is_secure" id="is_secure" class="form-control" ${"checked" if extra_config.get("is_secure", True) else ""} style="margin: 0">
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25 mb5">
+                            <label class="x-inline">${_(u'异常阈值')}</label>
+                            <div class="x-inline-right">
+                                <input
+                                    name="exception_max_num"
+                                    type="number"
+                                    id="exception_max_num"
+                                    min="0"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    value="${alarm_app.exception_max_num if alarm_app else 5}"
+                                    data-error="${_(u'异常阈值请输入非负整数')}"
+                                    required
+                                    pattern="^\d+$"
+                                >
+                                <span></span>
+                                <span class="noticeWords">${_(u'异常阈值请输入非负整数')}!</span>
+                            </div>
+                        </div>
+                        <span style="margin-top:10px;margin-left:125px;color: #ccc;">${_(u'拉取告警异常次数超过该阈值时，禁用该监控源；为0则表示不设阈值')}</span>
+                        <div style="margin: 25px 10px 0">
+                            <p>
+                                ${_(u'用以登录邮箱的IMAP配置，系统只会扫描收件箱未读邮件，建议使用专用邮箱.')}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">2</span>
+                    <p class="bk-vertical-text fl">${_(u'解析配置')}</p>
+                    <div class="flow-content" id="config_parser">
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'匹配方式')}</label>
+                            <div id="match_type_options">
+                                <input id="match_regex" type="radio" name="match_type" value="regex" checked>
+                                <label for="match_regex">${_(u'正则表达式')}</label>
+                                <input id="match_xpath" type="radio" name="match_type" value="xpath">
+                                <label for="match_xpath">XPath</label>
+                                <input id="match_css_selector" type="radio" name="match_type" value="css-selector">
+                                <label for="match_css_selector">${_(u'CSS选择器')}</label>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'主机ip')}</label>
+                            <div>
+                                <textarea
+                                    name="ip"
+                                    placeholder="${_(u'匹配内网IP')}"
+                                    data-error="${_(u'请输入内网IP解析规则')}"
+                                    id="ip"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    required
+                                >${items_config.get("ip") if extra_config else ""}</textarea>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'告警类型位置')}</label>
+                            <div>
+                                <textarea
+                                    name="alarm_type"
+                                    placeholder="${_(u'分析告警类型依赖此字段（模糊匹配: ^(.*?)$）')}"
+                                    data-error="${_(u'请输入告警类型位置解析规则')}"
+                                    id="alarm_type"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    required
+                                >${items_config.get("alarm_type", "")}</textarea>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="flex-panel mt25">
+                            <label class="x-inline">${_(u'告警详情')}</label>
+                            <div>
+                                <textarea
+                                    name="alarm_content"
+                                    placeholder="${_(u'匹配告警内容')}"
+                                    data-error="${_(u'请输入告警详情位置解析规则')}"
+                                    id="alarm_content"
+                                    class="form-control"
+                                    style="width: 370px;"
+                                    required
+                                >${items_config.get("alarm_content", "")}</textarea>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div style="margin: 25px 10px 0">
+                            <p>
+                                ${_(u'用以识别解析告警邮件的配置，告警邮件应当能够根据配置解析出指定的信息.')}
+                                <a href="javascript:void(0);" onclick="$('#more_parse_help').toggle()">${_(u'帮助')}</a>
+                            </p>
+                        </div>
+                        <div id="more_parse_help" style="margin: 25px 10px 0; display: none">
+                            <p>
+                                <strong>${_(u'正则表达式')}</strong>${_(u'：优先匹配第一个捕获组内容.')}
+                                ${_(u'如对于内容')}：<code>id:1 2</code>${_(u'和正则表达式')}：<code>(\d+)</code>，${_(u'捕获结果为')}<code>1</code>.
+                                <ul>
+                                    <li>${_(u'匹配内网ip')}：<code>(0*(?:10|172|192)(?:\.0*(?:(?:\d){1,2}|1(?:\d){2}|25[0-5]|2[0-4]\d)){3})</code>.</li>
+                                    <li>${_(u'全文匹配')}：<code>^(.*?)$</code>.</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <strong>XPath</strong>：${_(u'针对HTML格式的邮件使用，优先使用第一个匹配结果，可以使用Chrome开发者工具辅助获取XPath表达式.')}
+                                ${_(u'如对于内容')}：<code>&lt;p&gt;id:&lt;span&gt;1&lt;/span&gt; &lt;span&gt;2&lt;/span&gt;&lt;/p&gt;</code>${_(u'和下列表达式')}：
+                                <ul>
+                                    <li><code>//p/span/text()</code>${_(u'结果为')}：<code>1</code>.</li>
+                                    <li><code>//p/span[2]/text()</code>${_(u'结果为')}：<code>2</code>.</li>
+                                    <li><code>//p</code>${_(u'结果为')}：<code>&lt;p&gt;id:&lt;span&gt;1&lt;/span&gt; &lt;span&gt;2&lt;/span&gt;&lt;/p&gt;</code>.</li>
+                                    <li><code>string(//p)</code>${_(u'结果为')}：<code>id:1 2</code>.</li>
+                                    <li><a href="http://www.w3school.com.cn/xpath/">${_(u'更多用法')}</a>.</li>
+                                </ul>
+                            </p>
+                            <p>
+                                <strong>${_(u'CSS选择器')}</strong>：${_(u'类似XPath，匹配指定模式元素内容，也可以使用Chrome开发者工具辅助获取.')}
+                                ${_(u'如对于内容')}：<code>&lt;p&gt;id:&lt;span&gt;1&lt;/span&gt; &lt;span&gt;2&lt;/span&gt;&lt;/p&gt;</code>${_(u'和下列表达式')}：
+                                <ul>
+                                    <li><code>p&gt;span:eq(0)</code>${_(u'结果为')}：<code>1</code>.</li>
+                                    <li><code>p&gt;span</code>${_(u'结果为')}：<code>1 2</code>.</li>
+                                    <li><a href="http://www.w3school.com.cn/cssref/css_selectors.ASP">${_(u'更多用法')}</a>.</li>
+                                </ul>
+                            </p>
+                            <p>
+                                ${_(u'使用Chrome获取XPath或CSS选择器的方式（网页版服务器可能会对邮件结构进行优化，仅供参考）')}：
+                                <ul>
+                                    <li>${_(u'在元素上右键菜单选择检查')}</li>
+                                    <li>${_(u'在dom中找到对应的节点右键复制')}</li>
+                                </ul>
+                                <img style="border: 2px solid gray" src="${STATIC_URL}images/new/copy_xpath_cssselector.png">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">3</span>
+                    <p class="bk-vertical-text fl" style="margin-top: 0; margin-bottom: 0">
+                        <a class="bk-button bk-success fr mt18" href="javascript:submit_config();" id="submitConfig">${_(u'保存')}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 接入流程E -->
+
+<script>
+    $("#is_secure").click(function() {
+        if ($(this).is(':checked')) {
+            $("#server_port").val("993");
+        }
+        else {
+            $("#server_port").val("143");
+        }
+    });
+    $("#match_type_options input[value=${match_type}]").attr("checked", "checked");
+
+    function submit_config() {
+        var submit_config_el = $("#submitConfig");
+
+        if (!validate_inputs_and_alert("div.bk-flows")) {
+            return;
+        }
+
+        submit_config_el.attr("disabled", true);
+
+        var config = {};
+        var config_mail_el = $("#config_mail");
+        var inputs = config_mail_el.find("input[name], textarea[name]");
+        inputs.each(function(i, val){
+            var el = $(val);
+            var el_type = el.attr("type");
+            if (el_type == "checkbox") {
+                config[el.attr("name")] = el.prop("checked");
+            }
+            else if (el_type == "number") {
+                config[el.attr("name")] = parseFloat(el.val());
+            }
+            else {
+                var value = el.val();
+                config[el.attr("name")] = el.val();
+            }
+        });
+
+        var config_parser_el = $("#config_parser");
+        var match_type_el = config_parser_el.find("input[name=match_type]:checked");
+        var match_type = match_type_el.val();
+        var items_config = [];
+        var inputs = config_parser_el.find("textarea[name]");
+        inputs.each(function(i, val){
+            var el = $(val);
+            var value = el.val();
+            items_config.push({
+                name: el.attr("name"),
+                type: match_type,
+                value: el.val(),
+            });
+        });
+
+        config.items = items_config;
+
+        $.post(
+            "${SITE_URL}${cc_biz_id}/alarm_source/config_email/${source_id}/",
+            JSON.stringify(config), function() {
+                open_dialog("SUCCESS", "TIPS");
+            }
+        )
+        .always(function(){
+            submit_config_el.removeAttr("disabled");
+        });
+    }
+</script>

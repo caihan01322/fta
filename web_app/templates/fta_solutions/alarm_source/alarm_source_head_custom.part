@@ -1,0 +1,78 @@
+<div class="custom_input_div">
+<div class="flex-panel mt25" style="display:none">
+    <label class="x-inline">${_(u'告警源名称')}</label>
+    <input
+      type="text"
+      id="app_name"
+      value="${app_name or source_type}"
+      class="form-control"
+      style="width: 370px;" ${"readonly" if source_id != "0" else "" }
+      required
+      data-error="${_(u'告警源名称不能为空')}"
+    >
+</div>
+<div class="flex-panel mt15">
+    <label class="x-inline">${_(u'拉取告警地址')}</label>
+    <input
+      type="text"
+      id="app_url"
+      value="${app_url or ''}"
+      class="custom_input
+      form-control"
+      style="width: 370px;"
+      ${"readonly" if source_id != "0" else "" }
+      required
+      pattern="https?://.+?"
+      placeholder="${_(u'请输入拉取监控产品告警的API地址(格式参照下方说明)')}"
+      data-error="${_(u'拉取告警地址请输入http服务地址')}"
+      >
+      <span class="notice_tips app_url_tips ml10" style="color:red"></span>
+</div>
+<div class="flex-panel mt15">
+    <label class="x-inline">${_(u'请求类型')}</label>
+    <select id="app_method" class="custom_select form-control" ${"disabled" if source_id != "0" else "" } style="width: 370px;">
+        <option value="get" ${"selected" if app_method=="get" else ""}>GET</option>
+        <option value="post" ${"selected" if app_method=="post" else ""}>POST</option>
+    </select>
+</div>
+<div class="flex-panel mt15 mb10">
+    <label class="x-inline">${_(u'异常阈值')}</label>
+    <input
+      type="number"
+      min=0
+      id="exception_max_num"
+      value="${locals().get('context',{}).get('exception_max_num', 5)}"
+      class="custom_input
+      form-control"
+      style="width: 70px;"
+      ${"readonly" if source_id != "0" else "" }
+      required
+      >
+      <span class="notice_tips exception_num_tips ml10" style="color:red"></span><br>
+</div>
+<span style="margin-top:10px;margin-left:125px;color: #ccc;">${_(u'拉取告警异常次数超过该阈值时，禁用该监控源；为0则表示不设阈值')}</span>
+
+</div>
+<div class="flex-panel mt15">
+    <div class="x-inline-right">
+        <label class="x-inline"></label>
+        <span></span>
+        <!-- 操作按钮 -->
+        % if source_id != '0':
+            <a href="###" class="bk-button bk-purple edit_config ml5" title="编辑告警源">${_(u'编辑告警源')}</a>
+            <span class="saveBtnList">
+                <a href="javascript:save_config(this)" class="bk-button bk-success resave_config ml5" title="${_(u'保存')}">${_(u'保存')}</a>
+                <a href="javascript:;" class="bk-button bk-default ml5 cancel_config" title="${_(u'取消')}">${_(u'取消')}</a>
+            </span>
+        % else:
+            <a href="javascript:save_config(this)" class="config_btn bk-button bk-purple ml5" title="${_(u'添加告警源')}">${_(u'添加告警源')}</a>
+            <a href="###" class="bk-button bk-success edit_config ml5" title="${_(u'编辑告警源')}" style="display: none;">${_(u'编辑告警源')}</a>
+            <span class="saveBtnList">
+                <a href="javascript:save_config(this)" class="bk-button bk-success resave_config ml5" title="${_(u'保存')}">${_(u'保存')}</a>
+                <a href="javascript:;" class="bk-button bk-default ml5 cancel_config" title="${_(u'取消')}">${_(u'取消')}</a>
+            </span>
+        % endif
+    </div>
+</div>
+<input type="hidden" id="alarm_source_head_custom_source_type" value="${source_type}">
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_head_custom.js"></script>

@@ -1,0 +1,140 @@
+<%
+from django.utils.translation import ugettext as _
+%>
+<div id="opt_search" method="get" class="searchbox">
+        <div class="well well-small form-inline" style="padding: 20px 0 16px 0;background-color:#FFF">
+
+            <div class="warning-bar fail"><span class="warn-icon"></span><span class="warn-text"></span></div>
+
+            <span class="control-group col-xs-4">
+                <label class="control-label" for="cc_biz_id">${_(u'操作者')}: </label>
+                <span class="controls inline-input">
+                    <select id="opt_user" style="width: 100%;">
+                        <option value="">${_(u'所有')}</option>
+                        % for value, name in operators:
+                        <option value="${value},${name}">${value}(${name})</option>
+                        % endfor
+                    </select>
+                </span>
+            </span>
+
+            <span class="control-group col-xs-4">
+                <label class="control-label" for="cc_biz_id">${_(u'操作对象')}: </label>
+                <span class="controls inline-input">
+                    <select id="opt_obj" style="width: 100%;">
+                        <option value="">${_(u'所有')}</option>
+                        % for value, name in objects.items():
+                        <option value="${value}">${_(name)}</option>
+                        % endfor
+                    </select>
+                </span>
+            </span>
+
+            <span class="control-group col-xs-4">
+                <label class="control-label" for="cc_biz_id">${_(u'操作类型')}: </label>
+                <span class="controls inline-input">
+                    <select id="opt_type" style="width: 100%;">
+                        <option value="">${_(u'所有')}</option>
+                        % for k, v in operator_types.items():
+                            <option value="${k}">${_(v)}</option>
+                        % endfor
+                    </select>
+                </span>
+            </span>
+
+            <span class="control-group col-xs-4">
+                <label class="control-label" for="cc_biz_id">${_(u'操作内容')}: </label>
+                <span class="controls inline-input">
+                    <input type="text" id="opt_content" class="form-control" style="width: 100%;">
+                </span>
+            </span>
+
+            <!-- <div class="row"> -->
+                <span class="control-group col-xs-4">
+                    <label class="control-label" for="is_off_time">${_(u'操作时间')}: </label>
+                    <span class="controls inline-input">
+                        <input type="text" class="bk-form-input" id="selectDate3" placeholder="${_(u'选择日期')}..." value="">
+                    </span>
+                </span>
+            <!-- </div> -->
+            <div class="row">
+                <span class="control-group col-xs-4">
+                    <label class="control-label" for="is_off_time"> </label>
+                    <span class="controls inline-input">
+                        <input type="hidden" class="bk-form-input" id="" placeholder="">
+                        <button id="opt_search_btn" class="bk-button bk-success" title="${_(u'查询')}">${_(u'查询')}</button>
+                    </span>
+                </span>
+            </div>
+
+        </div>
+</div>
+
+<div class="col-xs-12 access-tab operational_audit_tab">
+
+    <table class="table" id="main-table">
+        <thead id="table-head">
+            <th class="br1">${_(u'操作者')}</th>
+            <th class="br1">${_(u'操作内容')}</th>
+            <th class="br1">${_(u'操作对象')}</th>
+            <th class="br1">${_(u'操作类型')}</th>
+            <th>${_(u'操作时间')}</th>
+        </thead>
+        <tbody>
+            % if details:
+                % for detail in details:
+                    <tr>
+                        <td>${detail['user']}</td>
+                        <td class="overflowing-td">${_(detail['content'])|h}</td>
+                        <td>${_(detail['object'])|h}</td>
+                        <td>${_(detail['operator_type'])}</td>
+                        <td>${detail['time']}</td>
+                    </tr>
+                % endfor
+            %endif
+        </tbody>
+    </table>
+    % if not details:
+      <div class="none-data-note">${_(u'无数据')}</div>
+    % endif
+    <!-- 分页 -->
+    <%
+        first_index = index
+        last_index = index + limit - 1
+    %>
+    <input type="hidden" value="${first_index}" class="firstIndex">
+    <input type="hidden" value="${limit}" class="infoLimitNum">
+    % if details:
+      <ul class="pagination"></ul>
+      <div class="all_info_num fr">${_(u'共')}<span> ${total} </span>${_(u'条')}</div>
+    % endif
+</div>
+<script type="text/javascript">
+  // 表格收起交互 公共部分说
+    // 表格收起交互 公共部分说
+    $(".table-packup table").on("click",".text-switch",function(){
+        
+        $(this).closest("tr").children("td").children(".limitText").toggleClass("hd")
+        $(this).closest("tr").toggleClass("open-text close-text");
+    })
+
+    $(".table-packup tr").hover(function(){
+        
+        var _this = $(this);
+        var curFlag = false;
+        $(this).find(".limitText").each(function(){
+            
+            if($.trim($(this).find("span").text()).length>0){
+                curFlag = true;
+            }
+        });
+        if(curFlag){
+            $(this).addClass("overLine");
+        }else{
+            $(this).removeClass("overLine");
+        }
+    }, function(){
+        $(this).removeClass("overLine");
+    });
+</script>
+<script src="${STATIC_URL}js/page/operational_audit_detail.js?v=${STATIC_VERSION}"></script>

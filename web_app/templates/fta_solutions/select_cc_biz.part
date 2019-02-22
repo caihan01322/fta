@@ -1,0 +1,114 @@
+<%block name="cc_biz_select">
+    <%
+        from fta_solutions_app.models import AlarmDef
+        from fta_solutions_app.models import BizConf
+        from fta_solutions_app.cache_utils import get_user_biz
+        username = request.user.username
+        cc_bizs = get_user_biz(username)
+        handled_biz_ids = map(str, AlarmDef.objects.values_list('cc_biz_id', flat=True).distinct())
+    %>
+    <span id="span-select-hide">
+    </span>
+    <span id="span-select">
+        <select name="cc_id" id="cc-biz-select" >
+            ##<option value="toggle_hide">===== 切换到显示负责业务 =====</option>
+            % for app in cc_bizs:
+                <option value="${app[0]}" ${'selected="true"' if str(cc_biz_id) == str(app[0]) else ''}>
+                    % if app[0] in handled_biz_ids:
+                        ${app[1]}
+                    % else:
+                        * *${app[1]}
+                    % endif
+                </option>
+            % endfor
+        </select>
+    </span>
+    
+    <input type="hidden" id="select_cc_biz_text1" value="${_(u'该业务还未接入自愈')}">
+    <script type="text/javascript">
+        var FLAG_MINE = 'show_only_mine' //只显示自己负责的业务
+        % if str(cc_biz_id) not in cc_biz_names:
+            window.location.href = site_url;
+        % endif
+
+        $(function() {
+            set_user_pref(FLAG_MINE, null);
+            if (get_user_pref(FLAG_MINE) == 'yes') {
+                $("#span-select").hide()  //只显示自己
+            } else {
+                $("#span-select-hide").hide()  //显示全部
+            }
+        });
+
+        option = {
+            'width':'resolve',
+            formatResult: format,
+            formatSelection: format
+        }
+
+        function format(state) {
+            if (!state.id) return state.text;
+            var select_cc_biz_text1 = $("#select_cc_biz_text1").val()
+            state.text = state.text.replace(/\* \*/g, '<a href="###" id="cc'+state.id+'" title="'+ select_cc_biz_text1+ '" style="color:lightgrey">');
+            return state.text + '</a>';
+        }
+
+        function on_selecting(e) {
+            if (e.val == 'toggle_show') {
+                set_user_pref(FLAG_MINE, 'yes');
+                location.reload();
+            }
+            if (e.val == 'toggle_hide') {
+                set_user_pref(FLAG_MINE, null);
+                location.reload();
+            }
+        }
+
+        function on_change(e) {
+            if (e.val == 'toggle_show') { e.val = "${cc_biz_id}"; }
+            if (e.val == 'toggle_hide') { e.val = "${cc_biz_id}"; }
+            var url = current_included_url;
+            var is_public = url.indexOf('intro') >= 0 || url.indexOf('data_report') >= 0;
+            var is_switchable = url.indexOf('/analysis/') >= 0 || url.indexOf('/alarm_def_list/') >= 0
+                || url.indexOf('/solution_list/') >= 0 || url.indexOf('/incident/') >= 0
+                || url.indexOf('/manage/') >= 0 || url.indexOf('/alarm_instance_list/') >= 0
+                || url.indexOf('/advice_list/') >= 0 || url.indexOf('/health/') >= 0
+                //部分url包含cc_biz_id前缀，部分不包含
+                if(is_public){
+                    url = current_included_url;
+                }else if(is_switchable){
+                    var cc_biz_id = current_included_url.split('/')[0]
+                        url = current_included_url.replace(cc_biz_id, e.val)
+                }else{
+                    url = "" //小的细节页面不能切换，因为细节记录不是同一个业务下的
+                }
+
+            var q_str = '?include=' + url;
+            window.location.href=site_url+e.val+"/" + q_str;
+        }
+
+        function on_highlight(e) {
+            $('#cc'+e.val).tooltip();
+        }
+
+        $("#cc-biz-select").select2(option).on(
+            "select2-highlight", on_highlight).on("change", on_change).on("select2-selecting", on_selecting)
+        $("#cc-biz-select-hide").select2(option).on(
+            "select2-highlight", on_highlight).on("change", on_change).on("select2-selecting", on_selecting)
+
+        function set_cookie(name,value)
+        {
+            var Days = 30;
+            var exp  = new Date();
+            exp.setTime(exp.getTime() + Days*24*60*60*1000);
+            document.cookie = name + "="+ escape (value) + ";path=/;expires=" + exp.toGMTString();
+        }
+
+        function get_cookie(name)
+        {
+            var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+             if(arr != null) return unescape(arr[2]); return null;
+        }
+
+    </script>
+</%block>

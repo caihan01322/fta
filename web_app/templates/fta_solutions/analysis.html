@@ -1,0 +1,191 @@
+<style type="text/css">
+    @font-face {
+        font-family: 'PingFangLight';
+        src: url('fonts/PingFang Light_0.eot');
+        src: local('☺'), url('${STATIC_URL}fonts/PingFang Light_0.woff') format('woff'), url('${STATIC_URL}fonts/PingFang Light_0.ttf') format('truetype'), url('${STATIC_URL}fonts/PingFang Light_0.svg') format('svg');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .echarts-container .tab-pane {
+        padding-bottom: 15px;
+    }
+
+</style>
+<div class='row'>
+##留白
+</div>
+<div class="king-panel-container">
+    <div class="row data-list">
+        <div class="col-md-3">
+            <a href="javascript:include_open('${cc_biz_id}/alarm_instance_list/','',1);" class="king-panel-item clearfix king-panel-success">
+                <div class="king-panel-item-detail">
+                    <div class="king-panel-item-box mt5">
+                        <div class="item-icon">
+                            <span class="border-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve" style="position: relative;left: 2px;top: -2px;">
+                                <path d="M157.679,0h21.161v21.105H200v21.105h-21.161v21.105h-21.161V42.209h-21.161V21.105h21.161V0z M63.482,31.163h42.321v63.314  h63.482v42.209h-63.482V200H63.482v-63.314H0V94.476h63.482V31.163z"/>
+                            </svg>
+                            </span>
+                            <div class="item-icon-right tl">
+                                <span>${_(u'自愈成功次数')}</span>
+                                <span class="text-time today-time">${end_time}</span>
+                            </div>
+                        </div>
+                        <div class="mt5">
+                            <span class="king-counter-number" id="trend_today">&nbsp</span>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a href="javascript:include_open('${cc_biz_id}/health/','',1);" class="king-panel-item clearfix king-panel-info">
+                <div class="king-panel-item-detail">
+                    <div class="king-panel-item-box mt5">
+                         <div class="item-icon">
+                            <span class="border-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                                <path d="M198.392,168.908c-6.754-11.147-85.963-141.623-89.947-148.118c-4.968-8.112-15.414-7.198-19.47-0.374  c-3.129,5.263-82.723,139.179-87.258,146.81c-4.469,7.519,0.289,17.461,8.512,17.665c11.225,0.288,169.081-0.081,178.711-0.079  C197.576,184.815,202.826,176.232,198.392,168.908L198.392,168.908z M100,164.907c-5.523,0-10-4.48-10-10.006  c0-5.526,4.477-10.006,10-10.006s10,4.48,10,10.006C110,160.427,105.523,164.907,100,164.907z M110,125.015  c0,5.526-4.477,10.006-10,10.006s-10-4.48-10-10.006v-50.03c0-5.526,4.477-10.006,10-10.006s10,4.48,10,10.006V125.015z"/>
+                                </svg>
+                            </span>
+                            <div class="item-icon-right tl">
+                                <span>${_(u'健康诊断待处理')}</span>
+                                <span class="text-time">${_(u'近7天内')}</span>
+                            </div>
+                        </div>
+                        <div class="mt5">
+                        <span class="king-counter-number">${advice_count}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </a>
+        </div>
+        % if IS_FTA_HELPER:
+        <div class="col-md-3">
+            <a href="javascript:include_open('${cc_biz_id}/fta_helper/','',1);" class="king-panel-item clearfix king-panel-primary">
+                <div class="king-panel-item-detail">
+                    <div class="king-panel-item-box mt5 clearfix">
+                        <div class="item-icon">
+                            <span class="border-box">
+                                <svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                     viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+                                <style type="text/css">
+                                    .st0{fill:#934545;}
+                                </style>
+                                <g>
+                                    <path class="st0" d="M8,0C3.6,0,0,3.6,0,8s3.6,8,8,8s8-3.6,8-8S12.4,0,8,0z M12,11H4c-1.7,0-3-1.4-3-3c0-1.7,1.3-3,3-3h8
+                                        c1.7,0,3,1.3,3,3C15,9.6,13.7,11,12,11z"/>
+                                    <path class="st0" d="M4,6C3.5,6,3,6.5,3,7v2c0,0.5,0.5,1,1,1s1-0.5,1-1V7C5,6.5,4.5,6,4,6z"/>
+                                    <path class="st0" d="M12,6c-0.5,0-1,0.5-1,1v2c0,0.5,0.5,1,1,1s1-0.5,1-1V7C13,6.5,12.5,6,12,6z"/>
+                                </g>
+                                </svg>
+
+                            </span>
+                            <div class="item-icon-right tl">
+                                <span>${_(u'自愈小助手')}</span>
+                                <span class="text-time"></span>
+                            </div>
+
+                        </div>
+                        <div class="mt5">
+                            <span class="king-counter-number">${suggest_count}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        % else:
+        <div class="col-md-3">
+            <a href="javascript:include_open('${cc_biz_id}/alarm_instance_list/?alarm_type=*ALL_INC*','',1);" class="king-panel-item clearfix king-panel-primary">
+                <div class="king-panel-item-detail">
+                    <div class="king-panel-item-box mt5 clearfix">
+                        <div class="item-icon">
+                            <span class="border-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                                <g><path d="M189.404,52.683l-89.402,52.631L10.596,52.683L100.001,0L189.404,52.683z"/>
+                                <path d="M189.404,84.245l-89.402,52.631L10.596,84.245V70.692l89.405,52.576l89.402-52.576   C189.404,70.692,189.404,84.245,189.404,84.245z"/>
+                                <path d="M189.404,147.369L100.001,200l-89.405-52.631v-13.553l89.405,52.576l89.402-52.576V147.369z"/>
+                                <path d="M189.404,115.807l-89.402,52.63l-89.405-52.63v-13.553l89.405,52.576l89.402-52.576V115.807L189.404,115.807z"/>
+                            </g>
+                            </svg>
+                            </span>
+                            <div class="item-icon-right tl">
+                                <span>${_(u'收敛事件')}</span>
+                                <span class="text-time today-time">${end_time}</span>
+                            </div>
+
+                        </div>
+                        <div class="mt5">
+                            <span class="king-counter-number">${convergs_count_today}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        % endif
+        <div class="col-md-3">
+            <a href="javascript:include_open('${cc_biz_id}/data_report_v2/','',1);" class="king-panel-item clearfix king-panel-danger">
+                <div class="king-panel-item-detail">
+                    <div class="king-panel-item-box mt5 clearfix">
+                        <div class="item-icon">
+                            <span class="border-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="图层_1" x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+                                <path d="M0,0v200h200V0H0z M118.268,102.717c0,4.201-3.156,9.519-7.005,11.818l-47.908,28.619c-3.858,2.3-9.307,1.464-12.127-1.855  l-2.93-3.455c-2.812-3.327-2.21-8.244,1.337-10.927l32.351-24.454c3.548-2.681,6.832-8.291,7.297-12.472l6.15-55.129  c0.455-4.172,4.613-7.591,9.216-7.591h5.24c4.613,0,8.379,3.437,8.379,7.636L118.268,102.717L118.268,102.717z"/>
+                                </svg>
+                            </span>
+                            <div class="item-icon-right tl">
+                                <span>${_(u'人力节省(小时)')}</span>
+                                <span class="text-time">${_(u'近30天内')}</span>
+                            </div>
+                        </div>
+                        <div class="mt5">
+                            <span class="king-counter-number">${consumes_30days}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div class="col-xs-12 char-panel">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs nav-tabs-bd">
+            <li class="active"><a href="#mixed_trend" data-toggle="tab">${_(u'自愈指数趋势')}</a></li>
+            <!-- <li><a href="#handled" data-toggle="tab">自愈趋势</a></li> -->
+            <li><a href="#failure" data-toggle="tab">${_(u'失败分析')}</a></li>
+        </ul>
+        <div style="float:right;margin-top:-35px;" class="${'hide' if not request.user.is_superuser else ''}">
+            <input type="text" class="bk-form-input daterangepicker_demo" id="selectTrendDate" placeholder="${_(u'选择日期')}..." value="${start_time} - ${end_time}">
+
+        </div>
+        <!-- Tab panes -->
+        <div class="tab-content echarts-container">
+            <div class="tab-pane active fade in" id="mixed_trend">
+              <div id="mixed_trend_container"></div>
+            </div>
+
+            <div class="tab-pane fade " id="handled">
+              <div id="handled_container"></div>
+            </div>
+
+            <div class="tab-pane fade " id="failure">
+                <div id="failure_container"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    var cc_biz_name = '${cc_biz_name}';
+    var analysis_end_time = '${end_time}'
+</script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/analysis.js"></script>
+
+<script src="${STATIC_URL}js/page/datefunctions.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page/analysis.js?v=${STATIC_VERSION}"></script>

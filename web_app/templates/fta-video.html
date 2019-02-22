@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="${STATIC_URL}video-course/images/bk_fta_solutions.png" type="image/x-icon">
+    <title>${_(u'蓝鲸智云故障自愈')}</title>
+    <link rel="stylesheet" type="text/css" href="${STATIC_URL}doc/css/style.css">
+    <link rel="stylesheet" type="text/css" href="${STATIC_URL}video-course/video.css">
+</head>
+<body>
+    <div class="markdown-body video-page">
+        <h2 id="toc_0">${_(u'故障自愈视频教程')}</h2>
+
+        <p>${_(u'通过视频，带你玩转故障自愈！')}</p>
+
+        <div class="video-category">
+
+            <div class="video-item">
+                <h2 id="toc_1">1. ${_(u'场景类')}</h2>
+                <h3 id="toc_2">1.1 ${_(u'接入“Ping告警”自愈方案')}</h3>
+                <div class="video-panel">
+                    <div class="video-hover-bg"><a href="javascript:;" vurl="http://video-1252002024.cossh.myqcloud.com/%E6%95%85%E9%9A%9C%E8%87%AA%E6%84%88-01.%E6%8E%A5%E5%85%A5Ping%E5%91%8A%E8%AD%A6%E8%87%AA%E6%84%88%E6%96%B9%E6%A1%88.mp4"></a></div>
+                    <img src="${STATIC_URL}video-course/images/1.1.jpg" alt="">
+                </div>
+
+            </div>
+
+            <div class="video-item">
+                <h3 id="toc_3">1.2 ${_(u'接入“磁盘告警”自愈方案')}</h3>
+
+                <div class="sub-video-item">
+                    <h4 id="toc_4">1.2.1 ${_(u'创建清理磁盘自愈套餐')}</h4>
+                    <div class="video-panel">
+                        <div class="video-hover-bg"><a href="javascript:;" vurl="http://video-1252002024.cossh.myqcloud.com/%E6%95%85%E9%9A%9C%E8%87%AA%E6%84%88-02.%E5%88%9B%E5%BB%BA%E6%B8%85%E7%90%86%E7%A3%81%E7%9B%98%E8%87%AA%E6%84%88%E5%A5%97%E9%A4%90.mp4"></a></div>
+                        <img src="${STATIC_URL}video-course/images/1.2.1.jpg" alt="">
+                    </div>
+
+                </div>
+
+                <div class="sub-video-item">
+                    <h4 id="toc_5">1.2.2 ${_(u'接入磁盘告警自愈方案')}</h4>
+                    <div class="video-panel">
+                        <div class="video-hover-bg"><a href="javascript:;" vurl="http://video-1252002024.cossh.myqcloud.com/%E6%95%85%E9%9A%9C%E8%87%AA%E6%84%88-02_1.%E6%8E%A5%E5%85%A5%E7%A3%81%E7%9B%98%E5%91%8A%E8%AD%A6%E8%87%AA%E6%84%88%E6%96%B9%E6%A1%88.mp4"></a></div>
+                        <img src="${STATIC_URL}video-course/images/1.2.2.jpg" alt="">
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 视频弹窗 -->
+    <div class="video-alert">
+        <div class="video-hover-bg"></div>
+        <div class="alert-panel">
+            <div class="close-video"></div>
+            <video id="videoList" class="centeredVideo" controls width="100%">Your browser is too old which doesn't support HTML5 video.</video>
+        </div>
+
+    </div>
+    <script src="${STATIC_URL}js/jquery-1.10.2.min.js?v=${STATIC_VERSION}"></script>
+    <script src="${STATIC_URL}js/flv.min.js?v=${STATIC_VERSION}"></script>
+    <script type="text/javascript">
+        $(".video-panel").on("click","a",function(){
+            var video_url = $(this).attr("vurl");
+            $(".video-alert").fadeIn();
+            $(".alert-panel").addClass("alert-panel-on");
+
+            if (flvjs.isSupported()) {
+                var player = flvjs.createPlayer({
+                    type: 'mp4',
+                    url: video_url
+                });
+                player.attachMediaElement(videoList);
+                player.load(); //加载
+            }
+            setTimeout(function(){
+                document.getElementById('videoList').play();
+            },300)
+        });
+        $(".close-video").on("click",function(){
+            $(".video-alert").hide();
+            document.getElementById('videoList').pause();
+            $(".alert-panel").removeClass("alert-panel-on");
+        })
+    </script>
+</body>
+</html>

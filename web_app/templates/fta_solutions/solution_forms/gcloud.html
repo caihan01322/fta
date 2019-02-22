@@ -1,0 +1,172 @@
+<div class="inner-forms standard-forms">
+<%
+    import json
+    from fta_solutions_app.cache_utils import get_user_biz
+    username = request.user.username
+    user_bizs = get_user_biz(username)
+    template_id = solution.config.get("template") if edit else "";
+    template_params = json.dumps({
+        k[7:]: v
+        for k, v in solution.config.items()
+        if k.startswith("params_")
+    }) if edit else "{}";
+%>
+    <div class="form-group" >
+        <label for="codename" class="control-label light-title mb10">${_(u'业务')}</label>
+        <div class="controls half-forms-panel">
+            <select name="standard_app" id="standard_app" onchange="" class="span5 standard-select2" style="width:100%" disabled>
+            % for biz_id, biz_name in user_bizs:
+            <option value="${biz_id}"
+                % if biz_id == cc_biz_id:
+                  selected="true"
+                % endif
+                >${biz_name}</option>
+              % endfor
+
+            </select>
+            
+        </div>
+
+    </div>
+    <div class="form-group" >
+        <label for="codename" class="control-label light-title mb10">${_(u'标准运维流程')}</label>
+        <div class="controls half-forms-panel">
+            <select
+              required
+              data-error="${_(u'请选择模板')}"
+              name="template"
+              id="template"
+              onchange="tags_change_module(this);"
+              class="span5 standard-select2 input-validate"
+              style="width:100%"
+            >
+                <option value=""></option>
+            </select>
+
+            <div class="opt-btn-group">
+                <a href="javascript:void(0);" onclick="open_gcloud();" title="" target="_blank" class="new-jobs-btn"><i class="bk-icon icon-plus"></i></a>
+                <a href="javascript:;" title="${_(u'刷新流程列表')}" target="_blank" class="refresh-btn"><i class="bk-icon icon-refresh"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="gcloud_param" style="display: none;">
+        <div class="form-group">
+            <div class="controls">
+                <span>${_(u'标准运维参数')}</span>
+            </div>
+        </div>
+
+        <div class="form-group half-forms-panel dynamicList">
+            <p>
+                ${_(u'无')}
+            </p>
+        </div>
+    </div>
+    <input type="hidden" id="s_glcoud_text1" value="${_(u'请选择流程')}">
+    <input type="hidden" id="s_glcoud_text2" value="${_(u'流程列表为空，请在标准运维创建流程')}">
+    <input type="hidden" id="s_glcoud_text3" value="${_(u'正在加载参数')}">
+</div>
+
+<script type="text/javascript">
+    $(".standard-select2").select2();
+    var template_id = "${template_id}";
+    var template_params = JSON.parse('${template_params|n}');
+
+    if (template_id != "") {
+        tags_change_module(null, template_id);
+    }
+
+    $(".refresh-btn").on("click", function() {
+        getTmpList()
+    })
+
+    getTmpList()
+
+    function getTmpList () {
+        var s_glcoud_text1 = $("#s_glcoud_text1").val();
+        var s_glcoud_text2 = $("#s_glcoud_text2").val();
+        $.ajax({
+            url: "${SITE_URL}${cc_biz_id}/component/gcloud/get_tmpl/",
+            type: "post",
+            dataType: "json",
+            data: {
+                tmpl_id: $("#standard_app").select2("val")
+            },
+            success: function(result){
+
+                $("#template").html("")
+                var strOption = '<option value=""></option>';
+
+                if(result.success){
+                    var listRes = result.data;
+                    $.each(listRes,function(index,value){
+                        if (value.id == template_id) {
+                            strOption += '<option value="'+value.id+'" selected="true">'+value.name+'</option>'
+                        }
+                        else {
+                            strOption += '<option value="'+value.id+'">'+value.name+'</option>'
+                        }
+                    });
+                    $("#template").html(strOption).select2("destroy").select2({
+                        placeholder: s_glcoud_text1
+                    });
+                    
+                } else {
+                    strOption += '<option value="" disabled>' + s_glcoud_text2 + '</option>'
+                    $("#template").html(strOption).select2("destroy").select2({
+                        placeholder: s_glcoud_text2
+                    });
+                }
+                
+
+            }
+        })
+    }
+
+    function tags_change_module(obj, val){
+        var curVal = val || $(obj).val();
+        var s_glcoud_text3 = $("#s_glcoud_text3").val()
+        // 显示正在加载参数的信息
+        $(".gcloud_param").show();
+        $(".dynamicList").html('<div><img alt="loadding" src="'+static_url+'images/new/loading_2_36x36.gif">' + s_glcoud_text3 + '...</div>');
+        $.ajax({
+            url: "${SITE_URL}${cc_biz_id}/component/gcloud/get_tmpl_info/",
+            type: "post",
+            dataType: "json",
+            data: {
+                kwargs: '{"tmpl_id": '+curVal+'}'
+            },
+            success: function(result){
+                if(result.success){
+                    $(".dynamicList").html('');
+                    var curRes = result.data.pipeline_tree.constants;
+                    var strTmpl = ''
+                    $.each(curRes,function(key){
+                        var param = template_params[key] || "";
+                        var key_data = curRes[key]
+                        strTmpl += '<div class="input-group flex-group">'+
+                        '<span class="input-group-unit">' +
+                            htmlspecialchars(key) +
+                            '</span>' +
+                            '<input required type="text" class="form-control" name="params_' +
+                            key +
+                            '" value="' +
+                            param +
+                            '" placeholder="' + htmlspecialchars(key_data.name) + '">'+
+                        '</div>';
+                    })
+                    if(strTmpl){
+                        $(".gcloud_param").show();
+                        $(".dynamicList").html(strTmpl);
+                    }else{
+                        $(".gcloud_param").hide();
+                    }
+                }else{
+                    $(".dynamicList").html('');
+                    $(".gcloud_param").hide();
+                }
+            }
+        })
+    }
+</script>

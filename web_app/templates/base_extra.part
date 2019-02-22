@@ -1,0 +1,69 @@
+<li id="li-advice_fta">
+    <a href="javascript:include_open('${cc_biz_id}/advice_fta_def_list/','',1);"><i></i>${_(u'预警自愈')}</a>
+</li>
+% if IS_FTA_HELPER:
+<li id="li-fta_helper">
+    <a href="javascript:include_open('${cc_biz_id}/fta_helper/','',1);"><i></i>${_(u'自愈小助手')}</a>
+</li>
+% endif
+
+% if APP_CODE == 'fta-solutions':
+<script src="http://o.qcloud.com/static_api/bk_api/api.js?v=${STATIC_VERSION}"></script>
+<script type="text/javascript">
+    function open_cc(){
+        try{
+            Bk_api.open_other_app('cc-new', 'http://cc.o.qcloud.com/');
+        }catch(err){
+            window.open('http://cc.o.qcloud.com/');
+            console.log(err);
+        }
+    }
+    if (self == window.top)
+        {
+            window.open('${BK_JOB_HOST}?newTask&appId=${cc_biz_id}');
+        }
+        else{
+            window.open("${BK_PAAS_HOST}/console/?app=bk_job&url=${job_url}")
+        }
+    function open_gcloud(){
+        try{
+            Bk_api.open_other_app('gcloud-v2', 'template/template_add/${cc_biz_id}/');
+        }catch(err){
+            window.open('${GCLOUD_DETAIL_ENDPOINT}/template/template_add/${cc_biz_id}/');
+            console.log(err);
+        }
+    }
+</script>
+% else:
+<%
+from urllib import quote
+job_url = quote("%s?newTask&appId=%s" % (BK_JOB_HOST, cc_biz_id))
+%>
+<script type="text/javascript">
+    function open_cc(){
+        try{
+            window.top.BLUEKING.api.open_app_by_other('bk_cc', '${BK_CC_HOST}');
+        }catch(err){
+            window.open('${BK_CC_HOST}');
+            console.log(err);
+        }
+    }
+    function open_job() {
+        if (self == window.top)
+        {
+            window.open('${BK_JOB_HOST}?newTask&appId=${cc_biz_id}');
+        }
+        else{
+            window.open("${BK_PAAS_HOST}/console/?app=bk_job&url=${job_url}")
+        }
+    }
+    function open_gcloud(){
+        try{
+            window.top.BLUEKING.api.open_app_by_other('bk_sops', 'template/new/${cc_biz_id}/');
+        }catch(err){
+            window.open('${GCLOUD_DETAIL_ENDPOINT}/template/new/${cc_biz_id}/');
+            console.log(err);
+        }
+    }
+</script>
+% endif

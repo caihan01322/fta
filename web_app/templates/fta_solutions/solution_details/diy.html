@@ -1,0 +1,42 @@
+<input type="hidden" name="real_solutions" id="real_solutions" value='${solution.config.get("real_solutions", """{"1":""}""") if edit else """{"1":""}"""}'/>
+<h5>${_(u'什么是组合套餐')}</h5>
+<p>${_(u'组合套餐， 顾名思义就是把故障自愈该业务下的套餐和官方通用套餐组合起来使用。')}</p>
+<p>${_(u'组合套餐的配置其实就是维护一棵二叉树。节点的左节点表示成功的后续套餐，右节点表示失败的后续套餐。')}</p>
+
+<img src="${STATIC_URL}${_(u'images/new/group-img.png')}" alt="" class="group-img" style="width: 353px;height: 105px;">>
+
+${_(u'如上图，会先调用 A 套餐。')}
+<p>${_(u'A 套餐成功的话调用 B 套餐。B 套餐成功的话就结束，失败的话就调用 D 套餐。')}</p>
+<p>${_(u'A 套餐失败的话调用 C 套餐。失败的话最多再重试两次 C 套餐。')}
+${_(u'组合套餐的状态将由最后一个执行的套餐决定。')}</p>
+
+<h5>1、${_(u'操作说明')}</h5>
+<p>${_(u'选择框选择该节点的套餐')}</p>
+<p>${_(u'绿色的“成功”按钮新建一个左节点')}</p>
+<p>${_(u'红色的“失败”按钮新建一个右节点')}</p>
+<%doc>
+<div class="alert alert-success" id="component_help">
+    <i class="bk-icon icon-arrows-m-right-shape"></i>
+    <i class="bk-icon icon-arrows-m-right-shape"></i>
+    <i class="bk-icon icon-arrows-m-right-shape"></i>
+        <!-- 新版组合套餐一期先不做 -->
+        % if edit:
+        <div id="create_graph" class="btn btn-info">拷贝为新版组合套餐</div>
+        % endif
+</div>
+</%doc>
+% if edit:
+<script>
+$("#create_graph").on("click", function(){
+    $.getJSON("${SITE_URL}${cc_biz_id}/graph_copy/", {
+        id: "${solution.id}",
+    }, function (feedback) {
+        if (feedback.success) {
+            include_open("${solution.cc_biz_id}/solution/"+feedback.new_id+"/");
+        } else {
+            alert("ERROR:"+feedback.message)
+        }
+    })
+})
+</script>
+% endif

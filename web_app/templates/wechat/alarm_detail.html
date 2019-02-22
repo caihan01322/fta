@@ -1,0 +1,90 @@
+{% extends "wechat/base.html" %}
+{% load url from future %}
+
+{% block title %}{{ alarm.service }}{% endblock %}
+
+{% block main %}
+{% if alarm.state %}
+    <h3 style="width:60%;float:left">自愈状态【{{ alarm.state }}】</h3>
+    <div style="clear:both"></div>
+    {% if alarm.comment %}<p>{{ alarm.comment }}</p>{% endif %}
+{% else %}
+    <h3>告警详情</h3>
+{% endif %}
+
+<div class="ui-bar ui-bar-a">
+    <h3>内容</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>{{ alarm.raw }}</p>
+</div>
+
+<div class="ui-bar ui-bar-a">
+    <h3>类型</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>{{ alarm.alarm_type }}</p>
+</div>
+
+<div class="ui-bar ui-bar-a">
+    <h3>产生时间</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>{{ alarm.create_time|date:"Y-m-d H:i:s" }}</p>
+</div>
+
+{% if alarm.attr_id %}
+<div class="ui-bar ui-bar-a">
+    <h3>特性ID</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>{{ alarm.attr_id }}</p>
+</div>
+{% endif %}
+
+<div class="ui-bar ui-bar-a">
+    <h3>集群</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>{{ alarm.cc_topo_set }}</p>
+</div>
+
+<div class="ui-bar ui-bar-a">
+    <h3>模块</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>{{ alarm.cc_app_module }}</p>
+</div>
+
+
+<div class="ui-bar ui-bar-a">
+    <h3>参考信息</h3>
+</div>
+<div class="ui-body ui-body-a">
+    <p>自愈记录ID: {{ alarm.alarm_instance_id }}</p>
+</div>
+
+{% if alarm.advice %}
+<div class="ui-bar ui-bar-a">
+    <h3>相关告警</h3>
+</div>
+<div class="ui-body ui-body-a">
+    {% for advice in alarm.advice %}
+        <p style="white-space: normal;">{{ advice.alarm_detail_description|safe }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if alarm.log %}
+<div class="ui-bar ui-bar-a">
+    <h3>处理日志</h3>
+</div>
+<div class="ui-body ui-body-a">
+    {% for l in alarm.log %}
+    {% if alarm.log.level >= 20 %}
+    <p style="white-space: normal;">{{ l.content }}</p>
+    {% endif %}
+    {% endfor %}
+</div>
+{% endif %}
+{% endblock %}

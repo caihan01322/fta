@@ -1,0 +1,15 @@
+<div class="fta-border-container">
+    <h3 class="fta-main-title">${_(u'自愈小助手')} <em>${_(u'通过分析数据，自愈决策出推荐方案，减轻配置成本')}</em></h3>
+    <div class="helper-tips-content">
+        <div class="helper-tips">
+            <img src="${STATIC_URL}images/helper-icon1.png">${_(u'自愈小助手提示')}
+            <p>${_(u'建议对接一款企业内部的监控产品，迈向无人值守的第一步')}</p>
+            <a class="bk-button bk-purple" href="javascript:include_open('${cc_biz_id}/alarm_source/list/','',1);">${_(u'启动')}</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    locateRightNav('li-fta_helper')
+    $(".fta-border-container").css("min-height",$(window).innerHeight() - 110 + "px");
+</script>

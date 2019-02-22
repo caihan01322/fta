@@ -1,0 +1,190 @@
+<div class='row access-title' >
+    <div>
+        <div class="table-up-title">
+            <span class="name-notice contain_long_text">
+                <em class="name-note">${_(u'预警自愈')}</em>
+                <em class="name-tips">${_(u'配置预警自愈策略，每天早上8点回溯自愈处理过的告警，分析潜在风险并处理。可在健康诊断页面找到分析出的健康事件。')}</em>
+            </span>
+        <a class='bk-button bk-success fr' href="javascript:include_open('${cc_biz_id}/advice_fta_def/add/0/');"><span class="outer-circle"><i class='bk-icon icon-plus-circle'> </i></span> ${_(u'接入预警自愈')}</a>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <div class='col-xs-12 access-tab table-packup'>
+        <table class="table table-hover sortable access-report-table creation-meal">
+            <thead class="th-bg">
+            <tr>
+                <th class="br1 pl35" style="text-align: left;width:120px;">${_(u'告警类型')}</th>
+                <th class="br1 pl20 tc" style="width:100px;">${_(u'告警数量')}</th>
+                <th class="br1 pl20 tc" style="width:10%;">${_(u'考察时长(天)')}</th>
+                <th class="br1 pl20 tc" style="width:10%;">${_(u'考察阈值(次)')}</th>
+                <th class="br1 pl20 tc" style="width:12%;">${_(u'生效集群')}</th>
+                <th class="br1 pl20 tc" style="width:12%;">${_(u'生效模块')}</th>
+                <th class="br1 pl20" style="text-align: left;width:13%;">${_(u'处理方案')}</th>
+                <th class="br1 pl20" style="text-align: left;width:13%;">${_(u'处理类型')}</th>
+                <th class="br1 pl20" style="text-align: left;width:8%;">${_(u'是否启用')}</th>
+                <th class="br1 pl20" style="text-align: left;width:8%;">${_(u'方案来源')}</th>
+                <th class="br1 pl20" style="text-align: left;width:80px">${_(u'操作')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            % for func in advice_fta_list:
+                % if func.advice_def:
+                    <tr class="close-text">
+                        <td class="pl35">
+                            <div class="limitText hd">
+                                <span>
+                                    ${func.advice_def.check_sub_type_desc}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${func.advice_def.check_sub_type_desc}
+                                </span>
+                            </div>
+                            <a href="javascript:;" class="text-switch" style="left:10px;"><i class="bk-icon icon-plus-square to-open-text"></i><i class="bk-icon icon-minus-square to-close-text"></i></a>
+                        </td>
+                        <td>
+                            <div class="limitText hd">
+                                <span>
+                                    ${len(fta_ins_dict.get(func.id)) if fta_ins_dict.get(func.id) else 0 }
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${len(fta_ins_dict.get(func.id)) if fta_ins_dict.get(func.id) else 0 }
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20">
+                            <div class="limitText hd">
+                                <span>
+                                    ${func.advice_def.interval}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${func.advice_def.interval}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20">
+                            <div class="limitText hd">
+                                <span>
+                                    ${func.advice_def.threshold}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${func.advice_def.threshold}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20 force-wrap">
+                            <div class="limitText hd">
+                                <span>
+                                    ${_(func.set_names) if func.set_names else _(u"(所有)")}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${_(func.set_names) if func.set_names else _(u"(所有)")}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20 force-wrap">
+                            <div class="limitText hd">
+                                <span>
+                                    ${_(func.module_names) if func.module_names else _(u"(所有)")}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${_(func.module_names) if func.module_names else _(u"(所有)")}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20">
+                          <div class="limitText hd">
+                                <span>
+                                    ${func.solution_name if func.handle_type=='solution' else func.advice_def.advice}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${func.solution_name if func.handle_type=='solution' else func.advice_def.advice}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20">
+                            <div class="limitText hd">
+                                <span>
+                                    ${_(func.handel_type_name)}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${_(func.handel_type_name)}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20">
+                        % if func.cc_biz_id != 0:
+                            % if func.is_enabled:
+                                <span class="text-success">${_(u'是')}</span>
+                            % else:
+                                <span class="text-danger">${_(u'否')}</span>
+                            % endif
+                        % else:
+                            % if func.is_enabled and (cc_biz_id not in func.exclude_biz_list):
+                                <span class="text-success">${_(u'是')}</span>
+                            % else:
+                                <span class="text-danger">${_(u'否')}</span>
+                            % endif
+                        % endif
+                        </td>
+                        <td>
+                            <div class="limitText hd">
+                                <span>
+                                    ${_(u"系统内置") if func.cc_biz_id == 0 else _(u"当前业务")}
+                                </span>
+                            </div>
+                            <div class="hiddenText">
+                                <span>
+                                    ${_(u"系统内置") if func.cc_biz_id == 0 else _(u"当前业务")}
+                                </span>
+                            </div>
+                        </td>
+                        <td class="pl20">
+                            % if func.cc_biz_id != 0:
+                                <a class="f_r border-box edit_button" href="javascript:include_open('${cc_biz_id}/advice_fta_def/edit/${func.id}/');"></a>
+                                <a class="f_r border-box del_button" href="javascript:del_def(${func.id});"></a>
+                            % else:
+                                <a class="f_r cur-switch cp" href="javascript:block_advice_fta_def(${func.id});">
+                                    % if cc_biz_id in func.exclude_biz_list:
+                                        <i class="switchery switchery-small">
+                                            <small></small>
+                                        </i>
+                                    % else:
+                                        <i class="switchery-on switchery-small">
+                                            <small></small>
+                                        </i>
+                                    % endif
+                                </a>
+                            % endif
+                        </td>
+                    </tr>
+                % endif
+            % endfor
+            </tbody>
+        </table>
+        % if not advice_fta_list:
+            <div style="text-align: center; padding: 10px">
+             <p style="font-size: 16px">${_(u'您还没有添加预警自愈，点击')} <a href="javascript:include_open('${cc_biz_id}/advice_fta_def/add/0/');">${_(u'快速添加预警自愈')}</a></p>
+            </div>
+        % endif
+    </div>
+</div>
+
+<script src="${STATIC_URL}js/page/solution_list.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page_new/fta_advice/advice_fta_def_list.js?v=${STATIC_VERSION}"></script>

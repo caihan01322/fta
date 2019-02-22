@@ -1,0 +1,98 @@
+<div class="inner-forms notice-form collect-forms">
+  <div class="form-group">
+      <label for="message" class="control-label">${_(u'审批内容')}：</label>
+      <div class="controls">
+          <textarea name="message" type="text" class="form-control" placeholder="${_(u'请输入审批内容')}" required="">${solution.config['message'] if solution else ''}</textarea>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="extra_people" class="control-label">${_(u'额外审批人')}：</label>
+      <div class="controls">
+          <%
+          from fta_solutions_app.cache_utils import get_all_user_info
+          username = request.user.username
+          all_user_info = get_all_user_info(cc_biz_id, username)
+
+          extra_people = solution.config.get('extra_people', '') if solution else ''
+          extar_people_list = extra_people.split(';') if extra_people else []
+          %>
+          <input id="extra_people" name="extra_people" type="hidden" class="form-control" value="${extra_people}" />
+          <select id="extra_people_select" name="extra_people_select" class="select2_src" multiple="true" style="width:530px;height:36px;">
+              % for user in all_user_info:
+                  <option value="${user}" ${'selected=true' if str(user) in extar_people_list else ''}>${user}(${all_user_info[user]})</option>
+              % endfor
+          </select>
+      </div>
+  </div>
+
+  <!-- <div class="form-group">
+      <label for="wechat" class="control-label">通知：</label>
+      <div class="controls">
+        <div class="checkboxItem">
+          <input rel="checkbox" readonly="readonly" name="wechat" ${"checked" if solution and solution.config.get('wechat') else ''}><span>微信</span>
+        </div>
+        <div class="checkboxItem">
+          <input rel="checkbox" readonly="readonly" name="sms" ${"checked" if solution and solution.config.get('sms') else ''}><span>短信</span>
+        </div>
+        <div class="checkboxItem">
+          <input rel="checkbox" readonly="readonly" id="phone_check" name="phone" ${"checked" if solution and solution.config.get('phone') else ''}><span>电话</span>
+        </div>
+        <div class="checkboxItem">
+          <input rel="checkbox" readonly="readonly" name="email" ${"checked" if solution and solution.config.get('email') else ''}><span>邮件</span>
+        </div>
+      </div>
+  </div> -->
+
+  <div class="form-group">
+      <label for="wechat" class="control-label">${_(u'审批')}：</label>
+      <div class="controls">
+        <div class="checkboxItem">
+          <input name="wechat_approve" rel="checkbox" readonly="readonly" disabled="disabled" checked="checked"}><span>${_(u'微信')}</span>
+        </div>
+        <div class="checkboxItem">
+          <input name="sms_approve" rel="checkbox" readonly="readonly" ${"checked" if solution and solution.config.get('sms_approve') else ''}><span>${_(u'短信')}</span>
+        </div>
+      </div>
+  </div>
+
+  <p class="tips" id="component_help">
+      ${_(u'参数中可填变量，请参考')}：
+      <a target="_blank" href="http://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/Solutions_Parameters.html">${_(u'帮助文档')}</a>
+  </p>
+
+  <p class="tips danger" id="component_warning" style="display:none">
+      ${_(u'电话通知内容长度为50个字或100个字符以内')}
+  </p>
+</div>
+<input type="hidden" id="notice_placeholder_id" value="${_(u'请选择额外通知人')}">
+
+
+<script>
+$("#extra_people_select").select2({
+    placeholder: $("#notice_placeholder_id").val(),
+    allowClear: true
+});
+
+$("#extra_people_select").on("change", function(e) {
+    var extra_people = e.val;
+    if(extra_people){
+        var extra_people_str = extra_people.join(';');
+    }else{
+        var extra_people_str = '';
+    }
+    $("#extra_people").val(extra_people_str);
+})
+
+update_tips();
+$("#phone_check").click(function() {
+    update_tips();
+})
+function update_tips(){
+    if ($("#phone_check").attr('checked')){
+        $("#component_warning").show();
+    } else {
+        $("#component_warning").hide();
+    }
+}
+</script>

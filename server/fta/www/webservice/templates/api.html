@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body %}
+    {% for url, doc in docs %}
+    <div>
+        <h2>{{ url }}</h2>
+        <pre>{{ doc }}</pre>
+    </div>
+    {% endfor %}
+{% endblock %}

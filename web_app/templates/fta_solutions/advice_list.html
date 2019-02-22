@@ -1,0 +1,314 @@
+
+<style type="text/css">
+    .badge-count{
+        font-weight:normal;font-size:10px;padding:2px 4px;
+    }
+    .selected-button{
+        background: #ccc;
+    }
+</style>
+<div class="entry">
+    <h1>${cc_biz_name} ${_(u'待优化项目')} </h1>
+    <p style='text-align:center'>
+    <small>${_(u'每天早八点更新，为运维提供精准的优化建议')} </small> 
+    </p>
+    <div class="btn-group btn-group-justified ">
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-default fresh-button">${_(u'最新')} <span class='badge badge-count'>${count_fresh}</span></button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-default followup-button">${_(u'正在跟进')} <span class='badge  badge-count'>${count_followup}</span></button>
+      </div>
+      <div class="btn-group btn-group-sm">
+        <button type="button" class="btn btn-default finish-button">${_(u'已优化')} <span class='badge  badge-count'>${count_finish}</span></button>
+      </div>
+    </div>
+    ##<hr style="padding-top:0px;margin-bottom:15px">
+    
+    <div id="fresh-advice-list">
+        % if not fresh_advice_dict.keys():
+        <p style='text-align:center;font-size:24px'>
+            <i class='bk-icon icon-smile-shape'></i>
+            <br>
+            ${_(u'太棒了')}，${cc_biz_name} ${_(u'暂时没有待优化项')}.
+            <br>
+            ${_(u'向高质量运维学习')}！
+        </p>
+        % else:
+            % for alarm_type in sorted(fresh_advice_dict, key=lambda i: len(fresh_advice_dict[i])):
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><small>${_(u'告警类型')}: ${alarm_type}</small></h3>
+                    </div>
+                    <div class="panel-body">
+                        <ol class="">
+                        % for func in fresh_advice_dict[alarm_type]:
+                        <li class="advice_row" data-advice-id="${func.id}">
+                            ##<dfn>${advice_type_dict[func.advice_def.advice_type]}]</dfn><br>
+                            <b>${func.phenomenon}</b>
+                            <br>
+                            <small>${_(u'发现时间')}: ${func.create_time.strftime('%Y-%m-%d')}</small>
+                            ##建议${func.advice_def.advice}<br>
+                            <div style='height:40px'>
+                            <div class="btn-group btn-group-xs action_toolbar hide">
+                              <button type="button" class="btn btn-default followup">${_(u'我要跟进')}！</button>
+                              <button type="button" class="btn btn-default tooyoung-toosimple" style="margin-right:15px">${_(u'没那么严重')}</button>
+
+                                <div class="input-group input-group-sm feedback hide">
+                                  <input type="text" class="form-control" id="feedback-${func.id}" placeholder="${_(u'请建议多少才算严重')}">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-default deny-with-feedback" type="button">${_(u'反馈')}</button>
+                                  </span>
+                                </div><!-- /input-group -->
+                            </div>
+                            </div>
+                        </li>
+                        % endfor
+                        </ol>
+                    </div>
+                </div>
+            % endfor
+        % endif
+    </div>
+
+    <div id="followup-advice-list">
+        % if not followup_advice_dict.keys():
+        <p style='text-align:center;font-size:24px'>
+            <i class='bk-icon icon-smile-shape'></i>
+            <br>
+            ${cc_biz_name} ${_(u'暂时没有正在跟进的项目')}.
+            <br>
+        </p>
+        % else:
+            % for alarm_type in sorted(followup_advice_dict, key=lambda i: len(followup_advice_dict[i])):
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><small>${_(u'告警类型')}: ${alarm_type}</small></h3>
+                    </div>
+                    <div class="panel-body">
+                        <ol class="">
+                        % for func in followup_advice_dict[alarm_type]:
+                        <li class="advice_row" data-advice-id="${func.id}">
+                            ##<dfn>${advice_type_dict[func.advice_def.advice_type]}]</dfn><br>
+                            <b>${func.phenomenon}</b>
+                            <br>
+                            <small>${_(u'发现时间')}: ${func.create_time.strftime('%Y-%m-%d')}</small>
+                            % if func.operator and func.modify_time:
+                            <small>&nbsp;&nbsp; ${_(u'跟进时间')}: ${func.modify_time}</small>
+                            <small>&nbsp;&nbsp; ${_(u'跟进者')}: ${func.operator}</small>
+                            % endif
+                            <div style='height:40px'>
+                            <div class="btn-group btn-group-xs action_toolbar hide">
+                              <button type="button" class="btn btn-default finish">${_(u'已优化完成')}！</button>
+                              <button type="button" class="btn btn-default unfollow">${_(u'暂时不跟进')}</button>
+                            </div>
+                            </div>
+                        </li>
+                        % endfor
+                        </ol>
+                    </div>
+                </div>
+            % endfor
+        % endif
+    </div>
+
+    <div id="finish-advice-list">
+        % if not finish_advice_dict.keys():
+        <p style='text-align:center;font-size:24px'>
+            ${cc_biz_name} ${_(u'没有已优化的项目')}.
+            <br>
+        </p>
+        % else:
+            % for alarm_type in sorted(finish_advice_dict, key=lambda i: len(finish_advice_dict[i])):
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><small>${_(u'告警类型')}: ${alarm_type}</small></h3>
+                    </div>
+                    <div class="panel-body">
+                        <ol class="">
+                        % for func in finish_advice_dict[alarm_type]:
+                        <li class="advice_row" data-advice-id="${func.id}">
+                            ##<dfn>${advice_type_dict[func.advice_def.advice_type]}]</dfn><br>
+                            <b>${func.phenomenon}</b>
+                            <br>
+                            <small>&nbsp;&nbsp; ${_(u'发现时间')}: ${func.create_time.strftime('%Y-%m-%d')}</small>
+                            % if func.operator and func.modify_time:
+                            <small>&nbsp;&nbsp; ${_(u'完成时间')}: ${func.modify_time}</small>
+                            <small>${_(u'完成者')}: ${func.operator}</small>
+                            % endif
+                            <div style='height:40px'>
+                            <div class="btn-group btn-group-xs action_toolbar hide">
+                              <button type="button" class="btn btn-default refollowup"> ${_(u'需要重新跟进')}！</button>
+                            </div>
+                            </div>
+                        </li>
+                        % endfor
+                        </ol>
+                    </div>
+                </div>
+            % endfor
+        % endif
+    </div>
+    <input type="hidden" id="advice_list_text_id" value="${_(u'修改失败')}">
+</div>
+<script>
+    $(function(){
+        $('.advice_row').hover(
+            function(){
+                $(this).find('.action_toolbar').removeClass('hide')
+            }, 
+            function(){
+                $(this).find('.action_toolbar').addClass('hide')
+            }
+        )
+
+        function update_advice(advice_id, status, comment, success_func){
+            var curr_date = new Date().format("yyyy-MM-dd hh:mm:ss");
+            $.ajax({
+                url: '${SITE_URL}${cc_biz_id}/api/v1/advice/'+advice_id+'/?format=json',
+                data: $.toJSON({
+                    'status':status,
+                    'comment': comment,
+                    'operator': "${request.user.username}",
+                    'modify_time': curr_date
+                }),
+                type: 'PUT',
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function(result){
+                    success_func.call(this)
+                },
+                error: function(result){
+                    var advice_list_text = $("#advice_list_text_id").val();
+                    show_msg(advice_list_text,4);
+                }
+            }) 
+        }
+
+        function clear_advice(advice_type){
+            //$('li[data-advice-id=' + advice_id +']').hide('slow');
+            include_open('${cc_biz_id}/advice_list/?type=' + advice_type);
+        }
+
+        $('.followup').click(
+            function(){
+                var advice_id = $(this).parents('li').data('advice-id')
+                update_advice(advice_id, 'followup', undefined, function(){
+                    clear_advice("fresh")
+                })
+            }
+        )
+
+        $('.deny-with-feedback').click(
+            function(){
+                var advice_id = $(this).parents('li').data('advice-id')
+                var comment = $('#feedback-'+advice_id).val()
+                update_advice(advice_id, 'deny', comment, function(){
+                    clear_advice("fresh")
+                })
+            }
+        )
+
+        $('.tooyoung-toosimple').click(
+            function(){
+                $(this).siblings('.feedback').removeClass('hide');
+            }
+        )
+
+        $('.finish').click(
+            function(){
+                var advice_id = $(this).parents('li').data('advice-id')
+                update_advice(advice_id, 'finish', undefined, function(){
+                    clear_advice("followup")
+                })
+            }
+        )
+
+        $('.unfollow').click(
+            function(){
+                var advice_id = $(this).parents('li').data('advice-id')
+                update_advice(advice_id, 'fresh', undefined, function(){
+                    clear_advice("followup")
+                })
+            }
+        )
+
+        $('.refollowup').click(
+            function(){
+                var advice_id = $(this).parents('li').data('advice-id')
+                update_advice(advice_id, 'followup', undefined, function(){
+                    clear_advice("finish")
+                })
+            }
+        )
+
+        $('.fresh-button').click(
+            function(){
+                $('.fresh-button').addClass('selected-button');
+                $('.followup-button').removeClass('selected-button');
+                $('.finish-button').removeClass('selected-button');
+
+                setTimeout(function(){
+                    $('#fresh-advice-list').removeClass('hide');
+                }, 300);
+                $('#followup-advice-list').addClass('hide');
+                $('#finish-advice-list').addClass('hide');
+            }
+        )
+
+        $('.followup-button').click(
+            function(){
+                $('.fresh-button').removeClass('selected-button');
+                $('.followup-button').addClass('selected-button');
+                $('.finish-button').removeClass('selected-button');
+
+                $('#fresh-advice-list').addClass('hide');
+                setTimeout(function(){
+                    $('#followup-advice-list').removeClass('hide');
+                }, 300);
+                $('#finish-advice-list').addClass('hide');
+            }
+        )
+
+        $('.finish-button').click(
+            function(){
+                $('.fresh-button').removeClass('selected-button');
+                $('.followup-button').removeClass('selected-button');
+                $('.finish-button').addClass('selected-button');
+
+                $('#fresh-advice-list').addClass('hide');
+                $('#followup-advice-list').addClass('hide');
+                setTimeout(function(){
+                    $('#finish-advice-list').removeClass('hide');
+                }, 300);
+            }
+        )
+
+        var button_selector = "." + "${advice_type}" + "-button";
+        $(button_selector).click()
+
+    })
+
+    Date.prototype.format = function(format) {
+           var date = {
+                  "M+": this.getMonth() + 1,
+                  "d+": this.getDate(),
+                  "h+": this.getHours(),
+                  "m+": this.getMinutes(),
+                  "s+": this.getSeconds(),
+                  "q+": Math.floor((this.getMonth() + 3) / 3),
+                  "S+": this.getMilliseconds()
+           };
+           if (/(y+)/i.test(format)) {
+                  format = format.replace(RegExp.$1, (this.getFullYear() + '').substr(4 - RegExp.$1.length));
+           }
+           for (var k in date) {
+                  if (new RegExp("(" + k + ")").test(format)) {
+                         format = format.replace(RegExp.$1, RegExp.$1.length == 1
+                                ? date[k] : ("00" + date[k]).substr(("" + date[k]).length));
+                  }
+           }
+           return format;
+    }
+</script>
+

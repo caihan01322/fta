@@ -1,0 +1,169 @@
+<div class="inner-forms ijobs-forms">
+
+    <%
+    from fta_solutions_app.cache_utils import get_user_biz, get_all_ijobs_id
+    from fta_utils.component import bk
+    username = request.user.username
+    all_ijobs_app = get_user_biz(username)
+    ijobs_id = (solution.config.get('app_id', '') if edit else '') or get_all_ijobs_id(username)[str(cc_biz_id)]
+    ijobs_taskt_id = solution.config.get('ijobs_taskt_id', '') if edit else ''
+    task_id = solution.config.get('task_id', '') if edit else ''
+    retry = solution.config.get('retry', '') if edit else ''
+    retry_time = solution.config.get('retry_time', '') if edit else ''
+    retry_count = solution.config.get('retry_count', '') if edit else ''
+    argv = solution.config.get('argv', '') if edit else ''
+    replace_execute_ip = solution.config.get('replace_execute_ip', "on") if edit else "on"
+    parms = solution.config.get('parms', '') if edit else ''
+    %>
+
+    <div class="form-group" >
+        <label for="codename" class="control-label light-title mb10">${_(u'业务')}：</label>
+        <div class="controls half-forms-panel">
+            <select name="app_id" id="app_id" onchange="tags_change_taskt(this);" class="span5 ijobs_select2_src" style="width:100%" disabled>
+                <option value="">-----</option>
+                % for ijobs_app in all_ijobs_app:
+            <option value="${ijobs_app[0]}"
+              % if str(ijobs_app[0]) == str(ijobs_id):
+              selected="true"
+              % endif
+            >${ijobs_app[1]}</option>
+          % endfor
+            </select>
+        </div>
+    </div>
+
+    ## 某业务的ijobs作业列表, 如果有值，则选中
+    <div class="form-group"  style="display: none;">
+        <label for="codename" class="control-label light-title mb10">iJobs作业名：</label>
+        <div class="controls half-forms-panel">
+            <select name="ijobs_taskt_id" id="ijobs_taskt_id" class="span5 ijobs_select2_src" onchange="tags_change_taskt(this);" style="width:100%">
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" >
+        <label for="codename" class="control-label light-title mb10">${_(u'作业名称')}：</label>
+        <div class="controls half-forms-panel">
+            <select
+              required
+              data-error=""
+              name="task_id"
+              class="span5 input-append ijobs_select2_src input-validate"
+              id="tag_ijobs_taski_id"
+              style="width:100%"
+              onchange="tags_change_taski(this);"
+            >
+            </select>
+            <div class="opt-btn-group">
+                <a href="javascript:void(0)" onclick="open_job();" title="${_(u'创建作业')}" target="_blank" class="new-jobs-btn"><i class="bk-icon icon-plus"></i></a>
+                <a href="javascript:;" title="${_(u'刷新作业列表')}" target="_blank" class="refresh-btn"><i class="bk-icon icon-refresh"></i></a>
+            </div>
+                
+        </div>
+    </div>
+    <input type='hidden' name='ijobs_taski_name' value='*no selected*'/>
+
+    <div class="form-group" >
+        <div class="controls">
+            <input rel="checkbox" readonly="readonly" id="retry" name="retry" type="text" ${"checked" if retry else ''}><span>${_(u'作业失败重试')}</span>
+        </div>
+    </div>
+
+    <div class="form-group retry-hide" id="retry-hidden"
+        % if not retry:
+        style="display:none"
+        % endif
+    >
+
+        <div class="inline-groups">
+            <label for="wechat" class="control-label block-label light-title mb10">${_(u'重试间隔')}：</label>
+            <div class="input-group">
+                <input type="number" id="retry_time" class="form-control"  value='${retry_time if retry_time else 10}' min="0" max="86400" step="1"/>
+                <span class="input-group-unit">${_(u'秒')}</span>
+            </div>
+        </div>
+        <div class="inline-groups mr0">
+            <label for="wechat" class="control-label block-label light-title mb10">${_(u'重试次数')}：</label>
+            <div class="input-group">
+                <input type="number" id="retry_count" class="form-control not_submit"  value='${retry_count if retry_count else 0}' min="0" max="10" step="1"/>
+                <span class="input-group-unit" style="width:45px">${_(u'次')}</span>
+            </div>
+        </div>
+        <span class="inlineNotice inlineNotice2">${_(u'以上及为处理失败')}</span>
+
+    </div>
+
+    <div class="form-group" >
+        <div class="controls">
+            <input rel="checkbox" name="parms" readonly="readonly" id="parms" type="text" ${"checked" if parms else 'sss'}><span>${_(u'向作业平台自定义参数')}</span>
+        </div>
+    </div>
+
+    <div class="form-group parms-hide half-forms-panel"
+        % if not parms:
+        style="display:none"
+        % endif
+    >
+
+    <!-- <div class="input-group flex-group">
+        <span class="input-group-unit">backup_files</span>
+        <input type="text" id="backup_data" class="form-control" placeholder="请输入"/>
+    </div>
+    <div class="input-group flex-group">
+        <span class="input-group-unit">reboot server</span>
+        <input type="text" id="reboot_data" class="form-control" placeholder="请输入"/>
+    </div> -->
+    <div id="taski_detail"></div>
+
+    <div style="display: none;">
+        <label for="wechat" class="control-label">all_cc_parms(CC脚本入口参数的统一附加参数)：</label>
+        <div class="controls">
+            <input type='text' id="all_cc_parms" name="all_cc_parms" value='${parms if parms else ""}' class="form-control" style="width:50%"/>
+        </div>
+    </div>
+
+        <!-- <span>步骤字符串入口参数：</span>
+        <div id="taski_detail">请先选择作业</div>
+
+        <div class="alert alert-success" id="component_help">
+            参数中可填变量，请参考：
+            <a target="_blank" href="http://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/Solutions_Parameters.html">帮助文档</a>
+        </div> -->
+
+    </div>
+
+    <div class="form-group half-forms-panel" >
+        <div class="controls">
+            <input rel="checkbox" readonly="readonly" id="argv" name="argv" type="text" ${"checked" if argv else ''}><span>${_(u'从作业中获取参数')}
+        </div>
+    </div>
+
+    <div class="argv-hide"
+        % if not argv:
+        style="display:none;padding: 0 20px;"
+        % endif
+    >
+    （${_(u'在作业脚本中，将变量单独输出一行，详细的说明请参考')}：<a href="http://docs.bk.tencent.com/product_white_paper/fta/Advanced_Features/Context_Parameters.html" target="_blank">${_(u'获取作业执行结果说明')}</a>）
+    </div>
+
+    <div class="form-group half-forms-panel" >
+        <div class="controls">
+            <input rel="checkbox" readonly="readonly" id="replace_execute_ip" name="replace_execute_ip" type="text" ${"checked" if replace_execute_ip == 'on' else ''}><span>${_(u'用告警IP替代作业执行IP')}
+        </div>
+    </div>
+
+    <input type='hidden' id="r_retry_time" name='retry_time'/>
+    <input type='hidden' id="r_retry_count" name='retry_count'/>
+    <input type='hidden' id="steps" name='steps'/>
+
+</div>
+<script type="text/javascript">
+    var STEP_PARMS = [
+        % for i in range(int(solution.config.get('steps') or 0)+1 if edit else 0):
+            "${solution.config.get('parms%s' % i, '')}",
+        % endfor
+    ];
+    var s_ijobs_taskt_id = "${ijobs_taskt_id}";
+    var s_task_id = "${task_id}";
+</script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/solution_ijobs.js"></script>

@@ -1,0 +1,11 @@
+app_code: bk_fta_solutions
+app_name: 故障自愈
+is_use_celery: False
+author: 蓝鲸智云
+introduction: 故障自愈是一款实现服务器故障自动处理的解决方案，提升企业服务可用性和降低故障处理的人力投入。通过自动化处理来节省人力投入，通过预定的恢复流程让恢复过程更可靠，通过并行分析达到更快的故障定位和恢复，最终减少业务损失的风险。
+version: 5.1.16
+category: 监控告警
+desktop:
+    width: 1300
+    height: 720
+    is_max: True

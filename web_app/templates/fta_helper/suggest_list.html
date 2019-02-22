@@ -1,0 +1,84 @@
+<div class="fta-border-container">
+    <h3 class="fta-main-title">${_(u'自愈小助手')} <em>${_(u'通过分析数据，自愈决策出推荐方案，减轻配置成本')}</em></h3>
+    <div class="fta-helper-main">
+        <ul class="helper-list">
+        % for func in suggest_list:
+            <li>
+                <dl>
+                    <dt>
+                        ${_(u'自愈小助手提示')}
+                        <p>${_(u'通过数据分析，系统决策了如下自愈方案')}</p>
+                    </dt>
+                    <dd>
+
+                        <p><span class="title-left">${_(u'告警类型')}:</span><span class="helper-item">${func.alarm_type_name}</span></p>
+                        <p><span class="title-left">${_(u'生效集群')}:</span><span class="helper-item">${_(func.cc_set_name)}</span></p>
+                        <p><span class="title-left">${_(u'生效模块')}:</span><span class="helper-item">${_(func.cc_module)}</span></p>
+                        <p><span class="title-left">${_(u'自愈套餐')}:</span><span class="helper-item fta-name"><em>${func.solution.title_display if func.solution else '--'}</em></span></p>
+                        <p><span class="title-left">${_(u'告警源')}:</span><span class="helper-item">${func.source_name or '--'}</span></p>
+                        <p><span class="title-left">${_(u'自愈方案')}:</span><span class="helper-item">${func.alarm_def_description or '--'}</span></p>
+                    </dd>
+                </dl>
+                <div class="operation-btn">
+                    <a class="bk-button bk-purple enabled_btn" data="${func.id}">${_(u'启用')}</a>
+                    <a class="bk-button bk-default fr ignore_btn" data="${func.id}">${_(u'忽略')}</a>
+                </div>
+            </li>
+        % endfor            
+        </ul>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    locateRightNav('li-fta_helper')
+    $(function(){
+        % if suggest_count:
+            $("#fta_helper_suggest_count").html('<em>${suggest_count}</em>');
+        % else:
+            $("#fta_helper_suggest_count").html('');
+        % endif
+    })
+    $(".fta-border-container").css("min-height",$(window).innerHeight() - 110 + "px");
+
+    $(".fta-name em").map(function() {
+        if (this.offsetWidth < this.scrollWidth) {
+            $(this).parent().append('<a class="tooltip-content">'+$(this).text()+'</a>')
+        } else {
+            $(this).parent().find(".tooltip-content").remove()
+        }
+    });
+</script>
+<script type="text/javascript">
+    $(".ignore_btn").on('click', function(){
+        var func_id = $(this).attr('data');
+        $.ajax({
+            url: '${SITE_URL}${cc_biz_id}/fta_helper/suggest/'+func_id+'/',
+            type: 'DELETE',
+            dataType: 'json',
+            success: function(result){
+                if (!result.result) {
+                    show_msg(result.message, 4);
+                }
+                show_msg(result.message, 2);
+                include_open('${cc_biz_id}/fta_helper/');
+            }
+        });
+    })
+    $(".enabled_btn").on('click', function(){
+        var func_id = $(this).attr('data');
+        $.ajax({
+            url: '${SITE_URL}${cc_biz_id}/fta_helper/suggest/'+func_id+'/',
+            type: 'POST',
+            dataType: 'json',
+            success: function(result){
+                if (!result.result) {
+                    show_msg(result.message, 4);
+                }
+                show_msg(result.message, 2);
+                include_open('${cc_biz_id}/fta_helper/');
+            }
+        });
+    })
+
+</script>

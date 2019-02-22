@@ -1,0 +1,5279 @@
+# Translations template for PROJECT.
+# Copyright (C) 2018 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2018-05-04 17:56+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.5.3\n"
+
+#: account/decorators.py:29
+msgid "请使用管理员身份管理告警源<br>注: 对告警源操作会应用所有业务"
+msgstr ""
+
+#: account/models.py:45
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:32
+msgid "用户名"
+msgstr ""
+
+#: account/models.py:46
+msgid "中文名"
+msgstr ""
+
+#: account/models.py:47
+msgid "公司"
+msgstr ""
+
+#: account/models.py:48
+msgid "QQ号"
+msgstr ""
+
+#: account/models.py:49
+msgid "手机号"
+msgstr ""
+
+#: account/models.py:50
+msgid "邮箱"
+msgstr ""
+
+#: account/models.py:52
+msgid "普通管理员"
+msgstr ""
+
+#: account/models.py:52
+msgid "普通管理员可以登录到admin"
+msgstr ""
+
+#: account/models.py:53
+msgid "加入时间"
+msgstr ""
+
+#: bk_open/component/send.py:24
+msgid "井号"
+msgstr ""
+
+#: bk_open/component/send.py:25
+msgid "and符"
+msgstr ""
+
+#: bk_open/component/send.py:41
+#, python-format
+msgid "将文本中[%s]替换为[\\%s]"
+msgstr ""
+
+#: bk_open/component/send.py:43
+#, python-format
+msgid "%s【注】因微信接口限制:"
+msgstr ""
+
+#: bk_open/component/send.py:59
+msgid "故障自愈通知"
+msgstr ""
+
+#: bk_open/component/send.py:91
+msgid "【自愈通知】邮件"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:197
+msgid "微信企业号ID"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:202
+msgid "微信企业号Secret"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:207
+msgid "发送消息的AGENT_ID"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:212
+msgid "创建审批API_TOKEN"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:220
+msgid "故障自愈|蓝鲸智云社区版"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:223 templates/400.html:5 templates/401.html:6
+#: templates/403.html:6 templates/404.html:6 templates/500.html:6
+#: templates/fta-video.html:6
+msgid "蓝鲸智云故障自愈"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:232
+#: templates/fta_solutions/solution_forms/gcloud.html:32
+msgid "标准运维流程"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:234 fta_solutions_app/fta_std.py:14
+msgid "HTTP回调"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:238
+msgid "标准运维调用出错"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:240
+msgid "回调失败"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:244
+msgid "组合套餐"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:245
+msgid "获取故障机备机"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:246
+#: templates/fta_solutions/alarm_instance_page.mako:181
+#: templates/fta_solutions/solution_forms/notice.html:48
+msgid "审批"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:247
+#: templates/fta_solutions/solution_forms/collect.html:93
+#: templates/fta_solutions/solution_forms/notice_only.html:30
+msgid "通知"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:248
+msgid "暂停等待"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:249
+msgid "自定义收敛防御"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:254
+msgid "异常防御需审批"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:259
+msgid "自定义监控"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:261
+msgid "ICINGA2监控"
+msgstr ""
+
+#: bk_open/conf/settings_env.py:263
+msgid "邮件解析"
+msgstr ""
+
+#: bk_open/conf/user.py:47
+#, python-format
+msgid "<a href=\"%s\" target=\"_blank\">【用户管理】</a>"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:11 bk_open/fixture/init_advice_def.py:95
+#: bk_open/fixture/init_advice_def.py:107
+msgid "确认主机是否存在硬件故障，需要做下线或者替换操作"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:14
+msgid "7天内|同一主机|产生3+条严重告警，应产生硬件待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:23 bk_open/fixture/init_advice_def.py:71
+#: bk_open/fixture/init_advice_def.py:83
+msgid "提单请现场确认主机硬件是否故障"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:26
+msgid "7天内|同一主机|产生3+条硬盘只读告警，应产生硬件待优化事件进行人工确认。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:35 bk_open/fixture/init_advice_def.py:47
+#: bk_open/fixture/init_advice_def.py:59
+msgid ""
+"1、请检查当前的磁盘清理策略确实是否需要调整\n"
+"2、确认该模块当前机型的硬盘空间是否合理"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:38
+msgid "7天内|同一主机|产生3+条磁盘满告警，应产生运维待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:50
+msgid "30天内|同一主机|产生5+条磁盘满告警，应产生运维待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:62
+msgid "1天内|同一主机|产生2+条磁盘满告警，应产生运维待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:74
+msgid "30天内|同一主机|产生3+条硬盘只读告警，应产生硬件待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:86
+msgid "1天内|同一主机|产生2+条硬盘只读告警，应产生硬件待优化事件进行人工确认。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:98
+msgid "1天内|同一主机|产生2+条严重告警，应产生硬件待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_def.py:110
+msgid "30天内|同一主机|产生5+条严重告警，应产生硬件待优化事件进行后续跟踪。"
+msgstr ""
+
+#: bk_open/fixture/init_advice_fta_def.py:20 fta_solutions_app/models.py:69
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:18
+msgid "空闲机"
+msgstr ""
+
+#: bk_open/fixture/init_advice_fta_def.py:21
+msgid "内置策略"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:39
+msgid "5分钟平均负载（乘以100)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:50
+#: bk_open/fixture/init_alert_alarm_type.py:337
+msgid "cpu总使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:61
+#: bk_open/fixture/init_alert_alarm_type.py:348
+msgid "cpu单核使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:72
+#: bk_open/fixture/init_alert_alarm_type.py:106
+msgid "接收字节流量"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:94
+#: bk_open/fixture/init_alert_alarm_type.py:128
+msgid "发送包速率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:105
+#: bk_open/fixture/init_alert_alarm_type.py:139
+msgid "接收包速率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:116
+#: bk_open/fixture/init_alert_alarm_type.py:40
+msgid "可用物理内存"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:127
+#: bk_open/fixture/init_alert_alarm_type.py:62
+msgid "内存使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:138
+msgid "已用空间比"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:149
+#: bk_open/fixture/init_alert_alarm_type.py:293
+msgid "读速率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:160
+#: bk_open/fixture/init_alert_alarm_type.py:304
+msgid "写速率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:171
+#: bk_open/fixture/init_alert_alarm_type.py:315
+msgid "磁盘IO使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:182
+#: bk_open/fixture/init_alert_alarm_type.py:73
+msgid "已用物理内存"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:193
+#: bk_open/fixture/init_alert_alarm_type.py:84
+msgid "应用内存使用量"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:204
+#: bk_open/fixture/init_alert_alarm_type.py:95
+msgid "应用内存使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:215
+#: bk_open/fixture/init_alert_alarm_type.py:370
+msgid "磁盘只读"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:226
+#: bk_open/fixture/init_alert_alarm_type.py:381
+msgid "磁盘写满"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:237
+#: bk_open/fixture/init_alert_alarm_type.py:392
+msgid "Corefile产生"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:249
+#: bk_open/fixture/init_alert_alarm_type.py:359
+msgid "Agent心跳丢失"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:260
+#: bk_open/fixture/init_alert_alarm_type.py:403
+msgid "PING不可达告警"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:272
+#: templates/fta_solutions/solution_forms/clean.html:26
+#: templates/fta_solutions/solution_forms/clean.html:49
+msgid "自定义"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:284 bk_open/fixture/init_alarmtype.py:528
+msgid "Agent状态(agent.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:295
+msgid "CPU使用率(system.cpu.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:306
+msgid "内存使用量(vm.memory.size)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:317
+msgid "Swap使用量(system.swap.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:328
+msgid "系统内核状态(kernel.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:339
+msgid "磁盘IO使用率(vfs.dev.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:350
+msgid "磁盘容量(vfs.fs.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:361
+msgid "进程数量检查(proc.num)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:372
+#: bk_open/fixture/init_zabbix_icmpping_fix.py:44
+msgid "Ping检查(icmpping*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:383
+msgid "TCP链接检查(net.tcp.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:394
+msgid "UDP链接检查(net.udp.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:405
+msgid "文件状态检查(vfs.file.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:416
+msgid "Zabbix其他"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:450
+msgid "内存(memory)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:461
+msgid "网络(net)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:472
+msgid "文件系统(filesystem)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:483
+msgid "磁盘(disk)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:494
+msgid "进程(process)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:516
+msgid "Nagios其他(nagios)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:539
+msgid "CPU使用率(load.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:550
+msgid "内存使用量(mem.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:561
+msgid "磁盘IO使用率(disk.io.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:572
+msgid "磁盘容量(df.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:583
+msgid "网卡流量(net.if.*)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:594
+msgid "端口监控(net.port.listen)"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:605
+msgid "Open-falcon其他"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:617
+msgid "REST默认分类"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:629 fta_solutions_app/activity_log.py:30
+#: templates/base_extra.part:2 templates/fta_advice/advice_fta_def_list.html:5
+msgid "预警自愈"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:641
+msgid "默认分类"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:653
+msgid "邮件默认"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:809
+msgid "平均负载"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:820
+msgid "进程"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:842
+msgid "登录用户数"
+msgstr ""
+
+#: bk_open/fixture/init_alarmtype.py:853
+msgid "icinga默认"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:51
+msgid "交换分区已用量"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:117
+msgid "发送字节流量"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:150
+msgid "established连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:161
+msgid "time_wait连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:172
+msgid "listen连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:183
+msgid "last_ack连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:194
+msgid "syn_recv连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:205
+msgid "syn_sent连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:216
+msgid "fin_wait1连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:227
+msgid "fin_wait2连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:238
+msgid "closing连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:249
+msgid "closed状态连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:260
+msgid "UDP接收包量"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:271
+msgid "UDP发送包量"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:282
+msgid "已用空间占比"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:326
+msgid "5分钟平均负载（乘以100）"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:414
+msgid "进程端口"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:425
+msgid "自定义字符型"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:435
+msgid "CPU总使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:435
+msgid "CPU单核使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:435
+msgid "分析进程占用CPU"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:435
+msgid "分析进程占用内存"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type.py:435
+msgid "空闲机池"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v2.py:38
+msgid "系统启动时间异常"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:479
+msgid "交换分区使用量"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:479
+msgid "物理内存使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:479
+msgid "物理内存使用量"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:479
+msgid "ESTABLISHED连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:479
+msgid "TIME_WAIT连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:480
+msgid "LISTEN连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:480
+msgid "LAST_ACK连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:480
+msgid "SYN_RECV连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:480
+msgid "SYN_SENT连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:480
+msgid "FIN_WAIT1连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:481
+msgid "FIN_WAIT2连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:481
+msgid "CLOSING连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:481
+msgid "CLOSED状态连接数"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:481
+msgid "磁盘使用率"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:481
+msgid "5分钟平均负载"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:482
+msgid "机器重启"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:482
+msgid "时间不同步"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:482
+msgid "端口未打开"
+msgstr ""
+
+#: bk_open/fixture/init_alert_alarm_type_v3.py:482
+msgid "进程告警"
+msgstr ""
+
+#: bk_open/fixture/init_incident_def.py:11
+msgid "一系列单机异常类告警（同一起事件造成的多个告警）"
+msgstr ""
+
+#: bk_open/fixture/init_incident_def.py:40
+msgid "一系列处理套餐相同的告警（同一起事件造成的多个告警）"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:18
+msgid "『快捷』后续处理对象故障机与备机互换"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:27
+msgid "『快捷』CC拷贝故障机属性到备机"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:36
+msgid "『快捷』CC移到“空闲机”模块"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:45
+msgid "『Non-Display』获取内存使用率TOP10的进程"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:54
+msgid "『Non-Display』获取CPU使用率TOP10的进程"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:63
+msgid "『Non-Display』发送CPU使用率TOP10的进程(微信)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:71
+msgid "『快捷』发送CPU使用率TOP10的进程(微信)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:80
+msgid "『Non-Display』发送内存使用率TOP10的进程(微信)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:88
+msgid "『快捷』发送内存使用率TOP10的进程(微信)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:97
+msgid "『快捷』CC移到“故障机”模块"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:106
+msgid "『Non-Display』发送CPU使用率TOP10的进程(短信)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:115
+msgid "『Non-Display』发送CPU使用率TOP10的进程(邮件)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:124
+msgid "『Non-Display』发送内存使用率TOP10的进程(短信)"
+msgstr ""
+
+#: bk_open/fixture/init_solution.py:133
+msgid "『Non-Display』发送内存使用率TOP10的进程(邮件)"
+msgstr ""
+
+#: bk_open/permission/utils.py:382
+msgid "非运维身份不能执行此操作。"
+msgstr ""
+
+#: common/middlewares.py:33
+msgid "调用 ESB API 接口异常，请联系开发者处理"
+msgstr ""
+
+#: fta_admin/views.py:136
+#, python-format
+msgid "请先到[管理告警源]中启用%s"
+msgstr ""
+
+#: fta_admin/views.py:204 fta_solutions_app/models.py:301
+#, python-format
+msgid "自愈方案名称[%s]已存在"
+msgstr ""
+
+#: fta_advice/views.py:43 fta_advice/views.py:139
+#, python-format
+msgid "id为[%s]的预警自愈定义不存在"
+msgstr ""
+
+#: fta_advice/views.py:100 fta_solutions_app/views_def.py:60
+#: templates/fta_solutions/incident_def_list.html:119
+msgid "请选择告警类型"
+msgstr ""
+
+#: fta_advice/views.py:107 fta_advice/views.py:110
+msgid "考察时长请填写正整数"
+msgstr ""
+
+#: fta_advice/views.py:117 fta_advice/views.py:120
+msgid "考察阈值请填写正整数"
+msgstr ""
+
+#: fta_advice/views.py:127 fta_advice/views.py:130
+#: fta_solutions_app/views_def.py:67 fta_solutions_app/views_def.py:155
+#: fta_solutions_app/views_def.py:158
+msgid "超时时间请填写正整数"
+msgstr ""
+
+#: fta_helper/views.py:119
+msgid "自愈方案已启用"
+msgstr ""
+
+#: fta_helper/views.py:135
+msgid "自愈方案已忽略"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:22 fta_solutions_app/signals.py:204
+msgid "新增"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:23 fta_solutions_app/signals.py:205
+#: templates/fta_solutions/solution_details/graph.html:49
+#: user_activity_log/models.py:16
+msgid "修改"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:24 fta_solutions_app/signals.py:206
+#: templates/fta_solutions/solution_list.html:75 user_activity_log/models.py:15
+msgid "删除"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:27 templates/fta_admin/alarm_defs.html:21
+#: templates/fta_helper/suggest_list.html:19
+#: templates/fta_solutions/alarm_def_list.html:40
+msgid "自愈方案"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:28 fta_solutions_app/fta_std.py:165
+#: templates/fta_admin/alarm_def.html:45 templates/fta_admin/alarm_defs.html:19
+#: templates/fta_helper/suggest_list.html:17
+#: templates/fta_solutions/alarm_def.html:111
+#: templates/fta_solutions/alarm_def_list.html:38
+#: templates/fta_solutions/alarm_instance.html:87
+#: templates/fta_solutions/solution.html:10
+#: templates/fta_solutions/unimportant_alarms.html:9
+msgid "自愈套餐"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:29
+msgid "收敛规则"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:31 fta_solutions_app/fta_std.py:164
+#: fta_solutions_app/models.py:176 fta_solutions_app/models.py:179
+#: fta_solutions_app/models.py:403 fta_solutions_app/models.py:582
+#: fta_solutions_app/models.py:741 fta_solutions_app/models.py:1578
+#: fta_solutions_app/models.py:1680 fta_solutions_app/models.py:1730
+#: templates/fta_admin/alarm_def.html:15 templates/fta_admin/alarm_defs.html:17
+#: templates/fta_advice/advice_fta_def.html:42
+#: templates/fta_advice/advice_fta_def_list.html:17
+#: templates/fta_helper/suggest_list.html:14
+#: templates/fta_solutions/advice_list.html:41
+#: templates/fta_solutions/advice_list.html:86
+#: templates/fta_solutions/advice_list.html:127
+#: templates/fta_solutions/alarm_def.html:16
+#: templates/fta_solutions/alarm_def_list.html:34
+#: templates/fta_solutions/alarm_instance.html:76
+#: templates/fta_solutions/alarm_instance_list.html:45
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:46
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:121
+#: templates/fta_solutions/data_report_v2.html:43
+#: templates/fta_solutions/health.html:53
+#: templates/fta_solutions/incident_def_list.html:117
+#: templates/fta_solutions/solution_forms/http_callback.html:26
+msgid "告警类型"
+msgstr ""
+
+#: fta_solutions_app/activity_log.py:32 fta_solutions_app/models.py:199
+#: fta_solutions_app/models.py:553 fta_solutions_app/models.py:712
+#: templates/fta_admin/alarm_defs.html:20
+#: templates/fta_helper/suggest_list.html:18
+#: templates/fta_solutions/alarm_def_list.html:39
+#: templates/fta_solutions/data_report_v2.html:73
+#: templates/fta_solutions/solution_forms/http_callback.html:25
+msgid "告警源"
+msgstr ""
+
+#: fta_solutions_app/admin.py:83 fta_solutions_app/admin.py:103
+msgid "将状态置为<请参考>"
+msgstr ""
+
+#: fta_solutions_app/admin.py:87 fta_solutions_app/admin.py:107
+msgid "将状态置为<失败>，这样INC可以尽快开始人工处理"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:8 fta_solutions_app/fta_std.py:22
+msgid "汇总"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:9 fta_solutions_app/fta_std.py:23
+msgid "作业平台"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:10 fta_solutions_app/fta_std.py:22
+msgid "磁盘清理（适用于Linux）"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:12
+msgid "直接调用蓝鲸组件"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:13
+msgid "自动授权"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:15
+msgid "标记为基本成功"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:16
+msgid "后续处理对象故障机与备机互换"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:17
+msgid "确认主机Ping不通"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:29
+msgid "快捷套餐类"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:29
+msgid "周边系统"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:29
+msgid "组合套餐类"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:45
+msgid "蓝鲸监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:46
+msgid "腾讯云监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:47
+msgid "Zabbix监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:48
+msgid "Open-Falcon监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:49
+msgid "NAGIOS监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:50
+msgid "REST API监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:67
+msgid "需要自行修改zabbix_fta_alarm.py中的对应字段"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:68
+msgid "需要自行修改nagios_fta_event_handler.py中的对应字段"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:69
+msgid "需要自行修改fta_push.py中的对应字段或重新安装"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:70
+msgid "需要自行修改alertmanager中的回调地址"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:71
+msgid "需要自行修改templates中的callback地址字段"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:72
+msgid "需要自行修改X-Secret字段的值"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:76 fta_solutions_app/fta_std.py:77
+#: fta_solutions_app/fta_std.py:92
+msgid "集成当前正在使用的蓝鲸监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:78
+msgid "集成当前正在使用的 Zabbix"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:79
+msgid "集成当前正在使用的 Open-Falcon"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:80
+msgid "集成当前正在使用的 Nagios"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:81
+msgid "集成当前正在使用的 Icinga 2"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:82
+msgid "集成当前正在使用的 Prometheus"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:83
+msgid "从AWS获取告警"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:84
+msgid "从邮件中获取告警"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:85
+msgid "实时推送告警给自愈"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:86
+msgid "从企业告警API中获取告警"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:91
+msgid "集成当前正在使用的腾讯云监控"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:93
+msgid "只需2步，集成企业内部正在使用的 Zabbix"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:94
+msgid "只需2步，集成企业内部正在使用的 Open-Falcon"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:95
+msgid "只需4步，集成企业内部正在使用的 Nagios"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:96
+msgid "只需3步，集成企业内部正在使用的 Icinga 2"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:97
+msgid "只需2步，集成企业内部正在使用的 Prometheus"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:98
+msgid "接受来自AWS的告警，让云主机也能故障自愈"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:99
+msgid "从邮件中获取告警，接入自愈更加便捷"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:100
+msgid "推送消息至REST API，兼容更多的监控产品"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:101
+msgid "从企业告警API中获取告警，接入自愈更加便捷"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:106
+msgid "收到"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:107
+msgid "审批中"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:108
+msgid "收敛中"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:109
+msgid "收敛处理等待"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:110
+msgid "收敛结束"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:111
+msgid "处理中"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:112 fta_solutions_app/models.py:984
+#: templates/fta_solutions/alarm_instance_page.mako:202
+#: templates/fta_solutions/solution_details/graph.html:20
+msgid "成功"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:113
+msgid "基本成功"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:114 fta_solutions_app/models.py:983
+#: templates/fta_solutions/alarm_instance_page.mako:203
+#: templates/fta_solutions/solution_details/graph.html:21
+msgid "失败"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:115
+msgid "跳过"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:116
+msgid "请关注"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:117
+msgid "请参考"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:118
+msgid "被屏蔽"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:119
+msgid "重试中"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:121
+msgid "授权"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:122
+msgid "未授权"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:123
+msgid "验收中"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:141
+msgid "处理出错（未分类）"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:142
+msgid "自愈系统异常"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:143 templates/fta_admin/alarm_def.html:176
+#: templates/fta_advice/advice_fta_def.html:359
+#: templates/fta_solutions/alarm_def.html:246
+msgid "超时"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:144
+msgid "作业执行出错"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:145
+msgid "作业创建失败"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:147
+msgid "误告警"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:148
+msgid "用户终止流程"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:152
+msgid "默认"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:159 fta_solutions_app/models.py:898
+#: templates/fta_solutions/alarm_instance.html:68
+#: templates/fta_solutions/health_offline_advice.html:31
+msgid "主机"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:160 fta_solutions_app/fta_std.py:198
+#: fta_solutions_app/fta_std.py:199 fta_solutions_app/models.py:899
+#: templates/fta_advice/advice_fta_def.html:95
+#: templates/fta_solutions/alarm_def.html:69
+#: templates/fta_solutions/alarm_instance.html:60
+#: templates/fta_solutions/alarm_instance_list.html:64
+#: templates/fta_solutions/health.html:57
+#: templates/fta_solutions/solution_forms/collect.html:84
+msgid "集群"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:161
+#: templates/fta_solutions/alarm_instance_list.html:93
+#: templates/fta_solutions/alarm_instance_page.mako:112
+#: templates/fta_solutions/solution_forms/gcloud.html:15
+#: templates/fta_solutions/solution_forms/ijobs.html:19
+msgid "业务"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:169
+msgid "成功后跳过"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:170
+msgid "成功后跳过,失败时审批"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:171
+msgid "执行中跳过"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:172 fta_solutions_app/models.py:1293
+msgid "执行中等待"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:173
+msgid "汇集相关事件"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:174
+msgid "收敛后处理"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:175 fta_solutions_app/models.py:1299
+msgid "触发通知"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:176 fta_solutions_app/models.py:1298
+msgid "超出后汇总"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:200
+msgid "系统"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:201
+msgid "平台"
+msgstr ""
+
+#: fta_solutions_app/fta_std.py:203
+msgid "路径"
+msgstr ""
+
+#: fta_solutions_app/models.py:49 fta_solutions_app/models.py:178
+#: fta_solutions_app/models.py:399 fta_solutions_app/models.py:521
+#: fta_solutions_app/models.py:581 fta_solutions_app/models.py:740
+#: fta_solutions_app/models.py:862 fta_solutions_app/models.py:916
+#: fta_solutions_app/models.py:990 fta_solutions_app/models.py:1195
+#: fta_solutions_app/models.py:1333 fta_solutions_app/models.py:1439
+#: fta_solutions_app/models.py:1449 fta_solutions_app/models.py:1918
+msgid "业务编码"
+msgstr ""
+
+#: fta_solutions_app/models.py:50 fta_solutions_app/models.py:583
+#: fta_solutions_app/models.py:742 fta_solutions_app/models.py:1734
+#: templates/fta_solutions/data_report_v2.html:58
+#: templates/fta_solutions/solution.html:13
+#: templates/fta_solutions/solution_list.html:20
+msgid "套餐类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:53 fta_solutions_app/models.py:863
+#: fta_solutions_app/models.py:913
+msgid "英文名称代号"
+msgstr ""
+
+#: fta_solutions_app/models.py:55 fta_solutions_app/models.py:191
+#: fta_solutions_app/models.py:1205
+msgid "全名"
+msgstr ""
+
+#: fta_solutions_app/models.py:56
+msgid "配置(JSON)"
+msgstr ""
+
+#: fta_solutions_app/models.py:59
+msgid "创建者"
+msgstr ""
+
+#: fta_solutions_app/models.py:61 fta_solutions_app/models.py:209
+#: fta_solutions_app/models.py:931 fta_solutions_app/models.py:1425
+#: fta_solutions_app/models.py:1927
+msgid "创建时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:62 fta_solutions_app/models.py:211
+#: fta_solutions_app/models.py:1928
+msgid "创建人"
+msgstr ""
+
+#: fta_solutions_app/models.py:63 fta_solutions_app/models.py:210
+#: fta_solutions_app/models.py:1931
+msgid "修改时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:64 fta_solutions_app/models.py:212
+#: fta_solutions_app/models.py:1932
+msgid "修改人"
+msgstr ""
+
+#: fta_solutions_app/models.py:65 fta_solutions_app/models.py:175
+#: fta_solutions_app/models.py:1194 fta_solutions_app/models.py:1939
+msgid "是否删除"
+msgstr ""
+
+#: fta_solutions_app/models.py:69
+msgid "故障机"
+msgstr ""
+
+#: fta_solutions_app/models.py:110
+msgid "套餐名不能为空"
+msgstr ""
+
+#: fta_solutions_app/models.py:122
+#, python-format
+msgid "套餐名[%s]已存在"
+msgstr ""
+
+#: fta_solutions_app/models.py:123 fta_solutions_app/models.py:302
+msgid "校验通过"
+msgstr ""
+
+#: fta_solutions_app/models.py:167
+msgid "人工配置"
+msgstr ""
+
+#: fta_solutions_app/models.py:168
+msgid "管理员配置"
+msgstr ""
+
+#: fta_solutions_app/models.py:169
+msgid "系统推荐"
+msgstr ""
+
+#: fta_solutions_app/models.py:174 fta_solutions_app/models.py:400
+#: fta_solutions_app/models.py:520 fta_solutions_app/models.py:861
+#: fta_solutions_app/models.py:915 fta_solutions_app/models.py:1193
+#: fta_solutions_app/models.py:1938
+#: templates/fta_advice/advice_fta_def.html:385
+#: templates/fta_advice/advice_fta_def_list.html:25
+#: templates/fta_solutions/alarm_def.html:272
+msgid "是否启用"
+msgstr ""
+
+#: fta_solutions_app/models.py:180
+msgid "正则过滤"
+msgstr ""
+
+#: fta_solutions_app/models.py:182 templates/fta_solutions/alarm_def.html:47
+msgid "进程名称"
+msgstr ""
+
+#: fta_solutions_app/models.py:184 fta_solutions_app/models.py:185
+#: fta_solutions_app/models.py:1197 fta_solutions_app/models.py:1198
+msgid "冗余字段"
+msgstr ""
+
+#: fta_solutions_app/models.py:186
+msgid "Set属性"
+msgstr ""
+
+#: fta_solutions_app/models.py:189 fta_solutions_app/models.py:1203
+#: templates/fta_solutions/solution_forms/notice_only.html:10
+msgid "额外通知人"
+msgstr ""
+
+#: fta_solutions_app/models.py:192 fta_solutions_app/models.py:529
+#: fta_solutions_app/models.py:571 fta_solutions_app/models.py:730
+#: fta_solutions_app/models.py:1206 fta_solutions_app/models.py:1685
+#: fta_solutions_app/models.py:1828
+#: templates/fta_advice/advice_fta_def.html:379
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:24
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:99
+#: templates/fta_solutions/incident_def_list.html:24
+#: templates/fta_solutions/incident_def_list.html:166
+msgid "备注"
+msgstr ""
+
+#: fta_solutions_app/models.py:193
+msgid "成功后是否通知"
+msgstr ""
+
+#: fta_solutions_app/models.py:194 fta_solutions_app/models.py:1207
+msgid "通知配置"
+msgstr ""
+
+#: fta_solutions_app/models.py:196 fta_solutions_app/models.py:1209
+msgid "超时时长"
+msgstr ""
+
+#: fta_solutions_app/models.py:202
+msgid "告警在来源系统的特征ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:205 fta_solutions_app/models.py:1200
+msgid "Set名称"
+msgstr ""
+
+#: fta_solutions_app/models.py:206 fta_solutions_app/models.py:1201
+msgid "Module名称"
+msgstr ""
+
+#: fta_solutions_app/models.py:213 fta_solutions_app/models.py:414
+#: fta_solutions_app/models.py:1942
+msgid "排除业务"
+msgstr ""
+
+#: fta_solutions_app/models.py:215
+#: templates/fta_advice/advice_fta_def_list.html:26
+#: templates/fta_solutions/alarm_def_list.html:41
+msgid "方案来源"
+msgstr ""
+
+#: fta_solutions_app/models.py:220
+msgid "默认套餐"
+msgstr ""
+
+#: fta_solutions_app/models.py:289
+msgid "自愈方案名称不能为空"
+msgstr ""
+
+#: fta_solutions_app/models.py:401
+msgid "是否隐藏"
+msgstr ""
+
+#: fta_solutions_app/models.py:402
+msgid "告警来源"
+msgstr ""
+
+#: fta_solutions_app/models.py:404
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:29
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:108
+msgid "匹配模式"
+msgstr ""
+
+#: fta_solutions_app/models.py:405 fta_solutions_app/models.py:914
+#: fta_solutions_app/models.py:1336
+msgid "描述"
+msgstr ""
+
+#: fta_solutions_app/models.py:407
+msgid "匹配类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:409 fta_solutions_app/models.py:448
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:111
+msgid "字符串"
+msgstr ""
+
+#: fta_solutions_app/models.py:410 fta_solutions_app/models.py:450
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:148
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:208
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:113
+msgid "正则表达式"
+msgstr ""
+
+#: fta_solutions_app/models.py:411 fta_solutions_app/models.py:452
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:115
+msgid "通配符"
+msgstr ""
+
+#: fta_solutions_app/models.py:454 fta_solutions_app/models.py:1941
+#: templates/fta_solutions/alarm_instance_page.mako:204
+msgid "其他"
+msgstr ""
+
+#: fta_solutions_app/models.py:522
+msgid "集群 名"
+msgstr ""
+
+#: fta_solutions_app/models.py:523
+msgid "集群 中文名"
+msgstr ""
+
+#: fta_solutions_app/models.py:524
+msgid "集群ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:550
+msgid "故障自愈"
+msgstr ""
+
+#: fta_solutions_app/models.py:555
+msgid "告警源系统内id"
+msgstr ""
+
+#: fta_solutions_app/models.py:557 fta_solutions_app/models.py:716
+msgid "告警唯一id"
+msgstr ""
+
+#: fta_solutions_app/models.py:559 fta_solutions_app/models.py:718
+msgid "ip, 可空的"
+msgstr ""
+
+#: fta_solutions_app/models.py:560 fta_solutions_app/models.py:719
+msgid "原始告警信息"
+msgstr ""
+
+#: fta_solutions_app/models.py:561 fta_solutions_app/models.py:720
+msgid "告警处理状态"
+msgstr ""
+
+#: fta_solutions_app/models.py:565 fta_solutions_app/models.py:724
+msgid "失败原因"
+msgstr ""
+
+#: fta_solutions_app/models.py:569 fta_solutions_app/models.py:728
+msgid "handle_alarm或者solution的task id"
+msgstr ""
+
+#: fta_solutions_app/models.py:572 fta_solutions_app/models.py:731
+msgid "告警生成时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:574 fta_solutions_app/models.py:733
+msgid "告警结束时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:575 fta_solutions_app/models.py:734
+msgid "自愈建单时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:576 fta_solutions_app/models.py:735
+msgid "自愈结束处理时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:577 fta_solutions_app/models.py:736
+msgid "告警重要级别"
+msgstr ""
+
+#: fta_solutions_app/models.py:578 fta_solutions_app/models.py:737
+msgid "告警处理队列优先级"
+msgstr ""
+
+#: fta_solutions_app/models.py:586 fta_solutions_app/models.py:745
+msgid "json, alarm_def的完整数据快照"
+msgstr ""
+
+#: fta_solutions_app/models.py:588 fta_solutions_app/models.py:747
+msgid "json, solution的完整数据快照"
+msgstr ""
+
+#: fta_solutions_app/models.py:590 fta_solutions_app/models.py:749
+msgid "告警的原始内容"
+msgstr ""
+
+#: fta_solutions_app/models.py:593
+msgid "CC大区"
+msgstr ""
+
+#: fta_solutions_app/models.py:595 fta_solutions_app/models.py:754
+msgid "CC模块"
+msgstr ""
+
+#: fta_solutions_app/models.py:597 fta_solutions_app/models.py:756
+msgid "inc告警ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:599 fta_solutions_app/models.py:758
+msgid "uwork告警ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:603 fta_solutions_app/models.py:762
+msgid "审批批示时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:604 fta_solutions_app/models.py:763
+msgid "流程审批人"
+msgstr ""
+
+#: fta_solutions_app/models.py:606 fta_solutions_app/models.py:765
+msgid "审批备注"
+msgstr ""
+
+#: fta_solutions_app/models.py:610 fta_solutions_app/models.py:769
+msgid "tnm告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:611 fta_solutions_app/models.py:770
+msgid "tnm告警ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:696
+#, python-format
+msgid "%s秒"
+msgstr ""
+
+#: fta_solutions_app/models.py:698 fta_solutions_app/models.py:842
+#, python-format
+msgid "%d分钟"
+msgstr ""
+
+#: fta_solutions_app/models.py:700
+#, python-format
+msgid "%d小时"
+msgstr ""
+
+#: fta_solutions_app/models.py:714
+msgid "告警源系统id"
+msgstr ""
+
+#: fta_solutions_app/models.py:752
+msgid "CC集群"
+msgstr ""
+
+#: fta_solutions_app/models.py:845
+msgid "未记录"
+msgstr ""
+
+#: fta_solutions_app/models.py:850
+#, python-format
+msgid "%d天"
+msgstr ""
+
+#: fta_solutions_app/models.py:852
+#, python-format
+msgid "%d分钟 +"
+msgstr ""
+
+#: fta_solutions_app/models.py:864
+msgid "收敛规则(JSON)"
+msgstr ""
+
+#: fta_solutions_app/models.py:865
+msgid "规则简介"
+msgstr ""
+
+#: fta_solutions_app/models.py:866 fta_solutions_app/models.py:1214
+msgid "排除的业务"
+msgstr ""
+
+#: fta_solutions_app/models.py:867
+msgid "优先级"
+msgstr ""
+
+#: fta_solutions_app/models.py:906
+msgid "硬件待优化"
+msgstr ""
+
+#: fta_solutions_app/models.py:907
+msgid "运维待优化"
+msgstr ""
+
+#: fta_solutions_app/models.py:908
+msgid "业务待优化"
+msgstr ""
+
+#: fta_solutions_app/models.py:909
+msgid "可疑待优化"
+msgstr ""
+
+#: fta_solutions_app/models.py:918 fta_solutions_app/models.py:991
+msgid "考察对象"
+msgstr ""
+
+#: fta_solutions_app/models.py:920
+msgid "考察数据"
+msgstr ""
+
+#: fta_solutions_app/models.py:921
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:29
+#: templates/fta_solutions/health_offline_advice.html:31
+msgid "告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:922 templates/fta_solutions/analysis.html:112
+msgid "收敛事件"
+msgstr ""
+
+#: fta_solutions_app/models.py:923
+msgid "详细数据类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:924 templates/fta_advice/advice_fta_def.html:62
+#: templates/fta_advice/advice_fta_def_list.html:19
+msgid "考察时长(天)"
+msgstr ""
+
+#: fta_solutions_app/models.py:925
+msgid "考察阀值"
+msgstr ""
+
+#: fta_solutions_app/models.py:927
+msgid "建议类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:929
+msgid "具体建议"
+msgstr ""
+
+#: fta_solutions_app/models.py:957
+#, python-format
+msgid "[%s]%s-%s天"
+msgstr ""
+
+#: fta_solutions_app/models.py:971
+msgid "新生成的，等待运维确认"
+msgstr ""
+
+#: fta_solutions_app/models.py:972
+msgid "运维认可，开始跟进"
+msgstr ""
+
+#: fta_solutions_app/models.py:973
+msgid "运维吐槽规则，觉得不是个事儿"
+msgstr ""
+
+#: fta_solutions_app/models.py:974
+msgid "已经完成"
+msgstr ""
+
+#: fta_solutions_app/models.py:977
+msgid "已经线下处理该风险"
+msgstr ""
+
+#: fta_solutions_app/models.py:978 fta_solutions_app/models.py:982
+msgid "未处理"
+msgstr ""
+
+#: fta_solutions_app/models.py:992
+msgid "考察发现了多少条告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:993
+msgid "考察的起始时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:994
+msgid "考察的结束时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:996
+msgid "优化项状态"
+msgstr ""
+
+#: fta_solutions_app/models.py:997
+msgid "优化项的备注"
+msgstr ""
+
+#: fta_solutions_app/models.py:999
+msgid "建议生成时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1002
+#: templates/fta_solutions/solution_list.html:21
+msgid "最后修改人"
+msgstr ""
+
+#: fta_solutions_app/models.py:1004
+msgid "最后修改时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1007
+msgid "预警自愈方案id"
+msgstr ""
+
+#: fta_solutions_app/models.py:1009
+msgid "告警详情id"
+msgstr ""
+
+#: fta_solutions_app/models.py:1011
+msgid "线下处理"
+msgstr ""
+
+#: fta_solutions_app/models.py:1012
+msgid "线下处理人"
+msgstr ""
+
+#: fta_solutions_app/models.py:1013
+msgid "线下处理时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1135
+msgid "集群({})"
+msgstr ""
+
+#: fta_solutions_app/models.py:1143
+msgid "{} <u>{}</u>天内 出现 <u>{}</u> 条 <u>{}</u>告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:1165
+msgid "查看详情"
+msgstr ""
+
+#: fta_solutions_app/models.py:1184
+#: templates/fta_advice/advice_fta_def.html:194
+msgid "套餐"
+msgstr ""
+
+#: fta_solutions_app/models.py:1185
+#: templates/fta_advice/advice_fta_def.html:200
+#: templates/fta_advice/advice_fta_def.html:213
+msgid "建议"
+msgstr ""
+
+#: fta_solutions_app/models.py:1195
+msgid "0表示全业务"
+msgstr ""
+
+#: fta_solutions_app/models.py:1211
+#: templates/fta_advice/advice_fta_def.html:187
+#: templates/fta_advice/advice_fta_def_list.html:24
+#: templates/fta_solutions/health.html:59
+msgid "处理类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1261
+#: templates/fta_solutions/alarm_def_list.html:111
+#: templates/fta_solutions/alarm_def_list.html:125
+msgid "(不处理)"
+msgstr ""
+
+#: fta_solutions_app/models.py:1290
+msgid "成功跳过"
+msgstr ""
+
+#: fta_solutions_app/models.py:1291
+msgid "审批跳过"
+msgstr ""
+
+#: fta_solutions_app/models.py:1292
+msgid "执行跳过"
+msgstr ""
+
+#: fta_solutions_app/models.py:1294
+msgid "异常防御"
+msgstr ""
+
+#: fta_solutions_app/models.py:1295
+msgid "事件汇集"
+msgstr ""
+
+#: fta_solutions_app/models.py:1296
+msgid "收敛触发"
+msgstr ""
+
+#: fta_solutions_app/models.py:1297
+msgid "汇总通知"
+msgstr ""
+
+#: fta_solutions_app/models.py:1300 templates/base.html:233
+#: templates/fta_solutions/alarm_instance_list.html:108
+#: templates/fta_solutions/incident_def_list.html:5
+msgid "告警收敛"
+msgstr ""
+
+#: fta_solutions_app/models.py:1302
+msgid "网络攻击"
+msgstr ""
+
+#: fta_solutions_app/models.py:1303
+msgid "网络故障"
+msgstr ""
+
+#: fta_solutions_app/models.py:1304
+msgid "单机故障"
+msgstr ""
+
+#: fta_solutions_app/models.py:1305
+msgid "预诊断"
+msgstr ""
+
+#: fta_solutions_app/models.py:1306
+msgid "共性分析"
+msgstr ""
+
+#: fta_solutions_app/models.py:1320
+msgid "已发送"
+msgstr ""
+
+#: fta_solutions_app/models.py:1321
+msgid "尚未发送"
+msgstr ""
+
+#: fta_solutions_app/models.py:1322
+msgid "无内容"
+msgstr ""
+
+#: fta_solutions_app/models.py:1325
+msgid "是否可见"
+msgstr ""
+
+#: fta_solutions_app/models.py:1329
+#: templates/fta_solutions/alarm_instance_list.html:50
+msgid "事件类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1334
+msgid "收敛维度"
+msgstr ""
+
+#: fta_solutions_app/models.py:1337
+#: templates/fta_solutions/alarm_instance.html:82
+msgid "内容"
+msgstr ""
+
+#: fta_solutions_app/models.py:1338 templates/fta_solutions/solution.html:47
+msgid "详情"
+msgstr ""
+
+#: fta_solutions_app/models.py:1339
+msgid "最近一次检查时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1340
+msgid "事件开始时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1342
+msgid "事件结束时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1343
+msgid "消息提醒状态"
+msgstr ""
+
+#: fta_solutions_app/models.py:1390
+msgid "主要告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:1423
+msgid "变量名"
+msgstr ""
+
+#: fta_solutions_app/models.py:1424
+msgid "值"
+msgstr ""
+
+#: fta_solutions_app/models.py:1427
+msgid "更新时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1438 fta_solutions_app/models.py:1888
+#: templates/fta_solutions/health_offline_advice.html:40
+msgid "用户"
+msgstr ""
+
+#: fta_solutions_app/models.py:1451
+msgid "责任人"
+msgstr ""
+
+#: fta_solutions_app/models.py:1454
+msgid "TNM业务组ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1468
+msgid "配置项名"
+msgstr ""
+
+#: fta_solutions_app/models.py:1469
+msgid "切勿随意修改此项"
+msgstr ""
+
+#: fta_solutions_app/models.py:1470
+msgid "数据内容"
+msgstr ""
+
+#: fta_solutions_app/models.py:1471
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:63
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:67
+msgid "说明"
+msgstr ""
+
+#: fta_solutions_app/models.py:1489 fta_solutions_app/models.py:1490
+msgid "配置项"
+msgstr ""
+
+#: fta_solutions_app/models.py:1543
+msgid "步骤记录"
+msgstr ""
+
+#: fta_solutions_app/models.py:1544
+msgid "备注时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1545
+msgid "步骤名"
+msgstr ""
+
+#: fta_solutions_app/models.py:1547
+msgid "信息等级"
+msgstr ""
+
+#: fta_solutions_app/models.py:1548
+msgid "同python logging level定义"
+msgstr ""
+
+#: fta_solutions_app/models.py:1566
+msgid "新生成的，未分析出建议"
+msgstr ""
+
+#: fta_solutions_app/models.py:1567
+msgid "新生成的，等待用户确认建议"
+msgstr ""
+
+#: fta_solutions_app/models.py:1568
+msgid "用户已启用采纳, 已添加到AlarmDef表中"
+msgstr ""
+
+#: fta_solutions_app/models.py:1569
+msgid "用户忽略的,自愈小助手页面不再显示"
+msgstr ""
+
+#: fta_solutions_app/models.py:1571 fta_solutions_app/models.py:1749
+msgid "统计归档时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1572 fta_solutions_app/models.py:1750
+msgid "统计更新时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1574 fta_solutions_app/models.py:1848
+#: templates/fta_solutions/alarm_instance_list.html:83
+#: templates/fta_solutions/health.html:63
+msgid "状态"
+msgstr ""
+
+#: fta_solutions_app/models.py:1577 fta_solutions_app/models.py:1705
+#: fta_solutions_app/models.py:1727
+msgid "CC业务"
+msgstr ""
+
+#: fta_solutions_app/models.py:1579
+msgid "告警模块"
+msgstr ""
+
+#: fta_solutions_app/models.py:1581
+msgid "告警集群"
+msgstr ""
+
+#: fta_solutions_app/models.py:1584 fta_solutions_app/models.py:1744
+msgid "归总数"
+msgstr ""
+
+#: fta_solutions_app/models.py:1585
+msgid "扩展"
+msgstr ""
+
+#: fta_solutions_app/models.py:1679
+msgid "业务编码(0表示全业务)"
+msgstr ""
+
+#: fta_solutions_app/models.py:1682
+msgid "特性ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1683
+msgid "告警模块， 多个可使用,分割"
+msgstr ""
+
+#: fta_solutions_app/models.py:1685
+msgid "不关注的原因说明"
+msgstr ""
+
+#: fta_solutions_app/models.py:1697
+msgid "一个月浮动"
+msgstr ""
+
+#: fta_solutions_app/models.py:1698
+msgid "半个月浮动"
+msgstr ""
+
+#: fta_solutions_app/models.py:1699
+msgid "一周浮动"
+msgstr ""
+
+#: fta_solutions_app/models.py:1700
+msgid "一天浮动"
+msgstr ""
+
+#: fta_solutions_app/models.py:1703
+msgid "KPI的日期"
+msgstr ""
+
+#: fta_solutions_app/models.py:1707
+msgid "KPI浮动时间段区间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1710
+msgid "告警总数"
+msgstr ""
+
+#: fta_solutions_app/models.py:1711
+msgid "接入数"
+msgstr ""
+
+#: fta_solutions_app/models.py:1712
+msgid "接入中成功的个数"
+msgstr ""
+
+#: fta_solutions_app/models.py:1724
+msgid "归总日期"
+msgstr ""
+
+#: fta_solutions_app/models.py:1728
+msgid "CC业务组"
+msgstr ""
+
+#: fta_solutions_app/models.py:1729
+msgid "是否成功处理"
+msgstr ""
+
+#: fta_solutions_app/models.py:1731
+msgid "失败类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1737
+msgid "告警源头"
+msgstr ""
+
+#: fta_solutions_app/models.py:1740
+msgid "是否在非工作时间段"
+msgstr ""
+
+#: fta_solutions_app/models.py:1745
+msgid "归总耗时"
+msgstr ""
+
+#: fta_solutions_app/models.py:1746
+msgid "归总收益"
+msgstr ""
+
+#: fta_solutions_app/models.py:1799
+msgid "自愈事件id"
+msgstr ""
+
+#: fta_solutions_app/models.py:1801
+msgid "鹰眼告警单号"
+msgstr ""
+
+#: fta_solutions_app/models.py:1803
+msgid "数据类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1808
+msgid "待确认"
+msgstr ""
+
+#: fta_solutions_app/models.py:1809
+msgid "已确认"
+msgstr ""
+
+#: fta_solutions_app/models.py:1812
+msgid "鹰眼单号"
+msgstr ""
+
+#: fta_solutions_app/models.py:1813
+msgid "数据源预警单单号"
+msgstr ""
+
+#: fta_solutions_app/models.py:1815
+msgid "受影响的业务ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1816
+msgid "告警服务器IP，如无则为空"
+msgstr ""
+
+#: fta_solutions_app/models.py:1818
+msgid "在鹰眼上的分类"
+msgstr ""
+
+#: fta_solutions_app/models.py:1819
+msgid "二级分类:告警源自定义的分类"
+msgstr ""
+
+#: fta_solutions_app/models.py:1822
+msgid "告警级别"
+msgstr ""
+
+#: fta_solutions_app/models.py:1823
+msgid "告警触发时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1824
+msgid "告警解除时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1825
+msgid "告警内容"
+msgstr ""
+
+#: fta_solutions_app/models.py:1826
+#: templates/fta_solutions/alarm_instance_list.html:137
+msgid "影响范围"
+msgstr ""
+
+#: fta_solutions_app/models.py:1827
+msgid "响应策略"
+msgstr ""
+
+#: fta_solutions_app/models.py:1829
+msgid "告警详情url"
+msgstr ""
+
+#: fta_solutions_app/models.py:1830
+msgid "负责人员"
+msgstr ""
+
+#: fta_solutions_app/models.py:1832
+msgid "是否直接转故障"
+msgstr ""
+
+#: fta_solutions_app/models.py:1833
+msgid "转故障描述"
+msgstr ""
+
+#: fta_solutions_app/models.py:1835
+msgid "事件单类型ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1836
+msgid "事件单类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1838
+msgid "事件单号"
+msgstr ""
+
+#: fta_solutions_app/models.py:1840
+msgid "事件单URL"
+msgstr ""
+
+#: fta_solutions_app/models.py:1842
+msgid "事件单描述"
+msgstr ""
+
+#: fta_solutions_app/models.py:1844
+msgid "事件单原因"
+msgstr ""
+
+#: fta_solutions_app/models.py:1846
+msgid "事件单总结"
+msgstr ""
+
+#: fta_solutions_app/models.py:1854
+msgid "单条告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:1855
+msgid "共性告警"
+msgstr ""
+
+#: fta_solutions_app/models.py:1857
+msgid "单号"
+msgstr ""
+
+#: fta_solutions_app/models.py:1859 fta_solutions_app/models.py:1880
+msgid "告警ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1860
+msgid "推送到的类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1876
+msgid "未通过"
+msgstr ""
+
+#: fta_solutions_app/models.py:1877
+#: templates/fta_solutions/alarm_instance_page.mako:186
+msgid "通过"
+msgstr ""
+
+#: fta_solutions_app/models.py:1879
+msgid "对象惟一ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1881
+msgid "节点ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1882
+msgid "审批状态1通过,0未通过"
+msgstr ""
+
+#: fta_solutions_app/models.py:1883
+msgid "通过或未通过的原因"
+msgstr ""
+
+#: fta_solutions_app/models.py:1884
+msgid "执行审批的操作人"
+msgstr ""
+
+#: fta_solutions_app/models.py:1889
+msgid "是否显示接入指引"
+msgstr ""
+
+#: fta_solutions_app/models.py:1917
+msgid "告警源标识"
+msgstr ""
+
+#: fta_solutions_app/models.py:1919
+msgid "应用名称"
+msgstr ""
+
+#: fta_solutions_app/models.py:1922
+msgid "应用ID"
+msgstr ""
+
+#: fta_solutions_app/models.py:1924
+msgid "应用密钥"
+msgstr ""
+
+#: fta_solutions_app/models.py:1935
+msgid "上报时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1942
+msgid "蓝鲸监控设置为全局告警源的默认开启"
+msgstr ""
+
+#: fta_solutions_app/models.py:1945
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:15
+msgid "拉取告警地址"
+msgstr ""
+
+#: fta_solutions_app/models.py:1946
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:32
+msgid "请求类型"
+msgstr ""
+
+#: fta_solutions_app/models.py:1950
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:114
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:39
+msgid "异常阈值"
+msgstr ""
+
+#: fta_solutions_app/models.py:1951
+msgid "异常次数超过该阈值时，禁用改监控源,为0则表示不设阈值"
+msgstr ""
+
+#: fta_solutions_app/models.py:1952
+msgid "异常次数"
+msgstr ""
+
+#: fta_solutions_app/models.py:1953
+msgid "异常信息"
+msgstr ""
+
+#: fta_solutions_app/models.py:1954
+msgid "异常起始时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:1955
+msgid "空告警次数"
+msgstr ""
+
+#: fta_solutions_app/models.py:1956
+msgid "空告警起始时间"
+msgstr ""
+
+#: fta_solutions_app/models.py:2000
+msgid "从【{start_time}】时间起，连续【{exception_num}】次从【{source_name}】告警源拉取告警异常，请关注！异常信息为：{exception_data}"
+msgstr ""
+
+#: fta_solutions_app/models.py:2007
+msgid "从【{start_time}】时间起，连续【{exception_num}】次从【{source_name}】告警源拉取告警异常，请检查您的配置项是否正确！异常信息为：{exception_data}"
+msgstr ""
+
+#: fta_solutions_app/models.py:2115 fta_solutions_app/models.py:2116
+msgid "添加告警应用"
+msgstr ""
+
+#: fta_solutions_app/signals.py:209 templates/fta_admin/alarm_defs.html:23
+#: templates/fta_advice/advice_fta_def_list.html:27
+#: templates/fta_solutions/alarm_def_list.html:43
+#: templates/fta_solutions/alarm_instance_page.mako:168
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:31
+#: templates/fta_solutions/incident_def_list.html:26
+#: templates/fta_solutions/solution_list.html:22
+msgid "操作"
+msgstr ""
+
+#: fta_solutions_app/views.py:91
+msgid "蓝鲸"
+msgstr ""
+
+#: fta_solutions_app/views.py:92
+msgid "BK助手"
+msgstr ""
+
+#: fta_solutions_app/views.py:217
+msgid "请填写告警类型"
+msgstr ""
+
+#: fta_solutions_app/views.py:222
+msgid "请填写收敛纬度"
+msgstr ""
+
+#: fta_solutions_app/views.py:227
+msgid "请填写收敛时间"
+msgstr ""
+
+#: fta_solutions_app/views.py:235
+msgid "收敛时间请填写 1 到 999999999 的整数"
+msgstr ""
+
+#: fta_solutions_app/views.py:240
+msgid "请填写收敛条数"
+msgstr ""
+
+#: fta_solutions_app/views.py:247
+msgid "收敛条数请填写 1 到 999999999 的整数"
+msgstr ""
+
+#: fta_solutions_app/views.py:252
+msgid "请填写收敛条处理方式"
+msgstr ""
+
+#: fta_solutions_app/views.py:256
+msgid "请填写收敛方式"
+msgstr ""
+
+#: fta_solutions_app/views.py:261
+msgid "请填写备注"
+msgstr ""
+
+#: fta_solutions_app/views.py:475
+msgid "一个月"
+msgstr ""
+
+#: fta_solutions_app/views.py:477
+msgid "一个星期"
+msgstr ""
+
+#: fta_solutions_app/views.py:479
+msgid "一天内"
+msgstr ""
+
+#: fta_solutions_app/views.py:481
+msgid "{}天内"
+msgstr ""
+
+#: fta_solutions_app/views.py:496
+msgid "标记成功"
+msgstr ""
+
+#: fta_solutions_app/views.py:500
+msgid "标记失败"
+msgstr ""
+
+#: fta_solutions_app/views.py:746 fta_solutions_app/views.py:754
+#: fta_solutions_app/views.py:849
+#, python-format
+msgid "%s【拷贝】"
+msgstr ""
+
+#: fta_solutions_app/views.py:749
+#, python-format
+msgid "跳过已存在相同的套餐:%s"
+msgstr ""
+
+#: fta_solutions_app/views.py:776
+msgid "无权限"
+msgstr ""
+
+#: fta_solutions_app/views.py:869
+msgid "新版"
+msgstr ""
+
+#: fta_solutions_app/views.py:874 fta_solutions_app/views.py:878
+#, python-format
+msgid "创建失败: %s"
+msgstr ""
+
+#: fta_solutions_app/views.py:905
+msgid "* 所有收敛"
+msgstr ""
+
+#: fta_solutions_app/views.py:1304
+#, python-format
+msgid "[%s]强制终止了处理流程"
+msgstr ""
+
+#: fta_solutions_app/views_analysis.py:53
+msgid "*未知(id:{})*"
+msgstr ""
+
+#: fta_solutions_app/views_analysis.py:55
+#: templates/fta_admin/alarm_defs.html:92
+#: templates/fta_solutions/alarm_instance.html:65
+#: templates/fta_solutions/alarm_instance_page.mako:117
+#: templates/fta_solutions/alarm_instance_row.html:30
+msgid "全业务"
+msgstr ""
+
+#: fta_solutions_app/views_analysis.py:58
+#: templates/fta_advice/advice_fta_def.html:97
+#: templates/fta_advice/advice_fta_def.html:111
+#: templates/fta_solutions/alarm_def.html:71
+#: templates/fta_solutions/alarm_def.html:85
+msgid "全部"
+msgstr ""
+
+#: fta_solutions_app/views_analysis.py:70
+msgid "不处理(仅通知)"
+msgstr ""
+
+#: fta_solutions_app/views_analysis.py:174
+msgid "单天未接入数"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:51
+msgid "* 无处理 *"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:217
+msgid "－－未知－－"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:612
+msgid "自愈趋势"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:621
+#: fta_solutions_app/views_data_v2.py:718
+msgid "自愈次数"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:621
+#: fta_solutions_app/views_data_v2.py:703
+msgid "成功次数"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周一"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周二"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周三"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周四"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周五"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周六"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:637
+msgid "周日"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:748
+msgid "收益时间"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:759
+#: fta_solutions_app/views_data_v2.py:814
+msgid "自愈耗时（分钟）"
+msgstr ""
+
+#: fta_solutions_app/views_data_v2.py:759
+#: fta_solutions_app/views_data_v2.py:836
+msgid "节省人工时间（分钟）"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:70
+msgid "超时时间请填写大于5的整数"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:86 fta_solutions_app/views_def.py:173
+msgid "请先在[管理告警源]功能中启用[蓝鲸监控]"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:90
+msgid "请选择告警类型！"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:93
+msgid "自定义告警特性请选择告警特性ID！"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:228
+msgid "该套餐正被使用，如需删除请在接入策略中去除对本套餐的使用。"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:395
+#, python-format
+msgid "告警源[id:%s]不存在"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:418
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:12
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:30
+msgid "请填写告警源名称"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:435 fta_solutions_app/views_def.py:661
+#, python-format
+msgid "告警源已存在，<a href=\"javascript:include_open('%s')\">点击跳转</a>"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:550
+msgid "登录失败"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:552
+msgid "地址错误或网络不通"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:554
+msgid "连接超时或网络不通"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:590
+msgid "id错误"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:600 home_application/views_wechat.py:59
+msgid "参数错误"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:611
+msgid "名称冲突"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:617
+#, python-format
+msgid "配置错误: %s"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:644
+msgid "请填写告警源信息"
+msgstr ""
+
+#: fta_solutions_app/views_def.py:731
+msgid "开启/禁用警源出错"
+msgstr ""
+
+#: fta_solutions_app/backend/schedule.py:61
+#, python-format
+msgid "【自愈%s】检查[%s]后台进程异常: %s"
+msgstr ""
+
+#: fta_solutions_app/backend/tasks.py:18
+msgid " (Test环境)"
+msgstr ""
+
+#: fta_solutions_app/backend/tasks.py:20
+#, python-format
+msgid "【自愈通知】%s 业务接入变动通知"
+msgstr ""
+
+#: fta_solutions_app/backend/tasks.py:32
+msgid "接入"
+msgstr ""
+
+#: fta_solutions_app/backend/tasks.py:32
+msgid "去除"
+msgstr ""
+
+#: fta_solutions_app/backend/tasks.py:36
+#, python-format
+msgid "变动项：%s［%s］了［%s］业务"
+msgstr ""
+
+#: fta_solutions_app/backend/tasks.py:47
+msgid "<hr>当前已启用自愈的业务汇总： ［"
+msgstr ""
+
+#: home_application/views_wechat.py:22
+msgid "微信端地址(外网可访问)"
+msgstr ""
+
+#: home_application/views_wechat.py:27
+msgid "微信端静态资源地址(外网可访问)"
+msgstr ""
+
+#: home_application/views_wechat.py:36
+msgid "审批管理员"
+msgstr ""
+
+#: home_application/views_wechat.py:62
+msgid "配置修改成功"
+msgstr ""
+
+#: permission/middlewares.py:51
+msgid "您没有权限执行此操作"
+msgstr ""
+
+#: permission/roles.py:17 permission/roles.py:23
+#: templates/fta_admin/alarm_def.html:145
+#: templates/fta_advice/advice_fta_def.html:322
+#: templates/fta_solutions/alarm_def.html:215
+msgid "业务运维"
+msgstr ""
+
+#: permission/roles.py:18 permission/roles.py:24
+msgid "产品接口人"
+msgstr ""
+
+#: templates/400.html:18
+msgid "抱歉，您没有权限进行此操作"
+msgstr ""
+
+#: templates/400.html:19 templates/api_error.html:19
+msgid "返回首页"
+msgstr ""
+
+#: templates/401.html:20
+msgid "您需要登录蓝鲸智云"
+msgstr ""
+
+#: templates/401.html:21
+msgid "立即登录"
+msgstr ""
+
+#: templates/403.html:20
+msgid "您没有访问权限，请联系系统管理员添加"
+msgstr ""
+
+#: templates/404.html:20
+msgid "页面找不到了"
+msgstr ""
+
+#: templates/500.html:20
+msgid "系统出现异常"
+msgstr ""
+
+#: templates/500.html:21
+msgid "努力恢复中，请稍后再试......"
+msgstr ""
+
+#: templates/api_error.html:17
+msgid "抱歉，API 接口异常"
+msgstr ""
+
+#: templates/base.html:21
+msgid "images/new/access-bg1.jpg"
+msgstr ""
+
+#: templates/base.html:24
+msgid "images/new/access-bg2.jpg"
+msgstr ""
+
+#: templates/base.html:27
+msgid "images/new/access-bg3.jpg"
+msgstr ""
+
+#: templates/base.html:33
+msgid "images/new/logo.png"
+msgstr ""
+
+#: templates/base.html:53
+msgid "css/language.css"
+msgstr ""
+
+#: templates/base.html:147
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:203
+msgid "帮助"
+msgstr ""
+
+#: templates/base.html:150
+msgid "故障自愈接入演示"
+msgstr ""
+
+#: templates/base.html:150
+msgid "30s接入"
+msgstr ""
+
+#: templates/base.html:151
+msgid "视频教程"
+msgstr ""
+
+#: templates/base.html:152
+msgid "产品文档"
+msgstr ""
+
+#: templates/base.html:153
+msgid "故障自愈接入指引"
+msgstr ""
+
+#: templates/base.html:153
+msgid "接入指引"
+msgstr ""
+
+#: templates/base.html:154 templates/fta_solutions/trip.part:13
+msgid "故障自愈之旅"
+msgstr ""
+
+#: templates/base.html:154
+msgid "自愈之旅"
+msgstr ""
+
+#: templates/base.html:155
+msgid "问题反馈"
+msgstr ""
+
+#: templates/base.html:156
+msgid "版本日志"
+msgstr ""
+
+#: templates/base.html:186
+msgid "首页"
+msgstr ""
+
+#: templates/base.html:196
+msgid "自愈详情"
+msgstr ""
+
+#: templates/base.html:206 templates/base.html:210
+#: templates/fta_admin/alarm_defs.html:9
+#: templates/fta_solutions/alarm_def_list.html:5
+#: templates/fta_solutions/alarm_def_list.html:9
+#: templates/fta_solutions/solution_list.html:73
+msgid "接入自愈"
+msgstr ""
+
+#: templates/base.html:214 templates/fta_solutions/solution_list.html:5
+msgid "套餐管理"
+msgstr ""
+
+#: templates/base.html:217
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:18
+msgid "管理告警源"
+msgstr ""
+
+#: templates/base.html:229
+msgid "高级配置"
+msgstr ""
+
+#: templates/base.html:236 templates/fta_solutions/health.html:5
+msgid "健康诊断"
+msgstr ""
+
+#: templates/base.html:248
+msgid "统计报表"
+msgstr ""
+
+#: templates/base.html:251
+msgid "收益数据"
+msgstr ""
+
+#: templates/base.html:254
+msgid "操作审计"
+msgstr ""
+
+#: templates/base.html:301
+msgid "返回上一页"
+msgstr ""
+
+#: templates/base.html:327
+msgid "故障自愈是行业领先的“故障自动化处理”解决方案，实现故障从“人工处理”到“无人值守”的变革！"
+msgstr ""
+
+#: templates/base.html:332
+msgid "故障自愈简易流程图"
+msgstr ""
+
+#: templates/base.html:334 templates/fta_solutions/alarm_instance.html:95
+msgid "开始"
+msgstr ""
+
+#: templates/base.html:335
+msgid "拉取告警"
+msgstr ""
+
+#: templates/base.html:336
+msgid "匹配告警处理套餐"
+msgstr ""
+
+#: templates/base.html:337
+msgid "执行套餐"
+msgstr ""
+
+#: templates/base.html:338
+msgid "告警处理完成"
+msgstr ""
+
+#: templates/base.html:344
+msgid "与无人值守只差一个“故障自愈”，马上对接企业内部的监控产品。"
+msgstr ""
+
+#: templates/base.html:345
+msgid "接入一个“磁盘空间告警”试试吧！"
+msgstr ""
+
+#: templates/base.html:346
+msgid "接入故障自愈"
+msgstr ""
+
+#: templates/base_admin.part:20
+msgid "管理员"
+msgstr ""
+
+#: templates/base_admin.part:24 templates/fta_admin/alarm_defs.html:5
+msgid "全业务接入自愈"
+msgstr ""
+
+#: templates/base_extra.part:6 templates/fta_helper/no_alram_source.html:2
+#: templates/fta_helper/no_tips.html:2 templates/fta_helper/suggest_list.html:2
+#: templates/fta_solutions/analysis.html:84
+msgid "自愈小助手"
+msgstr ""
+
+#: templates/fta-video.html:13
+msgid "故障自愈视频教程"
+msgstr ""
+
+#: templates/fta-video.html:15
+msgid "通过视频，带你玩转故障自愈！"
+msgstr ""
+
+#: templates/fta-video.html:20
+msgid "场景类"
+msgstr ""
+
+#: templates/fta-video.html:21
+msgid "接入“Ping告警”自愈方案"
+msgstr ""
+
+#: templates/fta-video.html:30
+msgid "接入“磁盘告警”自愈方案"
+msgstr ""
+
+#: templates/fta-video.html:33
+msgid "创建清理磁盘自愈套餐"
+msgstr ""
+
+#: templates/fta-video.html:42
+msgid "接入磁盘告警自愈方案"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:6
+msgid "此自愈配置已被删除"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:6
+msgid "若想恢复请联系管理员"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:11
+#: templates/fta_solutions/alarm_def.html:12
+msgid "自愈场景"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:18
+#: templates/fta_advice/advice_fta_def.html:45
+#: templates/fta_solutions/alarm_def.html:19
+msgid "请选择需要自愈处理的告警类型"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:29
+#: templates/fta_advice/advice_fta_def.html:56
+#: templates/fta_solutions/alarm_def.html:30
+msgid "告警类型不能为空"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:33
+#: templates/fta_solutions/alarm_def.html:41
+msgid "按内容筛选"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:35
+msgid "使用正则表达式匹配告警"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:35
+msgid "不填为不过滤"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:42
+#: templates/fta_solutions/alarm_def.html:108
+msgid "自愈处理"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:48
+#: templates/fta_solutions/alarm_def.html:114
+msgid "请选择处理告警的自愈套餐"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:55
+#: templates/fta_solutions/alarm_def.html:125
+msgid "自愈套餐不能为空"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:61
+#: templates/fta_advice/advice_fta_def.html:239
+#: templates/fta_solutions/alarm_def.html:131
+msgid "通知方式"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:63
+#: templates/fta_advice/advice_fta_def.html:242
+#: templates/fta_solutions/alarm_def.html:133
+msgid "开始时"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:66 templates/fta_admin/alarm_def.html:90
+#: templates/fta_admin/alarm_def.html:115
+#: templates/fta_advice/advice_fta_def.html:245
+#: templates/fta_advice/advice_fta_def.html:269
+#: templates/fta_advice/advice_fta_def.html:294
+#: templates/fta_solutions/alarm_def.html:136
+#: templates/fta_solutions/alarm_def.html:160
+#: templates/fta_solutions/alarm_def.html:185
+#: templates/fta_solutions/solution_forms/notice.html:51
+#: templates/fta_solutions/solution_forms/notice_only.html:33
+msgid "微信"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:71 templates/fta_admin/alarm_def.html:96
+#: templates/fta_admin/alarm_def.html:121
+#: templates/fta_advice/advice_fta_def.html:250
+#: templates/fta_advice/advice_fta_def.html:275
+#: templates/fta_advice/advice_fta_def.html:300
+#: templates/fta_solutions/alarm_def.html:141
+#: templates/fta_solutions/alarm_def.html:166
+#: templates/fta_solutions/alarm_def.html:191
+#: templates/fta_solutions/solution_forms/notice_only.html:42
+msgid "邮件"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:76 templates/fta_admin/alarm_def.html:101
+#: templates/fta_admin/alarm_def.html:125
+#: templates/fta_advice/advice_fta_def.html:255
+#: templates/fta_advice/advice_fta_def.html:280
+#: templates/fta_advice/advice_fta_def.html:304
+#: templates/fta_solutions/alarm_def.html:146
+#: templates/fta_solutions/alarm_def.html:171
+#: templates/fta_solutions/alarm_def.html:195
+#: templates/fta_solutions/solution_forms/notice.html:54
+#: templates/fta_solutions/solution_forms/notice_only.html:36
+msgid "短信"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:81 templates/fta_admin/alarm_def.html:106
+#: templates/fta_admin/alarm_def.html:131
+#: templates/fta_advice/advice_fta_def.html:260
+#: templates/fta_advice/advice_fta_def.html:285
+#: templates/fta_advice/advice_fta_def.html:310
+#: templates/fta_solutions/alarm_def.html:151
+#: templates/fta_solutions/alarm_def.html:176
+#: templates/fta_solutions/alarm_def.html:201
+#: templates/fta_solutions/solution_forms/notice_only.html:39
+msgid "电话"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:87
+#: templates/fta_advice/advice_fta_def.html:266
+#: templates/fta_solutions/alarm_def.html:157
+msgid "成功时"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:112
+#: templates/fta_advice/advice_fta_def.html:291
+#: templates/fta_solutions/alarm_def.html:182
+msgid "失败时"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:138
+#: templates/fta_advice/advice_fta_def.html:315
+#: templates/fta_solutions/alarm_def.html:208
+msgid "通知人员"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:155
+#: templates/fta_advice/advice_fta_def.html:332
+#: templates/fta_solutions/alarm_def.html:225
+msgid "更多通知人"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:168
+#: templates/fta_advice/advice_fta_def.html:346
+#: templates/fta_solutions/alarm_def.html:238
+msgid "需要提前在蓝鲸桌面的"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:168
+#: templates/fta_advice/advice_fta_def.html:346
+#: templates/fta_solutions/alarm_def.html:238
+msgid "填写联系方式"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:173
+#: templates/fta_advice/advice_fta_def.html:356
+#: templates/fta_solutions/alarm_def.html:243
+msgid "其他信息"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:189
+#: templates/fta_advice/advice_fta_def.html:371
+#: templates/fta_solutions/alarm_def.html:259
+#: templates/fta_solutions/incident_def_list.html:150
+#: templates/fta_solutions/solution_forms/collect.html:34
+msgid "分"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:189
+#: templates/fta_advice/advice_fta_def.html:371
+#: templates/fta_solutions/alarm_def.html:259
+msgid "以上按失败处理"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:191
+#: templates/fta_advice/advice_fta_def.html:373
+#: templates/fta_solutions/alarm_def.html:261
+msgid "超时时间不能为空"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:196
+#: templates/fta_solutions/alarm_def.html:266
+msgid "自愈方案名称"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:198
+#: templates/fta_solutions/alarm_def.html:268
+msgid "输入这个自愈方案的名称"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:208
+#: templates/fta_solutions/alarm_def.html:298
+msgid "保存自愈策略"
+msgstr ""
+
+#: templates/fta_admin/alarm_def.html:210
+#: templates/fta_solutions/alarm_def.html:298
+msgid "添加自愈策略"
+msgstr ""
+
+#: templates/fta_admin/alarm_defs.html:6
+msgid "对所有业务统一接入自愈方案，节省配置流程"
+msgstr ""
+
+#: templates/fta_admin/alarm_defs.html:18
+#: templates/fta_advice/advice_fta_def_list.html:18
+#: templates/fta_solutions/alarm_def_list.html:35
+msgid "告警数量"
+msgstr ""
+
+#: templates/fta_admin/alarm_defs.html:22
+msgid "生效范围"
+msgstr ""
+
+#: templates/fta_admin/alarm_defs.html:28
+#: templates/fta_solutions/alarm_def_list.html:48
+msgid "您还没有接入自愈，点击"
+msgstr ""
+
+#: templates/fta_admin/alarm_defs.html:28
+#: templates/fta_solutions/alarm_def_list.html:48
+#: templates/fta_solutions/alarm_instance_list.html:159
+msgid "快速接入自愈"
+msgstr ""
+
+#: templates/fta_admin/alarm_defs.html:53
+#: templates/fta_admin/alarm_defs.html:62
+msgid "不处理"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:33
+msgid "此预警预警配置已被删除，若想恢复请联系管理员。"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:38
+msgid "预警场景"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:78
+#: templates/fta_advice/advice_fta_def_list.html:20
+msgid "考察阈值(次)"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:103
+#: templates/fta_advice/advice_fta_def.html:117
+#: templates/fta_solutions/alarm_def.html:77
+#: templates/fta_solutions/alarm_def.html:91
+msgid "默认全选"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:109
+#: templates/fta_solutions/alarm_def.html:83
+#: templates/fta_solutions/alarm_instance_list.html:72
+#: templates/fta_solutions/health.html:58
+#: templates/fta_solutions/solution_forms/collect.html:87
+msgid "模块"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:183
+msgid "预警处理"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:215
+msgid "请输入建议"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:218
+msgid "建议不能为空"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:224
+msgid "预警套餐"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:227
+msgid "请选择处理告警的预警套餐"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:234
+#: templates/fta_solutions/alarm_def.html:121
+msgid "查看"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:235
+msgid "预警套餐不能为空"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:346
+#: templates/fta_solutions/alarm_def.html:238
+msgid "注"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:381
+msgid "输入这个预警方案的名称"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:394
+#: templates/fta_advice/advice_fta_def_list.html:134
+#: templates/fta_advice/advice_fta_def_list.html:140
+#: templates/fta_solutions/alarm_def.html:281
+#: templates/fta_solutions/alarm_def_list.html:174
+msgid "是"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:400
+#: templates/fta_advice/advice_fta_def_list.html:136
+#: templates/fta_advice/advice_fta_def_list.html:142
+#: templates/fta_solutions/alarm_def.html:287
+#: templates/fta_solutions/alarm_def_list.html:176
+msgid "否"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:410
+msgid "保存预警策略"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def.html:410
+msgid "添加预警策略"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:6
+msgid "配置预警自愈策略，每天早上8点回溯自愈处理过的告警，分析潜在风险并处理。可在健康诊断页面找到分析出的健康事件。"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:8
+msgid "接入预警自愈"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:21
+#: templates/fta_helper/suggest_list.html:15
+#: templates/fta_solutions/alarm_def_list.html:36
+msgid "生效集群"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:22
+#: templates/fta_helper/suggest_list.html:16
+#: templates/fta_solutions/alarm_def_list.html:37
+msgid "生效模块"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:23
+#: templates/fta_solutions/health.html:60
+msgid "处理方案"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:86
+#: templates/fta_advice/advice_fta_def_list.html:91
+#: templates/fta_advice/advice_fta_def_list.html:98
+#: templates/fta_advice/advice_fta_def_list.html:103
+#: templates/fta_solutions/alarm_def_list.html:71
+#: templates/fta_solutions/alarm_def_list.html:76
+#: templates/fta_solutions/alarm_def_list.html:86
+#: templates/fta_solutions/alarm_def_list.html:95
+msgid "(所有)"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:149
+#: templates/fta_advice/advice_fta_def_list.html:154
+#: templates/fta_solutions/incident_def_list.html:76
+msgid "系统内置"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:149
+#: templates/fta_advice/advice_fta_def_list.html:154
+#: templates/fta_solutions/incident_def_list.html:76
+msgid "当前业务"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:183
+msgid "您还没有添加预警自愈，点击"
+msgstr ""
+
+#: templates/fta_advice/advice_fta_def_list.html:183
+msgid "快速添加预警自愈"
+msgstr ""
+
+#: templates/fta_helper/no_alram_source.html:2
+#: templates/fta_helper/no_tips.html:2 templates/fta_helper/suggest_list.html:2
+msgid "通过分析数据，自愈决策出推荐方案，减轻配置成本"
+msgstr ""
+
+#: templates/fta_helper/no_alram_source.html:5
+#: templates/fta_helper/suggest_list.html:9
+msgid "自愈小助手提示"
+msgstr ""
+
+#: templates/fta_helper/no_alram_source.html:6
+msgid "建议对接一款企业内部的监控产品，迈向无人值守的第一步"
+msgstr ""
+
+#: templates/fta_helper/no_alram_source.html:7
+msgid "启动"
+msgstr ""
+
+#: templates/fta_helper/no_tips.html:9
+msgid "已采纳"
+msgstr ""
+
+#: templates/fta_helper/no_tips.html:9
+msgid "条决策"
+msgstr ""
+
+#: templates/fta_helper/no_tips.html:11
+msgid "自愈小助手正在决策分析中"
+msgstr ""
+
+#: templates/fta_helper/suggest_list.html:10
+msgid "通过数据分析，系统决策了如下自愈方案，等待您的确认"
+msgstr ""
+
+#: templates/fta_helper/suggest_list.html:23
+#: templates/fta_solutions/alarm_def_list.html:42
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:41
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:55
+msgid "启用"
+msgstr ""
+
+#: templates/fta_helper/suggest_list.html:24
+msgid "忽略"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:11
+msgid "待优化项目"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:13
+msgid "每天早八点更新，为运维提供精准的优化建议"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:17
+msgid "最新"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:20
+msgid "正在跟进"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:23
+msgid "已优化"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:33
+msgid "太棒了"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:33
+msgid "暂时没有待优化项"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:35
+msgid "向高质量运维学习"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:50
+#: templates/fta_solutions/advice_list.html:95
+#: templates/fta_solutions/advice_list.html:136
+#: templates/fta_solutions/health.html:54
+msgid "发现时间"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:54
+msgid "我要跟进"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:55
+msgid "没那么严重"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:58
+msgid "请建议多少才算严重"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:60
+msgid "反馈"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:79
+msgid "暂时没有正在跟进的项目"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:97
+msgid "跟进时间"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:98
+msgid "跟进者"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:102
+msgid "已优化完成"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:103
+msgid "暂时不跟进"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:120
+msgid "没有已优化的项目"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:138
+msgid "完成时间"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:139
+msgid "完成者"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:143
+msgid "需要重新跟进"
+msgstr ""
+
+#: templates/fta_solutions/advice_list.html:154
+msgid "修改失败"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:7
+msgid "此自愈配置已被删除，若想恢复请联系管理员。"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:35
+msgid "TNM特性ID"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:43
+msgid "使用正则表达式匹配告警，不填为不过滤"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:49
+msgid "(不填为全部,多个进程用;分隔)"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:122
+#: templates/fta_solutions/solution_list.html:8
+msgid "创建自愈套餐"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:300
+msgid "本策略拷贝至"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def.html:303
+msgid "选择其他告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def_list.html:6
+msgid "针对每一种告警类型配置对应的处理方案（自愈套餐），比如将磁盘使用率告警接入磁盘清理套餐。"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def_list.html:14
+msgid "本业务自愈负责人列表(将定期从CC同步)"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def_list.html:18
+msgid "若不配置，则默认为CC中配置的运维"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def_list.html:20
+msgid "主机负责人会被用作套餐执行人，比如ijobs,uwork等"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def_list.html:23
+msgid "设置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_def_list.html:105
+#: templates/fta_solutions/alarm_def_list.html:119
+#: templates/fta_solutions/health_detail.part:93
+#: templates/fta_solutions/health_detail.part:100
+msgid "系统定义的快捷套餐"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:63
+msgid "告警对象"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:83
+#: templates/fta_solutions/data_report_v2.html:104
+msgid "时间"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:92
+msgid "空套餐 (不处理)"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:97
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:64
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:63
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:86
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:75
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:38
+msgid "完成"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:97
+msgid "耗时"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:99
+msgid "状况"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:114
+msgid "外部系统"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance.html:126
+#: templates/fta_solutions/alarm_instance_page.mako:133
+#: templates/fta_solutions/health_offline_advice.html:37
+msgid "处理过程"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:7
+#: templates/fta_solutions/analysis.html:159
+#: templates/fta_solutions/data_report_v2.html:106
+#: templates/fta_solutions/health.html:14
+#: templates/fta_solutions/operational_audit_detail.html:56
+msgid "选择日期"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:9
+msgid "次收敛事件"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:12
+#: templates/fta_solutions/health.html:22
+#: templates/fta_solutions/operational_audit_detail.html:109
+msgid "共"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:12
+msgid "次自愈"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:24
+#: templates/fta_solutions/health.html:35
+msgid "刷新"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:26
+#: templates/fta_solutions/health.html:37
+msgid "导出IP"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:29
+#: templates/fta_solutions/health.html:40
+msgid "请输入IP"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:44
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:62
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:66
+#: templates/fta_solutions/unimportant_alarms.html:6
+msgid "类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:58
+#: templates/fta_solutions/unimportant_alarms.html:7
+msgid "产生时间"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:60
+msgid "自愈耗时"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:87
+msgid "未知状态"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:90
+#: templates/fta_solutions/unimportant_alarms.html:10
+msgid "自愈结果"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:119
+#: templates/fta_solutions/alarm_instance_row.html:19
+msgid "今天"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:120
+#: templates/fta_solutions/alarm_instance_row.html:20
+msgid "昨天"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:121
+#: templates/fta_solutions/alarm_instance_row.html:21
+msgid "前天"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:159
+msgid "该业务还没有接入自愈，点击"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:161
+#: templates/fta_solutions/health_detail.part:2
+#: templates/fta_solutions/incident_def_list.html:29
+#: templates/fta_solutions/unimportant_alarms.html:16
+msgid "没有数据"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_list.html:177
+msgid "自愈详情IP列表"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:110
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:51
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:128
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:186
+msgid "告警详情"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:117
+msgid "的告警对象"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:119
+msgid "的主机"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:122
+msgid "在"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:124
+msgid "发生"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:145
+#: templates/fta_solutions/solution_forms/gcloud.html:62
+msgid "无"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:148
+msgid "处理状态"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:164
+msgid "刷新页面"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:172
+msgid "重试整个流程"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:176
+msgid "终止处理流程"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:184
+msgid "审批意见"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:187
+msgid "拒绝"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_page.mako:218
+msgid "确定"
+msgstr ""
+
+#: templates/fta_solutions/alarm_instance_row.html:42
+#: templates/fta_solutions/health_detail.part:117
+msgid "无效状态"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:27
+msgid "自愈成功次数"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:50
+msgid "健康诊断待处理"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:51
+msgid "近7天内"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:136
+msgid "人力节省(小时)"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:137
+msgid "近30天内"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:154
+msgid "自愈指数趋势"
+msgstr ""
+
+#: templates/fta_solutions/analysis.html:156
+msgid "失败分析"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:10
+msgid "业务名称"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:27
+msgid "业务组"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:46
+#: templates/fta_solutions/data_report_v2.html:61
+#: templates/fta_solutions/data_report_v2.html:76
+#: templates/fta_solutions/data_report_v2.html:91
+#: templates/fta_solutions/operational_audit_detail.html:13
+#: templates/fta_solutions/operational_audit_detail.html:25
+#: templates/fta_solutions/operational_audit_detail.html:37
+msgid "所有"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:88
+msgid "处理时间段"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:93
+msgid "非工作时间(晚6点~早9点)"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:96
+msgid "工作时间(早9点~晚6点)"
+msgstr ""
+
+#: templates/fta_solutions/data_report_v2.html:115
+#: templates/fta_solutions/operational_audit_detail.html:65
+#: user_activity_log/models.py:13
+msgid "查询"
+msgstr ""
+
+#: templates/fta_solutions/health.html:6
+msgid "依据预警自愈配置的策略，每天早上8点回溯自愈处理过的告警，处理分析出的潜在风险。"
+msgstr ""
+
+#: templates/fta_solutions/health.html:16
+msgid "次未处理"
+msgstr ""
+
+#: templates/fta_solutions/health.html:19
+msgid "次处理失败"
+msgstr ""
+
+#: templates/fta_solutions/health.html:22
+msgid "条健康诊断"
+msgstr ""
+
+#: templates/fta_solutions/health.html:55
+msgid "发生频次"
+msgstr ""
+
+#: templates/fta_solutions/health.html:56
+msgid "可疑IP"
+msgstr ""
+
+#: templates/fta_solutions/health.html:69
+msgid "事件详情"
+msgstr ""
+
+#: templates/fta_solutions/health.html:73
+msgid "正在加载数据"
+msgstr ""
+
+#: templates/fta_solutions/health.html:86
+msgid "健康诊断IP列表"
+msgstr ""
+
+#: templates/fta_solutions/health.html:100
+msgid "选择状态"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:23
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:23
+#: templates/fta_solutions/health.html:101
+msgid "至"
+msgstr ""
+
+#: templates/fta_solutions/health_detail.part:30
+#: templates/fta_solutions/health_detail.part:35
+#: templates/fta_solutions/solution_forms/ijobs.html:88
+msgid "次"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:29
+msgid "诊断详情"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:31
+msgid "天"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:31
+msgid "内出现"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:31
+#: templates/fta_solutions/incident_def_list.html:152
+#: templates/fta_solutions/operational_audit_detail.html:109
+#: templates/fta_solutions/solution_forms/collect.html:51
+#: templates/fta_solutions/solution_forms/collect.html:68
+#: templates/fta_solutions/solution_forms/convergence.html:33
+msgid "条"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:33
+msgid "诊断建议"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:40
+msgid "依照诊断建议，已线下处理完成"
+msgstr ""
+
+#: templates/fta_solutions/health_offline_advice.html:45
+msgid "建议不存在"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:6
+msgid "将多个关联告警收敛为同一事件，比如1台服务器同时出现Ping告警、磁盘只读告警，那么Ping告警处理成功后不会重复处理磁盘只读告警。"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:8
+#: templates/fta_solutions/incident_def_list.html:110
+msgid "新建收敛规则"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:20
+msgid "针对告警类型"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:21
+msgid "在一定条件下"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:22
+#: templates/fta_solutions/incident_def_list.html:147
+msgid "触发频次"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:23
+#: templates/fta_solutions/incident_def_list.html:157
+msgid "收敛方式"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:25
+msgid "规则来源"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:54
+#: templates/fta_solutions/incident_def_list.html:139
+msgid "相同"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:63
+msgid "分钟内"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:65
+msgid "条以上"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:113
+msgid "请先阅读并同意《蓝鲸智云软件许可及服务协议》"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:118
+msgid "针对什么告警类型？"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:133
+msgid "条件"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:135
+msgid "在哪些情况下"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:136
+msgid "维度"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:149
+#: templates/fta_solutions/incident_def_list.html:151
+#: templates/fta_solutions/solution.html:29
+#: templates/fta_solutions/solution_forms/convergence.html:12
+#: templates/fta_solutions/solution_forms/convergence.html:29
+#: templates/fta_solutions/solution_forms/notice_only.html:5
+msgid "请输入"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:153
+msgid "以上"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:159
+msgid "请选择收敛方式"
+msgstr ""
+
+#: templates/fta_solutions/incident_def_list.html:167
+msgid "请输入人性化描述"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:249
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:64
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:71
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:9
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:27
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:123
+#: templates/fta_solutions/incident_def_list.html:173
+msgid "保存"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:28
+msgid "对不起，您当前没有可操作的业务权限"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:30
+msgid "请尝试如下操作"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:32
+msgid "联系业务“管理员”为您添加相关业务的[运维]角色"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:33
+msgid "前往"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:8
+#: templates/fta_solutions/no_biz_open.html:33
+msgid "配置平台"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:33
+msgid "创建属于您自己的业务"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:38
+msgid "如已经在配置平台添加业务"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:38
+msgid "点击进入"
+msgstr ""
+
+#: templates/fta_solutions/no_biz_open.html:38
+msgid "请点击进入"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:10
+#: templates/fta_solutions/operational_audit_detail.html:77
+msgid "操作者"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:22
+#: templates/fta_solutions/operational_audit_detail.html:79
+msgid "操作对象"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:34
+#: templates/fta_solutions/operational_audit_detail.html:80
+msgid "操作类型"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:46
+#: templates/fta_solutions/operational_audit_detail.html:78
+msgid "操作内容"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:54
+#: templates/fta_solutions/operational_audit_detail.html:81
+msgid "操作时间"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:88
+msgid "content"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:89
+msgid "object"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:90
+msgid "operator_type"
+msgstr ""
+
+#: templates/fta_solutions/operational_audit_detail.html:98
+msgid "无数据"
+msgstr ""
+
+#: templates/fta_solutions/select_cc_biz.part:27
+msgid "该业务还未接入自愈"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:27
+msgid "套餐命名"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:39
+msgid "添加自愈套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:39
+msgid "保存自愈套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:44
+msgid "点击展开自愈套餐说明"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:46
+msgid "自愈套餐说明"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:47
+msgid "套餐是业务运维设计制作的一套恢复故障的方案，可以复用于不同的告警，也可作为原子套餐用于制作组合套餐。"
+msgstr ""
+
+#: templates/fta_solutions/solution.html:47
+msgid "自愈套餐大全"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:6
+msgid "创建每类告警场景的处理套餐，比如创建一个清理磁盘的套餐，用于在“接入自愈”页面完成磁盘告警接入自愈。"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:17
+msgid "套餐名字"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:18
+msgid "告警数"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:19
+msgid "定义数"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:28
+msgid "您还没有创建自愈套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:28
+msgid "点击快速创建自愈套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution_list.html:74
+msgid "编辑"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:23
+msgid "接入一个自愈快捷套餐"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:27 templates/fta_solutions/trip.part:45
+#: templates/fta_solutions/trip.part:63 templates/fta_solutions/trip.part:81
+#: templates/fta_solutions/trip.part:99
+msgid "已完成"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:29 templates/fta_solutions/trip.part:47
+#: templates/fta_solutions/trip.part:65 templates/fta_solutions/trip.part:83
+#: templates/fta_solutions/trip.part:101
+msgid "去完成"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:41
+msgid "完成一个自愈套餐的执行"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:59
+msgid "创建一个自愈套餐"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:77
+msgid "创建一个收敛规则"
+msgstr ""
+
+#: templates/fta_solutions/trip.part:95
+msgid "创建一个对接作业平台的套餐"
+msgstr ""
+
+#: templates/fta_solutions/unimportant_alarms.html:5
+msgid "原始告警ID"
+msgstr ""
+
+#: templates/fta_solutions/unimportant_alarms.html:11
+msgid "详细内容"
+msgstr ""
+
+#: templates/fta_solutions/unimportant_alarms.html:28
+msgid "无处理"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:5
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:21
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_open-falcon.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:3
+msgid "接入流程"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:5
+msgid "调用方式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:6
+msgid "调用格式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:9
+msgid "告警源IP，必须"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:10
+msgid "告警源的告警ID，全局唯一，必须"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:11
+msgid "告警发生的时间，格式：YYYY-MM-DD HH:mm:ssZZ，必须"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:12
+msgid "告警类型（按业务存储，不填则统一放到默认分类下），可选"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:13
+msgid "告警详情，可选"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:18
+msgid "参数列表"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:22
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:97
+msgid "参数"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:23
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:98
+msgid "必须"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:31
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:106
+msgid "告警源IP"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:36
+msgid "告警源的告警ID"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:36
+msgid "全局唯一"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:41
+msgid "告警发生的时间，格式：YYYY-MM-DD HH:mm:ss"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:57
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:61
+msgid "标准返回字段说明"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:61
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:65
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:27
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:96
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:98
+msgid "名称"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:70
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:74
+msgid "请求成功与否，true:请求成功，false:请求失败"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:75
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:79
+msgid "返回错误编码"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:80
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:89
+msgid "请求成功返回的数据"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:85
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:84
+msgid "请求失败返回的错误消息"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_api.part:97
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:13
+msgid "调用示例"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:8
+msgid "注意：需要预先把主机信息导入"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:8
+msgid "且 instance ID 必须对应配置平台的【设备SN】字段"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:12
+msgid "点击Create New Topic 创建一个新的Topic"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:19
+msgid "填写 Topic 名字，如 fta-alarm，并点击 Create Topic 创建"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:26
+msgid "在刚创建的 Topic 下创建新的 Subscription"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:30
+msgid "选择 https，并把获取的回调 URL 粘到这里，然后点击 Create Subscription"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:37
+msgid "获取 Subscription ID"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:39
+msgid "Subscription 的状态需要被确认订阅。"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:39
+msgid "当在第3步中创建 Subscription 后，Subscription ID 显示的为 \"PendingConfirmation\"; "
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:39
+msgid "请点击右边的刷新按钮，直到 \"PendingConfirmation\" 状态改变。"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:45
+msgid "手动创建 AWS CloudWatch 告警"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:47
+msgid "返回到 EC2 控制台界面， 右键单击你的实例，选择 \" Add/Edit Alarms \"。"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:53
+msgid "点击 Create Alarm 创建告警"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_aws.part:57
+msgid "选择你想监控并告警的资源，并点击 Create Alarm 创建告警。"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:13
+msgid "配置信息"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:15
+msgid "通过AppId来区分业务，SecureKey来提升安全"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:30
+msgid "重置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:35
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:43
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:51
+msgid "Callback地址"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:38
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:46
+#: templates/fta_solutions/alarm_source/alarm_source_config.part:54
+msgid "复制"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:37
+msgid "返回数据格式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:60
+msgid "数据编码方式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:93
+msgid "data 中数据说明"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:111
+msgid "告警源的告警ID，全局唯一"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:116
+msgid "告警发生的时间，格式：YYYY-MM-DD HH:mm:ssZZ"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:122
+msgid "点击添加告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:140
+msgid "自助接入说明"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:142
+msgid "如您的API格式不满足上述要求，您可以按照如下方式自助接入："
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:143
+msgid ""
+"在故障自愈后台项目的 $proj_base_dir/project/poll_alarm/custom_monitor.py "
+"文件中修改拉取告警、清洗告警信息的方法"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:144
+msgid "修改完成后，重启故障自愈后台服务，重启步骤如下:"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_custom.part:147
+msgid "在部署故障自愈后台的服务器上执行"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:28
+msgid "邮箱配置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:41
+msgid "登录邮箱用户名"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:42
+msgid "请输入邮箱用户名"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:46
+msgid "请填写用户名"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:50
+msgid "密码"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:59
+msgid "登录邮箱密码"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:60
+msgid "请输入邮箱密码"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:64
+msgid "请填写密码"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:68
+msgid "IMAP地址"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:77
+msgid "类似imap.xxx.com，具体可查看邮箱的帮助文档"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:78
+msgid "请输入IMAP服务器地址"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:82
+msgid "请填写IMAP地址"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:86
+msgid "IMAP端口"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:97
+msgid "IMAP服务器端口"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:98
+msgid "请输入IMAP服务器端口"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:103
+msgid "请填写IMAP端口"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:107
+msgid "使用SSL"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:124
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:129
+msgid "异常阈值请输入非负整数"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:132
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:53
+msgid "拉取告警异常次数超过该阈值时，禁用该监控源；为0则表示不设阈值"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:135
+msgid "用以登录邮箱的IMAP配置，系统只会扫描收件箱未读邮件，建议使用专用邮箱."
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:142
+msgid "解析配置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:145
+msgid "匹配方式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:152
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:227
+msgid "CSS选择器"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:156
+msgid "主机ip"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:160
+msgid "匹配内网IP"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:161
+msgid "请输入内网IP解析规则"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:171
+msgid "告警类型位置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:175
+msgid "分析告警类型依赖此字段（模糊匹配: ^(.*?)$）"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:176
+msgid "请输入告警类型位置解析规则"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:190
+msgid "匹配告警内容"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:191
+msgid "请输入告警详情位置解析规则"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:202
+msgid "用以识别解析告警邮件的配置，告警邮件应当能够根据配置解析出指定的信息."
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:208
+msgid "：优先匹配第一个捕获组内容."
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:209
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:217
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:228
+msgid "如对于内容"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:209
+msgid "和正则表达式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:209
+msgid "捕获结果为"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:211
+msgid "匹配内网ip"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:212
+msgid "全文匹配"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:216
+msgid "针对HTML格式的邮件使用，优先使用第一个匹配结果，可以使用Chrome开发者工具辅助获取XPath表达式."
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:217
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:228
+msgid "和下列表达式"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:219
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:220
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:221
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:222
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:230
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:231
+msgid "结果为"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:223
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:232
+msgid "更多用法"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:227
+msgid "类似XPath，匹配指定模式元素内容，也可以使用Chrome开发者工具辅助获取."
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:236
+msgid "使用Chrome获取XPath或CSS选择器的方式（网页版服务器可能会对邮件结构进行优化，仅供参考）"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:238
+msgid "在元素上右键菜单选择检查"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_email.part:239
+msgid "在dom中找到对应的节点右键复制"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head.part:6
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:28
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:53
+msgid "images/new/alarm_source/"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head.part:8
+msgid "接入后对所有业务都生效"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head.part:25
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:79
+msgid "新建告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:3
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:2
+msgid "告警源名称"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:11
+msgid "告警源名称不能为空"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:26
+msgid "请输入拉取监控产品告警的API地址(格式参照下方说明)"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:27
+msgid "拉取告警地址请输入http服务地址"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:62
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:69
+msgid "编辑告警源"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:65
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:72
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:10
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:28
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:124
+#: templates/fta_solutions/solution_details/graph.html:48
+msgid "取消"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_custom.part:68
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:19
+msgid "添加告警源"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:17
+#: templates/fta_solutions/alarm_source/alarm_source_head_pull.part:21
+msgid "生成配置信息"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:9
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:9
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:9
+msgid "下载推送脚本"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:23
+msgid "在Icinga2 Server上下载"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:23
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:23
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:23
+msgid "推送脚本"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:23
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:23
+msgid "脚本中包含动态生成的AppId、SecretKey"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:34
+msgid "安装告警配置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:36
+msgid "指定icinga2根目录进行安装"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_icinga2.part:49
+msgid "重新加载Icinga2"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:18
+msgid "对接企业正在使用的监控产品，迈向无人值守的第1步"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:23
+msgid "已启用监控产品"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:31
+msgid "告警拉取异常"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:33
+msgid "已暂停"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:37
+msgid "最后接收告警"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_list.html:49
+msgid "未启用监控产品"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:23
+msgid "在Nagios Server上下载"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:23
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:23
+msgid "目录"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:34
+msgid "修改告警配置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:36
+msgid "在配置文件/usr/local/nagios/etc/objects/commands.cfg中追加以下配置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:56
+msgid "声明全局 event handler"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:58
+msgid "在配置文件中/usr/local/nagios/etc/nagios.cfg 中追加如下配置项"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_nagios.part:72
+msgid "重新加载Nagios"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_open-falcon.part:16
+msgid "模板报警配置，对模板中的所有策略生效"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_open-falcon.part:20
+msgid "回调之前发提醒短信"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_open-falcon.part:21
+msgid "回调之前发提醒邮件"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_open-falcon.part:22
+msgid "回调之后发结果短信"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_open-falcon.part:23
+msgid "回调之后发结果邮件"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:9
+msgid "配置告警回调"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:11
+msgid "在alertmanager中配置告警回调"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:25
+msgid "接入规范"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:27
+msgid "需要有可识别的"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:27
+msgid "字段"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:30
+msgid "可通过设置名为"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:30
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:46
+msgid "的"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:33
+msgid "如无则尝试使用目标域名作为ip"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:36
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:52
+msgid "有效设置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:43
+msgid "需要有可识别的告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:46
+msgid "可通过设置告警规则名为"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:49
+msgid "否则取告警规则名称作为告警类型使用"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_prometheus.part:68
+msgid "重新加载alertmanager"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:11
+msgid "编辑告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:13
+msgid "自定义告警类型，让告警处理更加明确"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:19
+msgid "新增告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:28
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:102
+msgid "规则"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:87
+msgid "提示：通过匹配监控项表达式中的ITEM.KEY来确认告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:89
+msgid "提示：通过Nagios的service_group或service_description配置项来匹配告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:91
+msgid "提示：通过回调的metric来匹配告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:93
+msgid "提示：通过匹配alarm_type字段来确定告警类型"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_type.part:104
+msgid "请输入匹配规则"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:23
+msgid "在Zabbix Server上下载"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:23
+msgid "一般是"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:23
+msgid "该脚本包含动态生成的AppId、SecretKey"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:29
+msgid "初始化告警配置"
+msgstr ""
+
+#: templates/fta_solutions/alarm_source/alarm_source_zabbix.part:31
+msgid ""
+"在alertscripts目录下执行zabbix_fta_alarm.py（参数输入API "
+"URL、Zabbix管理员账号、密码，会自动创建action、 script等）"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/clean.html:3
+msgid "磁盘清理的目录输入提示"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/clean.html:4
+msgid "禁止输入以下特殊字符：空格、全角分号、全角逗号、半角逗号、中文顿号"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:2
+msgid "什么是组合套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:3
+msgid "组合套餐， 顾名思义就是把故障自愈该业务下的套餐和官方通用套餐组合起来使用。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:4
+msgid "组合套餐的配置其实就是维护一棵二叉树。节点的左节点表示成功的后续套餐，右节点表示失败的后续套餐。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:6
+msgid "images/new/group-img.png"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:8
+msgid "如上图，会先调用 A 套餐。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:9
+msgid "A 套餐成功的话调用 B 套餐。B 套餐成功的话就结束，失败的话就调用 D 套餐。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:10
+msgid "A 套餐失败的话调用 C 套餐。失败的话最多再重试两次 C 套餐。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:11
+msgid "组合套餐的状态将由最后一个执行的套餐决定。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:13
+msgid "操作说明"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:14
+msgid "选择框选择该节点的套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:15
+msgid "绿色的“成功”按钮新建一个左节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/diy.html:16
+msgid "红色的“失败”按钮新建一个右节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/graph.html:9
+#: templates/fta_solutions/solution_forms/diy.html:2
+msgid "组合套餐流程配置"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/graph.html:37
+msgid "修改节点内容"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/uwork.html:1
+msgid "腾讯云重启套餐说明"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/uwork.html:2
+msgid "当腾讯云PING告警产生时，通过接口重启故障CVM。"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/uwork_then_ijobs.html:1
+msgid "重启后执行作业平台套餐说明"
+msgstr ""
+
+#: templates/fta_solutions/solution_details/uwork_then_ijobs.html:2
+msgid "当告警产生时，通过腾讯云API重启故障服务器，并在重启成功后执行指定的作业平台作业。"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/check_master.html:2
+msgid "等待时间(超出则超时)"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/check_master.html:6
+#: templates/fta_solutions/solution_forms/convergence.html:16
+msgid "分钟"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:3
+msgid "磁盘清理的目录"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:6
+msgid "磁盘清理的目录,如/data/log/,以/结尾"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:13
+msgid "删除多少天前的文件"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:21
+msgid "3天前"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:22
+msgid "1周前"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:23
+msgid "2周前"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:24
+msgid "1月前"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:25
+msgid "2月前"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:33
+msgid "单位为天"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:42
+msgid "待删除文件名描述"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:51
+msgid "请输入待清理文件名的通配符"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:51
+msgid "请输入自定义描述"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/clean.html:60
+#: templates/fta_solutions/solution_forms/ijobs.html:136
+msgid "从作业中获取参数"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:7
+#: templates/fta_solutions/solution_forms/collect.html:24
+msgid "按时间段汇总"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:13
+#: templates/fta_solutions/solution_forms/collect.html:58
+msgid "按告警数汇总"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:19
+msgid "按时间段和告警数汇总"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:41
+msgid "少于多少条不通知"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:73
+msgid "数据为“0”表示不启用"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:78
+msgid "汇总维度"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:96
+msgid "汇总开始时通知"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:102
+msgid "汇总完成时通知"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:105
+msgid "微信通知"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:108
+msgid "短信通知"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/collect.html:111
+msgid "电话通知"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/convergence.html:4
+msgid "时间范围"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/convergence.html:21
+msgid "告警数(不算当前告警)"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/convergence.html:38
+msgid "在指定时间内，出现过指定告警数量的相同IP，相同告警类型，将会收敛次条告警"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:9
+msgid "请选择原子套餐"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:11
+msgid "新增父节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:12
+msgid "对调子节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:13
+msgid "成"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:13
+msgid "新增成功子节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:14
+msgid "败"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:14
+msgid "新增失败子节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:15
+msgid "删除当前节点"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/diy.html:17
+msgid "配置"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/gcloud.html:36
+msgid "请选择模板"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/gcloud.html:48
+msgid "刷新流程列表"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/gcloud.html:56
+msgid "标准运维参数"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/gcloud.html:66
+msgid "请选择流程"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/gcloud.html:67
+msgid "流程列表为空，请在标准运维创建流程"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/gcloud.html:68
+msgid "正在加载参数"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:10
+msgid "集群名称(为空则不按此项过滤)"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:12
+msgid "集群名称，多个以逗号分隔"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:16
+msgid "模块名称(为空则不按此项过滤)"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:18
+msgid "模块名称，多个以逗号集群"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:24
+msgid "Agent是否安装"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:27
+msgid "已安装"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:33
+msgid "按以下属性过滤"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:36
+msgid "机房城市"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:40
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:48
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:56
+msgid "多个以逗号分隔"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:44
+msgid "设备类型"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:52
+msgid "操作系统"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/get_bak_ip.html:64
+msgid "自动获取最新备机(无需人工审核)"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/graph.html:4
+msgid "请在右边进行图形化配置"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/graph.html:5
+msgid "需要帮助"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:2
+msgid "回调地址"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:12
+msgid "请输入正确的地址"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:13
+msgid "请输入企业内部处理告警的回调地址，如输入处理PING告警的主机重启接口地址"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:16
+msgid "故障自愈把下方的告警信息作为参数，以POST方式向回调地址请求，需保证自愈后台与回调地址的连通性。"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:17
+msgid "回调地址返回状态码2xx即判断回调成功，否则进行重试，最多重试3次。"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:20
+msgid "告警信息格式说明"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:23
+msgid "自愈定义id"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:24
+msgid "告警主机ip"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:27
+msgid "告警时间"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/http_callback.html:28
+msgid "业务id"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:44
+msgid "作业名称"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:57
+msgid "创建作业"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:58
+msgid "刷新作业列表"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:67
+msgid "作业失败重试"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:78
+msgid "重试间隔"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:81
+#: templates/fta_solutions/solution_forms/sleep.html:14
+msgid "秒"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:85
+msgid "重试次数"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:91
+msgid "以上及为处理失败"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:97
+msgid "向作业平台自定义参数"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:145
+msgid "在作业脚本中，将变量单独输出一行，详细的说明请参考"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/ijobs.html:145
+msgid "获取作业执行结果说明"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice.html:3
+msgid "审批内容"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice.html:5
+msgid "请输入审批内容"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice.html:10
+msgid "额外审批人"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice.html:60
+#: templates/fta_solutions/solution_forms/notice_only.html:48
+msgid "参数中可填变量，请参考"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice.html:65
+#: templates/fta_solutions/solution_forms/notice_only.html:53
+msgid "电话通知内容长度为50个字或100个字符以内"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice.html:68
+#: templates/fta_solutions/solution_forms/notice_only.html:56
+msgid "请选择额外通知人"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice_only.html:3
+msgid "通知内容"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/notice_only.html:49
+msgid "帮助文档"
+msgstr ""
+
+#: templates/fta_solutions/solution_forms/sleep.html:3
+msgid "等待"
+msgstr ""
+
+#: user_activity_log/client.py:70
+msgid "没有可用的REDIS配置，请参考文档配置"
+msgstr ""
+
+#: user_activity_log/client.py:108
+msgid "查询的起始时间参数[start_time]不能为空"
+msgstr ""
+
+#: user_activity_log/client.py:133
+msgid "暂不支持ES记录查询！"
+msgstr ""
+
+#: user_activity_log/models.py:14
+msgid "创建"
+msgstr ""
+
+#: user_activity_log/serializers.py:41
+msgid "记录唯一标识"
+msgstr ""
+
+#: user_activity_log/serializers.py:42
+msgid "应用编码"
+msgstr ""
+
+#: user_activity_log/serializers.py:43
+msgid "用户名称"
+msgstr ""
+
+#: user_activity_log/serializers.py:44
+msgid "活动类型"
+msgstr ""
+
+#: user_activity_log/serializers.py:45
+msgid "活动名称"
+msgstr ""
+
+#: user_activity_log/serializers.py:46
+msgid "请求参数"
+msgstr ""
+
+#: user_activity_log/serializers.py:47
+msgid "活动前的数据"
+msgstr ""
+
+#: user_activity_log/serializers.py:48
+msgid "活动后的数据"
+msgstr ""
+
+#: user_activity_log/serializers.py:49
+msgid "其它信息"
+msgstr ""
+
+#: user_activity_log/serializers.py:50
+msgid "存储数据大小"
+msgstr ""
+

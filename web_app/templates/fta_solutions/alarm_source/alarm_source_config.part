@@ -1,0 +1,62 @@
+<input type="hidden" id="source_id" value="${alarm_app.id}">
+
+<!-- 接入指引 -->
+<%include file="alarm_source_${alarm_app.page_type}.part"/>
+
+<!-- 编辑告警类型S -->
+<%include file="alarm_source_type.part" />
+<!-- 编辑告警类型E -->
+
+% if source_type not in ['CUSTOM', 'EMAIL']:
+<!-- 配置信息S -->
+<div class="title-content-bar mb20">
+    <div class="pure-title">${_(u'配置信息')}
+        <span class="name-notice">
+        </span>
+    </div>
+    <div class="title-bottom-panel">
+        <div class="info-bar2">
+            <div class="flex-panel" style="display: none">
+                <label class="x-inline">AppId</label>
+                <div class="x-inline-right monitor-pro">
+                    <input type="text" class="form-control" value="${alarm_app.app_id}" style="width: 370px;" readonly="readonly">
+                </div>
+            </div>
+            <div class="flex-panel mt15">
+                <label class="x-inline">SecureKey</label>
+                <div class="x-inline-right">
+                    <input type="text" value="${alarm_app.app_secret}" class="form-control" style="width: 370px;" readonly="readonly">
+                    <button onclick="reset_config(this);" class="bk-button bk-default ml5" source_id="${source_id}" data="${alarm_app.source_tip}" title="${_(u'重置')}">${_(u'重置')}</button>
+                </div>
+            </div>
+            % if source_type == "REST-API":
+            <div class="flex-panel mt15">
+                <label class="x-inline">${_(u'Callback地址')}</label>
+                <div class="x-inline-right">
+                    <input type="text" id="zclip_text0" value="${alarm_app.callback_url}" class="form-control" style="width: 370px;" readonly="readonly">
+                    <a class="bk-button bk-default ml5 mycopy" title="${_(u'复制')}" data-clipboard-action="copy" data-clipboard-target="#zclip_text0">${_(u'复制')}</a>
+                </div>
+            </div>
+            %elif source_type == "OPEN-FALCON":
+            <div class="flex-panel mt15">
+                <label class="x-inline">${_(u'Callback地址')}</label>
+                <div class="x-inline-right">
+                    <input type="text" id="zclip_text0" value="${alarm_app.callback_url}?secret=${alarm_app.app_secret}" class="form-control" style="width: 370px;" readonly="readonly">
+                    <a class="bk-button bk-default ml5 mycopy" title="${_(u'复制')}" data-clipboard-action="copy" data-clipboard-target="#zclip_text0">${_(u'复制')}</a>
+                </div>
+            </div>
+            %elif source_type == "AWS":
+            <div class="flex-panel mt15">
+                <label class="x-inline">${_(u'Callback地址')}</label>
+                <div class="x-inline-right">
+                    <input type="text" id="zclip_text0" value="${alarm_app.callback_url}?secret=${alarm_app.app_secret}" class="form-control" style="width: 370px;" readonly="readonly">
+                    <a class="bk-button bk-default ml5 mycopy" title="${_(u'复制')}" data-clipboard-action="copy" data-clipboard-target="#zclip_text0">${_(u'复制')}</a>
+                </div>
+            </div>
+            % endif
+        </div>
+    </div>
+</div>
+<!-- 配置信息E -->
+% endif
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_config.js"></script>

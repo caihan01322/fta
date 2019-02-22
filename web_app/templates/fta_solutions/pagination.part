@@ -1,0 +1,54 @@
+
+<div class="pull-right">
+    <div class="pagination" style="margin: 10px">
+        <%
+            # 分页临近页数
+            adjacent_pages = 3
+            start_page = max(alarm_records.number - adjacent_pages, 1)
+            if start_page < adjacent_pages:
+                start_page = 1
+            end_page = alarm_records.number + adjacent_pages + 1
+            if end_page > alarm_records.paginator.num_pages - adjacent_pages + 2:
+                end_page = alarm_records.paginator.num_pages + 1
+            page_numbers = [n for n in range(start_page, end_page)]
+            show_first =  1 not in page_numbers
+            show_last =  alarm_records.paginator.num_pages not in page_numbers
+        %>
+        <span class="step-links">
+            <!-- <span class="current">
+                Page ${ alarm_records.number } of ${ alarm_records.paginator.num_pages }.
+            </span> -->
+            <ul class="pagination pagination-centered" style="margin-top: 0">
+            % if alarm_records.has_previous():
+                <li><a href="###" onclick="filter_refresh(${ alarm_records.previous_page_number() })">«</a></li>
+            % else:
+                <li class="disabled"><a href="###" onclick="return false;">«</a></li>
+            % endif
+
+             %if show_first:
+              <li><a href="###" onclick="filter_refresh(1)">1</a></li>
+              <li class="disabled ellipsis"><a href="###">...</a></li>
+             % endif
+
+            % for page in page_numbers:
+                % if alarm_records.number != page:
+                    <li><a href="###" onclick="filter_refresh(${ page })"> ${ page } </a></li>
+                % else:
+                    <li class="active"><a href="###" onclick="return false;"> ${ page } </a></li>
+                % endif
+            % endfor
+
+            % if show_last:
+              <li class="disabled ellipsis"><a href="###">...</a></li>
+              <li><a href="###" onclick="filter_refresh(${alarm_records.paginator.num_pages})">${alarm_records.paginator.num_pages}</a></li>
+            % endif
+
+            % if alarm_records.has_next():
+                <li><a href="###" onclick="filter_refresh(${ alarm_records.next_page_number() })">»</a></li>
+            % else:
+                <li class="disabled"><a href="###" onclick="return false;">»</a></li>
+            % endif
+            </ul>
+        </span>
+    </div>
+</div>

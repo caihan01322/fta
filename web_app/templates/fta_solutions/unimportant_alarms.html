@@ -1,0 +1,36 @@
+<div class='col-xs-12'>
+<table class="table" >
+    <thead>
+      <tr>
+          <th>${_(u'原始告警ID')}</th>
+          <th style="min-width:80px;">${_(u'类型')}</th>
+          <th style="min-width:90px;">${_(u'产生时间')}</th>
+          <th>IP</th>
+          <th style="min-width:80px;">${_(u'自愈套餐')}</th>
+          <th style="min-width:80px;">${_(u'自愈结果')}</th>
+          <th>${_(u'详细内容')}</th>
+      </tr>
+    </thead>
+    <tbody>
+    % if not unimportant_list:
+        <tr><td colspan="7" style="text-align:center;">${_(u'没有数据')}</td></tr>
+    % endif
+    % for a in unimportant_list:
+        <tr>
+            <td>
+                <a target="_blank" href="${SITE_URL}${cc_biz_id}/alarm_instance/${a.id}/">
+                    ${a.source_id} (${a.source_type})
+                </a>
+            </td>
+            <td>${alarm_types.get(a.alarm_type)} </td>
+            <td>${a.source_time_show}</td>
+            <td>${a.ip}</td>
+            <td>${solution_types.get(a.solution_type, _(u"无处理"))}</td>
+            <td>${a.comment |n}</td>
+            <td>${a.raw}</td>
+        </tr>
+
+    % endfor
+  </tbody>
+</table>
+</div>

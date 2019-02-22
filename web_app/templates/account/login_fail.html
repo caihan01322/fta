@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>蓝鲸智云</title>
+		<script src="http://o.qcloud.com/static_api/jquery/jquery-1.7.2.min.js"></script>
+        <script src="http://o.qcloud.com/static_api/jquery/jquery.json-2.3.min.js"></script>
+		<link href="http://o.qcloud.com/static_api/bk/bk.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body style="font-family:Microsoft Yahei;">
+    	<div class="errors-login-failure-wrap box">
+            <div class="errors-login-fialure-con clearfix" style="border: none;">
+	        	<img src="http://o.qcloud.com/static_api/bk/style_custom/images/expre_login_failure.jpg" width="183" height="112" />
+	            <h1>您还不是蓝鲸用户</h1>
+	            <p><strong>您需要：</strong></p>
+	            <p>1、切换至【腾讯云】开发商、协作者账号登录 <a href="javascript:void(0);" onclick='jump_now()'>更换QQ</a></p>
+	            <p>2、联系公司已有权限的同事为您添加协作者权限</p>
+	            <p>3、<a href="#" id="contact_us">联系客服</a></p>
+            </div>
+        </div>
+		<script src="https://imgcache.qq.com/ptlogin/ac/v9/js/ptloginout.js"></script>
+	     <!-- WPA start -->
+			    <script src="//wp.qiye.qq.com/loader/4.0.0.js" charset="utf-8"></script>
+			    <script type="text/javascript">
+			     try{
+			        __WPA.create({
+			            nameAccount:"800802001",
+			            customEle: document.getElementById('contact_us')
+			        })
+			     }catch(err){
+			        console.log(err);
+			     }
+			    </script>
+	    <!-- WPA end -->
+		<script type="text/javascript">
+			function jump_now(){
+			  window.location.href = '/accounts/logout/';
+			}
+		</script>
+	</body>
+</html>

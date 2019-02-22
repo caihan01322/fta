@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FTA Healthz</title>
+    <link rel="stylesheet" href="${STATIC_URL}bootstrap/css/bootstrap.min.css?v=${STATIC_VERSION}" />
+    <link href="${STATIC_URL}bk-icon-2.0/iconfont.css?v=${STATIC_VERSION}" rel="stylesheet">
+    <link href="${STATIC_URL}css/jsonlint.css" rel="stylesheet">
+
+    <script src="${STATIC_URL}js/jquery-1.10.2.min.js"></script>
+    <script src="${STATIC_URL}js/json/jquery.json.js"></script>
+    <script src="${STATIC_URL}js/json/jsonlint.js"></script>
+    <style type="text/css">
+        .fa-minus-square-o,
+        .fa-plus-square-o {
+            font-family: 'bk-icons-linear' !important;
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            margin-right: 2px;
+        }
+    
+        .fa-plus-square-o:before {
+            content: "\e9b8";
+        }
+    
+        .fa-minus-square-o:before {
+            content: "\e9a9";
+        }
+    </style>
+</head>
+<body>
+<!--HTML-->
+<div class="jsonjs" id="jsonshow">
+    <div class="col-md-6 col-sm-6" style="display: none">
+        <textarea class="form-control" placeholder="在此输入json字符串或XML字符串..." id="json-src">
+${healthz}
+        </textarea>
+    </div>
+    <div class="col-md-12 col-sm-12">
+        <div id="content"></div>
+    </div>
+</div>
+
+<script>
+    var jsonStr = $("#json-src").val(); //json字符串
+    jsonlint.parse(jsonStr); //检测是否符合JSON规范
+    var result = new JSONFormat(jsonStr,4).toString(); //生成格式化html代码
+    $('#content').html(result);
+    </script>
+</body>
+</html>

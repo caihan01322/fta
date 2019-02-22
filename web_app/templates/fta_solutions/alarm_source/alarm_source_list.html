@@ -1,0 +1,73 @@
+<style type="text/css">
+    .icon_dot_red{
+        background: #ff7979;
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+    }
+    .icon_dot{
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+    }
+</style>
+
+<div class="fta-border-container">
+    <h3 class="fta-main-title">${_(u'管理告警源')} <em>${_(u'对接企业正在使用的监控产品，迈向无人值守的第1步')}</em></h3>
+
+    <div class='row'>
+        <div class="all-product-panel">
+            <div class="product-list-bar enabled-product-list">
+                <h3>${_(u'已启用监控产品')}</h3>
+                <ul>
+                % for source in enable_source_list:
+                    <li>
+                        <a href="javascript:include_open('${cc_biz_id}/alarm_source/add/${source.page_type}/${source.id}/');" class="enableLink">
+                            <img src="${STATIC_URL}${_(u'images/new/alarm_source/')}${source.source_type}-on.png">
+                            <p>${_(u'告警')}：${source.alarm_count}</p>
+                            % if source.exception_num:
+                                <p data-toggle="tooltip" data-placement="right" title="${source.get_exception_msg |n}" class="errorTip">${_(u'告警拉取异常')}
+                                % if not source.is_enabled:
+                                    ，${_(u'已暂停')}
+                                % endif
+                                <i class="bk-icon icon-info-circle-shape" aria-hidden="true"></i></p>
+                            % else:
+                                <p>${_(u'最后接收告警')}：${source.last_alarm_time_str(cc_biz_id) or '--'}</p>
+                            % endif
+
+                            % if not source.is_enabled:
+                                <a href="javascript:include_open('${cc_biz_id}/alarm_source/add/${source.page_type}/${source.id}/');" class="switch">${_(u'启用')}</a>
+                            % endif
+                        </a>
+                    </li>
+                % endfor
+                </ul>
+            </div>
+            <div class="product-list-bar enabled-product-list">
+                <h3>${_(u'未启用监控产品')}
+                    % if not request.user.is_superuser:
+                    <em style="  font-style: normal;font-size: 12px;color: #999;margin-left: 15px;">${_(u'请使用管理员身份启用告警源，启用后会应用所有业务')}</em>
+                    % endif
+                </h3>
+                <span id="admin_manage_alram_source_text_id" style="display: none">${_(u'请使用管理员身份管理告警源<br>注: 对告警源操作会应用所有业务')}</span>
+                <ul>
+                % for source_key in unable_source_key_list:
+                    <li>
+                        <img src="${STATIC_URL}${_(u'images/new/alarm_source/')}${source_key}-on.png">
+                        <p>${source_type_msg1.get(source_key)}</p>
+                        % if request.user.is_superuser:
+                            <a href="javascript:include_open('${cc_biz_id}/alarm_source/add/${page_type_dict.get(source_key)}/0/');" class="switch">${_(u'启用')}</a>
+                        % else:
+                            <a href="###" class="switch admin_manage_alram_source">${_(u'启用')}</a>
+                        % endif
+                    </li>
+                % endfor
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_list.js?v=${STATIC_VERSION}"></script>
+

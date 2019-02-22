@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>
+    业务健康度日报 ({{cc_biz_name}}) </title>
+    <style>
+    body {
+    font-size:14px;
+    font-family:"微软雅黑";
+    background-color: #ececec;
+    }
+    p, td {
+    margin:0;
+    padding:0;
+    color: #333;
+    }
+    a {
+    color: #336699;
+    text-decoration: none;
+    }
+    img {
+    border: none;
+    }
+    a:hover {
+    text-decoration: underline;
+    }
+    .list-title {
+    font-size: 1.29em;
+    max-width: 700px;
+    display: block;
+    }
+    .seprateor {
+    border-bottom: 1px dotted #cecece;
+    width: 767px;
+    height: 0px;
+    line-height: 0px;
+    font-size: 0px;
+    margin-top:5px
+    }
+    .gray {
+    color:#9A9A9A;
+    }
+    .main-table {
+    margin:0 auto;
+    }
+    .weekly-info {
+    font-family: 宋体;
+    font-weight: bold;
+    font-size: 0.86em;
+    color: #fff;
+    text-align: right;
+    padding-top: 10px;
+    padding-right: 10px;
+    border: 1px solid #2f94e2;
+    }
+    .mail_main {
+    background-color: #fff;
+    padding: 15px;
+    }
+    .item {
+    padding: 5px 0 10px;
+    }
+    .weekly-topic {
+    margin-top: 20px;
+    margin-bottom: 5px;
+    font-size: 1.29em;
+    color:#D62222;
+    }
+    .algin-right {
+    text-align: right;
+    }
+    .valign-top {
+    vertical-align: top;
+    }
+    .anwser-num {
+    min-width: 65px;
+    display: block;
+    }
+    .read_more{
+    color: #9A9A9A;
+    }
+    .read_more:hover{
+    color: #336699;
+    }
+    </style>
+</head>
+<!--用于生成邮件页面-->
+<body>
+    <table width="800" class="main-table" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td colspan="2" height="107" style="background-color: #2f94e2;">
+                <!-- 周刊头部banner -->
+                <a href="{{app_url_prod}}" alt="" target="_blank"><img width="805px" height="150px" src="{{app_url_prod}}static/images/fta.png"></a>
+            </td>
+        </tr>
+
+        <tr>
+            <!-- 周刊内容的话题，一个期刊可以有多个话题，一个话题下面可以有多个相关的问题 -->
+            <td colspan="2" class="mail_main" id="mail_main" style="border: 1px solid #dfdfdf; border-top: none;">
+                <p style='color:grey'>
+                早上好，亲爱的<b>{{cc_biz_name}}</b>运维帝：
+
+                <br>
+                恭喜你，当你收到这封邮件，说明你的业务享受到了故障自愈的深度服务, 以下是自愈今天最新的分析报告。
+                </p>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="mail_main" id="mail_main" style="border: 1px solid #dfdfdf; border-top: none;">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="item">
+                                <div>
+                                    <!-- 周刊内容的问题部分，这里是一个问题和多个回答 -->
+                                    <table width="769">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div style="padding-top:10px; line-height: 1.8em">
+                                                        <div style="margin-left:40px;color:silver">
+                                                             {% for attr in addl_biz_info.out_of_scope_7d %}
+                                                                {{attr.sub_count}} 个 {{attr.attr_name}} ({{attr.alarm_type}})
+                                                                <br>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+
+
+
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td colspan="2" class="mail_main" id="mail_main" style="border: 1px solid #dfdfdf; border-top: none;">
+                <table>
+                    <tbody>
+
+                    <tr>
+                            <!-- 周刊内容的话题，一个期刊可以有多个话题，一个话题下面可以有多个相关的问题 -->
+                            <td>
+                                <div style='color:silver;margin-top:30px'>
+                                以下是今天自愈新发现的可疑故障点, 建议在故障前尽早消除, 降低业务损失的风险。
+                                <br>
+                                猛击
+                                <a href="{{app_url_prod}}{{cc_biz_id}}/?include={{cc_biz_id}}/health/" target="_blank">
+                                                {{cc_biz_name}} 健康度完整报告</a> ,
+                                                查看所有的可疑故障点，全面整顿！                                </div>
+                            </td>
+                        </tr>
+
+                    {% for advice in biz_advices %}
+                        <tr>
+                            <!-- 周刊内容的话题，一个期刊可以有多个话题，一个话题下面可以有多个相关的问题 -->
+                            <td>
+                                <div class="weekly-topic">
+                                {{advice.subject_type}} {{advice.subject}} {{advice.interval}}
+                                <span style="font-size:1.5em;">{{advice.alarm_num}}</span>次 {{advice.check_sub_type}}
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 周刊内容分割线 -->
+                            <td>
+                                <div class="seprateor">&nbsp;&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="item">
+                                <div>
+                                    <!-- 周刊内容的问题部分，这里是一个问题和多个回答 -->
+                                    <table width="769">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div style="padding-top:10px; line-height: 1.8em">
+                                                        <div style="margin-left:40px;color:grey">
+                                                        {% if advice.subject_type == "host" %}
+                                                        <span style='color:silver'>集群：</span>
+                                                        {{advice.host_info.set_chn_name}}
+                                                        <br>
+                                                        <span style='color:silver'>模块：</span>
+                                                        {{advice.host_info.app_module}}
+                                                        <br>
+                                                        {% endif %}
+                                                        <span style='color:silver'>建议：</span>
+                                                        {{advice.advice|safe}}
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                        
+
+                        
+                        
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" height="10"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <div style="font-size: 1.2em">Copyright © 2012-{{cur_year}} Tencent BlueKing. All Rights Reserved </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

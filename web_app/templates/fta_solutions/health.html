@@ -1,0 +1,168 @@
+<div class='row access-title' >
+    <div>
+        <div class="table-up-title">
+            <span class="name-notice">
+                <em class="name-note">${_(u'健康诊断')}</em>
+                <em class="name-tips">${_(u'依据预警自愈配置的策略，每天早上8点回溯自愈处理过的告警，处理分析出的潜在风险。')}</em>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class='row top-opts'>
+        <div class="pull-left">
+            <input type="text" class="bk-form-input" id="selectDate" placeholder="${_(u'选择日期')}..." value="${begin_date} - ${end_date}" style="width: 220px;">
+            <span class="s-data-bar s-item1">
+                <a href="###" onclick="change_status('not_handle')"><i></i><em id="not_handle_count">&nbsp</em>${_(u'次未处理')}</a>
+            </span>
+            <span class="s-data-bar s-item2">
+                <a href="###" onclick="change_status('failure')"><i></i><em id="failure_count">&nbsp</em>${_(u'次处理失败')}</a>
+            </span>
+            <span class="s-data-bar s-item3">
+                <a href="###" onclick="change_status('')"><i></i>${_(u'共')} <em id="total_count">&nbsp</em> ${_(u'条健康诊断')}</a>
+            </span>
+            <%doc>
+            <!-- select2 下拉选项可多选 start -->
+            <select multiple="true" id="advice_status" class="select2_box" style="width:310px;">
+                <option value="1" selected="">${_(u'未处理')}</option>
+                <option value="2" selected="">${_(u'失败')}</option>
+                <option value="3">${_(u'成功')}</option>
+            </select>
+            </%doc>
+
+        </div>
+        <div class="pull-right">
+            <a class='bk-button bk-success bk-button-small' onclick="filter_refresh()">${_(u'刷新')}</a>
+
+            <a class='bk-button bk-default bk-button-small' onclick="export_ip()"> ${_(u'导出IP')}</a>
+
+            <span class="search-panel">
+                <input type="text" class="form-control" placeholder="${_(u'请输入IP')}" value="" id="ip-i">
+                <a href="###" class="search-btn" onclick="filter_refresh()"></a>
+            </span>
+        </div>
+</div>
+
+<div class='row health-row' >
+    <div class='col-xs-12 access-tab table-packup'>
+
+        <div>
+            <table class="table table-hover sortable table-advice health-table health-list-table" id="table-advice">
+                <thead>
+                    <tr>
+                        <th class="br1 item1">${_(u'告警类型')}</th>
+                        <th class="br1 item2">${_(u'发现时间')}</th>
+                        <th class="br1 item3" data-defaultsort="desc">${_(u'发生频次')}</th>
+                        <th class="br1 item4">${_(u'可疑IP')}</th>
+                        <th class="br1 item5">${_(u'集群')}</th>
+                        <th class="br1 item6">${_(u'模块')}</th>
+                        <th class="br1 item7">${_(u'处理类型')}</th>
+                        <th class="br1 item8">${_(u'处理方案')}</th>
+                        <th class="br1 item9" style="min-width: 125px">
+                            <select class='select2_src' id='advice_status_select' onchange="filter_refresh()">
+                                <option value=''>${_(u'状态')}</option>
+                                % for s, s_title in advice_status:
+                                <option value='${s}'>${_(s_title)}</option>
+                                % endfor
+                            </select>
+                        </th>
+                        <th class="item10">${_(u'事件详情')}</th>
+                    </tr>
+                </thead>
+                <tbody id="fresh-advice-list">
+                    <tr><td colspan="10" class="tc">${_(u'正在加载数据')}...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <textarea class='hide' id='ip_list' rows=3 style='width:60%'></textarea>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="fat-dialog" tabindex="-1" role="dialog">
+    <div class="modal-dialog manage-modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">${_(u'健康诊断IP列表')}<span id="time_selct_show" style="font-size:14px;padding-left:10px;"></span></h4>
+            </div>
+            <div class="modal-body" id='fta-body' style="overflow:auto;height:400px;">
+
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- <script src="${STATIC_URL}js/page/datefunctions.js?v=${STATIC_VERSION}"></script> -->
+<!-- <script src="${STATIC_URL}js/page/health.js?v=${STATIC_VERSION}"></script> -->
+
+<input type="hidden" id="health_text1" value="${_(u'选择状态')}">
+<input type="hidden" id="health_text2" value="${_(u'至')}">
+
+<script type="text/javascript">
+    $(function(){
+
+        locateRightNav("li-health")
+
+
+        $("#advice_status_select").select2();
+        // 时间控件渲染
+        setTimeout(function(){
+            // 选择日期范围
+            $('#selectDate').daterangepicker({
+                locale : {
+                    "format" : 'YYYY-MM-DD'
+                },
+                autoApply: true
+            })
+            $('#selectDate').on("apply.daterangepicker",function(){
+                filter_refresh();
+            })
+        },1000)
+        filter_refresh();
+
+        $("#advice_status").select2({
+            placeholder: $("#health_text1").val(),
+            allowClear: true,
+            maximumSelectionSize: 3
+        });
+    })
+    function filter_refresh(){
+        var url = '${SITE_URL}${cc_biz_id}/health_detail/';
+        if($("#selectDate").val()){
+            begin_date = $("#selectDate").val().split(' - ')[0];
+            end_date = $("#selectDate").val().split(' - ')[1];
+        }else{
+            begin_date = '${begin_date}';
+            end_date = '${end_date}';
+        }
+        var advice_status = $("#advice_status_select").val();
+        $.get(url,{
+            'begin_date': begin_date,
+            'end_date': end_date,
+            'ip': $('#ip-i').val(),
+            'advice_status': advice_status,
+        }, function(data){
+            $("#fresh-advice-list").html(data);
+        })
+    }
+    function export_ip(){
+        if($("#selectDate").val()){
+            begin_date = $("#selectDate").val().split(' - ')[0];
+            end_date = $("#selectDate").val().split(' - ')[1];
+            $("#time_selct_show").html('('+begin_date + $("#health_text2").val() + end_date+')')
+        }else{
+            begin_date = '${begin_date}';
+            end_date = '${end_date}';
+            $("#time_selct_show").html('('+begin_date + $("#health_text2").val()  + end_date+')')
+        }
+        $("#fta-body").html($("#ip_list").text());
+        $('#fat-dialog').modal('show');
+    }
+    function change_status(status){
+        $("#advice_status_select").select2("val", status);
+        $("#advice_status_select").trigger('change');
+    }
+
+</script>

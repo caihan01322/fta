@@ -1,0 +1,95 @@
+    <!-- 接入流程S -->
+    <div class="title-content-bar mb20">
+        <div class="pure-title">${_(u'接入流程')}</div>
+        <div class="title-bottom-panel clearfix info-bar3">
+            <div class="bk-flows">
+                <div style="width: 100%;">
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">1</span>
+                        <p class="bk-vertical-text fl">${_(u'下载推送脚本')}</p>
+                        <div class="flow-content">
+                            <%
+                                from django.core.urlresolvers import reverse
+                                from urlparse import urljoin
+                                script_path = "{path}?fta_application_id={alarm_app.app_id}&fta_application_secret={alarm_app.app_secret}".format(
+                                    path=reverse("alarm_source_scripts", kwargs={
+                                        "cc_biz_id": alarm_app.cc_biz_id,
+                                        "script_name": "nagios_fta_event_handler.py",
+                                    }),
+                                    alarm_app=alarm_app,
+                                )
+                                script_url = urljoin(request.build_absolute_uri(), script_path)
+                            %>
+                            <p>${_(u'在Nagios Server上下载')}<a href="${script_url}">${_(u'推送脚本')}</a>${_(u'至')} /usr/local/nagios/libexec/eventhandlers/ ${_(u'目录')} (${_(u'脚本中包含动态生成的AppId、SecretKey')}）</p>
+                            <div class="gray-bar"><p>
+<pre>
+wget '${script_url}' -O /usr/local/nagios/libexec/eventhandlers/nagios_fta_event_handler.py --no-check-certificate
+chmod a+x /usr/local/nagios/libexec/eventhandlers/nagios_fta_event_handler.py
+</pre>
+							</p></div>
+                        </div>
+                    </div>
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">2</span>
+                        <p class="bk-vertical-text fl">${_(u'修改告警配置')}</p>
+                        <div class="flow-content">
+                            <p>${_(u'在配置文件/usr/local/nagios/etc/objects/commands.cfg中追加以下配置')}：</p>
+                            <div class="gray-bar">
+                                <p>
+<pre>
+define command {
+        command_name    fta_push_host_alarm
+        command_line    /usr/local/nagios/libexec/eventhandlers/nagios_fta_event_handler.py host "$HOSTADDRESS$" "hostalarm" "$HOSTEVENTID$" "$HOSTSTATE$" "$HOSTSTATETYPE$" "$HOSTOUTPUT$" -s "$ARG1$" -g "$HOSTGROUPNAMES$"
+}
+define command {
+        command_name    fta_push_service_alarm
+        command_line    /usr/local/nagios/libexec/eventhandlers/nagios_fta_event_handler.py service "$HOSTADDRESS$" "$SERVICEDESC$" "$SERVICEEVENTID$" "$SERVICESTATE$" "$SERVICESTATETYPE$" "$SERVICEOUTPUT$" -s "$ARG1$" -g "$SERVICEGROUPNAMES$"
+}
+</pre>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">3</span>
+                        <p class="bk-vertical-text fl">${_(u'声明全局 event handler')}</p>
+                        <div class="flow-content">
+                            <p>${_(u'在配置文件中/usr/local/nagios/etc/nagios.cfg 中追加如下配置项')}</p>
+                            <div class="gray-bar">
+                               <p>
+<pre>
+global_host_event_handler = fta_push_host_alarm
+global_service_event_handler = fta_push_service_alarm
+</pre>
+                               </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">4</span>
+                        <p class="bk-vertical-text fl">${_(u'重新加载Nagios')}</p>
+                        <div class="flow-content">
+                            <div class="gray-bar">
+                               <p>
+<pre>
+/etc/init.d/nagios reload
+</pre>
+                               </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">5</span>
+                        <p class="bk-vertical-text fl">${_(u'完成')}</p>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 接入流程E -->

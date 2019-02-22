@@ -1,0 +1,158 @@
+<style>
+    hr {
+        margin: 10px;
+    }
+
+    .jtk-node {
+        background-color: #3E7E9C;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        position: absolute;
+        z-index: 11;
+        overflow: hidden;
+        min-width: 80px;
+        min-height: 30px;
+        width: auto;
+    }
+
+    .jtk-node .name {
+        background-color: #3E7E9C;
+        color: #f7ebca;
+        cursor: move;
+        font-size: 13px;
+        line-height: 24px;
+        padding: 6px;
+        text-align: center;
+    }
+
+    .jtk-node .name span {
+        cursor: pointer;
+    }
+
+    .connect1 {
+        padding: 10px;
+        background-color: #84ACB3;
+    }
+
+    .btn-add, .btn-del {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        cursor: pointer;
+        top: 20px;
+        line-height: 20px;
+    }
+
+    .btn-del {
+        right: 15px;
+    }
+
+    .btn-add {
+        left: 15px;
+    }
+</style>
+
+
+    <dl class='dl-horizontal'>
+
+        % if alarm.alarm_type=='online':
+            <dt>${_(u'集群')}</dt> <dd>${alarm.cc_topo_set}
+            </dd>
+        % elif alarm.source_type == "LEAF":
+            <dt>${_(u'告警对象')}</dt>
+            <dd>
+                ${alarm.cc_topo_set if alarm.cc_topo_set else _(u"全业务")}
+            </dd>
+        % else:
+            <dt>${_(u'主机')}</dt> <dd>
+            ${alarm.ip}
+            </dd>
+        % endif
+
+
+
+        <hr>
+        <dt>${_(u'告警类型')}</dt> <dd> <a href="javascript:include_open('${cc_biz_id}/alarm_def/${alarm.alarm_def.id}/', function(){$('#instance-dialog').modal('hide');$('.modal-backdrop').hide()});">
+        t${alarm_type_dict.get(alarm.alarm_type, alarm.alarm_type)}
+        % if alarm.alarm_type == 'customized':
+        (${alarm.alarm_def.description})
+        % endif
+        </a></dd>
+        <dt>${_(u'内容')}</dt> <dd> ${alarm.raw}</dd>
+        <dt>${_(u'时间')}</dt> <dd> ${alarm.source_time_show}</dd>
+
+        <hr>
+
+        <dt>${_(u'自愈套餐')}</dt> <dd>
+            % if alarm.alarm_def.solution:
+            <a href="javascript:include_open('${cc_biz_id}/solution/${alarm.alarm_def.solution.id if alarm.alarm_def.solution else '0'}/', function(){$('#instance-dialog').modal('hide');$('.modal-backdrop').hide()});">${alarm.alarm_def.solution.title_display}
+            </a>
+            % else:
+             * ${_(u'空套餐 (不处理)')}
+             % endif
+        </dd>
+        <dt>${_(u'开始')}</dt> <dd> ${alarm.begin_time.strftime('%H:%M:%S')}</dd>
+        % if alarm.end_time:
+        <dt>${_(u'完成')}</dt> <dd> ${alarm.end_time.strftime('%H:%M:%S')}  (${_(u'耗时')}：${alarm.consumed})</dd>
+        % endif
+        <dt>${_(u'状况')}</dt>
+        <dd>
+            <a target="_blank" href="${BPM_URL}/butler/task/${alarm.bpm_task_id}/flowchart/">
+                <span class="label label-${status_color_dict.get(alarm.status, 'default')}"  style='font-weight:normal'>
+                    % if alarm.status == 'recovering':
+                        <i class="bk-icon icon-refresh"></i>
+                    % endif
+                    ${status_dict.get(alarm.status, '**unknown**')}
+                </span>
+            </a>
+
+            <span class="force-wrap" style='margin-left:10px;color:#7699B8'>${alarm.comment or ''}</span>
+        </dd>
+
+        % if alarm.inc_alarm_id or alarm.source_type == "TNM":
+        <dt>${_(u'外部系统')}</dt>
+        <dd>
+            % if alarm.source_type == "TNM":
+            <a target="_blank" href="###" style="margin-right:10px;">TNM2</a>
+            % endif
+            % if alarm.inc_alarm_id:
+            <a target="_blank" href="###">INC</a>
+            % endif
+        </dd>
+        % endif
+
+        <hr>
+        <dt style='color:grey'>${_(u'处理过程')}</dt>
+        <dd style='color:grey'>
+            % for log in alarm.alarm_log_list.filter(level__gte=20):
+            <div class="instance_log" data-step_name="${ log.step_name }">
+                <i class='bk-icon icon-check-circle'></i> ${ log.content |n }<br>
+            </div>
+            %endfor
+        </dd>
+    </dl>
+
+<script type="jtk" id="tmplNode">
+<div style="width:${"$"}{w}px;height:${"$"}{h}px;" data-level="${"$"}{level}">
+    <div class="connect1">
+        <div class="name">
+            <div class="btn-add bk-icon icon-plus">
+            </div>
+            <div class="btn-del bk-icon icon-close-circle-shape">
+            </div>
+            <span>${"$"}{name}</span>
+        </div>
+    </div>
+    <jtk-source filter=".connect1"/>
+    <jtk-target/>
+</div>
+</script>
+
+<div class="jtk-demo-main" id="jtk-demo-absolute">
+    <div class="jtk-demo-canvas">
+    </div>
+</div>
+<script type="text/javascript" src="${STATIC_URL}jsplumb/alarm_instance.js?v=${STATIC_VERSION}" ></script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_instance.js"></script>
+

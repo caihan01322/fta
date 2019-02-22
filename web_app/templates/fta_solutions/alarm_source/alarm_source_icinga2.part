@@ -1,0 +1,72 @@
+    <!-- 接入流程S -->
+    <div class="title-content-bar mb20">
+        <div class="pure-title">${_(u'接入流程')}</div>
+        <div class="title-bottom-panel clearfix info-bar3">
+            <div class="bk-flows">
+                <div style="width: 100%;">
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">1</span>
+                        <p class="bk-vertical-text fl">${_(u'下载推送脚本')}</p>
+                        <div class="flow-content">
+                            <%
+                                from django.core.urlresolvers import reverse
+                                from urlparse import urljoin
+                                script_path = "{path}?fta_application_id={alarm_app.app_id}&fta_application_secret={alarm_app.app_secret}".format(
+                                    path=reverse("alarm_source_scripts", kwargs={
+                                        "cc_biz_id": alarm_app.cc_biz_id,
+                                        "script_name": "icinga2_fta_pusher.py",
+                                    }),
+                                    alarm_app=alarm_app,
+                                )
+                                script_url = urljoin(request.build_absolute_uri(), script_path)
+                            %>
+                            <p>${_(u'在Icinga2 Server上下载')}<a href="${script_url}">${_(u'推送脚本')}</a>(${_(u'脚本中包含动态生成的AppId、SecretKey')}）</p>
+                            <div class="gray-bar"><p>
+<pre>
+wget '${script_url}' -O icinga2_fta_pusher.py --no-check-certificate
+chmod a+x icinga2_fta_pusher.py
+</pre>
+							</p></div>
+                        </div>
+                    </div>
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">2</span>
+                        <p class="bk-vertical-text fl">${_(u'安装告警配置')}</p>
+                        <div class="flow-content">
+                            <p>${_(u'指定icinga2根目录进行安装')}（如<span>/etc/icinga2</span>）</p>
+                            <div class="gray-bar">
+                                <p>
+<pre>
+./icinga2_fta_pusher.py -c install /etc/icinga2
+</pre>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">3</span>
+                        <p class="bk-vertical-text fl">${_(u'重新加载Icinga2')}</p>
+                        <div class="flow-content">
+                            <div class="gray-bar">
+                               <p>
+<pre>
+/etc/init.d/icinga2 reload
+</pre>
+                               </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bk-vertical current">
+                        <span class="bk-flow-number fl">4</span>
+                        <p class="bk-vertical-text fl">${_(u'完成')}</p>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- 接入流程E -->

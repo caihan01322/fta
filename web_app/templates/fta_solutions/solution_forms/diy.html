@@ -1,0 +1,49 @@
+
+<div class="widget-title">${_(u'组合套餐流程配置')}</div>
+
+<div class="canvas-outer-container">
+    <div class="widget-content solutionListPanel" id="widget-content">
+    </div>
+</div>
+
+<div id="template_real_solution" style="display:none">
+    <div class="real_solution_div" id="real_solution_div_0" data-id="0">
+        <input type="text" id="real_solution_0" class="real_solution" data-id="0" placeholder="${_(u'请选择原子套餐')}" />
+        <div class="row opt-row">
+            <a href="javascript:insert_node(0)" class="col-md-1 label label-info no-padding upload"><span>${_(u'新增父节点')}</span></a>
+            <a href="javascript:change_node(0)" class="col-md-1 label no-padding exchange"><span>${_(u'对调子节点')}</span></a>
+            <a href="javascript:create_left(0)" class="col-md-4 label label-success success">${_(u'成')}<span>${_(u'新增成功子节点')}</span></a>
+            <a href="javascript:create_right(0)" class="col-md-4 label label-danger danger">${_(u'败')}<span>${_(u'新增失败子节点')}</span></a>
+            <a href="javascript:delete_node(0)" class="col-md-2 label label-delete"><i class="bk-icon icon-delete"></i><span>${_(u'删除当前节点')}</span></a>
+        </div>
+        <div class="right-list-icon"><span>${_(u'配置')}</span></div>
+    </div>
+</div>
+
+<script>
+//页面刚进来的时候隐藏套餐说明
+var curVal = $('#solution_type').val();
+if(curVal == "diy"){
+    $(".solution-instruction").css({
+        "display":"none"
+    })
+}
+
+<%
+    from fta_solutions_app.models import Solution
+    solutions = Solution.objects.filter(cc_biz_id__in=[cc_biz_id, 0]).exclude(solution_type='diy').exclude(codename='direct_only')
+%>
+var SELECT_OPTION = {
+    data:[
+        % for solution in sorted(solutions, key=lambda x:x.title_display):
+        {id: '${solution.id}', text: '${solution.title_display}'},
+        % endfor
+    ],
+    width: "139",
+    dropdownAutoWidth: true
+}
+
+var ALL_SOLUTIONS;
+
+</script>
+<script type="text/javascript" src="${STATIC_URL}js/page/diy.js?v=${STATIC_VERSION}"></script>

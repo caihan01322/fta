@@ -1,0 +1,88 @@
+<link rel="stylesheet" type="text/css" href="${STATIC_URL}css/solution.css?v=${STATIC_VERSION}">
+<style type="text/css">
+    .select2-drop.select2-drop-above.select2-drop-active{
+        border: 1px solid #5897fb;
+    }
+</style>
+<div class='row' id="solution-details" style="display: none">
+    <div class="solution-new">
+        <div class="solution-list-details">
+            <div class="pure-title">${_(u'自愈套餐')}</div>
+            <div class="choose-solution-type half-bar-parent">
+                <div class="half-bar-item">
+                    <label>${_(u'套餐类型')}</label>
+                    <select ${(edit and 'disabled="disabled"') or ''} id="solution_type" name="solution_type" onchange="refresh_solution_form()" style="width:100%;">
+                        % for group, group_types in solution_types.iteritems():
+                            % if solution_types.get(group):
+                                <optgroup label="${_(group)}">
+                                % for s_item in group_types:
+                                    <option value='${s_item[0]}' ${'selected=true' if s_item[0] == type_to_show else ''}>${s_item[1]}</option>
+                                % endfor
+                               </optgroup>
+                            % endif
+                       % endfor
+                    </select>
+                </div>
+                <div class="half-bar-item">
+                    <label>${_(u'套餐命名')}<span>*</span></label>
+                  <!--   <input type="text" id="title" value="${solution.title_display if edit else ''}" class="form-control" width="100%" placeholder="请输入" onkeyup="calcurnum()"> -->
+                      <input type="text" id="title" value="${solution.title_display if edit else ''}" class="form-control" width="100%" placeholder="${_(u'请输入')}">
+                </div>
+            </div>
+
+            <div id="solution_form">
+              <input type="hidden" name="real_solutions" id="real_solutions" value='${solution.config.get("real_solutions", """{"1":""}""") if edit else """{"1":""}"""}'/>
+                <%include file="/fta_solutions/solution_forms/${type_to_show}.html"/>
+            </div>
+            <div class="saveBtnPanel">
+             <!--    <a href="javascript:save_solution();" class="btn btn-primary" style="margin-right:10px">${u"添加自愈套餐" if add_or_edit == 'add' else u"保存自愈套餐"}</a> -->
+               <button onClick="javascript:save_solution();" class="btn btn-primary save_solution" style="margin-right:10px">${_(u"添加自愈套餐") if add_or_edit == 'add' else _(u"保存自愈套餐")}</button>
+            </div>
+            <div></div>
+
+        </div>
+        <div class="open-close" title="${_(u'点击展开自愈套餐说明')}"><svg t="1493370711315" class="icon" style="" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2651" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200"><defs><style type="text/css"></style></defs><path d="M65.838 513.193c0 247.485 200.635 448.185 448.187 448.185s448.187-200.702 448.187-448.185c0-247.552-200.632-448.187-448.187-448.187-247.552-0.001-448.187 200.634-448.187 448.187zM906.189 513.193c0 216.601-175.563 392.164-392.164 392.164s-392.232-175.529-392.232-392.164 175.631-392.198 392.232-392.198c216.6 0.003 392.164 175.599 392.164 392.198zM274.946 386.161c-10.996 10.923-10.996 28.641 0 39.567l214.432 214.462c6.792 6.725 15.966 8.824 24.647 7.285 8.685 1.54 17.927-0.599 24.65-7.284l214.499-214.462c10.925-10.96 10.925-28.679 0-39.567-10.923-10.993-28.71-10.993-39.636 0l-199.514 199.443-199.443-199.443c-10.993-10.994-28.71-10.994-39.636 0z" p-id="2652" fill="#707070"></path></svg></div>
+        <div class="solution-instruction" >
+            <div class="pure-title">${_(u'自愈套餐说明')}</div>
+            <div class="explain-text">${_(u'套餐是业务运维设计制作的一套恢复故障的方案，可以复用于不同的告警，也可作为原子套餐用于制作组合套餐。')} ${_(u'详情')}：<a href="http://docs.bk.tencent.com/product_white_paper/fta/Getting_Started/Many_Solutions.html" target="_blank">【${_(u'自愈套餐大全')}】</a></div>
+
+            <div class="current-explain">
+                <div class='widget-box' style='margin-top:0' id="solution_details">
+                    <%include file="/fta_solutions/solution_details/${type_to_show}.html"/>
+                </div>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+<script>
+    var s_solution_id = "${solution_id}"
+    var s_type = '${"PUT" if edit else "POST"}';
+    var check_solution_id = '${ "0" if not edit else "%s" % solution.id}';
+    var save_solution_id = '${ "" if not edit else "%s/" % solution.id}';
+    var save_solution_creator = '${request.user.username}';
+</script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/solution.js"></script>
+
+</div>
+
+<script>
+    var curHref = $(".to_doc").attr("href");
+    $(".to_doc").attr("href",curHref+'#'+$("#solution_type").val());
+
+    $("#solution_form").on("click",'input[rel="checkbox"], input[rel="radio"]',function(){
+        if($(this).attr("checked")){
+            $(this).removeAttr("checked");
+        }else{
+            $(this).attr("checked","true");
+        }
+    })
+
+    var winHeight = $(window).innerHeight();
+    $(".solution-new").css("min-height",winHeight-140+"px");
+    $(".solution-new").on("click",".open-close",function(){
+        $(this).toggleClass("close-open");
+        $(".solution-instruction").slideToggle(100);
+    })
+</script>

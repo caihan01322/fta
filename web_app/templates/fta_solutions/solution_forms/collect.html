@@ -1,0 +1,156 @@
+<div class="inner-forms collect-forms">
+    <div class="line-item">
+        <div class="form-group">
+            <label class="bkui-form-cell pr20">
+                <div class="bkui-form-hd">
+                    <input type="radio" rel="radio" class="bkui-check" name="collect_by" for="by_time" checked>
+                    <span class="bkui-choice-icon  pr10"></span>${_(u'按时间段汇总')}
+                </div>
+            </label>
+            <label class="bkui-form-cell pr20">
+                <div class="bkui-form-hd">
+                    <input type="radio" rel="radio" class="bkui-check" name="collect_by" for="by_alarm">
+                    <span class="bkui-choice-icon  pr10"></span>${_(u'按告警数汇总')}
+                </div>
+            </label>
+            <label class="bkui-form-cell pr20">
+                <div class="bkui-form-hd">
+                    <input type="radio" rel="radio" class="bkui-check" name="collect_by" for="by_all">
+                    <span class="bkui-choice-icon  pr10"></span>${_(u'按时间段和告警数汇总')}
+                </div>
+            </label>
+        </div>
+        <div class="form-group inline-groups byTime">
+            <label for="range_time" class="control-label">${_(u'按时间段汇总')}：</label>
+            <div class="controls">
+                <div class="input-group">
+                  <input
+                    type="number"
+                    name="range_time"
+                    class="form-control"
+                    value="${solution.config.get('range_time') if solution else '1'}"
+                    min="1"
+                  />
+                  <span class="input-group-unit">${_(u'分')}</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group inline-groups byTime">
+            <label for="range_count_floor" class="control-label">${_(u'少于多少条不通知')}：</label>
+            <div class="controls">
+                <div class="input-group">
+                  <input
+                    type="number"
+                    name="range_count_floor"
+                    class="form-control"
+                    value="${solution.config.get('range_count_floor', '1') if solution else '1'}"
+                    min="1"
+                  />
+                  <span class="input-group-unit">${_(u'条')}</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group inline-groups byAlarms hide">
+            <label for="range_count" class="control-label">${_(u'按告警数汇总')}：</label>
+            <div class="controls">
+                 <div class="input-group">
+                  <input
+                    type="number"
+                    name="range_count"
+                    class="form-control"
+                    value="${solution.config.get('range_count') if solution  else '1'}"
+                    min="1"
+                  />
+                  <span class="input-group-unit">${_(u'条')}</span>
+                </div>
+
+            </div>
+        </div>
+        <div><p class="inlineNotice">${_(u'数据为“0”表示不启用')}</p></div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="notice" class="control-label">${_(u'汇总维度')}：</label>
+        <div class="controls">
+            <%doc>
+            <input name="cc_idc_unit" type="checkbox" ${"checked" if solution and solution.config.get('cc_idc_unit') else ''}><span>IDCUnit</span>
+            </%doc>
+            <div class="checkboxItem">
+                <input rel="checkbox" readonly="readonly" name="cc_topo_set" ${"checked" if solution and solution.config.get('cc_topo_set') else ''}><span>${_(u'集群')}</span>
+            </div>
+            <div class="checkboxItem">
+                 <input rel="checkbox" readonly="readonly" name="cc_app_module" ${"checked" if solution and solution.config.get('cc_app_module') else ''}><span>${_(u'模块')}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="notice" class="control-label">${_(u'通知')}：</label>
+        <div class="controls noticePanel">
+            <div class="checkboxItem">
+                <input rel="checkbox" readonly="readonly" name="notice_begin" type="text" ${"checked" if solution and solution.config.get('notice_begin') else ''}><span>${_(u'汇总开始时通知')}</span>
+                <%doc>
+                <input name="notice_begin" type="checkbox" ${"checked" if solution and solution.config.get('notice_begin') else ''}><span>${_(u'汇总开始时通知')}</span>
+                </%doc>
+            </div>
+            <div class="checkboxItem">
+                <input rel="checkbox" readonly="readonly" name="notice_end" type="text" ${"checked" if solution and solution.config.get('notice_end') else ''}><span>${_(u'汇总完成时通知')}</span>
+            </div><br/>
+            <div class="checkboxItem mt10">
+                <input rel="checkbox" readonly="readonly" name="notice_wechat" type="text" ${"checked" if not solution or solution.config.get('notice_wechat') else ''}><span>${_(u'微信通知')}</span>
+            </div>
+            <div class="checkboxItem">
+                <input rel="checkbox" readonly="readonly" name="notice_sms" type="text" ${"checked" if solution and solution.config.get('notice_sms') else ''}><span>${_(u'短信通知')}</span>
+            </div>
+            <div class="checkboxItem">
+                <input rel="checkbox" readonly="readonly" name="notice_phone" type="text" ${"checked" if solution and solution.config.get('notice_phone') else ''}><span>${_(u'电话通知')}</span>
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" id="codename" name="codename" value="direct_only">
+</div>
+
+<script>
+//判断当汇总完成时通知选中的时候，少于多少条不通知显示
+if($(".noticePanel input[name=notice_end]").attr("checked") == 'checked'){
+    $(".noticeLimit").removeClass("hide")
+}else{
+    $(".noticeLimit").addClass("hide")
+}
+$(".noticePanel").on("click","input[name=notice_end]",function(){
+        if($(this).attr("checked")){
+            $(".noticeLimit").addClass("hide")
+        }else{
+            $(".noticeLimit").removeClass("hide")
+        }
+})
+
+$(".collect-forms").on("click", 'input[rel="radio"]',function(){
+    if($(this).attr("checked")){
+        $(this).removeAttr("checked");
+    }else{
+        $(this).attr("checked","true");
+    }
+    var selectBy = $(this).attr("for")
+    switch(selectBy) {
+        case 'by_time':
+            $(".byTime").removeClass('hide').siblings('.byAlarms').addClass('hide');
+            break;
+        case 'by_alarm':
+            $(".byAlarms").removeClass('hide').siblings('.byTime').addClass('hide');
+            break;
+        default: 
+            $(".byAlarms, .byTime").removeClass('hide')
+            break;
+    }
+})
+
+
+
+</script>

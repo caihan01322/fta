@@ -1,0 +1,93 @@
+<style>
+.check_label {
+    margin-right:10px;
+}
+</style>
+<%
+from fta_solutions_app.cache_utils import get_cc_obj_attr
+attr_dcit = get_cc_obj_attr()
+%>
+<div class="inner-forms get_bak_ip-form collect-forms">
+  <div class="line-item cluster-module">
+    <div class="form-group inline-groups">
+        <label class="control-label">${_(u'集群名称(为空则不按此项过滤)')}：</label>
+        <div class="controls">
+            <input type="text" class="form-control" id="set_name_id" name="set_name" value="${solution.config.get('set_name', '') if solution else ''}" placeholder="${_(u'集群名称，多个以英文逗号分隔')}">
+        </div>
+    </div>
+    <div class="form-group inline-groups">
+        <label class="control-label">${_(u'模块名称(为空则不按此项过滤)')}：</label>
+        <div class="controls">
+            <input type="text" class="form-control" id="module_name" name="module_name" value="${solution.get_module_name if solution else _(u'空闲机')}" placeholder="${_(u'模块名称，多个以英文逗号集群')}">
+        </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label class="control-label">${_(u'Agent是否安装')}：</label>
+      <label class="controls" style="margin-left: 10px;font-weight: 300">
+        <div class="checkboxItem">
+          <input name="agent_status" rel="checkbox" readonly="readonly" ${"checked=" if not solution or solution.config.get('agent_status') else ''}><span class="check_label">${_(u'已安装')}</span>
+        </div>
+      </label>
+  </div>
+
+  <div class="form-group attr-filter">
+    <p class="title">${_(u'按以下属性过滤')}：</p>
+  
+    <label class="control-label">
+      <div class="checkboxItem">
+          <span class="check_label">${_(u'所在国家')}</span>
+      </div>
+    </label>
+    <p class="attr-filter-row">
+      <select name="bk_state_name" class="bak_ip_select" style="width: 100%;">
+        <option value="">${_(u'为空则不按此项过滤')}</option>
+        % for _p in attr_dcit.get('bk_state_name'):
+        <option value="${_p.get('id')}" ${ "selected" if solution and solution.config.get('bk_state_name')==_p.get('id') else ''}>${_p.get('name')}</option>
+        % endfor
+      </select>
+    </p>
+    <label class="control-label">
+      <div class="checkboxItem">
+          <span class="check_label">${_(u'所在省份')}</span>
+      </div>
+    </label>
+
+    <p class="attr-filter-row">
+      <select name="bk_province_name" class="bak_ip_select" style="width: 100%;">
+        <option value="">${_(u'为空则不按此项过滤')}</option>
+        % for _p in attr_dcit.get('bk_province_name'):
+        <option value="${_p.get('id')}" ${ "selected" if solution and solution.config.get('bk_province_name')==_p.get('id') else ''}>${_p.get('name')}</option>
+        % endfor
+      </select>
+    </p>
+
+    <label class="control-label">
+      <div class="checkboxItem">
+          <span class="check_label">${_(u'操作系统类型')}</span>
+      </div>
+    </label>
+    <p class="attr-filter-row">
+      <select name="bk_os_type" class="bak_ip_select" style="width: 100%;">
+        <option value="">${_(u'为空则不按此项过滤')}</option>
+        % for _p in attr_dcit.get('bk_os_type'):
+          <option value="${_p.get('id')}" ${ "selected" if solution and solution.config.get('bk_os_type')==_p.get('id') else ''}>${_p.get('name')}</option>
+        % endfor
+      </select>
+    </p>
+    <!-- </div> -->
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">
+      <div class="checkboxItem">
+        <input name="auto_replace" rel="checkbox" readonly="readonly" ${"checked" if solution and solution.config.get('auto_replace') else ''}><span class="check_label">${_(u'自动获取最新备机(无需人工审核)')}</span>
+      </div>
+    </label>
+  </div>
+</div>
+
+<script>
+  $(".bak_ip_select").select2();
+</script>

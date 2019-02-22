@@ -1,0 +1,112 @@
+<!DOCTYPE html><html>
+
+<head>
+<meta charset="utf-8">
+<title>${HTML_TITLE}</title>
+<link rel="shortcut icon" href="${STATIC_URL}images/bk_fta_solutions.png" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="${STATIC_URL}doc/css/style.css?v=${STATIC_VERSION}">
+
+</head>
+<body><div class="markdown-body">
+<h2 id="toc_0">套餐传入变量参数的说明</h2>
+
+<p>简介：自愈的很多套餐里都需要传入参数，但有些参数是套餐执行时根据故障机信息进行动态获取的。 目前自愈里很多套餐类型都支持了这种变量参数，比如通知审批等。</p>
+
+<h2 id="toc_1">1.目前可选的变量有(可能为空)：</h2>
+
+<ul>
+<li>${"${ip}"}：告警的IP</li>
+<li>${"${raw}"}：告警的字符内容</li>
+<li>${"${alarm_type}"}：告警类型</li>
+<li>${"${source_time}"}：告警时间(格式如 2014-01-01)</li>
+<li>${"${cc_biz_id}"}：CC的业务ID</li>
+<li>${"${operator}"}：业务负责人的第一个</li>
+</ul>
+
+<h2 id="toc_2">2.CC 主机属性和 SET 属性的变量</h2>
+
+<p>格式为：${u"${cc|属性名字}"}，如：</p>
+
+<ul>
+<li>${"${cc|OuterIP}"}：故障主机的外网 IP</li>
+<li>${"${cc|AssetID}"}：故障主机的固资编号
+具体属性名请在 CC 上查询。</li>
+</ul>
+
+<h2 id="toc_3">3.CC 变量支持五个参数</h2>
+
+<ul>
+<li>all、set、custom、alarm_ci_name、ip_bak</li>
+<li>all：当有多个参数的时候，将返回通过逗号间隔的字符串。如有多个主机名称的时候</li>
+<li><p>${"${cc|HostName|all}"}：返回&quot;hostname1,hostname2,hostnameN&quot;，不添加默认返回第一个<br/>
+set：查询 Set 属性。如</p></li>
+<li><p>${"${cc|SetName|set}"}：故障主机的Set名称<br/>
+custom：查询自定义属性。如查询一个名为 IDC 的 Set 属性</p></li>
+<li><p>${"${cc|IDC|set|custom}"}</p></li>
+<li><p>alarm_ci_name：指定查询故障机的CC属性</p></li>
+<li><p>ip_bak：指定查询备机的CC属性</p></li>
+</ul>
+
+<p>三个参数能任意组合，如以下两个写法是等价的：</p>
+
+<ul>
+<li>${"${cc|IDC|set|custom|all}"}</li>
+<li>${"${cc|IDC|all|set|custom}"}</li>
+</ul>
+
+<h2 id="toc_4">4.故障机替换时备机</h2>
+
+<p>故障自愈现在有两种获取备机的 IP，通过获取备机套餐在 CC 中寻找符合要求的机器或者通过作业平台脚本来获取。获取到的备机参数为：${"${bpm_context|ip_bak}"} </p>
+
+<p>与 IP 有关的变量有三个：</p>
+
+<ul>
+<li><p>${"${ip}"} 当前流程处理的 IP，默认是故障机 IP，可以被替换操作对象的套餐改为备机 IP</p></li>
+<li><p>${"${bpm_context|ip_bak}"} 备机 IP</p></li>
+<li><p>${"${bpm_context|alarm_ci_name}"} 故障机 IP </p></li>
+</ul>
+
+<h2 id="toc_5">5.常见案例</h2>
+
+<ul>
+<li><p>1.根据告警传入告警IP</p>
+
+<ul>
+<li>${"${ip}"}</li>
+</ul></li>
+<li><p>2.根据告警IP传入外网IP</p>
+
+<ul>
+<li>${"${cc|OuterIP}"}</li>
+</ul></li>
+<li><p>3.根据告警IP传入自定义主机属性</p>
+
+<ul>
+<li>${"${cc|gametype|custom}"}</li>
+</ul></li>
+<li><p>4.根据告警IP传入set名称</p>
+
+<ul>
+<li>${"${cc|SetName|set}"}</li>
+</ul></li>
+<li><p>5.根据告警IP传入自定义set属性</p>
+
+<ul>
+<li>${"${cc|openstate|set|custom}"}</li>
+</ul></li>
+<li><p>6.跟进告警IP传入组合属性(如：1区_虎啸谷)</p>
+
+<ul>
+<li>${"${cc|SetWorldID|set}"}_${"${cc|SetChnName|set}"}</li>
+</ul></li>
+</ul>
+
+<h2 id="toc_6">6.注意事项</h2>
+
+<ul>
+<li>1. 注意大小写</li>
+</ul>
+
+</div></body>
+
+</html>

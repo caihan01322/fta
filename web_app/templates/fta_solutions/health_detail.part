@@ -1,0 +1,153 @@
+% if not fresh_advice_list:
+    <tr><td colspan="10" class="tc">${_(u'没有数据')}</td></tr>
+% else:
+    % for advice in fresh_advice_list:
+    <tr class="close-text" style="background:${" " if advice.level == "critical" else "none"}">
+        <td class="alarm_type pl30">
+            <div class="limitText hd"> <!-- 告警类型 -->
+                <span>${advice.advice_def.check_sub_type_desc}</span>
+            </div>
+            <div class="hiddenText"> <!-- 告警类型 -->
+                <span>${advice.advice_def.check_sub_type_desc}</span>
+            </div>
+            <a href="javascript:;" class="text-switch pl5"><i class="bk-icon icon-plus-square to-open-text"></i><i class="bk-icon icon-minus-square to-close-text"></i></a>
+        </td>
+        <td style="color: grey" data-dateformat="MM-DD">
+            <div class="limitText hd"> <!-- 发现时间 -->
+                <span>
+                    ${advice.create_time.strftime('%m-%d')}
+                </span>
+            </div>
+            <div class="hiddenText"> <!-- 发现时间 -->
+                <span>
+                    ${advice.create_time.strftime('%m-%d')}
+                </span>
+            </div>
+        </td>
+        <td data-value="${advice.frequency}" style="color:${"red" if advice.level == "critical" and advice.advice_status != 'success'  else ""}">  <!-- 发生频次 -->
+            <div class="limitText hd">
+                <span>
+                    ${advice.interval_desc}${advice.alarm_num}${_(u'次')}
+                </span>
+            </div>
+            <div class="hiddenText">
+                <span>
+                    ${advice.interval_desc}${advice.alarm_num}${_(u'次')}
+                </span>
+            </div>
+        </td>
+        <td> <!-- 可疑IP -->
+            <div class="limitText hd">
+                <span>
+                    ${advice.subject_info}
+                </span>
+            </div>
+            <div class="hiddenText">
+                <span>
+                    ${advice.subject_info}
+                </span>
+            </div>
+        </td>
+        <td> <!-- 集群 -->
+            <div class="limitText hd">
+                <span>
+                    ${_(advice.alarminstance_set_names)}
+                </span>
+            </div>
+            <div class="hiddenText">
+                <span>
+                    ${_(advice.alarminstance_set_names)}
+                </span>
+            </div>
+        </td>
+        <td>  <!-- 模块 -->
+            <div class="limitText hd">
+                <span>
+                    ${_(advice.alarminstance_module_name)}
+                </span>
+            </div>
+            <div class="hiddenText">
+                <span>
+                    ${_(advice.alarminstance_module_name)}
+                </span>
+            </div>
+        </td>
+        <td>  <!-- 处理类型 -->
+            <div class="limitText hd">
+                <span>
+                    ${_(advice.advice_fta_handle_type_name)}
+                </span>
+            </div>
+            <div class="hiddenText">
+                <span>
+                    ${_(advice.advice_fta_handle_type_name)}
+                </span>
+            </div>
+        </td>
+        % if advice.advice_fta_handle_type == 'solution':
+            <td>
+                <div class="limitText hd">
+                    % if advice.advice_fta_solution and advice.advice_fta_solution.cc_biz_id != 0:
+                        <a class="text-info" href="javascript:include_open('${cc_biz_id}/solution/${advice.advice_fta_solution.id}/');"> ${advice.advice_fta_solution_name} </a>
+                    % else:
+                        <a href="###" title="${_(u'系统定义的快捷套餐')}"> ${advice.advice_fta_solution_name} </a>
+                    % endif
+                </div>
+                <div class="hiddenText">
+                    % if advice.advice_fta_solution and advice.advice_fta_solution.cc_biz_id != 0:
+                        <a class="text-info" href="javascript:include_open('${cc_biz_id}/solution/${advice.advice_fta_solution.id}/');"> ${advice.advice_fta_solution_name} </a>
+                    % else:
+                        <a href="###" title="${_(u'系统定义的快捷套餐')}"> ${advice.advice_fta_solution_name} </a>
+                    % endif
+                </div>
+            </td>
+        % else:
+            <td>  <!-- 处理方案 -->
+                <div class="limitText hd">
+                    <span>${advice.advice_def.advice.replace('\n', '<br>') |n}</span>
+                </div>
+                <div class="hiddenText">
+                    <span>${advice.advice_def.advice.replace('\n', '<br>') |n}</span>
+                </div>
+            </td>
+        % endif
+        % if advice.alarminstance:
+            <!-- 套餐执行的详情 -->
+            <td>
+                <a  href="${SITE_URL}${cc_biz_id}/alarm_instance/page/${advice.alarminstance_id}/" target="_blank" title="${status_dict.get(advice.alarminstance.status, _(u"无效状态"))}" data-toggle="tooltip" data-placement="bottom" class="alarm_status_img">
+                % if advice.alarminstance.status in status_dict:
+                    <img ${'class="fa-spin"' if advice.alarminstance.status == 'recovering' else ''} src="${STATIC_URL}images/status/${advice.alarminstance.status}.png" widht="25" height="25">
+                % else:
+                    <i class="bk-icon icon-question-circle-shape"></i>
+                %endif
+                </a>
+            </td>
+        % else:
+            <!--  线下处理 -->
+            % if advice.offline_handle == 'ok':
+                <td>
+                    <a href="${SITE_URL}${cc_biz_id}/advice/show/${advice.id}/" target="_blank" title="${_(advice.get_offline_handle_display())}" data-toggle="tooltip" data-placement="bottom" class="alarm_status_img">
+                    <img src="${STATIC_URL}images/status/success.png" widht="25" height="25">
+                    </a>
+                </td>
+            % else:
+                <td>
+                    <a href="###" class="offline_handle" data="${advice.id}"><img src="${STATIC_URL}images/status/for_notice.png" widht="25" height="25"></a>
+                </td>
+            % endif
+        % endif
+        <td>${advice.alarm_detail_href |n}</td>
+    </tr>
+    % endfor
+% endif
+
+<script>
+$(function(){
+    var ip_list = '${'<br>'.join(ip_list) |n}'
+    $("#ip_list").text(ip_list);
+    $("#failure_count").text('${failure_count}');
+    $("#not_handle_count").text('${not_handle_count}');
+    $("#total_count").text('${total_count}');
+})
+</script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/health_detail.js"></script>

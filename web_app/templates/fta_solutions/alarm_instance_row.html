@@ -1,0 +1,56 @@
+
+<%page args="alarm, incident_id"/>
+
+<tr class='alarm_instance_row inc-${incident_id} ${"hide inc_border inc_alarm_back" if incident_id else ""}' style="height:40px" >
+    <td class="overflowing-td">
+        <span class="items-chain"><i class="bk-icon icon-minus-square"></i></span>
+        <span style="margin-left:5px;">
+            ${alarm_type_dict.get(alarm.alarm_type, alarm.alarm_type)}
+         </span>
+    </td>
+    <td>
+        <%
+            import datetime
+            from common.django_utils import strftime_local            
+            source_time = alarm.source_time
+            show_time = alarm.source_time_show
+            delta_day = (datetime.date.today() - source_time.date()).days
+            show_day = {
+                0: _(u'今天'),
+                1: _(u'昨天'),
+                2: _(u'前天'),
+            }
+        %>
+        <span>${strftime_local(source_time, '%m-%d ')}</span>
+        <span><strong>${strftime_local(source_time, '%H:%M:%S %z')}</strong></span>
+    </td>
+    <td class="break-word">${alarm.consumed}</td>
+    <td class="break-word">
+        % if alarm.source_type == "LEAF" and not alarm.cc_topo_set:
+            ${_(u'全业务')}
+        % else:
+            ${_(set_names.get(alarm.cc_topo_set)) if set_names.get(alarm.cc_topo_set) else alarm.cc_topo_set}
+        % endif
+    </td>
+    <td>${_(alarm.cc_app_module)}</td>
+    <td>
+    % if alarm.alarm_type!='online':
+        ${alarm.ip}
+    % endif
+    </td>
+    <td style="cursor:pointer;text-align: center;">
+        <a  href="${SITE_URL}${cc_biz_id}/alarm_instance/page/${alarm.id}/" target="_blank" title="${status_dict.get(alarm.status,_( u"无效状态"))}" data-toggle="tooltip" data-placement="bottom" class="alarm_status_img">
+        % if alarm.status in status_dict:
+            <img ${'class="fa-spin"' if alarm.status == 'recovering' else ''} src="${STATIC_URL}images/status/${alarm.status}.png" widht="25" height="25">
+        % else:
+            <i class="bk-icon icon-question-circle-shape"></i>
+        %endif
+        </a>
+    </td>
+    <td colspan="2" class="force-wrap overflowing-td">${alarm.comment or '' |n}</td>
+
+    %if not cc_biz_id:
+        <td>${cc_dict.get(str(alarm.cc_biz_id))}</td>
+    %endif
+
+</tr>

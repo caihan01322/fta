@@ -1,0 +1,129 @@
+<!-- 编辑告警类型S -->
+<!-- 后台相关的变量：${cc_biz_id} ${source_type} -->
+<%
+from fta_solutions_app.models import AlarmType
+
+alarm_type_list = list(AlarmType.get_by_cc_biz_id(
+    cc_biz_id, source_type=source_type,
+))
+%>
+    <div class="title-content-bar mb20 title-content-tab">
+        <div class="pure-title">${_(u'编辑告警类型')}
+            <span class="name-notice">
+                ${_(u'自定义告警类型，让告警处理更加明确')}
+            </span>
+            % if request.user.is_superuser:
+            <a class="bk-button bk-success fr mt18" href="javascript:;" id="newStyles" style="margin-top: 18px;">
+                <span class="outer-circle">
+                    <i class="bk-icon icon-plus-circle"> </i>
+                </span> ${_(u'新增告警类型')}</a>
+            % endif
+        </div>
+        <div class="title-bottom-panel clearfix info-bar4">
+            <div class='col-xs-12 access-tab hole-tab-style table-packup'>
+                <table class="table table-hover alarm_type_table">
+                    <thead class="th-bg">
+                        <tr>
+                            <th class="br1 pl35" style="text-align: left;width:20%;">${_(u'名称')}</th>
+                            <th class="br1 pl20" style="text-align: left;width:18%;">${_(u'规则')}</th>
+                            <th class="br1 pl20" style="text-align: left;width:18%;">${_(u'匹配模式')}</th>
+                            % if request.user.is_superuser:
+                            <th class="br1 pl20" style="text-align: left; width:100px;">${_(u'操作')}</th>
+                            % endif
+                        </tr>
+                    </thead>
+                    <tbody>
+                        % for i in alarm_type_list:
+                        <tr class="close-text" id="alarm_type_${i.id}">
+                            <td class="pl35">
+                                <div class="limitText hd">
+                                    <span>${i.description_display}</span>
+                                </div>
+                                <a href="javascript:;" class="text-switch" style="left:10px;">
+                                    <i class="bk-icon icon-plus-square to-open-text"></i>
+                                    <i class="bk-icon icon-minus-square to-close-text"></i>
+                                </a>
+                            </td>
+                            <td class="pl20">
+                                <div class="limitText hd">
+                                    <span class='report-num'>${i.pattern}</span>
+                                </div>
+                            </td>
+                            <td class="pl20">
+                                <div class="limitText hd">
+                                    <span class='report-num'>${i.match_mode_desc}</span>
+                                </div>
+                            </td>
+                            % if request.user.is_superuser:
+                            <td class="pl20 inline-btn-panel">
+                                <a class="f_r border-box edit_button" href="javascript:edit_alarm_type(${i.id});"></a>
+                                <a class="f_r border-box del_button" href="javascript:del_alarm_type(${i.id});"></a>
+                            </td>
+                            % endif
+                        </tr>
+                        % endfor
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- 编辑告警类型E -->
+
+    <!-- 侧栏显示 -->
+    <div class="bk-mask interview_mask new_slide" id="bk_mask">
+        <div class="bk-mask-content" id="bk_mask_content">
+            <div class="bk-mask-title">
+                <i class="bk-icon icon-angle-right" id="close"></i>
+                <span>${_(u'新建告警类型')}</span>
+            </div>
+            <div class="bk-mask-body">
+                <div class="warning-bar fail">
+                    <span class="warn-icon"></span>
+                    <span class="warn-text"></span>
+                </div>
+                % if source_type == "ZABBIX":
+                <div class="notice-words">${_(u'提示：通过匹配监控项表达式中的ITEM.KEY来确认告警类型')}</div>
+                % elif source_type == "NAGIOS":
+                <div class="notice-words">${_(u'提示：通过Nagios的service_group或service_description配置项来匹配告警类型')}</div>
+                % elif source_type == "OPEN-FALCON":
+                <div class="notice-words">${_(u'提示：通过回调的metric来匹配告警类型')}</div>
+                % elif source_type == "REST-API":
+                <div class="notice-words">${_(u'提示：通过匹配alarm_type字段来确定告警类型')}</div>
+                % endif
+                <div class="flex-panel mt20">
+                    <label class="x-inline">${_(u'名称')}</label>
+                    <div class="x-inline-right">
+                        <input type="text" class="form-control alarm_name_new" placeholder="${_(u'名称')}" style="width: 370px;">
+                    </div>
+                </div>
+                <div class="flex-panel match-rules">
+                    <label class="x-inline">${_(u'规则')}</label>
+                    <div class="x-inline-right">
+                        <input type="text" class="form-control alarm_rules_new" placeholder="${_(u'请输入匹配规则')}" style="width: 370px;">
+                    </div>
+                </div>
+                <div class="flex-panel new-checkbox match-model">
+                    <label class="x-inline">${_(u'匹配模式')}</label>
+                    <div class="x-inline-right alarm_pattern_new">
+                        <input rel="checkbox" type="text" readonly="readonly" thisval="0" name="match_mode" id="match_mode0" checked>
+                        <label for="match_mode0">${_(u'字符串')}</label>
+                        <input rel="checkbox" type="text" readonly="readonly" thisval="1" name="match_mode" id="match_mode1" class="ml15">
+                        <label for="match_mode1">${_(u'正则表达式')}</label>
+                        <input rel="checkbox" type="text" readonly="readonly" thisval="2" name="match_mode" id="match_mode2" class="ml15">
+                        <label for="match_mode2">${_(u'通配符')}</label>
+                    </div>
+                </div>
+                <input type="hidden" name="cc_biz_id" value="${cc_biz_id}">
+                <input type="hidden" name="source_type" value="${source_type}">
+                <div class="flex-panel mt20">
+                    <label class="x-inline"></label>
+                    <div class="x-inline-right">
+                        <a href="javascript:addAlarmType()" class="bk-button bk-success" title="${_(u'保存')}">${_(u'保存')}</a>
+                        <a class="bk-button bk-default cancel-btn" title="${_(u'取消')}">${_(u'取消')}</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_type.js"></script>

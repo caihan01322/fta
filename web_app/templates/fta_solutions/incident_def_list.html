@@ -1,0 +1,185 @@
+<div class='row access-title' >
+    <div>
+        <div class="table-up-title">
+            <span class="name-notice contain_long_text">
+                <em class="name-note">${_(u'告警收敛')}</em>
+                <em class="name-tips">${_(u'将多个关联告警收敛为同一事件，比如1台服务器同时出现Ping告警、磁盘只读告警，那么Ping告警处理成功后不会重复处理磁盘只读告警。')}</em>
+            </span>
+            <a class='bk-button bk-success fr' href="javascript:;" id="newRules"><span class="outer-circle"><i class='bk-icon icon-plus-circle'> </i></span> ${_(u'新建收敛规则')}</a>
+            <!-- 一期暂时屏蔽排序功能 -->
+            <!-- <a href="javascript:;" class="bk-button bk-default sort-btn fr"><i></i>排序</a> -->
+        </div>
+    </div>
+</div>
+
+<div class='row'>
+    <div class='col-xs-12 access-tab'>
+
+        <table class="table table-hover-new  table-hover incident_table" id="incident_table">
+            <tr>
+                <th class="item1 br1">${_(u'针对告警类型')}</th>
+                <th class="item2 br1">${_(u'在一定条件下')}</th>
+                <th class="item3 br1">${_(u'触发频次')}</th>
+                <th class="item4 br1">${_(u'收敛方式')}</th>
+                <th class="item5 br1">${_(u'备注')}</th>
+                <th class="item6 br1">${_(u'规则来源')}</th>
+                <th class="item7">${_(u'操作')}</th>
+            </tr>
+            % if not inc_def_list:
+                <tr><td colspan="7" style="text-align:center;">${_(u'没有数据')}</td></tr>
+            % endif
+            <%
+                import json
+            %>
+            % for inc_def in inc_def_list:
+            <%
+            rule=json.loads(inc_def.rule or '{}')
+            %>
+            % if rule:
+            <tr class="close-text" priority="${inc_def.priority}" db_id="${inc_def.id}">
+                <td class="col1">
+                    <div class="limitText">
+                        <span>
+                            ${', '.join([ALARM_TYPE_CHN.get(alarm_type, '') for alarm_type in get_alarm_type_group(rule['alarm_type']) if alarm_type in ALARM_TYPE_CHN])}
+                        </span>
+                    </div>
+                    <a href="javascript:;" class="text-switch"><i class="bk-icon icon-plus-square to-open-text"></i><i class="bk-icon icon-minus-square to-close-text"></i></a>
+                </td>
+                <td>
+                    <div class="limitText">
+                        <span>
+                            % for key, values in rule['condition'].items():
+                                % if key != 'alarm_type':
+                                    <div class="condition-list">
+                                        ${DIMENSION_CHN.get(key, key)}: ${','.join([ALARM_TYPE_CHN.get(value, value) if value != 'self' else _(u'相同') for value in values])} </div>
+                                    <br>
+                                % endif
+                            % endfor
+                        </span>
+                    </div>
+                </td>
+
+                <td>
+                    ${rule['timedelta']}${_(u'分钟内')}
+                    <br>
+                    ${rule['count']}${_(u'条以上')}
+                </td>
+
+                <td>
+                    ${INCIDENT_CHN[rule['incident']]}
+                </td>
+
+                <td>
+                    ${inc_def.description_display}
+                </td>
+                 <td>
+                    ${_(u'系统内置') if inc_def.cc_biz_id == 0 else _(u'当前业务') |n}
+                </td>
+                <td>
+                    % if inc_def.cc_biz_id != 0:
+                    <a class="f_r border-box edit_button" style="margin-right:5px"  href="javascript:include_open('${cc_biz_id}/incident/?id=${inc_def.id}');"></a>
+                    <a class="f_r border-box del_button" href="javascript:del_inc(${inc_def.id});"></a>
+                    % else:
+                    <a class="f_r cur-switch cp" href="javascript:block_inc(${inc_def.id});">
+                        % if cc_biz_id in (inc_def.exclude_list or []):
+                        <i class="switchery switchery-small">
+                            <small></small>
+                        </i>
+                        % else:
+                        <i class="switchery-on switchery-small">
+                            <small></small>
+                        </i>
+                        % endif
+                    </a>
+                    % endif
+                </td>
+            </tr>
+            % endif
+            % endfor
+
+        </table>
+
+    </div>
+</div>
+
+<!-- 侧栏显示 -->
+    <div class="bk-mask interview_mask" id="bk_mask">
+        <div class="bk-mask-content" id="bk_mask_content">
+            <div class="bk-mask-title">
+                <i class="bk-icon icon-angle-right" id="close"></i>
+                <span>${_(u'新建收敛规则')}</span>
+            </div>
+            <div class="bk-mask-body">
+                <div class="warning-bar fail"><span class="warn-icon"></span><span class="warn-text">${_(u'请先阅读并同意《蓝鲸智云软件许可及服务协议》')}</span></div>
+                <form id="incident_form">
+                    <input type="hidden" name="id" value="${current_id or ''}">
+                    <div class="line-group">
+                        <label>${_(u'告警类型')}</label>
+                        <select id="alarm_type" name="alarm_type" multiple placeholder="${_(u'针对什么告警类型？')}">
+                             <option disabled>${_(u'请选择告警类型')}</option>
+                            % for group, group_types in src_type_group.iteritems():
+                                % if source_type_dict.get(group):
+                                    <optgroup label="${source_type_dict.get(group)}">
+                                        % for s, s_title in group_types:
+                                            <option value='${s}' title='${group}' ${'selected' if s in current_rule.get('alarm_type', []) else ''}>${s_title}</option>
+                                        % endfor
+                                    </optgroup>
+                                % endif
+                            % endfor
+                        </select>
+                    </div>
+
+                    <div class="line-group">
+                        <label>${_(u'条件')}</label>
+                        <input type="hidden" name="auto_alarm_type" value="1" />
+                        <select id="condition" name="condition" multiple placeholder="${_(u'在哪些情况下')}">
+                        <optgroup label="${_(u'维度')}">
+                            % for k, v in DIMENSION_CHN.items():
+                              % if k != "alarm_type":
+                                <option value="${k}:self" ${'selected' if 'self' in current_rule.get('condition', dict()).get(k, []) else ''}>${_(u'相同')}${v}</option>
+                              % endif
+                            % endfor
+                        </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="line-group line-groups">
+                        <label>${_(u'触发频次')}</label>
+                        <input
+                          type="number" placeholder="${_(u'请输入')}" min="1" name="timedelta" type="text" value="${current_rule.get('timedelta', '1')}" class="form-control" />
+                        <span class="input-group-addon">${_(u'分')}</span>
+                        <input type="number" placeholder="${_(u'请输入')}" min="1" name="count" type="text" value="${current_rule.get('count', '1')}" class="form-control" />
+                        <span class="input-group-addon br1">${_(u'条')}</span>
+                        <span class="f12 pl5 vm">${_(u'以上')}</span>
+                    </div>
+
+                    <div class="line-group">
+                        <label>${_(u'收敛方式')}</label>
+                        <select id="incident" name="incident">
+                            <option value="" disabled>${_(u'请选择收敛方式')}</option>
+                            % for k, v in INCIDENT_CHN.items():
+                            <option value="${k}" ${'selected' if k == current_rule.get('incident') else ''} >${v}</option>
+                            % endfor
+                        </select>
+                    </div>
+                    <div class="line-group">
+                        <label>${_(u'备注')}</label>
+                        <textarea name="description" placeholder="${_(u'请输入人性化描述')}" style="height: 75px; padding: 6px 12px;">${current_incident.description if current_incident else ''}</textarea>
+                    </div>
+
+                    <div class="line-group">
+                        <label></label>
+                        <div class="submitBtnPanel">
+                            <button class="bk-button bk-success" id="form_submit" title="${_(u'保存')}">${_(u'保存')}</button>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+<script src="${STATIC_URL}js/slide.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page/incident_def_list.js?v=${STATIC_VERSION}"></script>
+
+<script src="${STATIC_URL}js/page_new/fta_solutions/incident_def_list.js"></script>

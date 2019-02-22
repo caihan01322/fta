@@ -1,0 +1,43 @@
+<div class='row'>
+    <div class='col-xs-12 col-sm-7'>
+            
+    	<div class='widget-box' style='margin-top:0'>
+	        <div class="widget-title"><span class="icon"><i class="bk-icon icon-cog"></i></span><h5 style='font-size:15px'>${request.user.username} 的 用户偏好</h5></div>
+	        <div class="widget-content">
+	        	<label for="bpm-switch-check">业务选择器状态&nbsp&nbsp&nbsp</label>
+                    <input class="switch " data-on-color="warning" data-off-color="success"
+                           data-on-text="&nbsp&nbsp&nbsp只显示自己的业务"
+                           data-off-text="&nbsp&nbsp&nbsp显示所有的业务&nbsp&nbsp&nbsp&nbsp"
+                           type="checkbox" id="bpm-switch-check"
+                            data-size="large"/>
+	        </div>
+	    </div>
+
+    </div>
+</div>
+
+
+<script>
+	$(document).ready(function() {
+        var FLAG_MINE = 'show_only_mine' //只显示自己负责的业务
+
+        if (get_user_pref(FLAG_MINE) == 'yes') {
+            $("#bpm-switch-check").attr('checked', true)
+        }
+
+        $('.switch').bootstrapSwitch();
+
+        $('.switch').on('switchChange.bootstrapSwitch', function (e, state) {
+            set_user_pref(FLAG_MINE, state?'yes':'no')
+
+            location = site_url + '?include=preference/'
+
+            $.gritter.add({
+                title:  '用户偏好设置',
+                text:   state?'只显示自己的业务！':'显示所有业务!',
+                sticky: false
+            });
+        });
+
+    })
+</script>

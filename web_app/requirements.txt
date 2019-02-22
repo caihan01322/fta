@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+# 工程预装模块
+# 需要额外的python包，可直接在文件后面添加
+# 请确保指定的包和版本号，可通过pip安装
+
+uWSGI==2.0.13.1
+Django==1.8.11
+pymysql==0.6.7
+MarkupSafe==0.23
+Mako==1.0.4
+httplib2==0.9.1
+suds==0.4
+celery==3.1.18
+django-celery==3.1.16
+supervisor==3.3.3
+requests==2.9.1
+jsonschema==2.6.0
+pytz==2016.6.1
+
+# 自定义开始
+arrow==0.5.4
+django-tastypie==0.13.3
+redis==2.10.5
+xlwt==1.1.2
+django-guardian==1.4.8
+pycrypto==2.6.1
+xmltodict==0.10.2
+

@@ -1,0 +1,560 @@
+<style type="text/css">
+#module-content::-webkit-scrollbar {
+    width: 4px;
+    background-color: #eee;
+}
+
+/*定义滚动条的轨道，内阴影及圆角*/
+#module-content::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: #eee;
+}
+
+/*定义滑块，内阴影及圆角*/
+#module-content::-webkit-scrollbar-thumb {
+    height: 58px;
+    border-radius: 2px;
+    background-color: #c7c7ca;
+}
+.notice-more {
+  display: none;
+  width:76%;
+  float:left
+}
+</style>
+<div class='row'>
+
+        <div id="alarmdef_details" class='mode-normal alarmdef_details-more' style='margin-top:0'>
+
+        <div class="widget-content">
+        % if alarm_def and alarm_def.is_deleted:
+            <div class='alert alert-warning'>${_(u'此自愈配置已被删除，若想恢复请联系管理员。')}</div>
+        % endif
+        <input type="hidden" id="fta_alarm_def_id" value="${alarm_def.id if edit else ''}">
+	<form class="form-horizontal" role="form">
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-scene">${_(u'自愈场景')}</div>
+                    <div class="panel-body panel-body-pd" style="padding-right:48px">
+                        <div class="fl " style="width:50%">
+                            <div class="form-group">
+                                <label for="alarm_type" class=" pr required-tip control-label label-left-scenario label-left-scenario" id="alarm_type_label">${_(u'告警类型')}</label>
+                                <div class="label-right-scenario" id="alarm_type_tip">
+                                    <select class="select2_src"  style="width:100%" id="alarm_type" ${'disabled' if edit else ''}>
+                                        <option value="">${_(u'请选择需要自愈处理的告警类型')}</option>
+                                        % for group, group_types in src_type_group.iteritems():
+                                            % if source_type_dict.get(group):
+                                                <optgroup label="${source_type_dict.get(group)}">
+                                                % for s, s_title in group_types:
+                                                    <option value='${s}' title='${group}' ${'selected=true' if edit and s == alarm_def.alarm_type else ''}>${s_title}</option>
+                                                % endfor
+                                               </optgroup>
+                                            % endif
+                                       % endfor
+                                    </select>
+                                    <span class="onchange-error-tip onchange-alarm-type-tip" style="display:none"></span>
+                                    <span class="error-tip dn">${_(u'告警类型不能为空')} </span>
+                                </div>
+                            </div>
+
+                            <div class="form-group hide-for-mode-normal hide-for-mode-online hide-for-mode-process-missing hide-for-mode-sa-check hide-for-mode-bk">
+                                    <label for="tnm_attr_id" class=" control-label label-left-scenario">${_(u'TNM特性ID')}</label>
+                                    <div class="label-right-scenario">
+                                        <input type="hidden" style="width:100%" id="tnm_attr_id">
+                                    </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="reg" class=" control-label label-left-scenario">${_(u'按内容筛选')}</label>
+                                <div class="label-right-scenario">
+                                    <input id="reg" type="text" class="form-control alarmdefform-control span6" placeholder="${_(u'使用正则表达式匹配告警，不填为不过滤')}" value="${ alarm_def.reg if edit else '' }"/>
+                                    <span class="onchange-error-tip onchange-reg-tip" style="display:none"></span>
+                                </div>
+                            </div>
+                            <div class="form-group hide-for-mode-normal hide-for-mode-online hide-for-mode-customized hide-for-mode-sa-check hide-for-mode-bk">
+                                <label for="process" class=" control-label label-left-scenario">${_(u'进程名称')}</label>
+                                <div class="label-right-scenario">
+                                  <input id="process" type="text" class="form-control alarmdefform-control span6" placeholder="${_(u'(不填为全部,多个进程用;分隔)')}" value="${alarm_def.process or '' if edit else ''}"/>
+                                </div>
+                            </div>
+                            <div class="form-group hide-for-mode-online" style="display: none;">
+                                <!--      原因：cc为 二级业务（APP ——> module 时），module 都在`空间机池`set下，而`空闲机池`的set属性（服务状态 & 环境类型）都为空
+                                  问题：如果用户选择了set属性，则不可选二级结构下的模块
+                                  建议：建议先不把set属性作为刷选条件 -->
+                                <label for="set-attr" class=" control-label label-left-scenario" >集群属性</label>
+                                <div class="label-right-scenario">
+                                    <select id="set_attr" name="set_attr" multiple class="select2_src " placeholder="(默认全选)">
+                                        % for set_attr_value, set_attr_name in [('service_state-1', u'[服务状态]开放'), ('service_state-2', u'[服务状态]关闭'),('envi_type-1', u'[环境类型]测试'), ('envi_type-2', u'[环境类型]体验'), ('envi_type-3', u'[环境类型]正式')]:
+                                            <option ${'selected=true' if edit and set_attr_value in alarm_def.set_attr.split(',') else ''} value="${set_attr_value}">${set_attr_name}</option>
+                                        % endfor
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                            <div class="fl"  style="width:50%">
+                                <div class="form-group hide-for-mode-online">
+                                    <label for="top-set" class=" control-label label-left-scenario" >${_(u'集群')}</label>
+                                    <div class="label-right-scenario">
+                                        <select id="topo_set" name="topo_set" multiple class="select2_src " placeholder="${_(u'全部')}" style="display: none;">
+                                            % for topo_set_dict in app_sets:
+                                            <option ${'selected=true' if edit and topo_set_dict['SetID'] in alarm_def.topo_set.split(',') else ''} value="${ topo_set_dict['SetID']}">${ topo_set_dict['SetName']}</option>
+                                            % endfor
+                                        </select>
+                                        <div class="bar-show-panel" id="topo_set_list">
+                                            <span style="line-height: 30px;color: #CCC;">${_(u'默认全选')}</span>
+                                            <input type="hidden" selectedlist="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group hide-for-mode-online">
+                                    <label for="module" class=" control-label label-left-scenario" >${_(u'模块')}</label>
+                                    <div class="label-right-scenario">
+                                        <select id="module" name="module" multiple class="select2_src " placeholder="${_(u'全部')}" style="display: none;">
+                                            % for module_dict in app_modules:
+                                            <option ${'selected=true' if edit and module_dict['ModuleID'] in alarm_def.module.split(',') else ''} value="${module_dict['ModuleID']}">${ module_dict['ModuleName'] }</option>
+                                            % endfor
+                                        </select>
+                                        <div class="bar-show-panel" id="module_set_list">
+                                            <span style="line-height: 30px;color: #CCC;">${_(u'默认全选')}</span>
+                                            <input type="hidden" selectedlist="">
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+
+                             <!-- 内部版sa检查告警中的配置项，可删除 -->
+        	                <div class="form-group hide-for-mode-online hide-for-mode-normal hide-for-mode-process-missing hide-for-mode-customized hide-for-mode-bk">
+            	                <label for="alarm_attr_id" class="col-lg-2 control-label label-left-scenario">SA检查项</label>
+            	                <div class="col-lg-9">
+                                    <input id="alarm_attr_id" type="text" class="form-control alarmdefform-control span6" placeholder="半角逗号间隔" value="${ alarm_def.alarm_attr_id or '' if edit else '' }"/>
+            	                </div>
+        	                </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                       <div class="panel-heading panel-heading-scene" id="solution_div">${_(u'自愈处理')}</div>
+                       <div class="panel-body panel-body-pd">
+                        <div class="form-group hide-for-mode-online">
+        	                <label for="solution" class="label-left control-label">${_(u'自愈套餐')}</label>
+        	                <div class="label-right" id="solution_tip">
+        	                 	 <select id="solution" name="solution" class="select2_src form-max-package-wd" placeholder="" style="width:88%">
+                                    <option value="">${_(u'请选择处理告警的自愈套餐')}</option>
+                                    % for solution in solution_list:
+                                    % if solution.codename != 'diy_only':
+                                    <option ${'selected=true' if edit and alarm_def.solution and alarm_def.solution.id == solution.id else ''} value="${solution.id}" app_id="${solution.cc_biz_id}">${ solution.title_display}</option>
+                                    % endif
+                                    % endfor
+                                </select>
+                                <a class="btn btn-sm btn-success pull-right btn-view" href="javascript:open_cur_solution()"> ${_(u'查看')}</a>
+                                <a href="javascript:open_cur_link();" id="link" value='link' class="add-link" title="${_(u'创建自愈套餐')}">
+                                    <i class="bk-icon icon-plus"></i>
+                                </a>
+                                <br><span class="solution-error-tip dn">${_(u'自愈套餐不能为空')}</span>
+        	                </div>
+    	                </div>
+
+
+    				    <div class="form-group hide-for-mode-online">
+        	                <label for="notice" class="label-left control-label mt5">${_(u'通知方式')}</label>
+                            <div class="label-right choice-checkbox" style="margin-top:8px">
+                                <span class="status_name">${_(u'开始时')} </span>
+                                <label for="begin_notify_wechat">
+                                     <input class="input-hd" type="checkbox" id="begin_notify_wechat" ${'checked' if not alarm_def or alarm_def.notify_conf.get('begin_notify_wechat') else ''}>
+                                    <span style="margin-right:12px;" class="mr30 choice-checkbox-icon ">${_(u'微信')}</span>
+                                </label>
+
+                                <label for="begin_notify_mail">
+                                     <input class="input-hd"  type="checkbox" id="begin_notify_mail" ${'checked' if not alarm_def or alarm_def.notify_conf.get('begin_notify_mail') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'邮件')}</span>
+                                </label>
+
+                                <label for="begin_notify_sms">
+                                    <input class="input-hd"  type="checkbox" id="begin_notify_sms" ${'checked' if alarm_def and alarm_def.notify_conf.get('begin_notify_sms') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'短信')}</span>
+                                </label>
+
+                                <label for="begin_notify_phone">
+                                    <input class="input-hd"  type="checkbox" id="begin_notify_phone" ${'checked' if alarm_def and alarm_def.notify_conf.get('begin_notify_phone') else ''}>
+                                    <span style="margin-right:12px;" class="choice-checkbox-icon">${_(u'电话')}</span>
+                                </label>
+
+
+                                <br>
+
+                                <span class="status_name">${_(u'成功时')}</span>
+                                <label for="success_notify_wechat">
+                                    <input type="checkbox" id="success_notify_wechat" ${'checked' if not alarm_def or alarm_def.notify_conf.get('success_notify_wechat') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'微信')}</span>
+                                </label>
+
+
+                                <label for="success_notify_mail">
+                                    <input type="checkbox" id="success_notify_mail" ${'checked' if not alarm_def or alarm_def.notify_conf.get('success_notify_mail') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'邮件')}</span>
+                                </label>
+
+                                <label for="success_notify_sms">
+                                     <input type="checkbox" id="success_notify_sms" ${'checked' if alarm_def and alarm_def.notify_conf.get('success_notify_sms') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'短信')}</span>
+                                </label>
+
+                                <label for="success_notify_phone">
+                                    <input type="checkbox" id="success_notify_phone" ${'checked' if alarm_def and alarm_def.notify_conf.get('success_notify_phone') else ''}>
+                                    <span style="margin-right:12px;" class="choice-checkbox-icon">${_(u'电话')}</span>
+                                </label>
+
+
+                                <br>
+
+                                <span class="status_name">${_(u'失败时')}</span>
+                                <label class="failure_notify_wechat">
+                                     <input type="checkbox" id="failure_notify_wechat" ${'checked' if not alarm_def or alarm_def.notify_conf.get('failure_notify_wechat') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'微信')}</span>
+                                </label>
+
+
+                                <label for="failure_notify_mail">
+                                    <input type="checkbox" id="failure_notify_mail" checked disabled="disabled">
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'邮件')}</span>
+                                </label>
+                                <label>
+                                    <input type="checkbox" id="failure_notify_sms" ${'checked' if alarm_def and alarm_def.notify_conf.get('failure_notify_sms') else ''}>
+                                    <span style="margin-right:12px;"  class="mr30 choice-checkbox-icon">${_(u'短信')}</span>
+                                </label>
+
+
+                                <label for="failure_notify_phone">
+                                    <input type="checkbox" id="failure_notify_phone" ${'checked' if alarm_def and alarm_def.notify_conf.get('failure_notify_phone') else ''}>
+                                    <span style="margin-right:12px;" class="choice-checkbox-icon">${_(u'电话')}</span>
+                                </label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group ">
+                        <label for="responsible" class="label-left control-label">${_(u'通知人员')}</label>
+                        <div class="label-right ">
+
+                            <label for="to_role" class="notice-personnel">
+                                <input type="checkbox" class="change-bg" name="" style="display:none" id="to_role" ${'checked' if not alarm_def or alarm_def.notify_conf.get('to_role') else ''}>
+                                <span class="choice-checkbox-icon"></span>
+                            </label>
+                            <span class="business-personnel">${_(u'业务运维')}: ${maintainers}</span>
+
+                                <div>
+                                    <div class=" pl0 " style="float:left">
+                                        <label for="to_extra" class="notice-personnel">
+                                            <input type="checkbox" class="change-bg" name="" style="display:none" id="to_extra" ${'checked' if alarm_def and alarm_def.notify_conf.get('to_extra') else ''}>
+                                            <span class="choice-checkbox-icon"></span>
+                                        </label>
+
+                                    </div>
+                                    <label class="additional-personnel">${_(u'更多通知人')}</label>
+                                    <div class="notice-more">
+                                        <select id="responsible" class="select2_src form-max-additional-wd" multiple="true" style="width:100%" name="responsible">
+                                        % for user in all_user_info:
+                                            <option value="${user}" ${'selected=true' if str(user) in responsible_list else ''}>${user}(${all_user_info[user]})</option>
+                                        % endfor
+                                        </select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                         <p class="s_note note-tip"><span style="color:#ffcc6b">${_(u'注')}：</span>${_(u'需要提前在蓝鲸桌面的')} ${USERMGR_URL | n} ${_(u'填写联系方式')}</p>
+                    </div>
+                    </div>
+
+                    <div class="panel panel-default">
+                      <div class="panel-heading panel-heading-scene">${_(u'其他信息')}</div>
+                      <div class="panel-body panel-body-pd">
+                        <div class="form-group">
+        	                <label for="timeout" class=" pr required-tip label-left control-label">${_(u'超时')}</label>
+        	                <div class="label-right">
+                            <div class="input-group">
+                              <input
+                                style="width:107px"
+                                class="form-control alarmdefform-control"
+                                id="timeout"
+                                name="timeout"
+                                type="number"
+                                min='5'
+                                value="${alarm_def.timeout if edit else '40'}"
+                                placeholder="请输入"
+                              >
+                              <span class="input-group-addon minutes">${_(u'分')}</span>${_(u'以上按失败处理')}
+                            </div>
+                            <span class="time-error-tip dn">${_(u'超时时间不能为空')}</span>
+                            </div>
+    	                </div>
+
+        				<div class="form-group">
+        	                <label for="description" class="pr required-tip label-left control-label">${_(u'自愈方案名称')}</label>
+        	                <div class="label-right">
+        	                  <input id="description" type="text"  class="pr10 form-control alarmdefform-control span6 form-max-wd" placeholder="${_(u'输入这个自愈方案的名称')}" value="${alarm_def.get_show_name if edit else ''}">
+        	                </div>
+        	           </div>
+                        <div class="form-group">
+                            <label for="is_enabled" class="label-left control-label">${_(u'是否启用')}</label>
+                            <div class="label-right" style="margin-top:6px">
+                           <!--  <input class="switch" data-on-color="success" data-off-color="warning"
+                                   type="checkbox" id="is_enabled" ${'checked' if alarm_def and alarm_def.is_enabled else ''}>
+                            <span style="color:silver" id="is_enabled_tips">按钮显示绿色为打开状态</span> -->
+                                <label class="bkui-form-cell pr20" for="is_enabled">
+
+                                    <div class="bkui-form-hd">
+                                        <input type="radio" class="bkui-check" name="enable_alarm" id="is_enabled" ${'' if alarm_def and not alarm_def.is_enabled else 'checked="checked"'}>
+                                        <span class="bkui-choice-icon  pr10"></span>${_(u'是')}
+                                    </div>
+                                </label>
+                                <label class="bkui-form-cell" for="isnot_enabled">
+                                    <div class="bkui-form-hd">
+                                        <input type="radio" name="enable_alarm" class="bkui-check" id="isnot_enabled" ${'checked="checked"' if alarm_def and not alarm_def.is_enabled else ''}>
+                                        <span class="bkui-choice-icon  pr10"></span>${_(u'否')}
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+
+        % if not (alarm_def and alarm_def.is_deleted) and not (alarm_def and alarm_def.category != 'default'):
+          <div class="form-group submit-btn">
+            <div class="col-lg-offset-2 fl" style="margin-left:133px">
+                <a href="javascript:${'edit_alarm_def()' if edit else 'add_alarm_def()'};" class="btn btn-primary submit-information save_alarm"  style="margin-right:15px">${_(u"保存自愈策略") if edit else _(u"添加自愈策略")}</a>
+                % if edit:
+                    <a href="javascript:$('#s2id_clone_alarm_type').show();$('#copy_btn').hide()" class="pr btn btn-info copy-information" id='copy_btn'>${_(u'本策略拷贝至')}<i class="arrow_icon"></i>
+</a>
+                    <select id="clone_alarm_type" style="display:none; width: 200px">
+                        <option value="">${_(u'选择其他告警类型')}</option>
+                        % for group, group_types in src_type_group.iteritems():
+                            % if source_type_dict.get(group):
+                                <optgroup label="${source_type_dict.get(group)}">
+                                    % for s, s_title in group_types:
+                                        % if s != 'online':
+                                            <option value='${s}' title='${group}' ${'selected=true' if edit and s == alarm_def.alarm_type else ''}>${s_title}</option>
+                                        % endif
+                                    % endfor
+                                </optgroup>
+                            % endif
+                        % endfor
+                    </select>
+                % endif
+            </div>
+          </div>
+        % endif
+        </form>
+        </div>
+</div>
+
+<input type="hidden" id="editModule" value='${alarm_def.module if edit else ''}'>
+<input type="hidden" id="editTopo" value='${alarm_def.topo_set if edit else ''}'>
+<script>
+
+    var module_list = [
+        % for module_dict in app_modules:
+        "${ module_dict['ModuleID'] }",
+        % endfor
+    ];
+    var module_name_dict = {
+        % for module_dict in app_modules:
+            "${ str(module_dict['ModuleID']) }": "${ module_dict['ModuleName']}",
+        % endfor
+    }
+    var all_module_list = module_list;
+
+    var topo_set_list = [
+        % for topo_set_dict in app_sets:
+        "${ topo_set_dict['SetID'] }",
+        % endfor
+    ];
+
+    var topo_set_name_dict = {
+        % for topo_set_dict in app_sets:
+            "${ topo_set_dict['SetID'] }": "${ topo_set_dict['SetName']}",
+        % endfor
+    };
+
+    var all_set_list = topo_set_list;
+
+    $(function(){
+
+        $('#tnm_attr_id').select2({
+            createSearchChoice:function(term, data) {
+                if ($(data).filter(function() {
+                    return this.text.localeCompare(term)===0;
+                }).length===0) {
+                    return {id:term, text:term};
+                }
+            },
+            data: [
+                <% attr_list = biz_attr_list %>
+                % for attr in attr_list:
+                {
+                    id: ${attr["attr_id"]},
+                    text: '${attr["attr_id"]} ${attr["attr_name"]} (${attr["attr_type"]})'
+                },
+                % endfor
+            ]
+        });
+
+    % if edit and alarm_def.tnm_attr_id:
+        $('#tnm_attr_id').select2("data", {
+            id:"${alarm_def.tnm_attr_id}",
+            text:"${alarm_def.tnm_attr_id}"
+        });
+        update_attr_info();
+    % endif
+
+    $('#tnm_attr_id').change(function(){
+        update_attr_info();
+    })
+    function update_attr_info(){
+    }
+    });
+</script>
+<script>
+    <% import json %>
+    var set_attr_to_topo_set_dict = ${json.dumps(set_attr_to_topo_set_dict)|n};
+    var topo_set_to_module_dict = ${json.dumps(topo_set_to_module_dict)|n};
+    var RELATED_SETS = [];
+</script>
+<script src="${STATIC_URL}js/page/alarm_def.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page/topo_module_select.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_def.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page_new/alarm_type.js?v=${STATIC_VERSION}"></script>
+
+<script>
+    function initSolution(defaultVal){
+      var defaultVal = defaultVal || $("#solution option").eq(0).attr("value");
+      $("#solution").select2("val",defaultVal);
+    }
+
+% if edit:
+    // 编辑的时候集群和模块赋值
+    if($("#editTopo").val()){
+        var defaultTopoList = $("#editTopo").val().split(",");
+        var StrTplTopo = '';
+        var curidlist = [];
+        $.each(defaultTopoList,function(i,curid){
+            curidlist.push(curid)
+            StrTplTopo += '<div class="btn-group"><a class="btn btn-primary btn-xs" data-id="'+curid+'">'+saveTopoList[curid]+'</a></div>'
+        })
+        StrTplTopo += '<input type="hidden" selectedlist="'+curidlist+'"/>'
+        $("#topo_set_list").html(StrTplTopo)
+    }else{
+        $("#topo_set_list").html('<input type="hidden" selectedlist=""/>')
+    }
+    if($("#editModule").val()){
+        var defaultModuleList = $("#editModule").val().split(",");
+        var StrTplModule = '';
+        var curidlist = [];
+        $.each(defaultModuleList,function(i,curid){
+            curidlist.push(curid)
+            StrTplModule += '<div class="btn-group"><a class="btn btn-primary btn-xs" data-id="'+curid+'">'+saveModuleList[curid]+'</a></div>'
+        })
+        StrTplModule += '<input type="hidden" selectedlist="'+curidlist+'"/>'
+        $("#module_set_list").html(StrTplModule)
+    }else{
+        $("#module_set_list").html('<input type="hidden" selectedlist=""/>')
+    }
+% else:
+    // 若是创建自愈策略，则先进行自愈套餐默认值的设置，
+    // 默认值是为了从查看套餐或添加自愈套餐返回时填充效果
+    initSolution(defaultSolution);
+    var defaultSolution = ''
+% endif
+
+    $(function(){
+
+        // $(".error-tip").hide();
+        $("#alarm_type_tip .select2-container").addClass('select2-container-active');
+        $("#solution_tip .select2-container").addClass('select2-container-active');
+        $('body').click(function(){
+            var alarm_typ = $("#alarm_type").val();
+            if(alarm_typ == ""){
+                $(".error-tip").addClass("db").removeClass("dn")
+                $("#alarm_type_tip .select2-container").addClass('select2-container-active')
+            }else{
+                $(".error-tip").removeClass("db").addClass("dn")
+            }
+        });
+
+        $("#timeout").blur(function(){
+            var timeout = $("#timeout").val();
+            if(timeout == ""){
+               $(".time-error-tip").addClass("db").removeClass("dn")
+            }else{
+                $(".time-error-tip").removeClass("db").addClass("dn")
+            }
+        });
+    })
+
+    $("#solution option").each(function() {
+
+        // var _this = $(this)
+        if($(this).text().trim() == comtom_name) {
+
+                $(this).attr('selected', true);
+            }
+    });
+    //新增套餐
+    function open_cur_link(){
+        var hidden_area = $("#hidden-area");
+        var alarm_def = $("#open-content>.row");
+        alarm_def.detach();
+        hidden_area.find("#alarm_def_bak").remove();
+        alarm_def.attr("id", "alarm_def_bak");
+        hidden_area.append(alarm_def);
+        defaultSolution = $("#solution").val();
+        include_open('${cc_biz_id}/solution/add/?js_item=1');
+    }
+
+    function recover_by_solution(solution) {
+          var hidden_area = $("#hidden-area");
+          var alarm_def = hidden_area.find("#alarm_def_bak");
+          alarm_def.detach();
+          var open_content = $("#open-content");
+          open_content.empty();
+          open_content.append(alarm_def);
+
+          var solution_select2 = $("#solution");
+          var option = '<option value="'+ solution.id+'" app_id="' + solution.cc_biz_id + '">'+ solution.title_name + '</option>';
+          solution_select2.append(option);
+          solution_select2.select2('val', solution.id)
+    }
+
+    function validate_alarm_def(data){
+        if(data.alarm_type == "customized"){
+            var v = parseInt(data.tnm_attr_id)
+            if(isNaN(v)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    if (alarmName != '') {
+        $("#solution option").each(function () {
+            if ($(this).text() == alarmName) {
+                $("#solution").select2('val', $(this).attr("value"))
+            }
+        })
+    }
+
+    // 更多通知人交互更改
+    //  初始化
+    if ($('#to_extra').prop('checked')) {
+        $('.notice-more').show()
+    }
+    $('.choice-checkbox-icon').off().on('click', function () {
+        var statusBefore = $('#to_extra').prop('checked')
+
+        if (!statusBefore) {
+            $('.notice-more').show()
+        } else {
+            $('.notice-more').hide()
+        }
+    })
+</script>
+</div>

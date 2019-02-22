@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block body %}
+<div class="row">
+<form action="{{ form._action_url }}" method="POST">
+{% for col in row %}
+<div class="{{ col.kwargs.class }}">
+        {% for obj in col %} 
+            {% if obj.TYPE == 'textarea' %}
+            <div class="form-group">
+                <label for="{{ obj.name }}">{{ obj.name }}</label>
+                <textarea {{ obj.attrs|safe }}>{{ obj.value }}</textarea>
+            </div>
+            {% endif %}
+            {% if obj.TYPE == 'submit' %}
+            {% for error in form._error_list %}
+                <span class="label label-danger">{{ error }}</span>
+            {% endfor %}
+            {% for info in form._info_list %}
+                <span class="label label-info">{{ info }}</span>
+            {% endfor %}
+            <div class="form-group">
+                <button type="submit" {{ obj.attrs|safe }}>{{ obj.name }}</button>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endfor %}
+</form>
+</div>
+{% endblock %}

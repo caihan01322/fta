@@ -1,0 +1,57 @@
+<div class="flex-panel mt25" style="display:none">
+    <label class="x-inline">${_(u'告警源名称')}</label>
+    % if source_id != '0':
+        <div class="x-inline-right">
+            <input type="text" id="app_name" value="${app_name or source_type}" class="form-control" style="width: 370px;" readonly="readonly">
+            <span></span>
+            <i class="bk-icon icon-edit edit_config" aria-hidden="true"></i>
+            <span class="saveBtnList">
+                <a href="javascript:generate_config(this,1)" class="bk-button bk-success resave_config ml5" title="${_(u'保存')}">${_(u'保存')}</a>
+                <a href="javascript:;" class="bk-button bk-default ml5 cancel_config" title="${_(u'取消')}">${_(u'取消')}</a>
+            </span>
+            <span class="noticeWords">${_(u'请填写告警源名称')}!</span>
+        </div>
+    % else:
+        <div class="x-inline-right">
+            <input type="text" id="app_name" class="form-control" style="width: 370px;" value="${source_type}">
+            <a href="javascript:generate_config(this)" class="config_btn bk-button bk-purple ml5" title="${_(u'生成配置信息')}">
+            % if source_type == 'CUSTOM':
+                ${_(u'添加告警源')}
+            % else:
+                ${_(u'生成配置信息')}
+            % endif
+            </a>
+            <!-- 编辑按钮 -->
+            <i class="bk-icon icon-edit edit_config" aria-hidden="true"></i>
+            <span class="saveBtnList">
+                <a href="javascript:generate_config(this,1)" class="bk-button bk-success resave_config ml5" title="${_(u'保存')}">${_(u'保存')}</a>
+                <a href="javascript:;" class="bk-button bk-default ml5 cancel_config" title="${_(u'取消')}">${_(u'取消')}</a>
+            </span>
+            <span class="noticeWords">${_(u'请填写告警源名称')}!</span>
+        </div>
+    % endif
+</div>
+<script type="text/javascript">
+    //编辑按钮
+    $(".edit_config").on("click",function(){
+        $(this).hide().next().show();
+        $("#app_name").removeAttr("readonly").focus();
+    });
+
+    //保存、取消按钮
+    $(".resave_config").on("click",function(){
+        if($("#app_name").val() == ""){
+            $(".noticeWords").stop(true).fadeIn();
+            setTimeout(function(){
+                $(".noticeWords").stop(true).fadeOut();
+            },2000)
+             return ;
+        }
+        $(".saveBtnList").hide().prev().show();
+        $("#app_name").attr("readonly","readonly");
+    });
+    $(".cancel_config").on("click",function(){
+        $(".saveBtnList").hide().prev().show();
+        $("#app_name").attr("readonly","readonly");
+    });
+</script>

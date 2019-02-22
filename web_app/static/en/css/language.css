@@ -1,0 +1,136 @@
+/**
+* Tencent is pleased to support the open source community by making 蓝鲸智云PaaS平台社区版 (BlueKing PaaS Community Edition) available.
+* Copyright (C) 2017-2018 THL A29 Limited, a Tencent company. All rights reserved.
+* Licensed under the MIT License (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+* http://opensource.org/licenses/MIT
+* Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+*/
+/* 英文的样式文件 */
+#task_searchbox span .control-label {
+    width: 115px;
+}
+
+.table-up-title {
+    display: flex;
+    display: -webkit-flex;
+    vertical-align: middle;
+    height: 70px;
+    align-items: center;
+    line-height: normal;
+}
+
+.name-notice {
+    /* display: flex; */
+    /* display: -webkit-flex; */
+    align-items: center;
+    width: calc(100% - 100px);
+}
+
+.name-notice em {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.name-notice .name-note {
+    /*min-width: 140px;*/
+}
+
+.table-up-title a {
+    margin-top: 0;
+}
+
+#header .logo {
+    display: inline-block;
+    width: 195px;
+    height: 34px;
+    background: url('../image/new/logo_en.png') no-repeat center center;
+    background-size: 100% 100%;
+    vertical-align: middle;
+}
+
+/* 国际版二级导航调整 */
+.side-close a em,
+.side-close .subnav-list {
+    width: 200px;
+}
+
+/* 国际版接入自愈 （开始时/成功时/失败时 统一宽度调整） */
+.status_name {
+    display: inline-block;
+    width: 112px;
+}
+
+.contain_long_text.name-notice {
+    width: calc(100% - 190px);
+}
+
+/* 操作审计页面title换行问题处理 */
+#opt_search span .control-label, #task_searchbox span .control-label {
+    width: 130px;
+}
+
+.access-tab .alarm-list-table .item3 {
+    width: 105px!important;
+}
+
+.access-tab .alarm-list-table .item4 {
+    width: 85px!important;
+}
+
+.access-tab .alarm-list-table .item5 {
+    width: 106px!important;
+}
+
+.access-tab .alarm-list-table .item6 {
+    width: 130px!important;
+}
+
+.access-tab .alarm-list-table .item7 {
+    width: 90px!important;
+}
+
+.access-tab .alarm-list-table .item8 {
+    width: 80px!important;
+}
+
+.access-tab .alarm-list-table .item9 {
+    width: 90px!important;
+}
+
+/* Health diagnosis 表格适配 */
+.access-tab .health-list-table .item3 {
+    width: 120px!important;
+}
+
+.access-tab .health-list-table .item9 {
+    padding: 8px 10px;
+}
+
+.access-tab .alarm-list-table th:nth-child(1), .access-tab .alarm-list-table td:nth-child(1) {
+    padding-left: 30px!important;
+}
+
+.access-tab .alarm-list-table th, .access-tab .alarm-list-table td {
+    padding-left: 10px!important;
+}
+
+/* 预警自愈表格调整 */
+.creation-meal tr th:nth-child(8),
+.creation-meal tr th:nth-child(9),
+.creation-meal tr th:nth-child(10),
+.creation-meal tr th:nth-child(11) {
+    width: 120px!important;
+}
+
+@media screen and (max-width:1440px) {
+    .content-open .creation-meal tr th.pl20,
+    .content-open .creation-meal tr td.pl20 {
+        padding-left: 10px !important;
+    }
+    .creation-meal tr th:nth-child(8),
+    .creation-meal tr th:nth-child(9),
+    .creation-meal tr th:nth-child(10),
+    .creation-meal tr th:nth-child(11) {
+        width: 100px!important;
+    }
+}

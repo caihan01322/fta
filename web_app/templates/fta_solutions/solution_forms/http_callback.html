@@ -1,0 +1,33 @@
+<div class="inner-forms clean-forms http-call-back">
+	<label for="message" class="control-label">${_(u'回调地址')}：</label>
+  	<div class="controls">
+			<%
+			url = solution.config.get('url', '') if solution else ''
+			%>
+  		<input
+				class="form-control"
+				name="url"
+				value="${url}"
+				pattern="https?://.+?"
+				data-error="${_(u'请输入正确的地址')}"
+				placeholder="${_(u'请输入企业内部处理告警的回调地址，如输入处理PING告警的主机重启接口地址')}： http://api.bk.com/api/host/reboot_host/"
+			>
+			<p class="http-note">
+          ${_(u'故障自愈把下方的告警信息作为参数，以POST方式向回调地址请求，需保证自愈后台与回调地址的连通性。')}
+          ${_(u'回调地址返回状态码2xx即判断回调成功，否则进行重试，最多重试3次。')}
+      </p>
+  		<div class="alarm-info-tip">
+  			<h5>${_(u'告警信息格式说明')}：</h5>
+  			<pre><code>
+{
+    "alarm_def_id": 1,  // ${_(u'自愈定义id')}
+    "ip": "10.0.0.1",  // ${_(u'告警主机ip')}
+    "source_type": "NAGIOS",  // ${_(u'告警源')}
+    "alarm_type": "NAGIOS-ping",  // ${_(u'告警类型')}
+    "source_time": "2017-09-04T11:44:19.124258+08:00",  // ${_(u'告警时间')}
+    "cc_biz_id": "21480"  // ${_(u'业务id')}
+}
+  			</code></pre>
+  		</div>
+  	</div>
+</div>

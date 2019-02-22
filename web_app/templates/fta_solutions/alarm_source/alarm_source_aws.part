@@ -1,0 +1,70 @@
+<!-- 接入流程S -->
+<div class="title-content-bar mb20">
+    <div class="pure-title">${_(u'接入流程')}</div>
+    <div class="title-bottom-panel clearfix info-bar3">
+        <div class="bk-flows aws">
+            <div style="width: 100%;">
+                <div class="border-container" style="margin-bottom: 11px;">
+                    <h3>${_(u'注意：需要预先把主机信息导入')}<a href="javascript:void(0);" onclick="open_cc();" style="color: #2A73D0;">${_(u'配置平台')}</a>，${_(u'且 instance ID 必须对应配置平台的【设备SN】字段')}</h3>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">1</span>
+                    <p class="bk-vertical-text fl">${_(u'点击Create New Topic 创建一个新的Topic')}</p>
+                    <div class="flow-content">
+                        <img src="${STATIC_URL}images/source-aws-guide/aws-1.png">
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">2</span>
+                    <p class="bk-vertical-text fl">${_(u'填写 Topic 名字，如 fta-alarm，并点击 Create Topic 创建')}</p>
+                    <div class="flow-content">
+                        <img src="${STATIC_URL}images/source-aws-guide/aws-2.png">
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">3</span>
+                    <p class="bk-vertical-text fl">${_(u'在刚创建的 Topic 下创建新的 Subscription')}</p>
+                    <div class="flow-content">
+                        <img src="${STATIC_URL}images/source-aws-guide/aws-3.png">
+                        <div>
+                            <p>${_(u'选择 https，并把获取的回调 URL 粘到这里，然后点击 Create Subscription')}</p>
+                            <img src="${STATIC_URL}images/source-aws-guide/aws-4.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">4</span>
+                    <p class="bk-vertical-text fl">${_(u'获取 Subscription ID')}</p>
+                    <div class="flow-content">
+                        <p>${_(u'Subscription 的状态需要被确认订阅。')} ${_(u'当在第3步中创建 Subscription 后，Subscription ID 显示的为 "PendingConfirmation"; ')} ${_(u'请点击右边的刷新按钮，直到 "PendingConfirmation" 状态改变。')}</p>
+                        <img src="${STATIC_URL}images/source-aws-guide/aws-5.png">
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">5</span>
+                    <p class="bk-vertical-text fl">${_(u'手动创建 AWS CloudWatch 告警')}</p>
+                    <div class="flow-content">
+                        <p>${_(u'返回到 EC2 控制台界面， 右键单击你的实例，选择 " Add/Edit Alarms "。')}</p>
+                        <img src="${STATIC_URL}images/source-aws-guide/aws-6.png">
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">6</span>
+                    <p class="bk-vertical-text fl">${_(u'点击 Create Alarm 创建告警')}</p>
+                    <div class="flow-content">
+                        <img src="${STATIC_URL}images/source-aws-guide/aws-7.png">
+                        <div>
+                            <p>${_(u'选择你想监控并告警的资源，并点击 Create Alarm 创建告警。')}</p>
+                            <img src="${STATIC_URL}images/source-aws-guide/aws-8.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">7</span>
+                    <p class="bk-vertical-text fl">${_(u'完成')}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 接入流程E -->

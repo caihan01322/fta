@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{% block title %}{% endblock %}</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+<meta content="telephone=no" name="format-detection"/>
+
+<link rel="stylesheet" href="{{wechat_static_url}}js/jquery-mobile/1.4.2/jquery.mobile.min.css" />
+<script src="{{wechat_static_url}}js/jquery/1.11.0/jquery.min.js"></script>
+<script src="{{wechat_static_url}}js/jquery-mobile/1.4.2/jquery.mobile.min.js"></script>
+<script src="{{wechat_static_url}}js/underscore.js/1.6.0/underscore-min.js"></script>
+
+</head>
+<body>
+
+<div id="wrapper" data-role="page">
+
+    {% block header %}{% endblock %}
+
+    <div role="main" class="ui-content">
+        {% block main %}{% endblock %}
+    </div><!-- /content -->
+
+    {% block footer %}{% endblock %}
+
+</div><!-- /page -->
+
+{% block extra %}{% endblock %}
+
+<script type="text/javascript">
+$(document).on("pagecreate", function(event, ui) {
+    {% block script %}{% endblock %}
+});
+</script>
+
+</body>
+</html>

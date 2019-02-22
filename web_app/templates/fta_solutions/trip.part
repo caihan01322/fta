@@ -1,0 +1,128 @@
+<div class="back-bg"></div>
+<div class="trip-container">
+    <div class="trip-close"><i class="bk-icon icon-close"></i></div>
+    <section class="king-content" id="center-trip">
+        <div class="row">
+            <div class="col-mg-12">
+                <div class="king-block king-block-themed">
+                    <div class="king-block-content">
+                        <ul class="king-timeline-3">
+                            <!-- king-timeline time label -->
+                            <li class="time-label">
+                                <span class="king-bg-font">
+                                  ${_(u'故障自愈之旅')}
+                                </span>
+                            </li>
+                            <!-- /.king-timeline-label -->
+                            <!-- king-timeline item -->
+                            <li>
+                                <div class="king-timeline-title">01</div>
+                                <span class="king-timepoint king-timepoint-complete"></span>
+                                <div class="king-timeline-item-3">
+                                    <div class="king-timeline-body">
+                                        ${_(u'接入一个自愈快捷套餐')}
+                                    </div>
+                                    <div class="king-timeline-footer">
+                                    % if is_alarm_def:
+                                        <button class="king-btn king-radius king-success" title="${_(u'已完成')}" disabled >${_(u'已完成')}</button>
+                                    % else:
+                                        <button onclick="include_open('${cc_biz_id}/alarm_def_list/','',1);" class="trip_btn king-btn king-radius king-default" title="${_(u'去完成')}">${_(u'去完成')}</button>
+                                    % endif
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- END king-timeline item -->
+                            <!-- king-timeline item -->
+                            <li>
+                                <div class="king-timeline-title">02</div>
+                                <span class="king-timepoint king-timepoint-complete"></span>
+                                <div class="king-timeline-item-3">
+                                    <div class="king-timeline-body">
+                                        ${_(u'完成一个自愈套餐的执行')}
+                                    </div>
+                                    <div class="king-timeline-footer">
+                                    % if is_alarm_instance:
+                                        <button class="king-btn king-radius king-success" title="${_(u'已完成')}" disabled >${_(u'已完成')}</button>
+                                    % else:
+                                        <button onclick="include_open('${cc_biz_id}/alarm_instance_list/','',1)" class="trip_btn king-btn king-radius king-default" title="${_(u'去完成')}">${_(u'去完成')}</button>
+                                    % endif
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- END king-timeline item -->
+                            <!-- king-timeline item -->
+                            <li>
+                                <div class="king-timeline-title">03</div>
+                                <span class="king-timepoint king-timepoint-undone"></span>
+                                <div class="king-timeline-item-3">
+                                    <div class="king-timeline-body">
+                                        ${_(u'创建一个自愈套餐')}
+                                    </div>
+                                    <div class="king-timeline-footer">
+                                    % if is_solution:
+                                        <button class="king-btn king-radius king-success" title="${_(u'已完成')}" disabled >${_(u'已完成')}</button>
+                                    % else:
+                                        <button onclick="include_open('${cc_biz_id}/solution_list/','',1)" class="trip_btn king-btn king-radius king-default" title="${_(u'去完成')}">${_(u'去完成')}</button>
+                                    % endif
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- END king-timeline item -->
+                            <!-- king-timeline item -->
+                            <li>
+                                <div class="king-timeline-title">04</div>
+                                <span class="king-timepoint king-timepoint-undone"></span>
+                                <div class="king-timeline-item-3">
+                                    <div class="king-timeline-body">
+                                        ${_(u'创建一个收敛规则')}
+                                    </div>
+                                    <div class="king-timeline-footer">
+                                    % if is_incident_def:
+                                        <button class="king-btn king-radius king-success" title="${_(u'已完成')}" disabled >${_(u'已完成')}</button>
+                                    % else:
+                                        <button onclick="include_open('${cc_biz_id}/incident/','',1)" class="trip_btn king-btn king-radius king-default" title="${_(u'去完成')}">${_(u'去完成')}</button>
+                                    % endif
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- END king-timeline item -->
+                            <!-- king-timeline item -->
+                            <li>
+                                <div class="king-timeline-title">05</div>
+                                <span class="king-timepoint king-timepoint-undone"></span>
+                                <div class="king-timeline-item-3">
+                                    <div class="king-timeline-body">
+                                        ${_(u'创建一个对接作业平台的套餐')}
+                                    </div>
+                                    <div class="king-timeline-footer">
+                                    % if is_job_solution:
+                                        <button class="king-btn king-radius king-success" title="${_(u'已完成')}" disabled >${_(u'已完成')}</button>
+                                    % else:
+                                        <button onclick="include_open('${cc_biz_id}/solution/add/?type_to_show=ijobs','',1)" class="trip_btn king-btn king-radius king-default" title="${_(u'去完成')}">${_(u'去完成')}</button>
+                                    % endif
+                                    </div>
+                                </div>
+                            </li>
+                            <!-- END king-timeline item -->
+                            <li>
+                                <div class="king-timeline-title-last"></div>
+                                <span class="king-timepoint king-timepoint-undone"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<script type="text/javascript">
+    $(".trip_btn").on('click', function(){
+        $(".trip-panel").fadeOut();
+    });
+
+    $("#center-trip").mCustomScrollbar({
+        setHeight:curMaxAlertHeight, //设置高度
+        theme:"minimal-dark" //设置风格
+    });
+</script>

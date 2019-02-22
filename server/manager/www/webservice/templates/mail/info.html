@@ -1,0 +1,254 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ _("Fault Auto-recovery Notification") }}：{{result_title}} -- {{cc_biz_name}} </title>
+    <style>
+        body {
+            font-size: 14px;
+            font-family: "微软雅黑";
+            background-color: #ececec;
+        }
+
+        p,
+        td {
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        a {
+            color: #336699;
+            text-decoration: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .list-title {
+            font-size: 1.29em;
+            max-width: 700px;
+            display: block;
+        }
+
+        .seprateor {
+            border-bottom: 1px dotted #cecece;
+            width: 767px;
+            height: 0px;
+            line-height: 0px;
+            font-size: 0px;
+            margin-top: 5px
+        }
+
+        .gray {
+            color: #9A9A9A;
+        }
+
+        .main-table {
+            margin: 0 auto;
+        }
+
+        .weekly-info {
+            font-family: 宋体;
+            font-weight: bold;
+            font-size: 0.86em;
+            color: #fff;
+            text-align: right;
+            padding-top: 10px;
+            padding-right: 10px;
+            border: 1px solid #2f94e2;
+        }
+
+        .mail_main {
+            background-color: #fff;
+            padding: 15px;
+        }
+
+        .item {
+            padding: 5px 0 10px;
+        }
+
+        .weekly-topic {
+            margin-top: 20px;
+            margin-bottom: 5px;
+            font-size: 1.29em;
+            color: #9A9A9A;
+        }
+
+        .algin-right {
+            text-align: right;
+        }
+
+        .valign-top {
+            vertical-align: top;
+        }
+
+        .anwser-num {
+            min-width: 65px;
+            display: block;
+        }
+
+        .read_more {
+            color: #9A9A9A;
+        }
+
+        .read_more:hover {
+            color: #336699;
+        }
+    </style>
+</head>
+<!--用于生成邮件页面-->
+
+<body>
+    <table width="800" class="main-table" border="0" cellspacing="0" cellpadding="0" align="center">
+        <tr>
+            <td colspan="2" class="mail_main" id="mail_main" style="border: 1px solid #dfdfdf;">
+                <table>
+                    <tbody>
+                        <tr>
+                            <!-- 周刊内容的话题，一个期刊可以有多个话题，一个话题下面可以有多个相关的问题 -->
+                            <td>
+                                <div class="weekly-topic">
+                                    {{ _("Fault Auto-recovery scene") }}</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 周刊内容分割线 -->
+                            <td>
+                                <div class="seprateor">&nbsp;&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="item">
+                                <div>
+                                    <!-- 周刊内容的问题部分，这里是一个问题和多个回答 -->
+                                    <table width="769">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div style="padding-top:10px; line-height: 1.8em">
+                                                        <div style="margin-left:40px">
+
+                                                            <b>{{cc_biz_name}}</b>
+                                                            <br> {{host}} <span class="gray">{{host_info}}</span>
+                                                            <br> {{brief_time}} <span class="gray">{{ _("Occurrence") }}</span>
+                                                            <br> {{ _("Alarm") }}:{{alarm_type}} <span class="gray">（{{alarm_detail}}）</span>
+
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <!-- 周刊内容的话题，一个期刊可以有多个话题，一个话题下面可以有多个相关的问题 -->
+                            <td>
+                                <div class="weekly-topic">
+                                    {{ _("Fault Auto-recovery result") }} </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 周刊内容分割线 -->
+                            <td>
+                                <div class="seprateor">&nbsp;&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="item">
+                                <div>
+                                    <!-- 周刊内容的问题部分，这里是一个问题和多个回答 -->
+                                    <table width="769">
+                                        <tbody>
+                                            <tr>
+                                                <td width="700">
+                                                    <a class="list-title" href="{{instance_url}}" target="_blank" style="margin-left:40px">
+                                                        {{result_title}} </a>
+                                                </td>
+                                                <td class="algin-right valign-top" width="69" valign="top">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div style="padding-top:10px; line-height: 1.8em">
+                                                        <div style="margin-left:40px">
+
+                                                            <span class="gray">{{ _("Solution") }}：{{solution}}</span><br>
+                                                            <span class="gray">{{ _("Description") }}：{{result_detail|safe}}</span>
+
+                                                            <a class="read_more" href="" target="_blank" comment="_('See more')"></a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <!-- 周刊内容的话题，一个期刊可以有多个话题，一个话题下面可以有多个相关的问题 -->
+                            <td>
+                                <div class="weekly-topic">
+                                    {{ _("Fault Auto-recovery process") }} </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <!-- 周刊内容分割线 -->
+                            <td>
+                                <div class="seprateor">&nbsp;&nbsp;</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="item">
+                                <div>
+                                    <!-- 周刊内容的问题部分，这里是一个问题和多个回答 -->
+                                    <table width="769">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="2">
+                                                    <div style="padding-top:10px; line-height: 1.8em">
+                                                        <div style="margin-left:40px;color:grey">
+                                                            {% for l in alarm_logs %} ◦ {{l.content}}
+                                                            <br> {% endfor%}
+
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" height="10"></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <div style="font-size: 1.2em">Copyright © 2012-{{cur_year}} Tencent BlueKing. All Rights Reserved </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

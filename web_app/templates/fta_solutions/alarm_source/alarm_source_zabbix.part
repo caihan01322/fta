@@ -1,0 +1,45 @@
+<!-- 接入流程S -->
+<div class="title-content-bar mb20">
+    <div class="pure-title">${_(u'接入流程')}</div>
+    <div class="title-bottom-panel clearfix info-bar3">
+        <div class="bk-flows">
+            <div style="width: 100%;">
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">1</span>
+                    <p class="bk-vertical-text fl">${_(u'下载推送脚本')}</p>
+                    <div class="flow-content">
+                        <%
+                            from django.core.urlresolvers import reverse
+                            from urlparse import urljoin
+                            script_path = "{path}?fta_application_id={alarm_app.app_id}&fta_application_secret={alarm_app.app_secret}".format(
+                                path=reverse("alarm_source_scripts", kwargs={
+                                    "cc_biz_id": alarm_app.cc_biz_id,
+                                    "script_name": "zabbix_fta_alarm.py",
+                                }),
+                                alarm_app=alarm_app,
+                            )
+                            script_url = urljoin(request.build_absolute_uri(), script_path)
+                        %>
+                        <p>${_(u'在Zabbix Server上下载')}<a href="${script_url}">${_(u'推送脚本')}</a>${_(u'至')} alertscripts ${_(u'目录')}（${_(u'一般是')} /usr/lib/zabbix/），${_(u'该脚本包含动态生成的AppId、SecretKey')}</p>
+                        <div class="gray-bar"><p>wget '${script_url}' -O /usr/lib/zabbix/alertscripts/zabbix_fta_alarm.py --no-check-certificate</p></div>
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">2</span>
+                    <p class="bk-vertical-text fl">${_(u'初始化告警配置')}</p>
+                    <div class="flow-content">
+                        <p>${_(u'在alertscripts目录下执行zabbix_fta_alarm.py（参数输入API URL、Zabbix管理员账号、密码，会自动创建Action、 Script等）')}</p>
+                        <div class="gray-bar"><p>chmod a+x zabbix_fta_alarm.py</p></div>
+                        <div class="gray-bar"><p>./zabbix_fta_alarm.py --init http://localhost:8081 Admin zabbix </p></div>
+                    </div>
+                </div>
+                <div class="bk-vertical current">
+                    <span class="bk-flow-number fl">3</span>
+                    <p class="bk-vertical-text fl">${_(u'完成')}</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- 接入流程E -->

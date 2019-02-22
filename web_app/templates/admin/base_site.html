@@ -1,0 +1,25 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | 管理{% endblock %}
+
+{% block branding %}
+{% if SITE_URL %}
+    <h1 id="site-name"><a href="{{ SITE_URL }}admin/">故障自愈后台管理</a></h1>
+{% else %}
+    <h1 id="site-name">故障自愈后台管理</h1>
+{% endif %}
+
+{% endblock %}
+
+{% block userlinks %}
+    {% if SITE_URL %}
+        <a href="{{ SITE_URL }}">故障自愈应用</a> /
+    {% endif %}
+    {% if WECHAT_APP_URL %}
+    <a href="{{ SITE_URL }}doc/wechat_config/">微信审批配置</a> /
+    {% endif %}
+    {% if OP_URL_PREFIX %}
+    <a href="{{ OP_URL_PREFIX }}">运营数据</a> /
+    {% endif %}
+{% endblock %}

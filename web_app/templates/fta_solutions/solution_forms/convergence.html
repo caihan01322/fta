@@ -1,0 +1,39 @@
+<div class="inner-forms convergence-form collect-forms">
+  <div class="line-item">
+    <div class="form-group inline-groups">
+        <label for="range_time" class="control-label">${_(u'时间范围')}：</label>
+        <div class="controls">
+            <div class="input-group">
+              <input
+                type="number"
+                name="range_time"
+                class="form-control"
+                value="${solution.config.get('range_time') if solution  else '1'}"
+                placeholder="${_(u'请输入')}"
+                min="1"
+                required
+              />
+              <span class="input-group-unit">${_(u'分钟')}</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group inline-groups">
+        <label for="range_count" class="control-label">${_(u'告警数(不算当前告警)')}：</label>
+        <div class="controls">
+             <div class="input-group">
+              <input
+                type="number"
+                name="range_count"
+                class="form-control"
+                value="${solution.config.get('range_count') if solution  else '1'}"
+                placeholder="${_(u'请输入')}"
+                min="1"
+                required
+              />
+              <span class="input-group-unit">${_(u'条')}</span>
+            </div>
+        </div>
+    </div>
+  </div>
+  <p class="tips">${_(u'在指定时间内，出现过指定告警数量的相同IP，相同告警类型，将会收敛次条告警')}</p>
+</div>

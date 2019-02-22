@@ -1,0 +1,19 @@
+<div class="inner-forms sleep-form collect-forms">
+  <div class="form-group">
+    <label for="seconds" class="control-label">${_(u'等待')}：</label>
+    <div class="controls">
+        <div class="input-group">
+          <input
+            type="number"
+            name="seconds"
+            class="form-control"
+            value="${solution.config.get('seconds') if solution  else '1'}"
+            min="1"
+            required
+          />
+          <span class="input-group-unit">${_(u'秒')}
+        </span>
+        </div>
+    </div>
+  </div>
+</div>

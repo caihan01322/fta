@@ -1,0 +1,212 @@
+<%block>
+
+<div class="row data-report" >
+    <div>
+
+        <form id="task_searchbox" method="get" class="searchbox">
+            <div class="well well-small form-inline" style="padding: 20px 0 16px 0;background-color:#FFF">
+
+                <span class="control-group col-xs-4" style="display: none;">
+                    <label class="control-label" for="cc_biz_id">${_(u'业务名称')}: </label>
+                    <span class="controls inline-input">
+                        <select name="cc_biz_id" class="data_select" id="cc_biz_id">
+                            % for group, group_biz in cc_biz_groups.iteritems():
+                                <optgroup label="${group}">
+                                    % for biz_id, biz_name in group_biz.iteritems():
+                                        <option value="${biz_id}" ${'checked="checked"' if biz_id == cc_biz_id  else ''}>
+                                            ${biz_name}
+                                        </option>
+                                    % endfor
+                                </optgroup>
+                            % endfor
+                        </select>
+                    </span>
+                </span>
+
+                <span class="control-group col-xs-4" style="display: none;">
+                    <label class="control-label control-label-right" for="biz_team">${_(u'业务组')}: </label>
+                    <span class="controls inline-input">
+                        <select name="biz_team" class="data_select" id="biz_team">
+                            <option value=""></option>
+                            % for team in all_teams:
+
+                                <option value="${team}">
+                                    ${team}
+                                </option>
+
+                            % endfor
+                        </select>
+                    </span>
+                </span>
+
+                <span class="control-group col-xs-4">
+                    <label class="control-label" for="alarm_type">${_(u'告警类型')}: </label>
+                    <span class="controls inline-input">
+                        <select name="alarm_type" class="data_select" id="alarm_type">
+                            <option value="">${_(u'请选择告警类型')}</option>
+                            % for group, group_types in src_type_group.iteritems():
+                                % if source_type_dict.get(group):
+                                    <optgroup label="${source_type_dict.get(group)}">
+                                    % for s, s_title in group_types:
+                                        <option value='${s}' title='${group}' ${'selected=true' if edit and s == alarm_def.alarm_type else ''}>${s_title}</option>
+                                    % endfor
+                                   </optgroup>
+                                % endif
+                           % endfor
+                        </select>
+                    </span>
+                </span>
+
+                <span class="control-group col-xs-4">
+                    <label class="control-label" for="solution_type">${_(u'套餐类型')}: </label>
+                    <span class="controls inline-input">
+                        <select name="solution_type" class="data_select" id="solution_type">
+                            <option value="">${_(u'所有')}</option>
+                            % for stype,stype_str in solution_type_dict.iteritems():
+                                <option value="${stype}">
+                                    ${stype_str}
+                                </option>
+                            % endfor
+                        </select>
+                    </span>
+                </span>
+
+
+                <span class="control-group col-xs-4">
+                    <label class="control-label" for="source_type">${_(u'告警源')}: </label>
+                    <span class="controls inline-input">
+                        <select name="source_type" class="data_select" id="source_type">
+                            <option value="">${_(u'所有')}</option>
+                            % for src_type,src_type_str in source_type_dict.iteritems():
+                                <option value="${src_type}">
+                                    ${src_type_str}
+                                </option>
+
+                            % endfor
+                        </select>
+                    </span>
+                </span>
+
+                <span class="control-group col-xs-4">
+                    <label class="control-label" for="is_off_time">${_(u'处理时间段')}: </label>
+                    <span class="controls inline-input">
+                        <select name="is_off_time" class="data_select" id="is_off_time">
+                            <option value="">${_(u'所有')}</option>
+                            <option value="1">
+                                    ${_(u'非工作时间(晚6点~早9点)')}
+                                </option>
+                            <option value="0">
+                                    ${_(u'工作时间(早9点~晚6点)')}
+                                </option>
+                        </select>
+                    </span>
+                </span>
+
+                <!-- <div class="row"> -->
+                    <span class="control-group col-xs-4">
+                        <label class="control-label" for="is_off_time">${_(u'时间')}: </label>
+                        <span class="controls inline-input">
+                            <input type="text" class="bk-form-input" id="selectDate2" placeholder="${_(u'选择日期')}..." value="${start_time} - ${end_time}">
+                        </span>
+                    </span>
+                <!-- </div> -->
+                <div class="row">
+                     <span class="control-group col-xs-4">
+                        <label class="control-label" for="is_off_time"> </label>
+                        <span class="controls inline-input">
+                            <input type="hidden" class="bk-form-input" id="" placeholder="">
+                            <button id="search_btn" onclick="javascript:update_chart();return false;" class="bk-button bk-success" title="${_(u'查询')}">${_(u'查询')}</button>
+                        </span>
+                    </span>
+                </div>
+
+            </div>
+            </form>
+
+        <div class="row access-tab data-report-chart">
+            <div id="count_chart_div"  style="height:400px;width:100%"></div>
+        </div>
+        <div class="row access-tab data-report-chart">
+            <div id="profit_chart_div"  style="height:400px;width:100%"></div>
+        </div>
+    </div>
+</div>
+
+<script src="${STATIC_URL}js/page/datefunctions.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}js/page/data_report_v2.js?v=${STATIC_VERSION}"></script>
+<script type="text/javascript">
+
+    locateRightNav("li-data_report_v2")
+    
+    function update_chart(){
+        var countChart = echarts.init(document.getElementById('count_chart_div'));
+        var profitChart = echarts.init(document.getElementById('profit_chart_div'));
+        $.ajax({
+                url: '${SITE_URL}${cc_biz_id}/data_v2/counts/',
+                data:{
+                    'cc_biz_id':${cc_biz_id},
+                    'biz_team':$('#biz_team').val(),
+                    'alarm_type':$('#alarm_type').val(),
+                    'solution_type':$('#solution_type').val(),
+                    'source_type':$('#source_type').val(),
+                    'is_off_time':$('#is_off_time').val(),
+                    'start_time':$("#selectDate2").val().split(" - ")[0],
+                    'end_time':$("#selectDate2").val().split(" - ")[1]
+                },
+                type: 'GET',
+                dataType: 'json',
+                beforeSend: function(){
+                  //
+                },
+                success: function(options){
+                    var count_option = options[0];
+                    var profit_option = options[1];
+                    count_option.tooltip.formatter = bar_tooltip_formatter;
+                    profit_option.tooltip.formatter = bar_tooltip_formatter;
+                    countChart.setOption(count_option);
+                    profitChart.setOption(profit_option);
+
+                    // countChart.connect([profitChart]);
+                    // profitChart.connect([countChart]);
+                }
+            })
+    }
+
+    // function update_charts(){
+    //     $.ajax({
+    //         url: '${SITE_URL}${cc_biz_id}/data_v2/counts/',
+    //         data:{
+    //             'cc_biz_id':${cc_biz_id},
+    //             'biz_team':$('#biz_team').val(),
+    //             'alarm_type':$('#alarm_type').val(),
+    //             'solution_type':$('#solution_type').val(),
+    //             'source_type':$('#source_type').val(),
+    //             'is_off_time':$('#is_off_time').val(),
+    //             'start_time':getCurTime()[0],
+    //             'end_time':getCurTime()[1]
+    //         },
+    //         type: 'GET',
+    //         dataType: 'json',
+    //         beforeSend: function(){
+    //           //
+    //         },
+    //         success: function(options){
+    //           //
+    //         }
+    //     })
+    // // }
+
+    function bar_tooltip_formatter(params){
+        return params[0].name + '<br/>'
+               + params[0].seriesName + ' : ' + params[0].value + '<br/>'
+               + params[1].seriesName + ' : ' + (params[1].value);
+    }
+
+    function clear_filter(){
+        var url = '${cc_biz_id}/data_report_v2/';
+        include_open(url);
+    }
+
+</script>
+
+</%block>

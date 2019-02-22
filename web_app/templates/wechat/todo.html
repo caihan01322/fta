@@ -1,0 +1,65 @@
+{% extends "wechat/base.html" %}
+{% load url from future %}
+
+{% block title %}等待您的审批{% endblock %}
+
+{% block main %}
+{% if not approve_list %}
+<h3>无待办事项</h3>
+{% endif %}
+<ul data-role="listview">
+    {% for alarm in approve_list %}
+	<li data-role="list-divider">{{ alarm.source_time_show }}<span class="ui-li-count">
+        {{ alarm.cc_biz_name }}
+    </span></li>
+    <li>
+        <h3>{{ alarm.alarm_type }}</h3>
+        <p>{{ alarm.ip }}</p>
+        <p>
+        <a href="{% url 'wechat:alarm_detail_fta' alarm.id %}">
+            {{ alarm.raw }}
+        </a>
+        </p>
+        <p>
+            {{ alarm.comment }}
+        </p>
+        <div event_name="{{alarm.id}}">
+            <a href="###" comment='approved' class="approve-btn ui-btn ui-btn-inline ui-icon-check ui-btn-icon-left">准许执行自愈套餐</a>
+            <a href="###" comment='rejected' class="approve-btn ui-btn ui-btn-inline ui-icon-delete ui-btn-icon-left">拒绝执行</a>
+        </div>
+
+    </li>
+    {% endfor %}
+</ul>
+
+<br />
+
+{% endblock %}
+
+{% block script %}
+$(document).on('click', '.approve-btn', function(e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    var submit_data = {
+        'id': $(this).parent('div').attr('event_name'),
+        'message': $(this).attr('comment'),
+        'approve': 'true',
+        'client': 'wechat'
+    }
+    $.ajax({
+        url: "{% url 'wechat:approve_flow' %}",
+        type: "POST",
+        data: submit_data,
+        beforeSend: function() {
+            $.mobile.loading("show");
+        },
+        complete: function() {
+            $.mobile.loading("hide");
+        },
+        success: function(data) {
+            $('div[event_name='+ submit_data.event_name +']').hide();
+            window.location.reload();
+        }
+    });
+});
+{% endblock %}

@@ -1,0 +1,29 @@
+<!-- 允许用户自动刷新蓝鲸监控的告警类型 -->
+<%
+from fta_solutions_app.models import AlarmType
+
+alarm_type_list = list(AlarmType.get_by_cc_biz_id(
+    cc_biz_id, source_type=source_type,
+))
+%>
+    <div class="title-content-bar mb20 title-content-tab">
+        <div class="pure-title">${_(u'告警类型')}
+            <span class="name-notice">
+            </span>
+            % if request.user.is_superuser:
+            <a class="bk-button bk-success fr mt18" href="javascript:;" id="refresh_alarm_type" style="margin-top: 18px;">
+                <span class="outer-circle">
+                    <i class="bk-icon icon-refresh no-animation"> </i>
+                </span> ${_(u'刷新告警类型')}</a>
+            % endif
+        </div>
+        <div class="title-bottom-panel clearfix info-bar4" id="alert_alarm_list">
+        </div>
+    </div>
+    <!-- 编辑告警类型E -->
+    <script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_type_alert.js"></script>
+    <script>
+        $(function () {
+            get_alarm_type_list()
+        })
+    </script>

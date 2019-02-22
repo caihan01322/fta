@@ -1,0 +1,114 @@
+<div class='row access-title' >
+    <div>
+        <div class="table-up-title">
+            <span class="name-notice">
+                <em class="name-note">${_(u'全业务接入自愈')}</em>
+                ${_(u'对所有业务统一接入自愈方案，节省配置流程')}
+                <!-- 提示：如果自愈处理失败，会有失败通知。 -->
+            </span>
+            <a class='bk-button bk-success fr' href="javascript:include_open('fta_admin/alarm_def/show/0/');"><span class="outer-circle"><i class='bk-icon icon-plus-circle'> </i></span> ${_(u'接入自愈')}</a>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <div class='col-xs-12 access-tab table-packup'>
+        <table class="table table-hover access-report-table alarm-list-table">
+            <thead class="th-bg">
+                <th class="br1 item1 pl35" data-defaultsort="asc" style="min-width: 150px;">${_(u'告警类型')}</th>
+                <th class="br1 item2 tc">${_(u'告警数量')}</th>
+                <th class="br1 item6">${_(u'自愈套餐')}</th>
+                <th class="br1 item6">${_(u'告警源')}</th>
+                <th class="br1 item6" style="width:140px !important;">${_(u'自愈方案')}</th>
+                <th class="br1 item6">${_(u'生效范围')}</th>
+                <th class="br1 item6" style="width: 80px">${_(u'操作')}</th>
+            </thead>
+            <tbody>
+                % if not alarm_list:
+                    <tr >
+                     <td class="tc" colspan="7"><span style="font-size: 16px">${_(u'您还没有接入自愈，点击')} <a href="javascript:include_open('fta_admin/alarm_def/show/0/');">${_(u'快速接入自愈')}</a></span></td>
+                    </tr>
+                % endif
+
+                % for func in alarm_list:
+            <tr class="close-text">
+                <td id="type-${func.id}" class="pl35 col1" >
+                    <div class="limitText hd"><!-- 告警类型 -->
+                        <span><a href="javascript:include_open('fta_admin/alarm_def/show/${func.id}/');"  class="text-info">${alarm_type_dict.get(func.alarm_type, '--')}</a></span>
+                    </div>
+                    <div class="hiddenText"><!-- 告警类型 -->
+                        <span><a href="javascript:include_open('fta_admin/alarm_def/show/${func.id}/');"  class="text-info">${alarm_type_dict.get(func.alarm_type, '--')}</a></span>
+                    </div>
+                    <a href="javascript:;" class="text-switch" style="padding-left:8px"><i class="bk-icon icon-plus-circle to-open-text"></i><i class="bk-icon icon-minus-circle to-close-text"></i></a>
+                </td>
+                <% usage_count =  func.instances.count() %>
+                <td class="tc pl8" data-value=${usage_count}> <!-- 告警数量 -->
+                     <span class='report-num'>${usage_count}</span>
+                </td>
+                <td class="pl20">  <!-- 自愈套餐 -->
+                    <div class="limitText hd">
+                        <span>
+                        % if func.solution:
+                            ${func.solution.title_display}
+                        % else:
+                            (${_(u'不处理')})
+                        % endif
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span>
+                        % if func.solution:
+                            ${func.solution.title_display}
+                        % else:
+                            (${_(u'不处理')})
+                        % endif
+                        </span>
+                    </div>
+                </td>
+                <td class="pl20 hd force-wrap">   <!-- 告警源 -->
+                    <div class="limitText hd">
+                        <span class="">
+                        ${source_type_dict[func.source_type]}
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span class="">
+                        ${source_type_dict[func.source_type]}
+                        </span>
+                    </div>
+                </td>
+                <td id="description-${func.id}" class="pl20 force-wrap"> <!-- 自愈方案 -->
+                    <div class="limitText hd">
+                        <span class="">
+                        ${func.description_display}
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span class="">
+                        ${func.description_display}
+                        </span>
+                    </div>
+                </td>
+                 <td class="p0 tc">
+                        <span class="text-success">${_(u'全业务')}</span>
+                </td>
+                <td class="pl20">
+                    % if func.category == 'default':
+                        <a
+                          class="f_r border-box edit_button my_edit_button"
+                          id="edit_button"
+                          href="javascript:include_open('fta_admin/alarm_def/show/${func.id}/');"
+                        ></a>
+                    <a class="f_r  border-box del_button" href="javascript:del_def(${func.id});">
+                    </a></td>
+                    % else:
+                    <span>${func.get_category_display()}</span>
+                    % endif
+            </tr>
+            % endfor
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<script src="${STATIC_URL}js/page_new/fta_admin/alarm_defs.js?v=${STATIC_VERSION}"></script>
+

@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label for="timeout" class="control-label">${_(u'等待时间(超出则超时)')}:</label>
+    <div class="controls">
+        <div class="input-group col-xs-6">
+          <input type="text" name="timeout" type="text" class="form-control"  value="${solution.config.get('timeout') if solution  else '0'}"/>
+          <span class="input-group-addon">${_(u'分钟')}
+        </span> 
+        </div>
+
+        
+    </div>
+</div>
+

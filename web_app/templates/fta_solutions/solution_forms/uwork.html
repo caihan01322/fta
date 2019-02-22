@@ -1,0 +1,46 @@
+<%doc>
+<%
+fail_handle_type = solution.config.get('fail_handle_type', '0') if edit else '0'
+do_not_turn = "checked" if fail_handle_type == '0' else ""
+do_turn = "checked" if fail_handle_type == '1' else ""
+auto = "checked" if fail_handle_type == 'x' else ""
+failure_shield = solution.config.get('failure_shield', '') if edit else ''
+%>
+
+<div class="form-group">
+    选择重启失败的处理方式：
+    <label class="radio">
+      <input type="radio" name="fail_handle_type" id="fail_handle_type0" value="0" ${do_not_turn}>
+      不转运营商重启，不转人工处理 （默认）
+    </label>
+    <label class="radio">
+      <input type="radio" name="fail_handle_type" id="fail_handle_type1" value="1" ${do_turn}>
+      自动转运营商重启，转人工处理
+    </label>
+
+    <label class="radio">
+      <input type="radio" name="fail_handle_type" id="fail_handle_typex" value="x" ${auto}>
+      自动转人工，并且自动授权换硬盘或重装OS
+    </label>
+
+</div>
+
+<div class="form-group retry-hide" >
+    <input id="failure_shield_check" type="checkbox" class="not_submit" ${"checked" if failure_shield else ''}>
+    <label for="failure_shield" class="control-label">重启失败后屏蔽通知</label>
+    <div class="controls failure_shield_hide" style="${'display:none' if not failure_shield else ''}">
+        <div class="input-group col-xs-8">
+            <input id="failure_shield" type="text" name="failure_shield" type="text" class="form-control" value="${solution.config.get('failure_shield') if solution  else ''}"/>
+            <span class="input-group-addon">分钟(留空表示不屏蔽) 
+            </span> 
+        </div>
+    </div>
+</div>
+
+<script>
+$("#failure_shield_check").change(function() {
+    $(".failure_shield_hide").toggle();
+    $("#failure_shield").val("");
+})
+</script>
+</%doc>

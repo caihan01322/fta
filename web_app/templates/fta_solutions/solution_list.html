@@ -1,0 +1,89 @@
+<div class='row access-title' >
+    <div>
+        <div class="table-up-title">
+            <span class="name-notice">
+                <em class="name-note">${_(u'套餐管理')}</em>
+                <em class="name-tips">${_(u'创建每类告警场景的处理套餐，比如创建一个清理磁盘的套餐，用于在“接入自愈”页面完成磁盘告警接入自愈。')}</em>
+            </span>
+            <a class='bk-button bk-success fr' href="javascript:include_open('${cc_biz_id}/solution/add/?js_item=2');"><span class="outer-circle"><i class='bk-icon icon-plus-circle'> </i></span> ${_(u'创建自愈套餐')}</a>
+        </div>
+    </div>
+</div>
+<div class='row'>
+    <div class='col-xs-12 access-tab table-packup'>
+        <table class="table table-hover sortable access-report-table solution-list-table creation-meal">
+            <thead class="th-bg">
+            <tr>
+                <th class="br1 pl35 item1" style="text-align: left;">${_(u'套餐名字')}</th>
+                <th class="br1 pl20 tc item2" >${_(u'告警数')}</th>
+                <th class="br1 pl20 tc item3" data-defaultsort="desc" >${_(u'定义数')}</th>
+                <th class="br1 pl20 item4" style="text-align: left;">${_(u'套餐类型')}</th>
+                <th class="br1 pl20 item5" style="text-align: left;">${_(u'最后修改人')}</th>
+                <th class="br1 pl20 item6" style="text-align: left; ">${_(u'操作')}</th>
+            </tr>
+            </thead>
+            <tbody>
+            % if not solution_list:
+                <tr>
+                 <td class="tc" colspan="6"><span style="font-size: 16px">${_(u'您还没有创建自愈套餐')}, <a href="javascript:include_open('${cc_biz_id}/solution/add/');">${_(u'点击快速创建自愈套餐')}</a></span></td>
+                </tr>
+            % endif
+            % for func in solution_list:
+            <tr class="close-text">
+                <td class="pl35 " id="data-${func.id}"> <!-- 套餐名字 -->
+                    <a href="javascript:;" class="text-switch" style="left:10px;"><i class="bk-icon icon-plus-square to-open-text"></i><i class="bk-icon icon-minus-square to-close-text"></i></a>
+                    <div class="limitText hd">
+                        <span>
+                            <a class="text-info" href="javascript:include_open('${cc_biz_id}/solution/${func.id}/');">${func.title}</a>
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span>
+                            <a class="text-info" href="javascript:include_open('${cc_biz_id}/solution/${func.id}/');">${func.title}</a>
+                        </span>
+                    </div>
+                </td>
+                <% usage_count =  sum([ad.instances.count() for ad in func.alarm_def_list.filter(is_deleted=False)]) %>
+                <td class="tc " data-value=${usage_count}> <!-- 告警数 -->
+                    <span class='report-num'><a href="javascript:include_open('${cc_biz_id}/alarm_instance_list/?solution_id=${func.id}&date=${date_range}');">${usage_count}</a></span>
+                </td>
+                 <td class="tc hd">${alarm_def_count_dict[func.id] if alarm_def_count_dict.has_key(func.id) else 0}</td> <!-- 定义数 -->
+                <td class="pl20 ">  <!-- 套餐类型 -->
+                    <div class="limitText hd">
+                        <span>
+                           ${solution_types.get(func.solution_type, func.solution_type)}
+                           % if func.solution_type == 'bk_component':
+                           <% import json %>
+                                (${json.loads(func.config).get('module_name').split('.')[1]})
+                           % endif
+                       </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span>
+                           ${solution_types.get(func.solution_type, func.solution_type)}
+                           % if func.solution_type == 'bk_component':
+                           <% import json %>
+                                (${json.loads(func.config).get('module_name').split('.')[1]})
+                           % endif
+                       </span>
+                   </div>
+                </td>
+                <td class="pl20 ">${func.creat_uin}</td> <!-- 最后修改人 -->
+                <td class="pl20"> <!-- 操作 -->
+                    <a title="${_(u'接入自愈')}" class="f_r border-box edit_button ${'grayStatus' if alarm_def_count_dict.has_key(func.id) else 'brightStatus'}" href="javascript:include_open('${cc_biz_id}/alarm_def/add/?name=${func.title}');"></a>
+                    <a title="${_(u'编辑')}" class="f_r border-box edit_button" href="javascript:include_open('${cc_biz_id}/solution/${func.id}/');"></a>
+                    <a title="${_(u'删除')}" class="f_r border-box del_button" href="javascript:del_def(${func.id});"></a>
+                    </td>
+            </tr>
+            % endfor
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="${STATIC_URL}js/page/solution_list.js?v=${STATIC_VERSION}"></script>
+
+<script src="${STATIC_URL}js/page_new/fta_solutions/solution_list.js"></script>
+
+<script>
+</script>

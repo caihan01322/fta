@@ -1,0 +1,225 @@
+<div class='row access-title' >
+    <div>
+        <div class="table-up-title">
+            <span class="name-notice">
+                <em class="name-note">${_(u'接入自愈')}</em>
+                <em class="name-tips">${_(u'针对每一种告警类型配置对应的处理方案（自愈套餐），比如将磁盘使用率告警接入磁盘清理套餐。')}</em>
+                <!-- 提示：如果自愈处理失败，会有失败通知。 -->
+            </span>
+            <a class='bk-button bk-success fr' href="javascript:include_open('${cc_biz_id}/alarm_def/add/');"><span class="outer-circle"><i class='bk-icon icon-plus-circle'> </i></span> ${_(u'接入自愈')}</a>
+        </div>
+
+        <div class="col-xs-10" style="display: none;">
+            <div style='color:grey;margin-bottom: 5px;'>
+                <i class='bk-icon icon-user-shape'></i> ${_(u'本业务自愈负责人列表(将定期从CC同步)')}
+            </div>
+
+            <div class="business_manager_input">
+                <input type="text" id="responsible" value="${biz_resp['responsible'] or ''}" name="responsible" placeholder="${_(u'若不配置，则默认为CC中配置的运维')}"/>
+                <div>
+                    <span style="color:orangered">(${_(u'主机负责人会被用作套餐执行人，比如ijobs,uwork等')})</span>
+                </div>
+            </div>
+            <a class='btn btn-warning btn-xs' id='update-resp'>${_(u'设置')}</a>
+        </div>
+
+        <script>
+        </script>
+    </div>
+</div>
+<div class='row'>
+    <div class='col-xs-12 access-tab table-packup'>
+        <table class="table table-hover sortable access-report-table alarm-list-table">
+            <thead class="th-bg">
+                <th class="br1 item1 pl35" data-defaultsort="asc" style="min-width: 150px;">${_(u'告警类型')}</th>
+                <th class="br1 item2 tc">${_(u'告警数量')}</th>
+                <th class="br1 item3">${_(u'生效集群')}</th>
+                <th class="br1 item4">${_(u'生效模块')}</th>
+                <th class="br1 item5">${_(u'自愈套餐')}</th>
+                <th class="br1 item6">${_(u'告警源')}</th>
+                <th class="br1 item7">${_(u'自愈方案')}</th>
+                <th class="br1 item6">${_(u'方案来源')}</th>
+                <th class="br1 item8" data-defaultsort="des" style="width: 75px">${_(u'启用')}</th>
+                <th class="br1 item9" style="width: 95px">${_(u'操作')}</th>
+            </thead>
+            <tbody>
+                % if not alarm_list:
+                    <tr >
+                     <td class="tc" colspan="10"><span style="font-size: 16px">${_(u'您还没有接入自愈，点击')} <a href="javascript:include_open('${cc_biz_id}/alarm_def/add/');">${_(u'快速接入自愈')}</a></span></td>
+                    </tr>
+                % endif
+
+                % for func in alarm_list:
+            <tr class="close-text">
+                <td id="type-${func.id}" class="pl35 col1" >
+                    <div class="limitText hd"><!-- 告警类型 -->
+                        <span><a href="javascript:include_open('${cc_biz_id}/alarm_def/${func.id}/');"  class="text-info">${alarm_type_dict.get(func.alarm_type, '--')}</a></span>
+                    </div>
+                    <div class="hiddenText"><!-- 告警类型 -->
+                        <span><a href="javascript:include_open('${cc_biz_id}/alarm_def/${func.id}/');"  class="text-info">${alarm_type_dict.get(func.alarm_type, '--')}</a></span>
+                    </div>
+                    <a href="javascript:;" class="text-switch" style="padding-left:8px"><i class="bk-icon icon-plus-square to-open-text"></i><i class="bk-icon icon-minus-square to-close-text"></i></a>
+                </td>
+                <% usage_count =  func.instances.count() %>
+                <td class="tc pl8" data-value=${usage_count}> <!-- 告警数量 -->
+                     <span class='report-num'>${usage_count}</span>
+                </td>
+
+                <td id="topo_set-${func.id}" class="force-wrap hide-text pl20 " ><!-- 生效集群 -->
+                    <div class="limitText hd">
+                         <span>
+                        ${_(func.get_set_names) if func.get_set_names else _(u"(所有)")}
+                         </span>
+                    </div>
+                    <div class="hiddenText">
+                         <span>
+                        ${_(func.get_set_names) if func.get_set_names else _(u"(所有)")}
+                         </span>
+                    </div>
+                </td>
+                <td id="module-${func.id}" class="force-wrap hide-text pl20 " ><!-- 生效模块 -->
+                    <div class="limitText hd">
+                        <span>
+                        % if func.category == 'DBA':
+                        DB
+                        % else:
+                        ${_(func.get_module_names) if func.get_module_names else _(u"(所有)")}
+                        % endif
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span>
+                        % if func.category == 'DBA':
+                        DB
+                        % else:
+                        ${_(func.get_module_names) if func.get_module_names else _(u"(所有)")}
+                        % endif
+                        </span>
+                    </div>
+                </td>
+                <td class="pl20">  <!-- 自愈套餐 -->
+                    <div class="limitText hd">
+                        <span>
+                        % if func.solution:
+                            % if func.solution.cc_biz_id == 0:
+                                <a href="###" title="${_(u'系统定义的快捷套餐')}"> ${func.solution.title_display} </a>
+                            % else:
+                                <a class="text-info" href="javascript:include_open('${cc_biz_id}/solution/${func.solution.id}/');">${func.solution.title_display}</a>
+                                 <!-- <a class="text-info" href="javascript:get_name()"> ${func.solution.title_display}</a> -->
+                            % endif
+                        % else:
+                            ${_(u'(不处理)')}
+                        % endif
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span>
+                        % if func.solution:
+                            % if func.solution.cc_biz_id == 0:
+                                <a href="###" title="${_(u'系统定义的快捷套餐')}"> ${func.solution.title_display} </a>
+                            % else:
+                                <a class="text-info" href="javascript:include_open('${cc_biz_id}/solution/${func.solution.id}/');">${func.solution.title_display}</a>
+                                 <!-- <a class="text-info" href="javascript:get_name()"> ${func.solution.title_display}</a> -->
+                            % endif
+                        % else:
+                            ${_(u'(不处理)')}
+                        % endif
+                        </span>
+                    </div>
+                </td>
+                <td class="pl20 hd force-wrap">   <!-- 告警源 -->
+                    <div class="limitText hd">
+                        <span class="">
+                        ${source_type_dict[func.source_type]}
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span class="">
+                        ${source_type_dict[func.source_type]}
+                        </span>
+                    </div>
+                </td>
+                <td id="description-${func.id}" class="pl20 force-wrap"> <!-- 自愈方案 -->
+                    <div class="limitText hd">
+                        <span class="">
+                        ${func.get_show_name}
+                        </span>
+                    </div>
+                    <div class="hiddenText">
+                        <span class="">
+                        ${func.get_show_name}
+                        </span>
+                    </div>
+                </td>
+                <td class="pl20 hd force-wrap">   <!-- 方案来源 -->
+                    <div class="limitText hd">
+                        % if func.add_from_display in ['System recommended', u'系统推荐']:
+                        <span style="color: #57a3f1">${func.add_from_display}</span>
+                        % else:
+                        <span class="">${func.add_from_display}</span>
+                        % endif
+                    </div>
+                    <div class="hiddenText">
+                        <span class="">
+                        ${func.add_from_display}
+                        </span>
+                    </div>
+                </td>
+                <%
+                if func.cc_biz_id:
+                    is_real_enabled = func.is_enabled
+                else:
+                    is_real_enabled = func.is_enabled and (cc_biz_id not in func.exclude_list)
+                %>
+                <td class="p0 tc">
+                    % if is_real_enabled:
+                        <span class="text-success">${_(u'是')}</span>
+                    % else:
+                        <span class="text-danger">${_(u'否')}</span>
+                    % endif
+                </td>
+                <td class="pl20">
+                    % if func.cc_biz_id == 0:
+                            <span class="alarm_def_source_type" style="display: none;">${source_type_dict[func.source_type]}</span>
+                            <a class="f_r cur-switch cp block_alarm_def" is_available="${1 if func.source_type in available_source_types else 0}" is_disabled="${0 if is_real_enabled else 1}" fun_id="${func.id}">
+                                % if is_real_enabled:
+                                <i class="switchery-on switchery-small" >
+                                    <small></small>
+                                </i>
+                                % else:
+                                <i class="switchery switchery-small">
+                                    <small></small>
+                                </i>
+                                % endif
+                            </a>
+                        % else:
+                          % if func.source_type in available_source_types:
+                            <a
+                              class="f_r border-box edit_button my_edit_button"
+                              id="edit_button"
+                              href="javascript:include_open('${cc_biz_id}/alarm_def/${func.id}/');"
+                            ></a>
+                          % else:
+                            <a
+                              class="f_r border-box edit_button my_edit_button"
+                              id="edit_button"
+                              href="javascript:show_edit_msg('${source_type_dict[func.source_type]}')"
+                            ></a>
+                          % endif
+
+                        <a class="f_r  border-box del_button" href="javascript:del_def(${func.id});">
+                        </a></td>
+                    % endif
+            </tr>
+            % endfor
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<script>
+    var is_resp = ${'true' if request.user.username in (biz_resp['responsible'] or "") or request.user.is_superuser else 'false'};
+    var biz_resp_id = '${ "" if not biz_resp["id"] else "%s/" % biz_resp["id"]}';
+    var biz_type = '${"PUT" if biz_resp["id"] else "POST"}';
+</script>
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_def_list.js"></script>

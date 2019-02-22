@@ -1,0 +1,130 @@
+<div class="inner-forms clean-forms">
+    <div class="form-group">
+        <label for="clean_catalog" class="control-label light-title mb10">${_(u'磁盘清理的目录')}：</label>
+        <div class="controls">
+            <div class="clean-forms-panel">
+                <input type="text" class="form-control" name="clean_catalog" value="${solution.config.get('clean_catalog', '') if solution else ''}" placeholder="${_(u'磁盘清理的目录,如/data/log/,以/结尾')}">
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="clean_date" class="control-label light-title mb10">${_(u'删除多少天前的文件')}：</label>
+        <div class="controls">
+            <div class="clean-forms-panel">
+                <%
+                clean_date = solution.config.get('clean_date', '') if solution else ''
+                clean_file = solution.config.get('clean_file', '') if solution else ''
+                %>
+                <select id="fileDate" style="width: 100%;" name="clean_date">
+                    <option value="3" ${"selected" if solution and solution.config.get('clean_date')=='3' else ''}>${_(u'3天前')}</option>
+                    <option value="7" ${"selected" if solution and solution.config.get('clean_date')=='7' else ''}>${_(u'1周前')}</option>
+                    <option value="14" ${"selected" if solution and solution.config.get('clean_date')=='14' else ''}>${_(u'2周前')}</option>
+                    <option value="30" ${"selected" if solution and solution.config.get('clean_date')=='30' else ''}>${_(u'1月前')}</option>
+                    <option value="60" ${"selected" if solution and solution.config.get('clean_date')=='60' else ''}>${_(u'2月前')}</option>
+                    <option value="self" ${"selected" if solution and solution.config.get('clean_date')=='self' else ''}>${_(u'自定义')}</option>
+                </select>
+                <input
+                  type="number"
+                  min="1"
+                  class="self-input form-control"
+                  name="clean_date_custom"
+                  placeholder="${_(u'单位为天')}"
+                  value="${solution.config.get('clean_date_custom', '') if solution else ''}"
+                >
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="clean_file" class="control-label light-title mb10">${_(u'待删除文件名描述')}：</label>
+        <div class="controls">
+             <div class="clean-forms-panel">
+                <select id="fileAbout" style="width: 100%;" name="clean_file">
+                    <option value="*.log" ${"selected" if solution and solution.config.get('clean_file')=='*.log' else ''}>*.log</option>
+                    <option value="core" ${"selected" if solution and solution.config.get('clean_file')=='core' else ''}>core*</option>
+                    <option value="*" ${"selected" if solution and solution.config.get('clean_file')=='*' else ''}>*</option>
+                    <option value="clean_file_custom" ${"selected" if solution and solution.config.get('clean_file')=='clean_file_custom' else ''}>${_(u'自定义')}</option>
+                </select>
+                <input type="text" placeholder="${_(u'请输入待清理文件名的通配符')}" class="self-input form-control" name="clean_file_custom" value="${solution.config.get('clean_file_custom', '') if solution else ''}" placeholder="${_(u'请输入自定义描述')}">
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="form-group" style="display: none;">
+        <div class="controls">
+            <input id="argv" name="argv" type="checkbox" checked><span style="margin-left:10px;">${_(u'从作业中获取参数')}
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var catalogFlag = false;
+    reg = /\/((?!\.)[\w\d\-\.\/~]+)+/;
+    var forbid_words = ["/lib/","/lib","/usr/lib/","/usr/lib","/lib64/","/lib64","/usr/lib64/","/usr/lib64","/usr/local/lib/","/usr/local/lib","/bin/","/bin","/usr/bin/","/usr/bin","/usr/local/bin/","/usr/local/bin","/sbin/","/sbin","/usr/sbin/","/usr/sbin","/usr/local/sbin/","/usr/local/sbin","/boot/","/boot","/etc/","/etc","/proc/","/proc","/sys/","/sys","/"]
+    $('input[name="clean_catalog"]').on("keyup",function(){
+        var curVal = $(this).val();
+        validateCatelog(curVal);
+    });
+
+    function validateCatelog(curVal){
+        if(reg.test(curVal) && $.inArray(curVal,forbid_words)==-1 ){
+
+            // 屏蔽非法字符  |  & ; ( ) < > space tab
+            var matchRes = curVal.match(/\||\&|;|\(|\)|<|>|\(|\t|\)|\(|\s|\)/g)
+            if (!matchRes) {
+                catalogFlag = true;
+            } else {
+                catalogFlag = false;
+            }
+
+        }else{
+            catalogFlag = false;
+        }
+    }
+
+    $("#fileDate,#fileAbout").select2({
+        "minimumResultsForSearch": Infinity
+    }).on("select2-selecting",function(e){
+        var curInput = $(this).parent().find("input.self-input");
+        if(e.val=="self"||"clean_file_custom"){
+            curInput.show();
+            $("input.self-input").focus();
+        }else{
+            curInput.hide();
+        }
+    })
+
+    initSelectDay();
+    initSelectDes();
+
+    function initSelectDay(val){
+      if(val=="self"){
+          $("#fileDate").next("input.self-input").show()
+      }else{
+          $("#fileDate").next("input.self-input").hide()
+      }
+    }
+
+    function initSelectDes(val){
+      if(val=="clean_file_custom"){
+          $("#fileAbout").next("input.self-input").show()
+      }else{
+          $("#fileAbout").next("input.self-input").hide()
+      }
+    }
+
+    $("#fileDate").on('select2-selecting',function(e){
+      initSelectDay(e.val);
+    })
+    $("#fileAbout").on('select2-selecting',function(e){
+      initSelectDes(e.val);
+    })
+
+
+
+</script>

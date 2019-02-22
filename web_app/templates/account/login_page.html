@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>即将转入蓝鲸智云登录...</title>
+		<script src="http://o.qcloud.com/static_api/jquery/jquery-1.7.2.min.js"></script>
+        <script src="http://o.qcloud.com/static_api/jquery/jquery.json-2.3.min.js"></script>
+		<link href="http://o.qcloud.com/static_api/bk/base.css" rel="stylesheet" type="text/css"/>
+		<link href="http://o.qcloud.com/static_api/bk/bk.css" rel="stylesheet" type="text/css"/>
+	</head>
+	<body style="font-family:Microsoft Yahei;">
+    	<div class="errors-login-wrap box">
+            <img src="http://o.qcloud.com/static_api/bk/style_custom/images/expre_login.jpg" width="183" height="113" />
+            <div class="errors-login-con clearfix">
+	            <h1>您需要登录蓝鲸</h1>
+	            <p><strong>看起来：</strong></p>
+	            <p>1.您还没有登录蓝鲸</p>
+	            <p>2.您之前的登录已经失效了</p>
+	            <p class="goto"><em id="cd_sec"></em>秒后自动跳转到登录页面</p>
+	            <a href="javascript:;" class="btn-jump f_r" onclick='jump_now()'>立即跳转</a>
+            </div>
+        </div>
+		<script type="text/javascript">
+			var cd_sec = 5;
+			function count_down(){
+				$('#cd_sec').html(cd_sec)
+				cd_sec += -1
+				if(cd_sec < 0){
+					cd_sec = 5;
+					jump_now();
+				}
+				setTimeout('count_down()', 1000)
+			}
+
+			$(function(){
+				count_down();
+			})
+
+			function jump_now(){
+			   window.top.location.reload()
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,946 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-18 19:30+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: static/admin/js/SelectFilter2.js:45
+#, javascript-format
+msgid "Available %s"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:46
+#, javascript-format
+msgid ""
+"This is the list of available %s. You may choose some by selecting them in "
+"the box below and then clicking the \"Choose\" arrow between the two boxes."
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:53
+#, javascript-format
+msgid "Type into this box to filter down the list of available %s."
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:57
+msgid "Filter"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:61
+msgid "Choose all"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:61
+#, javascript-format
+msgid "Click to choose all %s at once."
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:67
+msgid "Choose"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:69
+msgid "Remove"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:75
+#, javascript-format
+msgid "Chosen %s"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:76
+#, javascript-format
+msgid ""
+"This is the list of chosen %s. You may remove some by selecting them in the "
+"box below and then clicking the \"Remove\" arrow between the two boxes."
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:80
+msgid "Remove all"
+msgstr ""
+
+#: static/admin/js/SelectFilter2.js:80
+#, javascript-format
+msgid "Click to remove all chosen %s at once."
+msgstr ""
+
+#: static/admin/js/actions.js:22 static/admin/js/actions.min.js:1
+msgid "%(sel)s of %(cnt)s selected"
+msgid_plural "%(sel)s of %(cnt)s selected"
+msgstr[0] ""
+msgstr[1] ""
+
+#: static/admin/js/actions.js:114 static/admin/js/actions.min.js:4
+msgid ""
+"You have unsaved changes on individual editable fields. If you run an "
+"action, your unsaved changes will be lost."
+msgstr ""
+
+#: static/admin/js/actions.js:126 static/admin/js/actions.min.js:5
+msgid ""
+"You have selected an action, but you haven't saved your changes to "
+"individual fields yet. Please click OK to save. You'll need to re-run the "
+"action."
+msgstr ""
+
+#: static/admin/js/actions.js:128 static/admin/js/actions.min.js:5
+msgid ""
+"You have selected an action, and you haven't made any changes on individual "
+"fields. You're probably looking for the Go button rather than the Save "
+"button."
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:79
+#, javascript-format
+msgid "Note: You are %s hour ahead of server time."
+msgid_plural "Note: You are %s hours ahead of server time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:87
+#, javascript-format
+msgid "Note: You are %s hour behind server time."
+msgid_plural "Note: You are %s hours behind server time."
+msgstr[0] ""
+msgstr[1] ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:114
+#: static/admin/js/admin/DateTimeShortcuts.js:149
+msgid "Now"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:118
+msgid "Clock"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:146
+msgid "Choose a time"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:150
+msgid "Midnight"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:151
+msgid "6 a.m."
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:152
+msgid "Noon"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:156
+#: static/admin/js/admin/DateTimeShortcuts.js:276
+msgid "Cancel"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:216
+#: static/admin/js/admin/DateTimeShortcuts.js:269
+msgid "Today"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:220
+msgid "Calendar"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:267
+msgid "Yesterday"
+msgstr ""
+
+#: static/admin/js/admin/DateTimeShortcuts.js:271
+msgid "Tomorrow"
+msgstr ""
+
+#: static/admin/js/calendar.js:8
+msgid ""
+"January February March April May June July August September October November "
+"December"
+msgstr ""
+
+#: static/admin/js/calendar.js:9
+msgid "S M T W T F S"
+msgstr ""
+
+#: static/admin/js/collapse.js:8 static/admin/js/collapse.js:19
+#: static/admin/js/collapse.min.js:1
+msgid "Show"
+msgstr ""
+
+#: static/admin/js/collapse.js:16 static/admin/js/collapse.min.js:1
+msgid "Hide"
+msgstr ""
+
+#: static/diy/js/alarm_instance_page.js:37 static/diy/js/app.js:21
+msgid "成功"
+msgstr "成功"
+
+#: static/diy/js/alarm_instance_page.js:38 static/diy/js/app.js:22
+msgid "失败"
+msgstr "失败"
+
+#: static/diy/js/alarm_instance_page.js:39 static/diy/js/app.js:23
+msgid "跳过"
+msgstr "跳过"
+
+#: static/diy/js/alarm_instance_page.js:40 static/diy/js/app.js:24
+msgid "授权"
+msgstr "授权"
+
+#: static/diy/js/alarm_instance_page.js:41 static/diy/js/app.js:25
+msgid "检查"
+msgstr "检查"
+
+#: static/diy/js/alarm_instance_page.js:52 static/diy/js/app.js:36
+msgid "删除路径"
+msgstr "删除路径"
+
+#: static/diy/js/app.js:69
+msgid "双击选择套餐"
+msgstr "双击选择套餐"
+
+#: static/diy/js/app.js:99
+msgid "该节点暂不支持删除"
+msgstr "该节点暂不支持删除"
+
+#: static/js/bkDialog.js:41
+msgid "确定执行该操作?"
+msgstr "确定执行该操作?"
+
+#: static/js/bkDialog.js:42
+msgid "欢迎使用 bkDialog 组件！"
+msgstr "欢迎使用 bkDialog 组件！"
+
+#: static/js/bkDialog.js:49 static/js/bootstrap3.1.1_extend.js:246
+#: static/js/bootstrap3.1.1_extend.js:321
+#: static/js/page/topo_module_select.js:50
+#: static/js/page/topo_module_select.js:84
+#: static/js/page_new/fta_admin/alarm_defs.js:42
+#: static/js/page_new/fta_advice/advice_fta_def_list.js:24
+#: static/js/page_new/fta_solutions/alarm_def.js:27
+#: static/js/page_new/fta_solutions/alarm_def_list.js:23
+#: static/js/page_new/fta_solutions/alarm_def_list.js:50
+#: static/js/page_new/fta_solutions/alarm_def_list.js:125
+#: static/js/page_new/fta_solutions/alarm_instance.js:23
+#: static/js/page_new/fta_solutions/alarm_instance.js:56
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:22
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:62
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:98
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_config.js:26
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:40
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_list.js:35
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:33
+#: static/js/page_new/fta_solutions/incident_def_list.js:42
+#: static/js/page_new/fta_solutions/solution.js:127
+#: static/js/page_new/fta_solutions/solution_list.js:42
+#: static/js/page_new/fta_solutions/solution_list.js:77
+#: static/js/settings.js:102 static/js/settings.js:119
+#: static/js/settings.js:135 static/js/settings.js:150
+#: static/js/settings.js:166 static/js/settings_open.js:47
+#: static/js/settings_open.js:64 static/js/settings_open.js:80
+#: static/js/settings_open.js:95 static/js/settings_open.js:110
+msgid "确定"
+msgstr "确定"
+
+#: static/js/bkDialog.js:50 static/js/bootstrap3.1.1_extend.js:317
+#: static/js/fta.js:280 static/js/page/topo_module_select.js:53
+#: static/js/page/topo_module_select.js:87
+#: static/js/page_new/fta_admin/alarm_defs.js:44
+#: static/js/page_new/fta_advice/advice_fta_def_list.js:26
+#: static/js/page_new/fta_solutions/alarm_def.js:29
+#: static/js/page_new/fta_solutions/alarm_def_list.js:127
+#: static/js/page_new/fta_solutions/alarm_instance.js:25
+#: static/js/page_new/fta_solutions/alarm_instance.js:58
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:25
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:65
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:101
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_config.js:28
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:42
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_list.js:37
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:35
+#: static/js/page_new/fta_solutions/incident_def_list.js:45
+#: static/js/page_new/fta_solutions/solution.js:129
+#: static/js/page_new/fta_solutions/solution_list.js:44
+#: static/js/page_new/fta_solutions/solution_list.js:79
+msgid "取消"
+msgstr "取消"
+
+#: static/js/bkDialog.js:87
+msgid "请稍等..."
+msgstr "请稍等..."
+
+#: static/js/bkDialog.js:90
+msgid "添加用户失败"
+msgstr "添加用户失败"
+
+#: static/js/bkDialog.js:91
+msgid "此窗口<span class=\"bk-dialog-error-text\">3s</span>后关闭"
+msgstr "此窗口<span class=\"bk-dialog-error-text\">3s</span>后关闭"
+
+#: static/js/bkDialog.js:95
+msgid "添加用户成功"
+msgstr "添加用户成功"
+
+#: static/js/bkDialog.js:96
+msgid ""
+"<a href=\"javascript:;\" class=\"bk-dialog-primary-text\">继续添加 >></a>"
+msgstr ""
+
+#: static/js/bkDialog.js:100
+msgid "此操作存在风险"
+msgstr "此操作存在风险"
+
+#: static/js/bootstrap3.1.1_extend.js:9 static/js/bootstrap3.1.1_extend.js:208
+#: static/js/page_new/fta_solutions/alarm_def_list.js:17
+#: static/js/settings.js:95 static/js/settings.js:111 static/js/settings.js:128
+#: static/js/settings.js:143 static/js/settings.js:159
+#: static/js/settings_open.js:40 static/js/settings_open.js:56
+#: static/js/settings_open.js:73 static/js/settings_open.js:88
+#: static/js/settings_open.js:103
+msgid "提示信息"
+msgstr "提示信息"
+
+#: static/js/bootstrap3.1.1_extend.js:212
+msgid "帮助信息"
+msgstr "帮助信息"
+
+#: static/js/bootstrap3.1.1_extend.js:216
+msgid "完成信息"
+msgstr "完成信息"
+
+#: static/js/bootstrap3.1.1_extend.js:220
+msgid "警告"
+msgstr "警告"
+
+#: static/js/bootstrap3.1.1_extend.js:224
+msgid "错误信息"
+msgstr "错误信息"
+
+#: static/js/bootstrap3.1.1_extend.js:358
+msgid "显示动态添加页签的数据内容。"
+msgstr "显示动态添加页签的数据内容。"
+
+#: static/js/fta.js:184
+msgid "请完善配置"
+msgstr "请完善配置"
+
+#: static/js/fta.js:197 static/js/fta.js:200
+msgid "自愈总开关"
+msgstr "自愈总开关"
+
+#: static/js/fta.js:278
+msgid "选择2"
+msgstr "选择2"
+
+#: static/js/fta.js:279
+msgid "保存"
+msgstr "保存"
+
+#: static/js/fta.js:431 static/js/page/topo_module_select.js:15
+msgid "全选"
+msgstr "全选"
+
+#: static/js/fta.js:432 static/js/page/topo_module_select.js:16
+msgid "反选"
+msgstr "反选"
+
+#: static/js/fta.js:436
+msgid "搜索"
+msgstr "搜索"
+
+#: static/js/page/alarm_def.js:3
+msgid "* 请注意点保存哦！"
+msgstr "* 请注意点保存哦！"
+
+#: static/js/page/alarm_def.js:7
+#: static/js/page_new/fta_advice/advice_fta_def.js:2
+msgid "请选择额外通知人"
+msgstr "请选择额外通知人"
+
+#: static/js/page/alarm_def.js:61
+msgid "业务所有Set"
+msgstr "业务所有Set"
+
+#: static/js/page/alarm_def.js:65
+msgid "当前Set Attr相关"
+msgstr "当前Set Attr相关"
+
+#: static/js/page/alarm_def.js:90
+msgid "业务所有模块"
+msgstr "业务所有模块"
+
+#: static/js/page/alarm_def.js:94
+msgid "当前Sets相关"
+msgstr "当前Sets相关"
+
+#: static/js/page/alarm_instance_list.js:30
+#: static/js/page/alarm_instance_list.js:34
+#: static/js/page_new/fta_solutions/alarm_instance_list.js:32
+#: static/js/page_new/fta_solutions/alarm_instance_list.js:36
+msgid "至"
+msgstr "至"
+
+#: static/js/page/analysis.js:28
+msgid "全部告警类型"
+msgstr "全部告警类型"
+
+#: static/js/page/analysis.js:37
+msgid "全部业务组"
+msgstr "全部业务组"
+
+#: static/js/page/analysis.js:46
+msgid "全部套餐类型"
+msgstr "全部套餐类型"
+
+#: static/js/page/base.js:11
+msgid "您的浏览器版本稍显陈旧哦"
+msgstr "您的浏览器版本稍显陈旧哦"
+
+#: static/js/page/base.js:12
+msgid ""
+"尊敬的用户, 为了亲能获得最佳浏览体验, 建议使用Chrome/Firefox/Safari/Opera/IE9"
+"以上的浏览器哦~"
+msgstr ""
+"尊敬的用户, 为了亲能获得最佳浏览体验, 建议使用Chrome/Firefox/Safari/Opera/IE9"
+"以上的浏览器哦~"
+
+#: static/js/page/diy.js:54
+msgid "已经存在该节点"
+msgstr "已经存在该节点"
+
+#: static/js/page/diy.js:109
+msgid "根套餐无法被删除"
+msgstr "根套餐无法被删除"
+
+#: static/js/page/diy.js:116
+msgid "有两个子分支的套餐无法被删除"
+msgstr "有两个子分支的套餐无法被删除"
+
+#: static/js/page/health.js:6
+msgid "有用"
+msgstr "有用"
+
+#: static/js/page/health.js:13 static/js/page/health.js:21
+msgid "没用"
+msgstr "没用"
+
+#: static/js/page/operational_audit_detail.js:117
+msgid "无数据"
+msgstr "无数据"
+
+#: static/js/page/topo_module_select.js:44
+msgid "选择集群"
+msgstr "选择集群"
+
+#: static/js/page/topo_module_select.js:78
+msgid "选择模块"
+msgstr "选择模块"
+
+#: static/js/page/topo_module_select.js:126
+msgid "默认全选"
+msgstr "默认全选"
+
+#: static/js/page_new/fta_admin/alarm_def.js:46
+#: static/js/page_new/fta_solutions/alarm_def.js:50
+msgid "策略配置填写有误，无法提交，请重新填写"
+msgstr "策略配置填写有误，无法提交，请重新填写"
+
+#: static/js/page_new/fta_admin/alarm_def.js:51
+#: static/js/page_new/fta_solutions/alarm_def.js:55
+msgid "请选择处理告警的自愈套餐"
+msgstr "请选择处理告警的自愈套餐"
+
+#: static/js/page_new/fta_admin/alarm_def.js:58
+#: static/js/page_new/fta_advice/advice_fta_def.js:77
+msgid "超时填写不合法，请重新填写"
+msgstr "超时填写不合法，请重新填写"
+
+#: static/js/page_new/fta_admin/alarm_def.js:63
+#: static/js/page_new/fta_solutions/alarm_def.js:67
+msgid "自愈方案名称不能为空"
+msgstr "自愈方案名称不能为空"
+
+#: static/js/page_new/fta_admin/alarm_def.js:69
+#: static/js/page_new/fta_solutions/alarm_def.js:73
+msgid "自愈方案名称最长不超过80字符"
+msgstr "自愈方案名称最长不超过80字符"
+
+#: static/js/page_new/fta_admin/alarm_def.js:137
+#: static/js/page_new/fta_solutions/alarm_def.js:173
+msgid "恭喜你 成功接入自愈！"
+msgstr "恭喜你 成功接入自愈！"
+
+#: static/js/page_new/fta_admin/alarm_defs.js:24
+#: static/js/page_new/fta_advice/advice_fta_def_list.js:5
+#: static/js/page_new/fta_solutions/alarm_def.js:19
+#: static/js/page_new/fta_solutions/alarm_def_list.js:106
+#: static/js/page_new/fta_solutions/alarm_instance.js:12
+#: static/js/page_new/fta_solutions/alarm_instance.js:32
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:11
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:43
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:78
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_config.js:7
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:10
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_list.js:16
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:12
+#: static/js/page_new/fta_solutions/incident_def_list.js:22
+#: static/js/page_new/fta_solutions/solution.js:119
+#: static/js/page_new/fta_solutions/solution_list.js:23
+#: static/js/page_new/fta_solutions/solution_list.js:69
+msgid "确认信息"
+msgstr "确认信息"
+
+#: static/js/page_new/fta_admin/alarm_defs.js:28
+#: static/js/page_new/fta_advice/advice_fta_def_list.js:9
+#: static/js/page_new/fta_solutions/alarm_def_list.js:110
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:16
+msgid "您确定删除吗？"
+msgstr "您确定删除吗？"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:41
+#: static/js/page_new/fta_solutions/alarm_def.js:40
+msgid "不处理的套餐，就是一切皆空"
+msgstr "不处理的套餐，就是一切皆空"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:43
+#: static/js/page_new/fta_solutions/alarm_def.js:42
+msgid "快捷套餐就是系统定义的套餐"
+msgstr "快捷套餐就是系统定义的套餐"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:50
+msgid "请选择告警类型"
+msgstr "请选择告警类型"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:55
+msgid "考察时长填写不合法，请重新填写"
+msgstr "考察时长填写不合法，请重新填写"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:60
+msgid "考察阈值填写不合法，请重新填写"
+msgstr "考察阈值填写不合法，请重新填写"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:65
+msgid "请选择预警套餐"
+msgstr "请选择预警套餐"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:72
+msgid "建议不能为空"
+msgstr "建议不能为空"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:165
+msgid "恭喜你 成功接入预警！"
+msgstr "恭喜你 成功接入预警！"
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:249
+#: static/js/page_new/fta_solutions/alarm_def.js:268
+msgid "告警修改失败："
+msgstr "告警修改失败："
+
+#: static/js/page_new/fta_advice/advice_fta_def.js:255
+msgid "恭喜你， 预警定义修改成功"
+msgstr "恭喜你， 预警定义修改成功"
+
+#: static/js/page_new/fta_solutions/alarm_def.js:23
+msgid "拷贝成功，现在即将转到拷贝好的新策略"
+msgstr "拷贝成功，现在即将转到拷贝好的新策略"
+
+#: static/js/page_new/fta_solutions/alarm_def.js:62
+msgid "超时时间请填写大于5的整数"
+msgstr "超时时间请填写大于5的整数"
+
+#: static/js/page_new/fta_solutions/alarm_def.js:275
+msgid "恭喜你， 自愈定义修改成功"
+msgstr "恭喜你， 自愈定义修改成功"
+
+#: static/js/page_new/fta_solutions/alarm_def_list.js:6
+msgid "提示:第一个负责人会被用作套餐执行人"
+msgstr "提示:第一个负责人会被用作套餐执行人"
+
+#: static/js/page_new/fta_solutions/alarm_def_list.js:21
+msgid "您不属于该业务负责人，请联系负责人修改，谢谢！"
+msgstr "您不属于该业务负责人，请联系负责人修改，谢谢！"
+
+#: static/js/page_new/fta_solutions/alarm_def_list.js:39
+msgid "告警负责人修改成功"
+msgstr "告警负责人修改成功"
+
+#: static/js/page_new/fta_solutions/alarm_def_list.js:44
+msgid "修改失败"
+msgstr "修改失败"
+
+#: static/js/page_new/fta_solutions/alarm_def_list.js:48
+msgid "告警负责人修改失败, 请联系开发或管理员！"
+msgstr "告警负责人修改失败, 请联系开发或管理员！"
+
+#: static/js/page_new/fta_solutions/alarm_def_list.js:62
+#: static/js/page_new/fta_solutions/alarm_def_list.js:85
+msgid "请先到[管理告警源]中启用:"
+msgstr "请先到[管理告警源]中启用:"
+
+#: static/js/page_new/fta_solutions/alarm_instance.js:16
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:15
+msgid "确定重试该任务吗？"
+msgstr "确定重试该任务吗？"
+
+#: static/js/page_new/fta_solutions/alarm_instance.js:21
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:20
+msgid "重试中"
+msgstr "重试中"
+
+#: static/js/page_new/fta_solutions/alarm_instance.js:36
+msgid "确定提交审批？"
+msgstr "确定提交审批？"
+
+#: static/js/page_new/fta_solutions/alarm_instance.js:49
+msgid "已提交"
+msgstr "已提交"
+
+#: static/js/page_new/fta_solutions/alarm_instance.js:52
+msgid "提交失败"
+msgstr "提交失败"
+
+#: static/js/page_new/fta_solutions/alarm_instance_list.js:46
+#: static/js/page_new/fta_solutions/alarm_instance_list.js:61
+#: static/js/settings.js:156 static/js/settings_open.js:100
+msgid "服务暂时不可用，请联系开发人员！"
+msgstr "服务暂时不可用，请联系开发人员！"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:47
+msgid "是否确定终止"
+msgstr "是否确定终止"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:53
+msgid "终止成功"
+msgstr "终止成功"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:58
+msgid "终止失败:"
+msgstr "终止失败:"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:82
+msgid "是否确定从#"
+msgstr "是否确定从#"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:82
+msgid "开始重试?"
+msgstr "开始重试?"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:89
+msgid "成功开始重试"
+msgstr "成功开始重试"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:93
+msgid "重试失败:"
+msgstr "重试失败:"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:122
+msgid "审批成功"
+msgstr "审批成功"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:124
+msgid "审批失败:"
+msgstr "审批失败:"
+
+#: static/js/page_new/fta_solutions/alarm_instance_page.js:128
+msgid "请输入审批意见:"
+msgstr "请输入审批意见:"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_config.js:11
+msgid "重置是安全选项，会重新生成SecureKey"
+msgstr "重置是安全选项，会重新生成SecureKey"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_config.js:11
+msgid "请确认是否重置"
+msgstr "请确认是否重置"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:5
+msgid "复制成功！"
+msgstr "复制成功！"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:9
+msgid "复制失败！"
+msgstr "复制失败！"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:36
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:95
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head_custom.js:66
+msgid "新建告警类型"
+msgstr "新建告警类型"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:63
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:43
+msgid "字符串"
+msgstr "字符串"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:63
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:43
+msgid "正则表达式"
+msgstr "正则表达式"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:63
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:43
+msgid "通配符"
+msgstr "通配符"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:66
+msgid "请填写完整名称和规则！"
+msgstr "请填写完整名称和规则！"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_def.js:70
+msgid "编辑告警类型"
+msgstr "编辑告警类型"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:4
+msgid "您确定禁用"
+msgstr "您确定禁用"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:4
+msgid "禁用后已接入的"
+msgstr "禁用后已接入的"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:4
+msgid "会同时被禁用"
+msgstr "会同时被禁用"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head.js:6
+msgid "您确定启用"
+msgstr "您确定启用"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head_custom.js:16
+msgid "拉取告警地址请输入http服务地址"
+msgstr "拉取告警地址请输入http服务地址"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_head_custom.js:22
+msgid "异常阈值请输入非负整数"
+msgstr "异常阈值请输入非负整数"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_list.js:20
+msgid "您确定删除吗？<br><br> 禁用后已接入的自愈处理会同时被禁用"
+msgstr "您确定删除吗？<br><br> 禁用后已接入的自愈处理会同时被禁用"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:26
+msgid "告警类型删除成功！"
+msgstr "告警类型删除成功！"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type.js:46
+msgid "编辑告警类型<input type=\"hidden\" value=\""
+msgstr "编辑告警类型<input type=\"hidden\" value=\""
+
+#: static/js/page_new/fta_solutions/analysis.js:11
+msgid "自愈接入概况"
+msgstr "自愈接入概况"
+
+#: static/js/page_new/fta_solutions/analysis.js:27
+#: static/js/page_new/fta_solutions/analysis.js:231
+msgid "告警（个）/ 日"
+msgstr "告警（个）/ 日"
+
+#: static/js/page_new/fta_solutions/analysis.js:38
+msgid "有效告警"
+msgstr "有效告警"
+
+#: static/js/page_new/fta_solutions/analysis.js:40
+msgid "自愈处理的告警"
+msgstr "自愈处理的告警"
+
+#: static/js/page_new/fta_solutions/analysis.js:42
+msgid "自愈成功的告警"
+msgstr "自愈成功的告警"
+
+#: static/js/page_new/fta_solutions/analysis.js:52
+#: static/js/page_new/fta_solutions/analysis.js:272
+#: static/js/page_new/fta_solutions/analysis.js:296
+#: static/js/page_new/fta_solutions/analysis.js:335
+#: static/js/page_new/fta_solutions/analysis.js:397
+#: static/js/page_new/fta_solutions/analysis.js:438
+msgid "自愈趋势"
+msgstr "自愈趋势"
+
+#: static/js/page_new/fta_solutions/analysis.js:69
+#: static/js/page_new/fta_solutions/analysis.js:153
+msgid "次数"
+msgstr "次数"
+
+#: static/js/page_new/fta_solutions/analysis.js:78
+#: static/js/page_new/fta_solutions/analysis.js:162
+msgid "次"
+msgstr "次"
+
+#: static/js/page_new/fta_solutions/analysis.js:118
+msgid "自愈次数"
+msgstr "自愈次数"
+
+#: static/js/page_new/fta_solutions/analysis.js:122
+msgid "成功次数"
+msgstr "成功次数"
+
+#: static/js/page_new/fta_solutions/analysis.js:135
+msgid "自愈失败原因分布图"
+msgstr "自愈失败原因分布图"
+
+#: static/js/page_new/fta_solutions/analysis.js:216
+msgid "自愈指数趋势"
+msgstr "自愈指数趋势"
+
+#: static/js/page_new/fta_solutions/analysis.js:242
+msgid "自愈指数趋势（%）/日"
+msgstr "自愈指数趋势（%）/日"
+
+#: static/js/page_new/fta_solutions/analysis.js:461
+msgid "自愈失败"
+msgstr "自愈失败"
+
+#: static/js/page_new/fta_solutions/analysis.js:468
+msgid "自愈成功"
+msgstr "自愈成功"
+
+#: static/js/page_new/fta_solutions/analysis.js:475
+msgid "自愈指数"
+msgstr "自愈指数"
+
+#: static/js/page_new/fta_solutions/analysis.js:527
+msgid "自愈成功率"
+msgstr "自愈成功率"
+
+#: static/js/page_new/fta_solutions/analysis.js:547
+msgid "占"
+msgstr "占"
+
+#: static/js/page_new/fta_solutions/health_detail.js:7 static/js/settings.js:84
+#: static/js/settings_open.js:29
+msgid "提示"
+msgstr "提示"
+
+#: static/js/page_new/fta_solutions/health_detail.js:11
+msgid "已经线下处理该风险了吗？"
+msgstr "已经线下处理该风险了吗？"
+
+#: static/js/page_new/fta_solutions/health_detail.js:22
+msgid "已经线下处理该风险"
+msgstr "已经线下处理该风险"
+
+#: static/js/page_new/fta_solutions/health_detail.js:30
+msgid "是"
+msgstr "是"
+
+#: static/js/page_new/fta_solutions/health_detail.js:33
+msgid "否"
+msgstr "否"
+
+#: static/js/page_new/fta_solutions/incident_def_list.js:26
+msgid "确定删除该收敛策略吗？"
+msgstr "确定删除该收敛策略吗？"
+
+#: static/js/page_new/fta_solutions/solution.js:113
+#: static/js/page_new/fta_solutions/solution_list.js:63
+msgid "是否跳转到目标业务"
+msgstr "是否跳转到目标业务"
+
+#: static/js/page_new/fta_solutions/solution.js:213
+msgid "请输入套餐名"
+msgstr "请输入套餐名"
+
+#: static/js/page_new/fta_solutions/solution.js:216
+msgid "套餐名不能超过30个字符"
+msgstr "套餐名不能超过30个字符"
+
+#: static/js/page_new/fta_solutions/solution.js:224
+#: static/js/page_new/fta_solutions/solution.js:232
+msgid "组合套餐配置有误：有步骤没有指定原子套餐"
+msgstr "组合套餐配置有误：有步骤没有指定原子套餐"
+
+#: static/js/page_new/fta_solutions/solution.js:243
+msgid "汇总配置请填写数字，并且是0~1000以内"
+msgstr "汇总配置请填写数字，并且是0~1000以内"
+
+#: static/js/page_new/fta_solutions/solution.js:252
+msgid "磁盘清理的目录不合法"
+msgstr "磁盘清理的目录不合法"
+
+#: static/js/page_new/fta_solutions/solution.js:261
+msgid "等待时间框里含有非数字符号"
+msgstr "等待时间框里含有非数字符号"
+
+#: static/js/page_new/fta_solutions/solution.js:269
+msgid "请输入回调地址！"
+msgstr "请输入回调地址！"
+
+#: static/js/page_new/fta_solutions/solution.js:281
+msgid "日期必须大于0"
+msgstr "日期必须大于0"
+
+#: static/js/page_new/fta_solutions/solution.js:310
+msgid "自愈套餐保存成功"
+msgstr "自愈套餐保存成功"
+
+#: static/js/page_new/fta_solutions/solution_ijobs.js:86
+msgid "请选择作业"
+msgstr "请选择作业"
+
+#: static/js/page_new/fta_solutions/solution_ijobs.js:92
+#: static/js/page_new/fta_solutions/solution_ijobs.js:96
+msgid "作业列表为空，请在作业平台创建作业"
+msgstr "作业列表为空，请在作业平台创建作业"
+
+#: static/js/page_new/fta_solutions/solution_ijobs.js:135
+msgid "请输入脚本参数"
+msgstr "请输入脚本参数"
+
+#: static/js/page_new/fta_solutions/solution_list.js:27
+msgid "您确定删除吗"
+msgstr "您确定删除吗"
+
+#: static/js/settings.js:36
+msgid "温馨提示：请在蓝鲸平台中使用该应用！<br>即将跳转至蓝鲸平台！"
+msgstr "温馨提示：请在蓝鲸平台中使用该应用！<br>即将跳转至蓝鲸平台！"
+
+#: static/js/settings.js:49
+msgid "温馨提示"
+msgstr "温馨提示"
+
+#: static/js/settings.js:108 static/js/settings.js:125
+#: static/js/settings.js:156 static/js/settings_open.js:37
+#: static/js/settings_open.js:53 static/js/settings_open.js:70
+#: static/js/settings_open.js:85 static/js/settings_open.js:100
+msgid "返回首页"
+msgstr "返回首页"
+
+#: static/js/settings.js:140 static/js/settings_open.js:85
+msgid "请求内容不合法！"
+msgstr "请求内容不合法！"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_list.js:71
+msgid "请使用管理员身份管理告警源<br>注: 对告警源操作会应用所有业务"
+msgstr "请使用管理员身份管理告警源<br>注: 对告警源操作会应用所有业务"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type_alert.js:46
+msgid "确认要刷新蓝鲸监控的告警类型"
+msgstr "确认要刷新蓝鲸监控的告警类型"
+
+#: static/js/page_new/fta_solutions/alarm_source/alarm_source_type_alert.js:56
+msgid "刷新成功"
+msgstr "刷新成功"
+
+msgid "蓝鲸监控的指标配置时维度包含IP、bk_cloud_id，否则在套餐中指定执行的IP"
+msgstr "蓝鲸监控的指标配置时维度包含IP、bk_cloud_id，否则在套餐中指定执行的IP"
+
+msgid "填写监控名称可区分不同的监控项"
+msgstr "填写监控名称可区分不同的监控项"
+
+msgid "点击查看详情"
+msgstr "点击查看详情"
+
+#~ msgid "继续添加"
+#~ msgstr "继续添加"

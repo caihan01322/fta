@@ -1,0 +1,115 @@
+<!-- API-S -->
+<div class="title-content-bar mb20">
+    <div class="pure-title">${_(u'接入流程')}</div>
+    <div class="title-bottom-panel api-panel">
+        <p class="title">${_(u'调用方式')} ： POST</p>
+        <p class="title">${_(u'调用格式')} ：</p>
+<pre>
+{
+"ip": '10.0.0.1',      // ${_(u'告警源IP，需在CMDB注册，必须')}
+"source_id": "123456",       // ${_(u'告警源的告警ID，全局唯一，每次调用请调整，必须')}
+"source_time": "2017-04-06 16:50:00+08:00",       // ${_(u'告警发生的时间，格式：YYYY-MM-DD HH:mm:ssZZ，必须')}
+"alarm_type": "api_default",     // ${_(u'告警类型（按业务存储，不填则统一放到默认分类下），可选')}
+"alarm_content": "FAILURE for production/HTTP on machine 10.0.0.1", // ${_(u'告警详情，可选')}
+"alarm_context": {"key1":"value1","key2":"value2"},  // ${_(u'自定义参数，用于传递给作业平台、标准运维等套餐')}. ${_(u'引用方式')}: ${"${alarm_context}"} 、${"${alarm_context|key1"}}、${"${alarm_context|key2}"}
+}
+</pre>
+        <div class="tablelist clearfix">
+            <div class="fl access-tab half-table">
+                <p class="title">${_(u'参数列表')} ：</p>
+                <table class="table">
+                    <thead class="th-bg">
+                        <tr>
+                          <th class="br1" style="text-align: left;">${_(u'参数')}</th>
+                          <th class="br1" style="text-align: left;">${_(u'必须')}</th>
+                          <th class="" style="text-align: left;">${_(u'备注')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>IP</td>
+                            <td>Y</td>
+                            <td>${_(u'告警源IP')}</td>
+                        </tr>
+                        <tr>
+                            <td>source_id</td>
+                            <td>Y</td>
+                            <td>${_(u'告警源的告警ID')},<span style="color:red">${_(u'全局唯一')}</span></td>
+                        </tr>
+                        <tr>
+                            <td>source_time</td>
+                            <td>Y</td>
+                            <td>${_(u'告警发生的时间，格式：YYYY-MM-DD HH:mm:ss')}</td>
+                        </tr>
+                        <tr>
+                            <td>alarm_type</td>
+                            <td>N</td>
+                            <td>${_(u'告警类型')}</td>
+                        </tr>
+                        <tr>
+                            <td>alarm_content</td>
+                            <td>N</td>
+                            <td>${_(u'告警详情')}</td>
+                        </tr>
+                        <tr>
+                            <td>alarm_context</td>
+                            <td>N</td>
+                            <td>${_(u'自定义参数')}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="fl access-tab half-table">
+                <p class="title">${_(u'标准返回字段说明')}：</p>
+                <table class="table">
+                    <thead class="th-bg">
+                        <tr>
+                          <th class="br1" style="text-align: left;">${_(u'名称')}</th>
+                          <th class="br1" style="text-align: left;">${_(u'类型')}</th>
+                          <th class="" style="text-align: left;">${_(u'说明')}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>result</td>
+                            <td>bool</td>
+                            <td>${_(u'请求成功与否，true:请求成功，false:请求失败')}</td>
+                        </tr>
+                        <tr>
+                            <td>code</td>
+                            <td>string</td>
+                            <td>${_(u'返回错误编码')}</td>
+                        </tr>
+                        <tr>
+                            <td>data</td>
+                            <td>object</td>
+                            <td>${_(u'请求成功返回的数据')}</td>
+                        </tr>
+                        <tr>
+                            <td>message</td>
+                            <td>string</td>
+                            <td>${_(u'请求失败返回的错误消息')}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- API-E -->
+
+<!-- 调用示例S -->
+<div class="title-content-bar mb20 call-example">
+    <div class="pure-title">${_(u'调用示例')}</div>
+    <div class="title-bottom-panel">
+        <%
+        import time
+        import arrow
+
+        fake_source_id = int(time.time())
+        fake_source_time = arrow.now().format('YYYY-MM-DD HH:mm:ssZZ')
+        %>
+        <p class="p20 mb0">curl -d '{"ip": "10.0.0.1","source_id": "${fake_source_id}","source_time": "${fake_source_time}","alarm_type": "api_default", "alarm_content": "FAILURE for production HTTP on machine 10.0.0.1", "alarm_context": {"key1":"value1","key2":"value2"}}' '${alarm_app.callback_url_prefix}<span style="color:red">${alarm_app.app_id}</span>' -H 'X-Secret:<span style="color:red">${alarm_app.app_secret}</span>' -v -k</p>
+    </div>
+</div>
+<!-- 调用示例E -->

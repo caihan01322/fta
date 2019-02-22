@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" href="${STATIC_URL}bootstrap/css/bootstrap.min.css?v=${STATIC_VERSION}"/>
+    <link rel="stylesheet" type="text/css" href="${STATIC_URL}diy/css/index.css?v=${STATIC_VERSION}" />
+    <script src="${STATIC_URL}js/jquery-1.10.2.min.js?v=${STATIC_VERSION}"></script>
+    <style>
+        hr {
+            margin: 10px;
+        }
+        .success{
+            color: #34a263;
+        }
+        .failure{
+            color: #d9534f;
+        }
+        .running{
+            color: #2180F5;
+        }
+    </style>
+</head>
+<body>
+
+<div style="padding:10px">
+    <dl class='dl-horizontal'>
+    % if advice:
+        <dt style='color:grey'>${_(u'诊断详情')}</dt>
+        <dd style='color:grey;width:80%'>
+            ${_(u'主机')}[${advice.subject_info}]  <span class="success">${advice.advice_def.interval}</span> ${_(u'天')} ${_(u'内出现')} <span class="failure">${advice.alarm_num}</span> ${_(u'条')} <span class="running">${advice.advice_def.check_sub_type_desc}</span> ${_(u'告警')}
+        </dd>
+        <dt style='color:grey'>${_(u'诊断建议')}</dt>
+        <dd style='color:grey;width:80%'>
+            ${advice.advice_def.advice |n}
+        </dd>
+        <dt style='color:grey;padding-top:10px;'>${_(u'处理过程')}</dt>
+        <dd id="log-content" style='color:grey;overflow-y:auto;max-height:200px;margin-top:10px;width:80%'>
+            <div class="instance_log">
+                <i class='bk-icon icon-check-circle'></i> ${ advice.offline_time.strftime("%Y-%m-%d %H:%M:%S") } ${_(u'用户')}（${advice.offline_user}） ${_(u'依照诊断建议，已线下处理完成')}<br>
+            </div>
+
+        </dd>
+    % else:
+        <p>${_(u'建议不存在')}</p>
+    % endif
+    </dl>
+</div>
+<script src="${STATIC_URL}bootstrap/js/bootstrap.min.js?v=${STATIC_VERSION}"></script>
+</body>
+</html>

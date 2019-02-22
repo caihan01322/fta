@@ -1,0 +1,71 @@
+<link rel="stylesheet" type="text/css" href="${STATIC_URL}diy/css/index.css?v=${STATIC_VERSION}" />
+<style>
+    .long-btn{
+           width : 100%;
+    }
+</style>
+<div class="widget-title">
+    <span class="icon"><i class="bk-icon icon-sitemap-shape"></i></span>
+    <h5 style='font-size:15px'>${_(u'组合套餐流程配置')}</h5>
+</div>
+
+<div class="widget-content" id="widget-content">
+</div>
+
+<div class="none node" id="node-templates">
+	<div class="node-container">
+		<i class="bk-icon icon-close btn-icon"></i>
+		<div class="node-text"></div>
+		<div class="option-group">
+			<span class="option-btn success">${_(u'成功')}</span>
+			<span class="option-btn failure">${_(u'失败')}</span>
+		</div>
+	</div>
+</div> 
+
+<div class="bktopo-container">
+	<div id="bktopo"></div>	
+</div>
+
+
+<!-- modal start -->	
+<div class="modal fade" id="editNodeText" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   	<div class="modal-dialog">
+    	<div class="modal-content">
+      		<div class="modal-header">
+        		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        		<h4 class="modal-title" id="myModalLabel">${_(u'修改节点内容')}</h4>
+      		</div>
+      	<div class="modal-body">
+      	<!--textarea id="nodeTextarea"></textarea-->
+        <div id="editNodeText-btns" style="height:300px;overflow:auto">
+        %for solution_id, solution_title in solutions_list:
+          <button type="button" class="btn long-btn" data-id="${solution_id}" value="${solution_id}">[${solution_id}]&nbsp;${solution_title}</button>
+        %endfor
+      	</div>
+        </div>
+      	<div class="modal-footer">
+        	<button type="button" class="btn btn-default btn-sm modal-cancel" data-dismiss="modal">${_(u'取消')}</button>
+        	<button type="button" class="btn btn-primary btn-sm modal-edit">${_(u'修改')}</button>
+      	</div>
+    	</div>
+  	</div>
+</div>
+<!-- modal end -->	
+<script src="${STATIC_URL}diy/js/dagre.min.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}diy/js/bkTopology.js?v=${STATIC_VERSION}"></script>
+<script src="${STATIC_URL}diy/js/app.js?v=${STATIC_VERSION}"></script>
+
+<script type="text/javascript">
+  $(".long-btn").on('click', function(){
+    var _this = $(this)
+    $(".long-btn").removeClass("btn-primary")
+    _this.toggleClass("btn-primary")
+  })
+
+
+  $("#editNodeText-btns .btn-primary").each(function(){
+    var _this = $(this)
+    console.debug(_this.html())
+  })
+</script>

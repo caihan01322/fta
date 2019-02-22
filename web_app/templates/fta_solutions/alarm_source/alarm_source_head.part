@@ -1,0 +1,108 @@
+<!-- 新增告警源S -->
+<div class="title-content-bar mb20">
+
+    <!-- new header-start -->
+    <div class="new-switch-head">
+        <img src="${STATIC_URL}${_(u'images/new/alarm_source/')}${source_type}-on.png" class="on-img">
+        <span>${source_type_msg2.get(source_type)}</span>
+        <em class="name-note" style="color:#5bd18b">（${_(u'接入后对所有业务都生效')}）</em>
+        <a class="f_r cur-switch cp" href="javascript:block_def('${source_id}', '${source_type}', '${source_type_name}');">
+            <span id="source_span" class="fr">
+                % if not is_enabled:
+                <i class="switchery switchery-middle" id="source_switch" data="0">
+                    <middle></middle>
+                </i>
+                % else:
+                <i class="switchery-on switchery-middle" id="source_switch" data="1">
+                    <middle></middle>
+                </i>
+                % endif
+            </span>
+
+        </a>
+    </div>
+</div>
+<input type="hidden" id="new_alarm_type_text_id" value="${_(u'新建告警类型')}">
+<script src="${STATIC_URL}js/page_new/fta_solutions/alarm_source/alarm_source_head.js"></script>
+
+<%doc>
+    <!-- new header-end -->
+
+    % if source_id != '0':
+        <div class="pure-title">${_(u'编辑告警源')}</div>
+    % else:
+        <div class="pure-title">${_(u'添加告警源')}</div>
+    % endif
+    <div class="title-bottom-panel">
+        <div class="info-bar1">
+            <!-- 用户填写的配置信息 -->
+            % if source_type=='CUSTOM':
+                <%include file="alarm_source_head_custom.part"/>
+            % else:
+                <%include file="alarm_source_head_pull.part"/>
+            % endif
+        </div>
+    </div>
+</div>
+</%doc>
+
+<!-- 新增告警源E -->
+% if source_type in ['CUSTOM']:
+    <!-- CUSTOM 类型的告警，默认显示配置项 -->
+    <input type="hidden" id="source_id" value="${source_id}">
+    <!-- 接入指引 -->
+    <%include file="alarm_source_custom.part"/>
+
+    <!-- 编辑告警类型S -->
+    <%include file="alarm_source_type.part" />
+    <!-- 编辑告警类型E -->
+    <script type="text/javascript">
+        $(function () {
+            var new_alarm_type_text = $("#new_alarm_type_text_id").val();
+            $.get('${SITE_URL}${cc_biz_id}/alarm_source/get/${source_type}/${source_id}/', function (data) {
+                initMask({
+                    el: '#newStyles',
+                    closed: function (element) {
+                        var oStyleData = {
+                            title: new_alarm_type_text,
+                            description: '',
+                            pattern: '',
+                            match_mode: 0
+                        }
+                        initMaskData(oStyleData);
+                    }
+                });
+            }, 'json')
+        })
+    </script>
+% endif
+
+% if source_id != '0' and source_type not in ['CUSTOM']:
+    <script type="text/javascript">
+        $(function () {
+            var new_alarm_type_text = $("#new_alarm_type_text_id").val();
+            $.get('${SITE_URL}${cc_biz_id}/alarm_source/get/${source_type}/${source_id}/', function (data) {
+                $("#alarm_source_config").html(data.message)
+                initMask({
+                    el: '#newStyles',
+                    closed: function (element) {
+                        var oStyleData = {
+                            title: new_alarm_type_text,
+                            description: '',
+                            pattern: '',
+                            match_mode: 0
+                        }
+                        initMaskData(oStyleData);
+                    }
+                });
+            }, 'json')
+        })
+
+        $(".edit_config").show();
+
+        $("#source_switch_head").on("click", function () {
+            $(this).toggleClass("switchery switchery-on")
+        })
+
+    </script>
+% endif

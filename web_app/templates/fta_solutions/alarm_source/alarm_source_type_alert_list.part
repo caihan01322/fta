@@ -1,0 +1,42 @@
+<div class='col-xs-12 access-tab hole-tab-style table-packup'>
+    <table class="table table-hover alarm_type_table">
+        <thead class="th-bg">
+            <tr>
+                <th class="br1 pl35" style="text-align: left;width:20%;">${_(u'名称')}</th>
+                <th class="br1 pl20" style="text-align: left;width:18%;">${_(u'规则')}</th>
+                <th class="br1 pl20" style="text-align: left;width:18%;">${_(u'匹配模式')}</th>
+                <th class="br1 pl20" style="text-align: left;width:18%;">${_(u'分类')}</th>
+            </tr>
+        </thead>
+        <tbody>
+            % for i in alarm_type_list:
+            <tr class="close-text" id="alarm_type_${i.id}">
+                <td class="pl35">
+                    <div class="limitText hd">
+                        <span>${i.description_display}</span>
+                    </div>
+                    <a href="javascript:;" class="text-switch" style="left:10px;">
+                        <i class="bk-icon icon-plus-square to-open-text"></i>
+                        <i class="bk-icon icon-minus-square to-close-text"></i>
+                    </a>
+                </td>
+                <td class="pl20">
+                    <div class="limitText hd">
+                        <span class='report-num'>${i.pattern}</span>
+                    </div>
+                </td>
+                <td class="pl20">
+                    <div class="limitText hd">
+                        <span class='report-num'>${i.match_mode_desc}</span>
+                    </div>
+                </td>
+                <td class="pl20">
+                    <div class="limitText hd">
+                        <span class='report-num'>${i.scenario_display or '--'}</span>
+                    </div>
+                </td>
+            </tr>
+            % endfor
+        </tbody>
+    </table>
+</div>
